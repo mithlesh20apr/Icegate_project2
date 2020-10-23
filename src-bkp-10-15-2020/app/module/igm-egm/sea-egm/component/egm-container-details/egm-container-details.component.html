@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Container Details</h2>
+<mat-dialog-content>
+    <div><span class="required"> *</span> indicates the mandatory fields</div>
+    <br>
+    <button mat-raised-button (click)="addTab1()" [disabled]="disableAdd1Button" id="add-option">
+        Add new tab
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-tab-group>
+        <mat-tab *ngFor="let tab of tabs1; let i = index">
+            <ng-template mat-tab-label>
+                <span>EGM Container Details {{i + 1}}</span>
+                <mat-icon *ngIf="tabs1.length != 1" (click)="removeTab1(i)">cancel</mat-icon>
+            </ng-template>
+            <br>
+            <div class="row">
+                <form class="col-md-12" [formGroup]="egmContainerDetails">
+
+                    <h2 class="text-center">EGM Container Details</h2>
+                    <hr>
+                    <div class="col-md-12"><br></div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Container No.</label>
+                            <input type="text" class="form-control" formControlName="container_no">
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-4">
+                            <label>Container Status</label>
+                            <input type="text" class="form-control" formControlName="container_status">
+                            <mat-error *ngIf='egmContainerDetails.controls.container_status.errors?.maxlength'>The
+                                maximum
+                                field
+                                length is 9, please update the field <br>
+                            </mat-error>
+                            <mat-error *ngIf='egmContainerDetails.controls.container_status.errors?.pattern'>
+                                Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Save</button>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

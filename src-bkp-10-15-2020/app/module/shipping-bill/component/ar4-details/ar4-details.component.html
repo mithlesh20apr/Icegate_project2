@@ -1,0 +1,82 @@
+<mat-expansion-panel  [expanded]="1">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            AR4
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="ar4details">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Invoice Sr. Number</label>
+                    <input type="text" class="form-control" formControlName="invoice_sr_number">
+                    <mat-error *ngIf="ar4details.controls.invoice_sr_number.errors?.maxlength">The maximum field length is 2, please update the field</mat-error>
+                    <mat-error *ngIf="ar4details.controls.invoice_sr_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Item Sr number in invoice</label>
+                    <input type="text" class="form-control" formControlName="item_sr_number_invoice">
+                    <mat-error *ngIf="ar4details.controls.item_sr_number_invoice.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>
+                    <mat-error *ngIf="ar4details.controls.item_sr_number_invoice.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>AR4 Number</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="ar4_number">
+                    <mat-error *ngIf="ar4details.controls.ar4_number.errors?.required && ar4details.controls.ar4_number.touched">This field is required</mat-error>
+                    <mat-error *ngIf="ar4details.controls.ar4_number.errors?.maxlength">The maximum field length is 17, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>AR4 Date</label><span class="required"> *</span>
+                    <br>
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label> 
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="ar4_date" formControlName="ar4_date">
+                        <mat-datepicker-toggle matSuffix [for]="ar4_date"></mat-datepicker-toggle>
+                        <mat-datepicker #ar4_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                    <mat-error *ngIf="ar4details.controls.ar4_date.errors?.required && ar4details.controls.ar4_date.touched">This field is required</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Commissionerate</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="commissionerate">
+                    <mat-error *ngIf="ar4details.controls.commissionerate.errors?.required && ar4details.controls.commissionerate.touched">This field is required</mat-error>
+                    <mat-error *ngIf="ar4details.controls.commissionerate.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                   
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Division</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="division">
+                    <mat-error *ngIf="ar4details.controls.division.errors?.required && ar4details.controls.division.touched">This field is required</mat-error>
+                    <mat-error *ngIf="ar4details.controls.division.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Range</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="range">
+                    <mat-error *ngIf="ar4details.controls.range.errors?.required && ar4details.controls.range.touched">This field is required</mat-error>
+                    <mat-error *ngIf="ar4details.controls.range.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                   
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Remarks</label>
+                    <input type="text" class="form-control" formControlName="remarks">                   
+                    <mat-error *ngIf="ar4details.controls.remarks.errors?.maxlength">The maximum field length is 250, please update the field</mat-error>                    
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>

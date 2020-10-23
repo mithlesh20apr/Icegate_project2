@@ -1,0 +1,90 @@
+<mat-expansion-panel class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Third Party Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="thirdPartyDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Third Party Name</label>
+                    <input type="text" class="form-control" formControlName="third_party_name">
+                    <mat-error *ngIf="thirdPartyDetails.controls.third_party_name.errors?.maxlength">The maximum field length is 70, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Third Party Address1</label>
+                    <input type="text" class="form-control" formControlName="third_party_address1">
+                    <mat-error *ngIf="thirdPartyDetails.controls.third_party_address1.errors?.maxlength">The maximum field length is 70, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Third Party Address2</label>
+                    <input type="text" class="form-control" formControlName="third_party_address2">
+                    <mat-error *ngIf="thirdPartyDetails.controls.third_party_address2.errors?.maxlength">The maximum field length is 50, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Third Party City</label>
+                    <input type="text" class="form-control" formControlName="third_party_city">
+                    <mat-error *ngIf="thirdPartyDetails.controls.third_party_city.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Third Party Country Subdivision</label>
+                    <input type="text" class="form-control" formControlName="third_party_country_subdivision">
+                    <mat-error *ngIf="thirdPartyDetails.controls.third_party_country_subdivision.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>Third Party Country Code</label>
+                    <select class="form-control" formControlName="third_party_country_code">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Third Party Pin</label>
+                    <input type="text" class="form-control" formControlName="third_party_pin">
+                    <mat-error *ngIf="thirdPartyDetails.controls.third_party_pin.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Authorized Economic Operator Code</label>
+                    <input type="text" class="form-control" formControlName="authorized_economic_operator_code">
+                    <mat-error *ngIf="thirdPartyDetails.controls.authorized_economic_operator_code.errors?.maxlength">The maximum field length is 17, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>Authorized Economic Operator Country</label>
+                    <select class="form-control" formControlName="authorized_economic_operator_country">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Authorized Economic Operator Role</label>
+                    <input type="text" class="form-control" formControlName="authorized_economic_operator_role">
+                    <mat-error *ngIf="thirdPartyDetails.controls.authorized_economic_operator_role.errors?.maxlength">The maximum field length is 3, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Terms Place</label>
+                    <input type="text" class="form-control" formControlName="terms_place">
+                    <mat-error *ngIf="thirdPartyDetails.controls.terms_place.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>

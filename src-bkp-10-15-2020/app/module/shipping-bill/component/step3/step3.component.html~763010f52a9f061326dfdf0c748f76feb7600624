@@ -1,0 +1,121 @@
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<div class="row">
+    <form class="col-md-12" [formGroup]="exchangeDetails">
+
+        <h2 class="text-center">Exchange</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Invoice Currency code</label>
+                <select class="form-control" formControlName="invoice_currency_code">
+                    <option>-- select --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Currency Name</label>
+                <input type="text" class="form-control" formControlName="currency_name">
+                <mat-error *ngIf='exchangeDetails.controls.currency_name.errors?.maxlength' >The
+                    maximum field length is 20, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Unit in Rs.</label>
+                <input type="text" class="form-control" formControlName="unit_in_rs">
+                <mat-error *ngIf='exchangeDetails.controls.unit_in_rs.errors?.maxlength' >The maximum
+                    field length is 7, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='exchangeDetails.controls.unit_in_rs.errors?.pattern' >
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Rate</label>
+                <input type="text" class="form-control" formControlName="rate">
+                <mat-error *ngIf='exchangeDetails.controls.rate.errors?.maxlength' >The maximum field
+                    length is 9, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='exchangeDetails.controls.rate.errors?.pattern' >
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Effective Date</label>
+                <br>
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="effective_date" formControlName="effective_date">
+                    <mat-datepicker-toggle matSuffix [for]="effective_date"></mat-datepicker-toggle>
+                    <mat-datepicker #effective_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Whether Standard Currency (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="whether_standard_currency">
+                    <option value="Y">Y</option>
+                    <option value="N">N</option>
+                </select>
+                <mat-error
+                    *ngIf='exchangeDetails.controls.whether_standard_currency.errors?.required && exchangeDetails.controls.whether_standard_currency.touched'
+                    >This field is required <br></mat-error>
+                <mat-error *ngIf='exchangeDetails.controls.whether_standard_currency.errors?.maxlength'
+                    >The maximum field length is 1, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Amendment Type</label>
+                <input type="text" class="form-control" formControlName="amendment_type">
+                <mat-error *ngIf='exchangeDetails.controls.amendment_type.errors?.maxlength' >The
+                    maximum field length is 1, please update the field
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Amendment No.</label>
+                <input type="text" class="form-control" formControlName="amendment_no">
+                <mat-error *ngIf='exchangeDetails.controls.amendment_no.errors?.maxlength' >The
+                    maximum field length is 7, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='exchangeDetails.controls.amendment_no.errors?.pattern' >
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Amendment Date</label>
+                <br>
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="amendment_date" formControlName="amendment_date">
+                    <mat-datepicker-toggle matSuffix [for]="amendment_date"></mat-datepicker-toggle>
+                    <mat-datepicker #amendment_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>

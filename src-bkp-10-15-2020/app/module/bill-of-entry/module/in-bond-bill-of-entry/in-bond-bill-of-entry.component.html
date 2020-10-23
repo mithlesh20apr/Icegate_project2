@@ -1,0 +1,138 @@
+
+<div class="container-fluid">
+    <div class="card">
+        <b style="margin: 25px;">Bill of Entry</b>
+        <div class="box-color">
+            <div class="row">
+                <div class="col-md-12">
+                    <form [formGroup]="bill_of_entrly">
+                        
+                        <div class="col-lg-12 text-right">
+                            <label>
+                                <p class="import_json_files"><b>Import Json file</b></p>
+                               <input type="file"  (change)="uploadFile($event)"/>
+                            </label>
+                            <a class="btn btn-clear export_as_json" title="Download JSON"  (click)="downloadbillentry()" [href]="downloadJsonHref" download="bill-of-entry.json"> 
+                                <img src="assets/images/json_files_icon.webp"/> 
+                                Export as Json
+                            </a>
+                         </div>
+                        <mat-horizontal-stepper #stepper class="stepperscroll" (selectionChange)="selectionChange($event)">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon [inline]="true">check_circle</mat-icon>
+                          </ng-template>
+                         
+                        <mat-step>
+                            
+                            <app-step1 formControlName="inBondFormStep1"></app-step1>
+                        </mat-step>
+                        <mat-step>
+                            <app-step2 formControlName="inBondFormStep2"></app-step2>
+                        </mat-step>
+                        <mat-step>
+                            <nav mat-tab-nav-bar class="invoice">
+                                <a  mat-tab-link *ngFor="let dynamic of dynamicArray;let i = index" (click)="onTabChanged(i)"
+                                    [active]="TabIndex == i">
+                                    <span>Invoice {{dynamic}}</span>
+                                    <mat-icon [inline]="true" *ngIf="i>0" (click)="delete(i)">cancel</mat-icon>
+                                </a>
+                                <a (click)="add()" *ngIf="flag"><img src="assets/icons/NewInvoice.png" /></a>
+                            </nav>
+                            <mat-progress-bar class="audio-progress-bar" value="{{progress}}">
+                            </mat-progress-bar>
+                            <br>
+                            <div *ngFor="let item of dynamicArray;let i = index">
+                                <app-step3 [index]="item" *ngIf="i==TabIndex" formControlName="inBondFormStep3"></app-step3>
+                            </div>
+
+                            <div class="btncontainer">
+                                <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button id="back_draft" mat-raised-button>Save as Draft</button>
+                                <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+                            </div>
+
+                        </mat-step>
+                        <mat-step>
+                            <nav mat-tab-nav-bar class="invoice">
+                                <a mat-tab-link *ngFor="let dynamic of dynamicArray2;let i = index" (click)="onTabChanged2(i)"
+                                    [active]="TabIndex2 == i">
+                                    <span>Misc Charges {{dynamic}}</span>
+                                    <mat-icon [inline]="true" *ngIf="i>0" (click)="delete2(i)">cancel</mat-icon>
+                                </a>
+                                <a (click)="add2()" *ngIf="flag2"><img src="assets/icons/NewInvoice.png" /></a>
+                            </nav>
+                            <mat-progress-bar class="audio-progress-bar" value="{{progress2}}">
+                            </mat-progress-bar>
+                            <br>
+                            <div *ngFor="let item of dynamicArray2;let i = index">
+                                <app-step4 [index]="item" *ngIf="i==TabIndex2" formControlName="inBondFormStep4"></app-step4>
+                            </div>
+
+                            <div class="btncontainer">
+                                <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button id="back_draft" mat-raised-button>Save as Draft</button>
+                                <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <nav mat-tab-nav-bar class="invoice">
+                                <a mat-tab-link *ngFor="let dynamic of dynamicArray3;let i = index" (click)="onTabChanged3(i)"
+                                    [active]="TabIndex3 == i">
+                                    <span>Item {{dynamic}}</span>
+                                    <mat-icon [inline]="true" *ngIf="i>0" (click)="delete3(i)">cancel</mat-icon>
+                                </a>
+                                <a (click)="add3()" *ngIf="flag3"><img src="assets/icons/NewInvoice.png" /></a>
+                            </nav>
+                            <mat-progress-bar class="audio-progress-bar" value="{{progress3}}">
+                            </mat-progress-bar>
+                            <br>
+                            <div *ngFor="let item of dynamicArray3;let i = index">
+                                <app-step5 [index]="item" *ngIf="i==TabIndex3" formControlName="inBondFormStep5"></app-step5>
+                            </div>
+
+                            <div class="btncontainer">
+                                <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button id="back_draft" mat-raised-button>Save as Draft</button>
+                                <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <app-step6 formControlName="inBondFormStep6"></app-step6>
+                        </mat-step>
+                        <mat-step>
+                            <app-step7 formControlName="inBondFormStep7"></app-step7>
+                        </mat-step>
+                        <mat-step>
+                            <app-step8 formControlName="inBondFormStep8"></app-step8>
+                        </mat-step>
+                        <mat-step>
+                            <app-step9 formControlName="inBondFormStep9"></app-step9>
+                        </mat-step>
+                        <mat-step>
+                            <app-step10 formControlName="inBondFormStep10"></app-step10>
+                        </mat-step>
+                        <mat-step>
+                            <app-step11 formControlName="inBondFormStep11"></app-step11>
+                        </mat-step>
+                        <mat-step>
+                            <app-step12 formControlName="inBondFormStep12"></app-step12>
+                        </mat-step>
+                        <mat-step>
+                            <app-step13 formControlName="inBondFormStep13"></app-step13>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                    
+                    <div class="col-lg-12 row submit_button">
+                        <!-- <button type="button" (click)="submitForm()" class="btn btn-primary">Submit</button> -->
+                        <!-- <button type="button" class="btn btn-secondary">Preview</button> -->
+                      
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

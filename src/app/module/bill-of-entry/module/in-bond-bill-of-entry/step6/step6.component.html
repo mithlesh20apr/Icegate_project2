@@ -1,0 +1,67 @@
+<div >
+    <div><span class="text-danger">&#42;</span> indicates the mandatory fields </div>
+    <form class="col-md-12" [formGroup]="inBondFormStep6">
+        <h6 class="font-h6 text-center">RSP</h6>
+        <hr>
+        <div class="form-row">
+            <div class=" form-group col-md-4 offset-md-1">
+                <label>Invoice Serial Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="invoice_serial_number">
+                <validation-messages [control]="inBondFormStep6.controls.invoice_serial_number"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Item Sr. No.in Invoice</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="item_serial_number_invoice">
+                <validation-messages [control]="inBondFormStep6.controls.item_serial_number_invoice"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Item Sr. No.in RSP</label>
+                <input type="text" class="form-control" formControlName="item_serial_number_rsp">
+                <validation-messages [control]="inBondFormStep6.controls.item_serial_number_rsp"></validation-messages>
+            </div>
+            <div class="form-group col-md-2 offset-md-2">
+                <label>RSP(in Rs.)</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="rsp">
+                <validation-messages [control]="inBondFormStep6.controls.rsp"></validation-messages>
+                <div *ngIf="inBondFormStep6.controls.rsp.errors?.alphabetNotAllowed_d && inBondFormStep6.controls.rsp.dirty" class="required">Only Numbers are allowed</div>
+                <div *ngIf="inBondFormStep6.controls.rsp.errors?.decimalRestricted_d && inBondFormStep6.controls.rsp.dirty" class="required">Only upto 2 decimal values are allowed</div>
+                <div *ngIf="inBondFormStep6.controls.rsp.errors?.digitsBeforeDecimal_d && inBondFormStep6.controls.rsp.dirty" class="required">Only 16 digits are allowed before decimal</div>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Quantity</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="quantity">
+                <validation-messages [control]="inBondFormStep6.controls.quantity"></validation-messages>
+                <div *ngIf="inBondFormStep6.controls.quantity.errors?.alphabetNotAllowed_d && inBondFormStep6.controls.quantity.dirty" class="required">Only Numbers are allowed</div>
+                <div *ngIf="inBondFormStep6.controls.quantity.errors?.decimalRestricted_d && inBondFormStep6.controls.quantity.dirty" class="required">Only upto 6 decimal values are allowed</div>
+                <div *ngIf="inBondFormStep6.controls.quantity.errors?.digitsBeforeDecimal_d && inBondFormStep6.controls.quantity.dirty" class="required">Only 16 digits are allowed before decimal</div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Description Item</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="description">
+                <validation-messages [control]="inBondFormStep6.controls.description"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>RSP Notification</label>
+                <input type="text" class="form-control" formControlName="rsp_notification">
+                <validation-messages [control]="inBondFormStep6.controls.rsp_notification"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>RSP Notification Serial No.</label>
+                <input type="text" class="form-control" formControlName="rsp_notification_sr_no">
+                <validation-messages [control]="inBondFormStep6.controls.rsp_notification_sr_no"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matNextStepper>Save & Continue</button>
+</div>

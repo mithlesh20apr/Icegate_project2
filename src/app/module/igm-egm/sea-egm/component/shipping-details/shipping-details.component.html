@@ -1,0 +1,90 @@
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<button mat-raised-button (click)="openDialog()" id="add-option">
+    Add Container<mat-icon>add</mat-icon>
+</button>
+<div>
+    <mat-radio-group aria-label="Select an option" (change)="choose($event)">
+        <mat-radio-button value="C" checked="checked">Containerised</mat-radio-button>&nbsp;
+        <mat-radio-button value="NC">Non-Containerised</mat-radio-button>
+    </mat-radio-group>
+</div>
+<div class="row">
+    <form class="col-md-12" [formGroup]="shippingDetails">
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>SB No.</label>
+                <input type="text" class="form-control" formControlName="sb_no">
+                <validation-messages [control]="shippingDetails.controls.sb_no"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>SB Date</label>
+                <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="sb_date" formControlName="sb_date">
+                    <mat-datepicker-toggle matSuffix [for]="sb_date"></mat-datepicker-toggle>
+                    <mat-datepicker #sb_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                </div>
+                <validation-messages [control]="shippingDetails.controls.sb_date"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Port where SB filed</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="port_where_sb_filed">
+                <validation-messages [control]="shippingDetails.controls.port_where_sb_filed"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Port of Destination</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="port_of_destination">
+                <validation-messages [control]="shippingDetails.controls.port_of_destination"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Nature of Cargo</label><span class="required"> *</span>
+                <select class="form-control" formControlName="nature_of_cargo">
+                    <option value="C">Containerized</option>
+                    <option value="P">Non-containerised Packaged</option>
+                    <option value="LB">Liquid Bulk</option>
+                    <option value="DB">Dry Bulk</option>
+                    <option value="CP">Containerized Packaged</option>
+                </select>
+                <validation-messages [control]="shippingDetails.controls.nature_of_cargo"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Gateway Port</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="gateway_port">
+                <validation-messages [control]="shippingDetails.controls.gateway_port"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row" *ngIf="value=='C' || value==null">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>No. of Packages</label>
+                <input type="text" class="form-control" formControlName="no_of_packages">
+                <validation-messages [control]="shippingDetails.controls.no_of_packages"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row" *ngIf="value=='NC'">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>No. of Packages</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="no_of_packages_nc">
+                <validation-messages [control]="shippingDetails.controls.no_of_packages_nc"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>

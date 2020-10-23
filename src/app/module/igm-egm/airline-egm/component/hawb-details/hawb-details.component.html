@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>HAWB Details</h2>
+<mat-dialog-content style="width: 550px;">
+    <div><span class="required">&#42;</span> indicates the mandatory fields</div>
+    <br>
+    <button mat-raised-button (click)="addTab1()" [disabled]="disableAdd1Button" id="add-option" style="width: 183px;">
+        Add HAWB Details
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-tab-group >
+        <mat-tab *ngFor="let tab of tabs1; let i = index">
+            <ng-template mat-tab-label>
+                <span>HAWB{{i + 1}}</span>
+                <mat-icon *ngIf="tabs1.length != 1" (click)="removeTab1(i)">cancel</mat-icon>
+            </ng-template>
+            <br>
+            <app-hawb-dilaog-content style="width: 600px;"></app-hawb-dilaog-content>
+        </mat-tab>
+    </mat-tab-group>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Save</button>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

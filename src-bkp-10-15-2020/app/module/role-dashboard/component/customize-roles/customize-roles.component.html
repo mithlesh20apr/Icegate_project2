@@ -1,0 +1,168 @@
+<h6 class="text-center pt-2">Customize your dashboard to your needs</h6>
+<p class="text-center text-muted" style="font-size: 12px;">Select the services you want to see in your dashboard</p>
+
+<ng-container *ngIf="(asyncTabs | async) === null">
+    Loading tabs...
+</ng-container>
+
+<mat-tab-group>
+    <mat-tab *ngFor="let tab of asyncTabs | async">
+        <ng-template mat-tab-label ><span (click)="test(tab.roleName)">{{tab.roleName}}</span></ng-template>
+        <form [formGroup]="customizeRoleForm">
+            <div class="row pl-5 pt-4">
+                <div *ngIf="tab.profileStatus=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="profileStatus" id="profileStatus"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="profileStatus">Profile Status
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.registrationStatus=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="registrationStatus" id="registrationStatus"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="registrationStatus"> Registration Status
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.ticketManagement=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="ticketManagement" id="ticketManagement"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="ticketManagement">Ticket Management
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.drafts=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="drafts" id="drafts" type="checkbox" />
+                        <label class="custom-control-label pl-2" for="drafts">Drafts
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.egmStatus=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="egmStatus" id="egmStatus"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="egmStatus">EGM-Job Status
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.igmStatus=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="igmStatus" id="igmStatus"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="igmStatus">IGM- Job Status
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.billOfEntryStatus=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="billOfEntryStatus" id="billOfEntryStatus"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="billOfEntryStatus">Bill of Entry-Job Status
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.shippingBillStatus=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="shippingBillStatus" id="shippingBillStatus"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="shippingBillStatus">Shipping Bill- Job Status
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.licenseDetails=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="licenseDetails" id="licenseDetails"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="licenseDetails">License Details
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.teamManagement=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="teamManagement" id="teamManagement"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="teamManagement">Team Management
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.challansGenerated=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="challansGenerated" id="challansGenerated"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="challansGenerated">Challans Generated
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.notifications=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="notifications" id="notifications"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="notifications">Notifications
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.myIec=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="myIec" id="myIec"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="myIec">My IEC
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.igstRefund=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="igstRefund" id="igstRefund"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="igstRefund">Refund
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.exportIncentive=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="exportIncentive" id="exportIncentive"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="exportIncentive">Export Incentive
+                        </label>
+                    </div>
+                </div>                
+                <div *ngIf="tab.ledger=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="ledger" id="ledger"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="ledger">Ledger
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.bondAndBg=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="bondAndBg" id="bondAndBg"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="bondAndBg">Bond & BG
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="tab.foreignRemittance=='true'" class="col-md-4 pt-3 pb-3 pl-3 pr-3">
+                    <div class="custom-control-lg custom-control custom-checkbox">
+                        <input class="custom-control-input" formControlName="foreignRemittances" id="foreignRemittances"
+                            type="checkbox" />
+                        <label class="custom-control-label pl-2" for="foreignRemittances">Foreign Remittances
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-5 pb-5">
+                <div class="col-md-2 pt-2 pb-2">
+                    <button class="btn btn-back btn-block">Cancel</button>
+                </div>
+                <div class="col-md-2 offset-md-8 pt-2 pb-2">
+                    <button class="btn btn-proceed btn-block" (click)="savePreferences(tab.roleName)">Save
+                        Preference</button>
+                </div>
+            </div>
+        </form>
+    </mat-tab>
+</mat-tab-group>

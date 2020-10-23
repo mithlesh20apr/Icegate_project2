@@ -1,0 +1,1617 @@
+<h2 mat-dialog-title>Items</h2>
+<mat-dialog-content>
+    <div><span>&#42;</span> indicates the mandatory fields</div>
+    <button mat-raised-button class="mt-2" (click)="addTab2()" [disabled]="disableAdd2Button" id="add-option">
+        Add new tab
+        <mat-icon>add</mat-icon>
+    </button>
+    <div class="mt-2">
+        <mat-tab-group>
+            <mat-tab *ngFor="let tab of tabs2; let i = index">
+                <ng-template mat-tab-label>
+                    <span>Item {{i + 1}}</span>
+                    <mat-icon *ngIf="tabs2.length != 1" (click)="removeTab2(i)">cancel</mat-icon>
+                </ng-template>
+                <mat-accordion>
+                    <mat-expansion-panel [expanded]="1" class="matnotexpand">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Item Details
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <form class="col-md-12 " [formGroup]="inBondFormStep5">
+                                <div class="form-row mt-1">
+                                    <div class="form-group col-md-2 offset-md-1">
+                                        <label>Invoice Serial Number</label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="invoice_serial_number">
+                                        <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.required && inBondFormStep5.controls.invoice_serial_number.touched'>
+                                            This field is required
+                                        </mat-error> 
+                                        <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.maxlength'>
+                                            The maximum field length is
+                                            5, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.pattern'>
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Item Serial Number</label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="item_serial_number">
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_serial_number.errors?.required && inBondFormStep5.controls.item_serial_number.touched'>
+                                            This field is required
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_serial_number.errors?.maxlength'>
+                                            The maximum field length is
+                                            4, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_serial_number.errors?.pattern'>
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Quantity</label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="item_quantity">
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_quantity.errors?.required && inBondFormStep5.controls.item_quantity.touched'>
+                                            This field is required
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_quantity.errors?.maxlength'>
+                                            The maximum field length is
+                                            16, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_quantity.errors?.pattern'>
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Unit Quantity Code</label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="unit_quantity_code">
+                                        <mat-error *ngIf='inBondFormStep5.controls.unit_quantity_code.errors?.required && inBondFormStep5.controls.unit_quantity_code.touched'>
+                                            This field is required
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.unit_quantity_code.errors?.maxlength'>
+                                            The maximum field length is
+                                            3, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.unit_quantity_code.errors?.pattern'>
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>RITC Number</label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="ritc_code">
+                                        <mat-error *ngIf='inBondFormStep5.controls.ritc_code.errors?.required && inBondFormStep5.controls.ritc_code.touched'>
+                                            This field is required
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.ritc_code.errors?.maxlength'>
+                                            The maximum field length is
+                                            8, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.ritc_code.errors?.pattern'>
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Item Description 1</label><span class="required">*</span>
+                                        <input type="text" formControlName="item_description1" class="form-control">
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_description1.errors?.required && inBondFormStep5.controls.item_description1.touched'>
+                                            This field is required
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_description1.errors?.maxlength'>
+                                            The maximum field length is
+                                            60, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Item Description 2</label>
+                                        <input type="text" class="form-control" formControlName="item_description2">
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_description2.errors?.maxlength'>
+                                            The maximum field length is
+                                            60, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Item Category (scheme Code)</label>
+                                        <select formControlName="item_category" class="form-control">
+                                <option></option>
+                                <option value="LO">LO</option>
+                            </select>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Generic Description Of the Item</label><span class="required">*</span>
+                                        <input class="form-control" formControlName="item_description_generic">
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_description_generic.errors?.required && inBondFormStep5.controls.item_description_generic.touched' class="text-danger">This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_description_generic.errors?.maxlength' class="text-danger"> The maximum field length is
+                                            60, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div *ngIf="inBondFormStep5.controls.item_category.value==='LO'" class="dropdown-color">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Invoice Number</label><span class="required">*</span>
+                                            <input class="form-control" formControlName="invoice_serial_number">
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.required && inBondFormStep5.controls.invoice_serial_number.touched'>
+                                                This field is required
+                                            </mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.maxlength'>
+                                                The maximum field length is
+                                                5, please update the field
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Item Sr. No. In Invoice</label><span class="required"> *</span>
+                                            <input class="form-control" formControlName="item_serial_number_invoice">
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.required && inBondFormStep5.controls.item_serial_number_invoice.touched'>
+                                                This field is required
+                                            </mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.maxlength'>
+                                                The maximum field length is
+                                                4, please update the field
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Item Sr. No.License</label><span class="required"> *</span>
+                                            <input class="form-control" formControlName="item_serial_number_license">
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_license.errors?.required && inBondFormStep5.controls.item_serial_number_license.touched'>
+                                                This field is required
+                                            </mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_license.errors?.maxlength'>
+                                                The maximum field length is
+                                                4, please update the field
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_license.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+
+                                        </div>
+                                        <div class="form-group col-md-2 offset-md-2">
+                                            <label>Debt-Value</label>
+                                            <input class="form-control" formControlName="debit_value">
+                                            <mat-error *ngIf='inBondFormStep5.controls.debit_value.errors?.maxlength'>
+                                                The maximum field length is
+                                                16, please update the field
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.debit_value.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label>Debt Quantity</label>
+                                            <input class="form-control" formControlName="debit_quantity">
+                                            <mat-error *ngIf='inBondFormStep5.controls.debit_quantity.errors?.maxlength'>
+                                                The maximum field length is
+                                                16, please update the field
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.debit_quantity.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-2 offset-md-1">
+                                            <label>Debt Unit of measurement</label>
+                                            <input class="form-control" formControlName="debit_unit_of_measurement">
+                                            <mat-error *ngIf='inBondFormStep5.controls.debit_unit_of_measurement.errors?.maxlength'>
+                                                The maximum field length is 3, please update the field
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label>License Registration No.</label><span class="required"> *</span>
+                                            <input class="form-control" formControlName="license_registration_number">
+                                            <mat-error *ngIf='inBondFormStep5.controls.license_registration_number.errors?.maxlength'>
+                                                The maximum field length is 10, please update the field
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.license_registration_number.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>License Registration Date</label><span class="required"> *</span>
+                                            <input type="date" class="form-control" formControlName="license_registration_date">
+                                            <mat-error *ngIf='inBondFormStep5.controls.license_registration_date.errors?.touched && inBondFormStep5.controls.license_registration_date.errors?.required'>
+                                                This field is required
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>License Registration Code</label><span class="required"> *</span>
+                                            <input class="form-control" formControlName="license_code">
+                                            <mat-error *ngIf='inBondFormStep5.controls.license_code.errors?.maxlength'>
+                                                The maximum field length is 2, please update the field
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.license_code.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>RA/License Registration Port</label><span class="required">*</span>
+                                            <input class="form-control" formControlName="license_reg_port">
+                                            <mat-error *ngIf='inBondFormStep5.controls.license_reg_port.errors?.required && inBondFormStep5.controls.license_reg_port.touched' class="text-danger">This field is required</mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.license_reg_port.errors?.maxlength' class="text-danger">
+                                                The maximum field length is 6, please update the field </mat-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Accessories for the Item Manufacture/Grower </label>
+                                        <input type="text" class="form-control" formControlName="item_accessories">
+                                        <mat-error *ngIf='inBondFormStep5.controls.item_accessories.errors?.maxlength'>
+                                            The maximum field length is
+                                            2000, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel class="matnotexpand">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Product Details
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <form class="col-md-12" [formGroup]="inBondFormStep5">
+                                <div class="form-row mt-2">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Producer Name</label>
+                                        <input type="text" class="form-control" formControlName="name_producer">
+                                        <mat-error *ngIf='inBondFormStep5.controls.name_producer.errors?.maxlength'>
+                                            The maximum field length is
+                                            <50>, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Brand Name</label><span class="required"> *</span>
+                                        <input type="text" class="form-control" formControlName="name_brand">
+                                        <mat-error *ngIf='inBondFormStep5.controls.name_brand.errors?.required && inBondFormStep5.controls.name_brand.touched'>
+                                            This field is required</mat-error> 
+                                        <mat-error *ngIf='inBondFormStep5.controls.name_brand.errors?.maxlength'>
+                                            The maximum field length is
+                                            20, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Model</label><span class="required"> *</span>
+                                        <input type="text" class="form-control" formControlName="model">
+                                        <mat-error *ngIf='inBondFormStep5.controls.model.errors?.required && inBondFormStep5.controls.model.touched'>
+                                            This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.model.errors?.maxlength'>
+                                            The maximum field length is
+                                            20, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>End use of the item</label><span class="required"> *</span>
+                                        <input type="text" class="form-control" formControlName="end_use_item">
+                                        <mat-error *ngIf='inBondFormStep5.controls.end_use_item.errors?.required && inBondFormStep5.controls.end_use_item.touched'>
+                                            This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.end_use_item.errors?.maxlength'>
+                                            The maximum field length is
+                                            20, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>CTH</label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="cth">
+                                        <mat-error *ngIf='inBondFormStep5.controls.cth.errors?.required && inBondFormStep5.controls.cth.touched'>
+                                            This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.cth.errors?.maxlength'>Don't exceed 8 characters
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Country of origin</label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="country_of_origin_of_item">
+                                        <mat-error *ngIf='inBondFormStep5.controls.country_of_origin_of_item.errors?.required && inBondFormStep5.controls.country_of_origin_of_item.touched'>
+                                            This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.country_of_origin_of_item.errors?.maxlength'>
+                                            Don't exceed 2 characters</mat-error>
+                                    </div>
+                                </div>
+                                <div *ngIf='inBondFormStep5.value.cth.length==8'>
+                                    <mat-card class="cth-background mt-2">
+                                        <mat-accordion>
+                                            <mat-expansion-panel class="matnotexpand">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        Invoice Details
+                                                    </mat-panel-title>
+                                                </mat-expansion-panel-header>
+                                                <div class="row">
+                                                    <form class="col-md-12 mt-2" [formGroup]="inBondFormStep5">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Invoice Serial
+                                                        Number</label><span class="required"> *</span>
+                                                                <input class="form-control" formControlName="invoice_serial_number">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.required && inBondFormStep5.controls.invoice_serial_number.touched'>
+                                                                    This field is required
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    5, please update the field
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.pattern'>
+                                                                    Only numbers are allowed in this field, please update
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Item Serial
+                                                        Number</label>
+                                                                <input class="form-control" formControlName="item_serial_number">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.item_serial_number.errors?.required && inBondFormStep5.controls.item_serial_number.touched'>
+                                                                    This field is required
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.item_serial_number.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    4, please update the field
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.item_serial_number.errors?.pattern'>
+                                                                    Only numbers are allowed in this field, please update
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Info Type</label><span class="required"> *</span>
+                                                                <input type="text" class="form-control" formControlName="info_type">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.info_type.errors?.required && inBondFormStep5.controls.info_type.touched'>
+                                                                    This field is required
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.info_type.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    3, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>RITC Qualifier</label><span class="required">*</span>
+                                                                <input class="form-control" formControlName="ritc_qualifier">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.ritc_qualifier.errors?.required && inBondFormStep5.controls.ritc_qualifier.touched'>
+                                                                    This field is required
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.ritc_qualifier.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    100, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Info_code</label>
+                                                                <input type="text" formControlName="info_code" class="form-control">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.info_code.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    100, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Info_text</label>
+                                                                <input type="text" class="form-control" formControlName="info_text">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.info_text.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    100, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Info_msr </label>
+                                                                <input type="text" class="form-control" formControlName="info_msr">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.info_msr.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    16, please update the field
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.info_msr.errors?.pattern'>
+                                                                    Only numbers are allowed in this field, please update
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Info_uqc</label>
+                                                                <input type="text" class="form-control" formControlName="info_uqc">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.info_uqc.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    3, please update the field
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.info_uqc.errors?.pattern'>
+                                                                    Only numbers are allowed in this field, please update
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                        <mat-accordion>
+                                            <mat-expansion-panel>
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        Constituent Details
+                                                    </mat-panel-title>
+                                                </mat-expansion-panel-header>
+                                                <div class="row">
+                                                    <form class="col-md-12 mt-2" [formGroup]="inBondFormStep5">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Constituent Sr. No.</label> <span class="required"> *</span>
+                                                                <input type="text" class="form-control" formControlName="constituent_serial_number">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_serial_number.errors?.required && inBondFormStep5.controls.constituent_serial_number.touched'>
+                                                                    This field is required
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_serial_number.errors?.maxlength'>
+                                                                    The maximum field length is 3, please update the field
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_serial_number.errors?.pattern'>
+                                                                    Only numbers are allowed in this field, please update
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Constituent Element Name</label><span class="required">*</span>
+                                                                <input class="form-control" formControlName="constituent_element_name">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_element_name.errors?.required && inBondFormStep5.controls.constituent_element_name.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_element_name.errors?.maxlength'>
+                                                                    The maximum field length is 256, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Constituent Element Code</label><span class="required">
+                                                        *</span>
+                                                                <input type="text" class="form-control" formControlName="constituent_element_code">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_element_code.errors?.required && inBondFormStep5.controls.constituent_element_code.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_element_code.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    17, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-2 offset-md-2">
+                                                                <label>Constituent Percentage</label><span class="required">
+                                                        *</span>
+                                                                <input type="number" class="form-control" formControlName="constituent_percentage">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_percentage.errors?.required && inBondFormStep5.controls.constituent_percentage.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_percentage.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    6, please update the field 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_percentage.errors?.pattern'>
+                                                                    Only numbers are allowed in this field, please update
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-2">
+                                                                <label>Constituent Yield
+                                                        %</label><span class="required">*</span>
+                                                                <input type="number" class="form-control" formControlName="constituent_yield_percentage">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_yield_percentage.errors?.required && inBondFormStep5.controls.constituent_yield_percentage.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_yield_percentage.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    6, please update the field 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.constituent_yield_percentage.errors?.pattern'>
+                                                                    Only numbers are allowed in this field, please update
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <span>Active ingredient (Y/N)</span> <span class="required">*</span>
+                                                                <label class="col-md-3">
+                                                        <input formControlName="active_ingredient_flag" type="radio"
+                                                            value="Yes">Yes
+                                                    </label>
+                                                                <label class="col-md-3">
+                                                        <input formControlName="active_ingredient_flag" type="radio"
+                                                            value="No">No
+                                                    </label>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                        <mat-accordion>
+                                            <mat-expansion-panel>
+                                                <mat-expansion-panel-header class="colour">
+                                                    <mat-panel-title>
+                                                        Production Details
+                                                    </mat-panel-title>
+                                                </mat-expansion-panel-header>
+                                                <div class="row">
+                                                    
+                                                    <form class="col-md-12" [formGroup]="inBondFormStep5">
+                                                        <div class="form-row mt-2">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Production Batch
+                                                        Identifier</label>
+                                                                <input type="text" class="form-control" formControlName="production_batch_identifier">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.production_batch_identifier.errors?.required && inBondFormStep5.controls.production_batch_identifier.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.production_batch_identifier.errors?.maxlength'>
+                                                                    The maximum field length is 17, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Production Batch
+                                                        Quantity</label><span class="required"> *</span>
+                                                                <input type="number" class="form-control" formControlName="production_batch_quantity">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.production_batch_quantity.errors?.required && inBondFormStep5.controls.production_batch_quantity.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.production_batch_quantity.errors?.maxlength'>
+                                                                    The maximum field length is 16, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Unit Quantity Code</label> <span class="required"> *</span>
+                                                                <input type="text" class="form-control" formControlName="unit_quantity_code">
+
+                                                                <mat-error *ngIf='inBondFormStep5.controls.unit_quantity_code.errors?.required && inBondFormStep5.controls.unit_quantity_code.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.unit_quantity_code.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    3, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Date of
+                                                        Manufacturing</label><span class="required"> *</span>
+                                                                <input type="date" class="form-control" formControlName="date_manufacturing">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.date_manufacturing.errors?.required && inBondFormStep5.controls.date_manufacturing.touched'>
+                                                                    This field is required
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Date Of Expiry</label><span class="required"> *</span>
+                                                                <input type="date" class="form-control" formControlName="date_expiry">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.date_expiry.errors?.required && inBondFormStep5.controls.date_expiry.touched'>
+                                                                    This field is required
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Best Before</label><span class="required"> *</span>
+                                                                <input type="date" class="form-control" formControlName="best_before">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.best_before.errors?.required && inBondFormStep5.controls.best_before.touched'>
+                                                                    This field is required
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                        <mat-accordion>
+                                            <mat-expansion-panel>
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        Control Details
+                                                    </mat-panel-title>
+                                                </mat-expansion-panel-header>
+                                                <div class="row">
+                                                    <form class="col-md-12" [formGroup]="inBondFormStep5">
+                                                        <div class="form-row mt-2">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Control Type
+                                                        Code</label><span class="required">*</span>
+                                                                <input type="text" class="form-control" formControlName="control_type_code">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.control_type_code.errors?.required && inBondFormStep5.controls.production_batch_quantity.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.control_type_code.errors?.maxlength'>
+                                                                    The maximum field length is 16, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Control Location
+                                                    </label><span class="required">*</span>
+                                                                <input type="text" class="form-control" formControlName="control_location">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.control_location.errors?.required && inBondFormStep5.controls.production_batch_quantity.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.control_location.errors?.maxlength'>
+                                                                    The maximum field length is 16, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Control Start Date</label>
+                                                                <input type="date" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Control End Date</label>
+                                                                <input type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                <label>Control Result
+                                                        Code</label><span class="required">*</span>
+                                                                <input type="text" class="form-control" formControlName="control_result_code">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.control_result_code.errors?.required && inBondFormStep5.controls.control_result_code.touched'>
+                                                                    This field is required 
+                                                                </mat-error>
+                                                                <mat-error *ngIf='inBondFormStep5.controls.control_result_code.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    17, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                            <div class="form-group col-md-4 offset-md-2">
+                                                                <label>Control Result
+                                                        text</label>
+                                                                <input type="text" class="form-control" formControlName="control_result_text">
+                                                                <mat-error *ngIf='inBondFormStep5.controls.control_result_text.errors?.maxlength'>
+                                                                    The maximum field length is
+                                                                    4000, please update the field
+                                                                </mat-error>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </mat-card>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Preferential(P)/ Standard (S) </label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="preferential_or_standard">
+                                        <mat-error *ngIf='inBondFormStep5.controls.preferential_or_standard.errors?.required && inBondFormStep5.controls.preferential_or_standard.touched'>
+                                            This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.preferential_or_standard.errors?.maxlength'>
+                                            The maximum field length is
+                                            1, please update the field </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>CETH</label><span class="required">*</span>
+                                        <input type="text" class="form-control" formControlName="ceth">
+                                        <mat-error *ngIf='inBondFormStep5.controls.ceth.errors?.required && inBondFormStep5.controls.ceth.touched'>
+                                            This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.ceth.errors?.maxlength'>
+                                            The maximum field length is
+                                            8, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel class="matnotexpand">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Notification Details
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <form class="col-md-12" [formGroup]="inBondFormStep5">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>BCD Notification</label>
+                                        <input type="text" class="form-control" formControlName="bcd_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.bcd_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>BCD Notification Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="bcd_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.bcd_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>CVD Notification</label>
+                                        <input type="text" class="form-control" formControlName="cvd_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.cvd_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> CVD Notification Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="cvd_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.cvd_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Additional Notification 1 </label>
+                                        <input type="text" class="form-control" formControlName="additional_notification1">
+                                        <mat-error *ngIf='inBondFormStep5.controls.additional_notification1.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Additional Notification 1 Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="additional_notification1_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.additional_notification1_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Additional Notification 2 </label>
+                                        <input type="text" class="form-control" formControlName="additional_notification2">
+                                        <mat-error *ngIf='inBondFormStep5.controls.additional_notification2.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Additional Notification 2 Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="additional_notification2_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.additional_notification2_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Other Notification </label>
+                                        <input type="text" class="form-control" formControlName="other_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.other_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Other Notification Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="other_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.other_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is 10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div *ngIf="inBondFormStep5.value.other_notification.length==10" class="dropdown-color">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Invoice Serial Number</label><span class="required">*</span>
+                                            <input class="form-control" formControlName="invoice_serial_number">
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.required && inBondFormStep5.controls.invoice_serial_number.touched'>
+                                                This field is required 
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.maxlength'>
+                                                The maximum field length is 5, please update the field 
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Item Sr. No. In Invoice</label><span class="required"> *</span>
+                                            <input class="form-control" formControlName="item_serial_number_invoice">
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.required && inBondFormStep5.controls.item_serial_number_invoice.touched'>
+                                                This field is required 
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.maxlength'>
+                                                The maximum field length is 4, please update the field 
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Notification No.</label><span class="required"> *</span>
+                                            <input class="form-control" formControlName="notification_number">
+                                            <mat-error *ngIf='inBondFormStep5.controls.notification_number.errors?.required && inBondFormStep5.controls.notification_number.touched'>
+                                                This field is required 
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.notification_number.errors?.maxlength'>
+                                                The maximum field length is 10, please update the field 
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Notification Sr No.</label><span class="required">*</span>
+                                            <input class="form-control" formControlName="notification_serial_number">
+                                            <mat-error *ngIf='inBondFormStep5.controls.notification_serial_number.errors?.required && inBondFormStep5.controls.notification_serial_number.touched'>
+                                                This field is required 
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.notification_serial_number.errors?.maxlength'>
+                                                The maximum field length is 10, please update the field 
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <span>Duty Type</span><span class="required">*</span> 
+                                            <label class="col-md-3">
+                                    <input type="radio" formControlName="duty_type" value="E">E
+                                </label>
+                                            <label class="col-md-3" style="padding-left:0px ">
+                                    <input type="radio" formControlName="duty_type" value="G">G
+                                </label>
+                                            <label class="col-md-3" style="padding-left:0px ">
+                                    <input type="radio" formControlName="duty_type" value="C">C
+                                </label>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Addl Duty Flag</label><span class="required"> *</span>
+                                            <input class="form-control" formControlName="additional_duty_flag">
+                                            <mat-error *ngIf='inBondFormStep5.controls.additional_duty_flag.errors?.required && inBondFormStep5.controls.additional_duty_flag.touched'>
+                                                This field is required 
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Exmp Notification</label><span class="required"> </span>
+                                            <input class="form-control" formControlName="exmp_notification">
+                                            <mat-error *ngIf='inBondFormStep5.controls.exmp_notification.errors?.maxlength'>
+                                                The maximum field length is 10, please update the field
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Exmp Notification Sr No.</label><span class="required"></span>
+                                            <input class="form-control" formControlName="exmp_notification_serial_number">
+                                            <mat-error *ngIf='inBondFormStep5.controls.exmp_notification_serial_number.errors?.maxlength' class="text-danger">
+                                                The maximum field length is 10, please update the field </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Customs Notn Exempting IGST Flag (G/C)</label><span class="required"> </span>
+                                            <input class="form-control" formControlName="customs_exmp">
+                                            <mat-error *ngIf='inBondFormStep5.controls.customs_exmp.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Supplier Sl. No.</label><span class="required"></span>
+                                            <input class="form-control" formControlName="suplier_number">
+                                            <mat-error *ngIf='inBondFormStep5.controls.suplier_number.errors?.maxlength' class="text-danger">
+                                                The maximum field length is 10, please update the field </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Nou</label><span class="required"> </span>
+                                            <input class="form-control" formControlName="nou">
+                                            <mat-error *ngIf='inBondFormStep5.controls.nou.errors?.maxlength'>
+                                                The maximum field length is 16, please update the field 
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.nou.errors?.pattern'>
+                                                Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Cus EDUCESS Notification </label>
+                                        <input type="text" class="form-control" formControlName="cus_educess_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.cus_educess_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Cus EDUCESS Notification Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="cus_educess_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.cus_educess_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>CEX EDUCESS Notification </label>
+                                        <input type="text" class="form-control" formControlName="cex_educess_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.cex_educess_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> CEX EDUCESS Notification Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="cex_educess_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.cex_educess_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>NCD Notification </label>
+                                        <input type="text" class="form-control" formControlName="ncd_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.ncd_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> NCD Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="ncd_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.ncd_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Anti Dumping Duty Notification </label>
+                                        <input type="text" class="form-control" formControlName="antii_dumping_duty_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.antii_dumping_duty_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Anti Dumping Duty Notification Sr.No</label>
+                                        <input type="text" class="form-control" formControlName="antii_dumping_duty_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.antii_dumping_duty_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>CTH Serial Number </label>
+                                        <input type="text" class="form-control" formControlName="cth_serial_number">
+                                        <mat-error *ngIf='inBondFormStep5.controls.cth_serial_number.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Supplier Serial Number</label>
+                                        <input type="text" class="form-control" formControlName="supplier_serial_number">
+                                        <mat-error *ngIf='inBondFormStep5.controls.supplier_serial_number.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-1 offset-md-1">
+                                        <label>Quantity as per Anti Dumping Notificationf.</label>
+                                        <input type="text" class="form-control" formControlName="quantity_antii_dumping_duty_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.quantity_antii_dumping_duty_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-1 offset-md-1">
+                                        <label>Quantity as per Tariff Value Notification.</label>
+                                        <input type="text" class="form-control" formControlName="quantity_tariff_value_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.quantity_tariff_value_notification.errors?.maxlength'>
+                                            The maximum field length is 10, please update the field</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.quantity_tariff_value_notification.errors?.pattern'>
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-3">
+                                        <label>Tariff Value Notification</label>
+                                        <div></div>
+                                        <input type="text" class="form-control" formControlName="tariff_value_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.tariff_value_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Tariff Value item Serial Number</label>
+                                        <input type="text" class="form-control" formControlName="tariff_value_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.tariff_value_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>SAPTA Notification</label>
+                                        <input type="text" class="form-control" formControlName="sapta_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.sapta_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>SAPTA Notification Serial Number</label>
+                                        <input type="text" class="form-control" formControlName="sapta_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.sapta_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Health Notification</label>
+                                        <input type="text" class="form-control" formControlName="health_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.health_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Health Notification Serial Number</label>
+                                        <input type="text" class="form-control" formControlName="health_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.health_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Additional CVD Notification</label>
+                                        <input type="text" class="form-control" formControlName="additional_cvd_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.additional_cvd_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Additional CVD Notification Serial Number</label>
+                                        <input type="text" class="form-control" formControlName="additional_cvd_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.additional_cvd_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Aggregate Duty Notification</label>
+                                        <input type="text" class="form-control" formControlName="aggregate_duty_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.aggregate_duty_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Aggregate Duty Notification Serial Number</label>
+                                        <input type="text" class="form-control" formControlName="aggregate_duty_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.aggregate_duty_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Safe Guard Duty Notification</label>
+                                        <input type="text" class="form-control" formControlName="safeguard_duty_notification">
+                                        <mat-error *ngIf='inBondFormStep5.controls.safeguard_duty_notification.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Safe Guard Duty Notification Serial Number</label>
+                                        <input type="text" class="form-control" formControlName="safeguard_duty_notification_sr_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.safeguard_duty_notification_sr_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel class="matnotexpand">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Price Details
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <form class="col-md-12" [formGroup]="inBondFormStep5">
+                                <div class="form-row mt-2">
+                                    <div class="form-group col-md-2 offset-md-1">
+                                        <label>Unit Priced Invoiced</label><span class="required"> *</span>
+                                        <input type="text" class="form-control" formControlName="unit_price_invoiced">
+                                        <mat-error *ngIf='inBondFormStep5.controls.unit_price_invoiced.errors?.required && inBondFormStep5.controls.unit_price_invoiced.touched' class="text-danger">
+                                            This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.unit_price_invoiced.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            16, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Discount Rate</label>
+                                        <input type="text" class="form-control" formControlName="discount_rate">
+                                        <mat-error *ngIf='inBondFormStep5.controls.discount_rate.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            6, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.discount_rate.errors?.pattern' class="text-danger">
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-2 offset-md-2">
+                                        <label>Discount Amount</label>
+                                        <input type="text" class="form-control" formControlName="discount_amount">
+                                        <mat-error *ngIf='inBondFormStep5.controls.discount_amount.errors?.maxlength' class="text-danger">
+                                            The maximum field length is 16, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Quantity as per CTH</label>
+                                        <input type="text" class="form-control" formControlName="quantity_cth">
+                                        <mat-error *ngIf='inBondFormStep5.controls.discount_amount.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            16, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.discount_amount.errors?.pattern' class="text-danger">
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>SVB Reference Number</label>
+                                        <input type="text" class="form-control" formControlName="svb_reference_number">
+                                        <mat-error *ngIf='inBondFormStep5.controls.svb_reference_number.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            20, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> SVB Reference Date</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-2 offset-md-1">
+                                        <label>SVB Load Assessable Value </label>
+                                        <input type="text" class="form-control" formControlName="svb_load_assessable_value">
+                                        <mat-error *ngIf='inBondFormStep5.controls.svb_load_assessable_value.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            10, please update the field</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.svb_load_assessable_value.errors?.pattern' class="text-danger">
+                                            only numbers are allowed in this field, please update</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label> SVB Load on Duty</label>
+                                        <input type="text" class="form-control" formControlName="svb_load_on_duty">
+                                        <mat-error *ngIf='inBondFormStep5.controls.svb_load_on_duty.errors?.maxlength' class="text-danger">
+                                            The maximum field length is 10, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.svb_load_on_duty.errors?.pattern' class="text-danger">
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> SVB Flag</label>
+                                        <input type="text" class="form-control" formControlName="svb_flag">
+                                        <mat-error *ngIf='inBondFormStep5.controls.svb_flag.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            1, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Whether Load Final/ Provisional on Assessable Value
+                            </label>
+                                        <input type="text" class="form-control" formControlName="load_final_provisional_on_ass_value">
+                                        <mat-error *ngIf='inBondFormStep5.controls.load_final_provisional_on_ass_value.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            1, please update the field</mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Whether Load Final/ Provisional on Duty</label>
+                                        <input type="text" class="form-control" formControlName="load_final_provisional_on_duty">
+                                        <mat-error *ngIf='inBondFormStep5.controls.load_final_provisional_on_duty.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            1, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Custom House Code which has been imposed load
+                            </label>
+                                        <input type="text" class="form-control" formControlName="custom_house_code_imposed_load">
+                                        <mat-error *ngIf='inBondFormStep5.controls.custom_house_code_imposed_load.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            6, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Policy Para No </label>
+                                        <input type="text" class="form-control" formControlName="policy_para_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.policy_para_no.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            7, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Policy Year</label>
+                                        <input type="text" class="form-control" formControlName="policy_year">
+                                        <mat-error *ngIf='inBondFormStep5.controls.policy_year.errors?.maxlength' class="text-danger">
+                                            The maximum field length is
+                                            5, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <span>RSP applicability? </span> <span class="required">*</span>
+                                        <label class="col-md-2">
+                                <input type="radio" formControlName="rsp_applicability"
+                                    value="Y">Y
+                            </label>
+                                        <label class="col-md-2">
+                                <input type="radio" formControlName="rsp_applicability"
+                                    value="N">N
+                            </label>
+                                        <label class="col-md-2">
+                                <input type="radio" formControlName="rsp_applicability"
+                                    value="Q">Q
+                            </label>
+                                        <label class="col-md-2">
+                                <input type="radio" formControlName="rsp_applicability"
+                                    value="T">T
+                            </label>
+                                        <label class="col-md-2">
+                                <input type="radio" formControlName="rsp_applicability"
+                                    value="D">D
+                            </label>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <span>Whether RE Importer (Y/N)? </span> <span class="required">*</span>
+                                        <label class="col-md-3">
+                                <input formControlName="re_import" type="radio"
+                                    value="Yes">Yes
+                            </label>
+                                        <label class="col-md-3">
+                                <input type="radio" formControlName="re_import"
+                                    value="No">No
+                            </label>
+                                    </div>
+                                </div>
+                                <div *ngIf="inBondFormStep5.controls.re_import.value==='Yes'" class="dropdown-color">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Permission Code</label><span class="required">*</span>
+                                            <input class="form-control" formControlName="permission_code">
+                                            <mat-error *ngIf='inBondFormStep5.controls.permission_code.errors?.required && inBondFormStep5.controls.permission_code.touched' class="text-danger">This field is required
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.permission_code.errors?.maxlength ' class="text-danger">The maximum field length is
+                                                3, please update the field
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Reasons for Request</label><span class="required">*</span>
+                                            <input class="form-control" formControlName="reason_for_request">
+                                            <mat-error *ngIf='inBondFormStep5.controls.reason_for_request.errors?.required && inBondFormStep5.controls.reason_for_request.touched' class="text-danger">This field is required
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.reason_for_request.errors?.maxlength ' class="text-danger">The maximum field length is
+                                                2000, please update the field
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Invoice Serial Number</label><span class="required">*</span>
+                                            <input class="form-control" formControlName="invoice_serial_number_on">
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number_on.errors?.required && inBondFormStep5.controls.invoice_serial_number_on.touched' class="text-danger">This field is required
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number_on.errors?.maxlength ' class="text-danger">The maximum field length is
+                                                5, please update the field
+                                            </mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_serial_number_on.errors?.pattern' class="text-danger">Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Item Serial Number in Invoice </label><span class="required">*</span>
+                                            <input class="form-control" formControlName="item_serial_number_invoice">
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.required && inBondFormStep5.controls.item_serial_number_invoice.touched' class="text-danger">This field is required
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.maxlength ' class="text-danger">The maximum field length is
+                                                4, please update the field
+                                            </mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_serial_number_invoice.errors?.pattern' class="text-danger">Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label> * Shipping Bill No.</label><span class="required">*</span>
+                                            <input type="text" class="form-control" formControlName="shipping_bill_no">
+                                            <mat-error *ngIf='inBondFormStep5.controls.shipping_bill_no.errors?.required && inBondFormStep5.controls.shipping_bill_no.touched' class="text-danger">This field is required</mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.shipping_bill_no.errors?.maxlength' class="text-danger">The maximum field length is 7, please update the field </mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.shipping_bill_no.errors?.pattern' class="text-danger">Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label> * Shipping Bill Date</label><span class="required"> *</span>
+                                            <input type="date" class="form-control" formControlName="shipping_bill_date">
+                                            <mat-error *ngIf='inBondFormStep5.controls.shipping_bill_date.errors?.required && inBondFormStep5.controls.shipping_bill_date.touched' class="text-danger">This field is required</mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label> * Port of Export</label><span class="required"> *</span>
+                                            <select class="form-control" formControlName="port_of_export">
+                                        <option> </option>
+                                        </select>
+                                            <mat-error *ngIf='inBondFormStep5.controls.port_of_export.errors?.required && inBondFormStep5.controls.port_of_export.touched' class="text-danger">This field is required</mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>* Invoice No. (SB)</label>
+                                            <input tyepe="text" class="form-control" formControlName="invoice_no_sb">
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_no_sb.errors?.required && inBondFormStep5.controls.invoice_no_sb.touched' class="text-danger">This field is required</mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_no_sb.errors?.maxlength' class="text-danger">The maximum field length is 2, please update the field</mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.invoice_no_sb.errors?.pattern' class="text-danger">Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label> * Item No. (SB)</label>
+                                            <input type="text" class="form-control" formControlName="item_no_sb">
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_no_sb.errors?.maxlength' class="text-danger"> The maximum field length is
+                                                4, please update the field</mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.item_no_sb.errors?.pattern' class="text-danger">
+                                                Only numbers are allowed in this field, please update</mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Notification No</label><span class="required"> *</span>
+                                            <input type="text" class="form-control" formControlName="notification_no">
+                                            <mat-error *ngIf='inBondFormStep5.controls.notification_no.errors?.required && inBondFormStep5.controls.notification_no.touched' class="text-danger">This field is required</mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.notification_no.errors?.maxlength' class="text-danger">The maximum field length is
+                                                10, please update the field </mat-error> 
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label>Notification Sr. Number</label><span class="required"> *</span>
+                                            <input type="text" class="form-control" formControlName="notification_sr_no">
+                                            <mat-error *ngIf='inBondFormStep5.controls.notification_sr_no.errors?.required && inBondFormStep5.controls.notification_sr_no.touched' class="text-danger">This field is required</mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.notification_sr_no.errors?.maxlength' class="text-danger">The maximum field length is
+                                                10, please update the field </mat-error> 
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>** Export Freight</label>
+                                            <input type="text" class="form-control" formControlName="export_freight">
+                                            <mat-error *ngIf='inBondFormStep5.controls.export_freight.errors?.pattern' class="text-danger">
+                                                Only numbers are allowed in this field, please update</mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.export_freight.errors?.maxlength' class="text-danger">The maximum field length is
+                                                16, please update the field </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label> ** Export Insurance</label>
+                                            <input type="text" class="form-control" formControlName="export_insurance">
+                                            <mat-error *ngIf='inBondFormStep5.controls.export_insurance.errors?.pattern' class="text-danger">
+                                                Only numbers are allowed in this field, please update</mat-error>
+                                            <mat-error *ngIf='inBondFormStep5.controls.export_insurance.errors?.maxlength' class="text-danger">The maximum field length is
+                                                16, please update the field </mat-error>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label> ** Excise Duty</label>
+                                            <input class="form-control" formControlName="excise_duty">
+                                            <mat-error *ngIf='inBondFormStep5.controls.excise_duty.errors?.maxlength' class="text-danger">Dont extend the limit of 16 digits </mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.excise_duty.errors?.pattern' class="text-danger"> Only numbers are allowed in this field, please update
+                                            </mat-error>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <label> *** Customs Duty</label>
+                                            <input type="text" class="form-control" formControlName="customs_duty">
+                                            <mat-error *ngIf='inBondFormStep5.controls.customs_duty.errors?.maxlength' class="text-danger"> The maximum field length is
+                                                16, please update the field </mat-error> 
+                                            <mat-error *ngIf='inBondFormStep5.controls.customs_duty.errors?.pattern' class="text-danger">
+                                                Only numbers are allowed in this field, please update</mat-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Previous BE No. </label>
+                                        <input type="text" class="form-control" formControlName="prev_be_no">
+                                        <mat-error *ngIf='inBondFormStep5.controls.prev_be_no.errors?.maxlength'>
+                                            The maximum field length is
+                                            7, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.prev_be_no.errors?.pattern'>
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Previous BE Date</label>
+                                        <input type="date" class="form-control" formControlName="prev_be_date">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-2 offset-md-1">
+                                        <label>Previous Unit Price </label>
+                                        <input type="text" class="form-control" formControlName="prev_unit_price">
+                                        <mat-error *ngIf='inBondFormStep5.controls.prev_unit_price.errors?.maxlength'>
+                                            The maximum field length is
+                                            16, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label> Previous Currency Code</label>
+                                        <input type="text" class="form-control" formControlName="prev_unit_currency">
+                                        <mat-error *ngIf='inBondFormStep5.controls.prev_unit_currency.errors?.maxlength'>
+                                            The maximum field length is
+                                            3, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label> Previous Custom Site </label>
+                                        <input type="text" class="form-control" formControlName="prev_customm_site">
+                                        <mat-error *ngIf='inBondFormStep5.controls.prev_customm_site.errors?.maxlength'>
+                                            The maximum field length is
+                                            6, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Customs Notn exempting central excise flag </label>
+                                        <input type="text" class="form-control" formControlName="custom_notifictaion_exempting_central_excise_flag">
+                                        <mat-error *ngIf='inBondFormStep5.controls.custom_notifictaion_exempting_central_excise_flag.errors?.maxlength'>
+                                            The maximum field length is
+                                            1, please update the field</mat-error>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="matnotexpand">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Manufacture Details
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <form class="col-md-12" [formGroup]="inBondFormStep5">
+                                <div class="form-row mt-2">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Item Manufacturer/Producer Code Type </label>
+                                        <input type="text" class="form-control" formControlName="producer_code">
+                                        <mat-error *ngIf='inBondFormStep5.controls.producer_code.errors?.maxlength'>
+                                            The maximum field length is
+                                            1, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Item Manufacturer/Producer/Grower Code</label>
+                                        <input type="text" class="form-control" formControlName="grower_code">
+                                        <mat-error *ngIf='inBondFormStep5.controls.grower_code.errors?.maxlength'>
+                                            The maximum field length is
+                                            17, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Item Manufacturer/Producer/ Grower Address1 </label>
+                                        <input type="text" class="form-control" formControlName="address1_grower">
+                                        <mat-error *ngIf='inBondFormStep5.controls.address1_grower.errors?.maxlength'>
+                                            The maximum field length is
+                                            <70>, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Item Manufacturer/Producer/ Grower Address2</label>
+                                        <input type="text" class="form-control" formControlName="address2_grower">
+                                        <mat-error *ngIf='inBondFormStep5.controls.address2_grower.errors?.maxlength'>
+                                            The maximum field length is
+                                            <50>, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Item Manufacturer/Producer/ Grower City </label>
+                                        <input type="text" class="form-control" formControlName="city_grower">
+                                        <mat-error *ngIf='inBondFormStep5.controls.city_grower.errors?.maxlength'>
+                                            The maximum field length is
+                                            <35>, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Item Manufacturer/Producer/ Grower Country
+                                Subdivision</label>
+                                        <input type="text" class="form-control" formControlName="country_sub_division_grower">
+                                        <mat-error *ngIf='inBondFormStep5.controls.country_sub_division_grower.errors?.maxlength'>
+                                            The maximum field length is
+                                            <35>, please update the field</mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Item Manufacturer/Producer/ Grower Pin</label>
+                                        <input type="text" class="form-control" formControlName="pin_grower">
+                                        <mat-error *ngIf='inBondFormStep5.controls.pin_grower.errors?.maxlength'>
+                                            The maximum field length is
+                                            10, please update the field
+                                        </mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.pin_grower.errors?.pattern'>
+                                            Only numbers are allowed in this field, please update
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Item Manufacturer Country</label>
+                                        <input type="text" class="form-control" formControlName="country_grower">
+                                        <mat-error *ngIf='inBondFormStep5.controls.country_grower.errors?.maxlength'>
+                                            The maximum field length is
+                                            2, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Source Country</label>
+                                        <input type="text" class="form-control" formControlName="source_country">
+                                        <mat-error *ngIf='inBondFormStep5.controls.source_country.errors?.maxlength'>
+                                            The maximum field length is
+                                            2, please update the field
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Transit Country</label>
+                                        <input type="text" class="form-control" formControlName="transit_country">
+                                        <mat-error *ngIf='inBondFormStep5.controls.transit_country.errors?.maxlength'>
+                                            The maximum field length is
+                                            2, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label> Accessory Status</label> <span class="required"> *</span>
+                                        <input type="text" class="form-control" formControlName="accessory_status">
+                                        <mat-error *ngIf='inBondFormStep5.controls.accessory_status.errors?.required && inBondFormStep5.controls.accessory_status.errors?.touched'>
+                                            This field is required</mat-error>
+                                        <mat-error *ngIf='inBondFormStep5.controls.accessory_status.errors?.maxlength'>
+                                            The maximum field length is
+                                            1, please update the field
+                                        </mat-error>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Save</button>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

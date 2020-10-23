@@ -1,0 +1,88 @@
+<mat-expansion-panel class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Packing Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="packingDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Packing Number-From</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="packing_number_from">
+                    <mat-error *ngIf="packingDetails.controls.packing_number_from.errors?.required && packingDetails.controls.packing_number_from.touched">This field is required</mat-error>
+                    <mat-error *ngIf="packingDetails.controls.packing_number_from.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>
+                    <mat-error *ngIf="packingDetails.controls.packing_number_from.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Packing Number– To</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="packing_number_to">
+                    <mat-error *ngIf="packingDetails.controls.packing_number_to.errors?.required && packingDetails.controls.packing_number_to.touched">This field is required</mat-error>
+                    <mat-error *ngIf="packingDetails.controls.packing_number_to.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>
+                    <mat-error *ngIf="packingDetails.controls.packing_number_to.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Packing Code</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="packing_code">
+                    <mat-error *ngIf="packingDetails.controls.packing_code.errors?.required && packingDetails.controls.packing_code.touched">This field is required</mat-error>
+                    <mat-error *ngIf="packingDetails.controls.packing_code.errors?.maxlength">The maximum field length is 3, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Rotation Date</label>
+                    <br> 
+                    <mat-form-field >
+                        <mat-label>Choose a date</mat-label> 
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="rotation_date" formControlName="rotation_date">
+                        <mat-datepicker-toggle matSuffix [for]="rotation_date"></mat-datepicker-toggle>
+                        <mat-datepicker #rotation_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                    <mat-error *ngIf="packingDetails.controls.rotation_date.errors?.required && packingDetails.controls.rotation_date.touched">This field is required</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Rotation Number</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="rotation_number">
+                    <mat-error *ngIf="packingDetails.controls.rotation_number.errors?.required && packingDetails.controls.rotation_number.touched">This field is required</mat-error>
+                    <mat-error *ngIf="packingDetails.controls.rotation_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>  
+                    <mat-error *ngIf="packingDetails.controls.rotation_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>                 
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <span>Factory stuffed (Y/N)</span> <span class="required"> *</span> <br> <br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="factory_stuffed"  value="Y">Y
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="factory_stuffed"  value="N">N
+                    </label>  
+                    <mat-error *ngIf="packingDetails.controls.factory_stuffed.errors?.required && packingDetails.controls.factory_stuffed.touched">This field is required</mat-error>                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <span>Sample Accompanied (Y/N)</span> <span class="required"> *</span> <br><br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="sample_accompanied" value="Y">Y
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="sample_accompanied" value="N">N
+                    </label>
+                    <mat-error *ngIf="packingDetails.controls.sample_accompanied.errors?.required && packingDetails.controls.sample_accompanied.touched">This field is required</mat-error>  
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>
+

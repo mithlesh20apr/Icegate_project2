@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-7">
+        <div class="row justify-content-center mt-5">
+            <h4 class="text-center">Account Unlock</h4>
+            <p class="text-center text-muted text-padding">
+                Provide us your ICEGATE ID so that we could
+                quickly help you unlock your account.
+            </p>
+        </div>
+        <div class="row justify-content-center pt-5">
+            <div class="col-md-7">
+                <form [formGroup]="icegateIdForm">
+                    <div class="form-group">
+                        <label  for="icegateId">ICEGATE ID</label>
+                        <input type="text" class="form-control" id="icegateId" formControlName="icegateId" id="icegateId">
+                        <span class="text-error d-block pt-1"
+                            *ngIf="icegateIdForm.get('icegateId').touched && icegateIdForm.get('icegateId').errors?.required"><img
+                                src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b> ICEGATE ID
+                            is Required.</span>
+                        <span class="text-error d-block pt-1"
+                            *ngIf="errorMessage"><img
+                                src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b> {{errorMessage}}</span>
+                    </div>
+                    <div class="row form-group pt-5">
+                        <div class="col-md-5 pt-2 pb-2">
+                            <a class="btn btn-back btn-block" routerLink="/login">
+                                Back
+                            </a>
+                        </div>
+                        <div class="col-md-5 offset-md-2 pt-2 pb-2">
+                            <button class="btn btn-proceed btn-block" [disabled]="icegateIdForm.invalid" (click)="checkIcegateId()">
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <img src="assets/images/account-lock.png" class="img-fluid img-responsive" alt="Login image">
+    </div>
+</div>

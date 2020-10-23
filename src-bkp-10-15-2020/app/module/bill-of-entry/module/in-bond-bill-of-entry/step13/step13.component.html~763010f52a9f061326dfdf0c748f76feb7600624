@@ -1,0 +1,295 @@
+<div>
+    <form class="col-md-12" [formGroup]="inBondFormStep13">
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Declaration Type</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="decleration_type">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.decleration_type.errors?.required && inBondFormStep13.controls.decleration_type.touched'
+                    class="text-danger">This field is required</mat-error>
+
+                <mat-error *ngIf='inBondFormStep13.controls.decleration_type.errors?.maxlength' class="text-danger">The
+                    maximum field length is 2, please update the field
+                </mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.decleration_type.errors?.pattern' class="text-danger"> Only
+                    numbers are allowed in this field, please update
+                </mat-error><br>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Invoice Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="invoice_serial_number">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.invoice_serial_number.errors?.required && inBondFormStep13.controls.invoice_serial_number.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.invoice_serial_number.errors?.maxlength'
+                    class="text-danger">The maximum field length is <6>, please update the field
+                </mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.invoice_serial_number.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update</mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Item Serial Number</label><span class="required"> *</span>
+                <input type="number" class="form-control" formControlName="item_serial_number">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.item_serial_number.errors?.required && inBondFormStep13.controls.item_serial_number.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.item_serial_number.errors?.maxlength' class="text-danger">
+                    The maximum field length is 4, please update the field
+                </mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.item_serial_number.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update</mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>CHA License Number</label>
+                <input type="text" class="form-control" formControlName="cha_license_number">
+                <mat-error *ngIf='inBondFormStep13.controls.cha_license_number.errors?.maxlength' class="text-danger">
+                    The maximum field length is <15>, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>IEC</label>
+                <input type="text" class="form-control" formControlName="iec">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.iec.errors?.required && inBondFormStep13.controls.iec.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.iec.errors?.maxlength ' class="text-danger"> The maximum
+                    field length is 10, please update the field
+                </mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.iec.errors?.pattern' class="text-danger">Only numbers are
+                    allowed in this field, please update</mat-error><br>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>ICEGATE User ID </label><span class="required">*</span>
+                <input type="text" class="form-control" formControlName="icegate_user_id">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.icegate_user_id.errors?.required && inBondFormStep13.controls.icegate_user_id.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.icegate_user_id.errors?.maxlength' class="text-danger">The
+                    maximum field length is <15>, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Image Reference Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="image_reference_number">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.image_reference_number.errors?.required && inBondFormStep13.controls.image_reference_number.touched'
+                    class="text-danger">This field is required</mat-error>
+
+                <mat-error *ngIf='inBondFormStep13.controls.image_reference_number.errors?.maxlength'
+                    class="text-danger">The maximum field length is <16>, please update the field
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Type Code</label><span class="required">*</span>
+                <input type="text" class="form-control" formControlName="document_type_code">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.document_type_code.errors?.required && inBondFormStep13.controls.document_type_code.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.document_type_code.errors?.maxlength' class="text-danger">
+                    The maximum field length is <6>, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Document Issuing Party Code</label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_code">
+                <mat-error *ngIf='inBondFormStep13.controls.document_issuing_party_code.errors?.maxlength'
+                    class="text-danger">The maximum field length is 35, please update the field
+                </mat-error><br>
+                <mat-error *ngIf='inBondFormStep13.controls.document_issuing_party_code.errors?.pattern'
+                    class="text-danger">
+                    Only numbers are allowed in this field, please update</mat-error><br>
+
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issuing Party Name</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.document_issuing_party_name.errors?.required && inBondFormStep13.controls.document_issuing_party_name.touched'
+                    class="text-danger">This field is required</mat-error> <br>
+                <mat-error *ngIf='inBondFormStep13.controls.document_issuing_party_name.errors?.maxlength'
+                    class="text-danger">The maximum field length is <70>, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Document Issuing Party Name Address 1</label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_address1">
+                <mat-error *ngIf='inBondFormStep13.controls.document_issuing_party_name_address1.errors?.maxlength'
+                    class="text-danger">The maximum field length is <70>, please update the field
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issuing Party Name Address 2</label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_address2">
+                <mat-error *ngIf='inBondFormStep13.controls.document_issuing_party_name_address2.errors?.maxlength'
+                    class="text-danger">The maximum field length is <70>, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Document Issuing Party Name City </label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_city">
+                <mat-error *ngIf='inBondFormStep13.controls.document_issuing_party_name_city.errors?.maxlength'
+                    class="text-danger">The maximum field length is 35, please update the field
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issuing Party Name Pin</label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_pin">
+
+                <mat-error *ngIf='inBondFormStep13.controls.document_issuing_party_name_pin.errors?.maxlength'
+                    class="text-danger">The maximum field length is 6, please update the field
+                </mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.document_issuing_party_name_pin.errors?.pattern'
+                    class="text-danger"> Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Document Reference Number </label>
+                <input type="text" class="form-control" formControlName="document_reference_number">
+                <mat-error *ngIf='inBondFormStep13.controls.document_reference_number.errors?.maxlength'
+                    class="text-danger">The maximum field length is <17>, please update the field
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Place of Issue</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="place_of_issue">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.place_of_issue.errors?.required && inBondFormStep13.controls.place_of_issue.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.place_of_issue.errors?.maxlength' class="text-danger">The
+                    maximum field length is <35>, please update the field
+                </mat-error>
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Document Issue Date </label> <span class="required"> *</span>
+                <input type="date" class="form-control" formControlName="document_issue_date">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.document_issue_date.errors?.required && inBondFormStep13.controls.document_issue_date.touched'
+                    class="text-danger">This field is required</mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Expiry Date</label>
+                <input type="date" class="form-control" formControlName="place_of_issue">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Document Beneficiary Party Code</label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_code">
+                <mat-error *ngIf='inBondFormStep13.controls.document_beneficary_party_code.errors?.maxlength'
+                    class="text-danger">The maximum field length is <35>, please update the field
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficary Party Name</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.document_beneficary_party_name.errors?.required && inBondFormStep13.controls.document_beneficary_party_name.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.document_beneficary_party_name.errors?.maxlength' class="text-danger">
+                    The maximum field length is <70>, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Document Beneficary Party Address1</label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name_address1">
+                <mat-error *ngIf='inBondFormStep13.controls.document_beneficary_party_name_address1.errors?.maxlength'
+                    class="text-danger">The maximum field length is <70>, please update the field
+                </mat-error><br>
+               
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficary Party Address2</label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name_address2">
+                <mat-error *ngIf='inBondFormStep13.controls.document_beneficary_party_name_address2.errors?.maxlength'
+                    class="text-danger">The maximum field length is <70>, please update the field
+                </mat-error>
+            </div>
+        </div>
+       
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Document Beneficary  Party Name City </label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name_city">
+                <mat-error *ngIf='inBondFormStep13.controls.document_beneficary_party_name_city.errors?.maxlength'
+                    class="text-danger">The maximum field length is <35>, please update the field
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficary  Party Name Pin</label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name_pin">
+
+                <mat-error *ngIf='inBondFormStep13.controls.document_beneficary_party_name_pin.errors?.maxlength'
+                    class="text-danger">The maximum field length is <6>, please update the field
+                </mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.document_beneficary_party_name_pin.errors?.pattern'
+                    class="text-danger"> Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>File Type </label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="file_type">
+                <mat-error
+                    *ngIf='inBondFormStep13.controls.file_type.errors?.required && inBondFormStep13.controls.file_type.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep13.controls.file_type.errors?.maxlength' class="text-danger">The maximum
+                    field length is <5>, please update the field
+                </mat-error>
+
+
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

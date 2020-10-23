@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Items</h2>
+<mat-dialog-content>
+    <div><span>&#42;</span> indicates the mandatory fields</div>
+    <br>
+    <button mat-raised-button (click)="addTab1()" [disabled]="disableAdd1Button" id="add-option">
+        Add new tab
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-tab-group>
+        <mat-tab *ngFor="let tab of tabs1; let i = index">
+            <ng-template mat-tab-label>
+                <span>Item {{i + 1}}</span>
+                <mat-icon *ngIf="tabs1.length != 1" (click)="removeTab1(i)">cancel</mat-icon>
+            </ng-template>
+            <mat-accordion>
+                <app-item-details></app-item-details>
+            </mat-accordion>
+            <mat-accordion>
+                <app-item-accessories></app-item-accessories>
+            </mat-accordion>
+            <mat-accordion>
+                <app-item-third-party-details></app-item-third-party-details>
+            </mat-accordion>
+            <mat-accordion>
+                <app-item-cess></app-item-cess>
+            </mat-accordion>
+            <mat-accordion>
+                <app-item-drawback></app-item-drawback>
+            </mat-accordion>
+            <mat-accordion>
+                <app-item-raw-material></app-item-raw-material>
+            </mat-accordion>
+        </mat-tab>
+    </mat-tab-group>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Save</button>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

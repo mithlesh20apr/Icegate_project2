@@ -1,0 +1,224 @@
+<div>
+    <div><span class="text-danger">&#42;</span> indicates the mandatory fields </div>
+    <form class="col-md-12" [formGroup]="inBondFormStep13">
+        <h6 class="font-h6 text-center">Supporting Documents</h6>
+        <hr>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('decleration_type')">
+                <label>Declaration Type</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="decleration_type">
+                <validation-messages [control]="inBondFormStep13.controls.decleration_type" ></validation-messages>               
+               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('invoice_serial_number')">
+                <label>Invoice Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="invoice_serial_number">
+                <validation-messages [control]="inBondFormStep13.controls.invoice_serial_number" ></validation-messages>               
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoice_serial_number')">
+                <label>Item Serial Number</label><span class="required"> *</span>
+                <input type="number" class="form-control" formControlName="item_serial_number">
+                <validation-messages [control]="inBondFormStep13.controls.item_serial_number" ></validation-messages>               
+                
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('cha_license_number')">
+                <label>CHA License Number</label>
+                <input type="text" class="form-control" formControlName="cha_license_number">
+                <validation-messages [control]="inBondFormStep13.controls.cha_license_number" ></validation-messages>               
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('iec')">
+                <label>IEC</label>
+                <input type="text" class="form-control" formControlName="iec">
+                <validation-messages [control]="inBondFormStep13.controls.iec" ></validation-messages>               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('icegate_user_id')">
+                <label>ICEGATE User ID </label><span class="required">*</span>
+                <input type="text" class="form-control" formControlName="icegate_user_id">
+                <validation-messages [control]="inBondFormStep13.controls.icegate_user_id" ></validation-messages>               
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('image_reference_number')">
+                <label>Image Reference Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="image_reference_number">
+                <validation-messages [control]="inBondFormStep13.controls.image_reference_number" ></validation-messages>               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_type_code')">
+                <label>Document Type Code</label><span class="required">*</span>
+                <input type="text" class="form-control" formControlName="document_type_code">
+                <validation-messages [control]="inBondFormStep13.controls.document_type_code" ></validation-messages>               
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_issuing_party_code')">
+                <label>Document Issuing Party Code</label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_code">
+                <validation-messages [control]="inBondFormStep13.controls.document_issuing_party_code" ></validation-messages>               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_issuing_party_name')">
+                <label>Document Issuing Party Name</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name">
+                <validation-messages [control]="inBondFormStep13.controls.document_issuing_party_name" ></validation-messages>                 
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_issuing_party_name_address1')">
+                <label>Document Issuing Party Name Address 1</label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_address1">
+                <validation-messages [control]="inBondFormStep13.controls.document_issuing_party_name_address1" ></validation-messages>               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_issuing_party_name_address2')">
+                <label>Document Issuing Party Name Address 2</label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_address2">
+                <validation-messages [control]="inBondFormStep13.controls.document_issuing_party_name_address2" ></validation-messages>               
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_issuing_party_name_city')">
+                <label>Document Issuing Party Name City </label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_city">
+                <validation-messages [control]="inBondFormStep13.controls.document_issuing_party_name_city" ></validation-messages>               
+               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_issuing_party_name_pin')">
+                <label>Document Issuing Party Name Pin</label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_pin"> 
+                <validation-messages [control]="inBondFormStep13.controls.document_issuing_party_name_pin" ></validation-messages>               
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_reference_number')">
+                <label>Document Reference Number </label>
+                <input type="text" class="form-control" formControlName="document_reference_number">
+                <validation-messages [control]="inBondFormStep13.controls.document_reference_number" ></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('place_of_issue')">
+                <label>Place of Issue</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="place_of_issue">
+                <validation-messages [control]="inBondFormStep13.controls.place_of_issue" ></validation-messages>
+
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_issue_date')">
+               
+                <label>Document Issue Date </label> <span class="required"> *</span>
+                <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label> 
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="document_issue_date" formControlName="document_issue_date">
+                    <mat-datepicker-toggle matSuffix [for]="document_issue_date"></mat-datepicker-toggle>
+                    <mat-datepicker #document_issue_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                </div>
+                <validation-messages [control]="inBondFormStep13.controls.document_issue_date" ></validation-messages>
+                
+               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_expiry_date')">
+                <label>Document Expiry Date</label>
+                <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label> 
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="document_expiry_date" formControlName="document_expiry_date">
+                    <mat-datepicker-toggle matSuffix [for]="document_expiry_date"></mat-datepicker-toggle>
+                    <mat-datepicker #document_expiry_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                </div>
+                <validation-messages [control]="inBondFormStep13.controls.document_expiry_date" ></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_beneficary_party_code')">
+                <label>Document Beneficiary Party Code</label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_code">
+                <validation-messages [control]="inBondFormStep13.controls.document_beneficary_party_name_address1" ></validation-messages>
+                
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_beneficary_party_name')">
+                <label>Document Beneficary Party Name</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name">
+                <validation-messages [control]="inBondFormStep13.controls.document_beneficary_party_name" ></validation-messages>
+               
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_beneficary_party_name_address1')">
+                <label>Document Beneficary Party Address1</label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name_address1">
+                <validation-messages [control]="inBondFormStep13.controls.document_beneficary_party_name_address1" ></validation-messages>
+               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_beneficary_party_name_address2')">
+                <label>Document Beneficary Party Address2</label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name_address2">
+                <validation-messages [control]="inBondFormStep13.controls.document_beneficary_party_name_address2" ></validation-messages>
+                
+            </div>
+        </div>
+       
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_beneficary_party_name_city')">
+                <label>Document Beneficary  Party Name City </label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name_city">
+                <validation-messages [control]="inBondFormStep13.controls.document_beneficary_party_name_city" ></validation-messages>
+               
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_beneficary_party_name_pin')"> 
+                <label>Document Beneficary  Party Name Pin</label>
+                <input type="text" class="form-control" formControlName="document_beneficary_party_name_pin">
+                <validation-messages [control]="inBondFormStep13.controls.document_beneficary_party_name_pin" ></validation-messages>
+
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('file_type')">
+                <label>File Type </label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="file_type">
+                <validation-messages [control]="inBondFormStep13.controls.file_type" ></validation-messages>
+
+
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+</div>

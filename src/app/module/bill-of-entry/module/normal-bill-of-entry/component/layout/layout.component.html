@@ -1,0 +1,138 @@
+
+<div class="container-fluid">
+    <div class="card">
+        <b style="margin: 25px;">Bill of Entry</b>
+        <div class="box-color">
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-horizontal-stepper #stepper class="stepperscroll" (selectionChange)="selectionChange($event)">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon [inline]="true">check_circle</mat-icon>
+                          </ng-template>
+                        <mat-step>
+                            <app-step1></app-step1>
+                        </mat-step>
+                        <mat-step>
+                            <app-step2></app-step2>
+                        </mat-step>
+                        <mat-step>
+                            <nav mat-tab-nav-bar class="invoice">
+                                <a mat-tab-link *ngFor="let dynamic of dynamicArray;let i = index" (click)="onTabChanged(i)"
+                                    [active]="TabIndex == i">
+                                    <span>Invoice {{dynamic}}</span>
+                                    <mat-icon [inline]="true" *ngIf="i>0" (click)="delete(i)">cancel</mat-icon>
+                                </a>
+                                <a (click)="add()" class="invoice-link" *ngIf="flag"><img class="invoice-img" src="assets/icons/NewInvoice.png" /></a>
+                            </nav>
+                            <mat-progress-bar class="audio-progress-bar" value="{{progress}}">
+                            </mat-progress-bar>
+                            <br>
+                            <div *ngFor="let item of dynamicArray;let i = index">
+                                <app-step3 [index]="item" *ngIf="i==TabIndex"></app-step3>
+                            </div>
+
+                            <div class="btncontainer">
+                                <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button id="back_draft" mat-raised-button>Save as Draft</button>
+                                <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+                            </div>
+
+                        </mat-step>
+                        <mat-step>
+                            <nav mat-tab-nav-bar class="invoice">
+                                <a mat-tab-link *ngFor="let dynamic of dynamicArray2;let i = index" (click)="onTabChanged2(i)"
+                                    [active]="TabIndex2 == i">
+                                    <span>Misc Charges {{dynamic}}</span>
+                                    <mat-icon [inline]="true" *ngIf="i>0" (click)="delete2(i)">cancel</mat-icon>
+                                </a>
+                                <a (click)="add2()" *ngIf="flag2"><img src="assets/icons/NewInvoice.png" /></a>
+                            </nav>
+                            <mat-progress-bar class="audio-progress-bar" value="{{progress2}}">
+                            </mat-progress-bar>
+                            <br>
+                            <div *ngFor="let item of dynamicArray2;let i = index">
+                                <app-step4 [index]="item" *ngIf="i==TabIndex2"></app-step4>
+                            </div>
+
+                            <div class="btncontainer">
+                                <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button id="back_draft" mat-raised-button>Save as Draft</button>
+                                <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <nav mat-tab-nav-bar class="invoice">
+                                <a mat-tab-link *ngFor="let dynamic of dynamicArray3;let i = index" (click)="onTabChanged3(i)"
+                                    [active]="TabIndex3 == i">
+                                    <span>Item {{dynamic}}</span>
+                                    <mat-icon [inline]="true" *ngIf="i>0" (click)="delete3(i)">cancel</mat-icon>
+                                </a>
+                                <a (click)="add3()" *ngIf="flag3"><img src="assets/icons/NewInvoice.png" /></a>
+                            </nav>
+                            <mat-progress-bar class="audio-progress-bar" value="{{progress3}}">
+                            </mat-progress-bar>
+                            <br>
+                            <div *ngFor="let item of dynamicArray3;let i = index">
+                                <app-step5 [index]="item" *ngIf="i==TabIndex3"></app-step5>
+                            </div>
+
+                            <div class="btncontainer">
+                                <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button id="back_draft" mat-raised-button>Save as Draft</button>
+                                <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+                            </div>
+                        </mat-step>
+
+                        <mat-step>
+                            <app-step6></app-step6>
+                        </mat-step>
+                        <mat-step>
+                            <app-step7></app-step7>
+                        </mat-step>
+                        <mat-step>
+                            <app-step8></app-step8>
+                        </mat-step>
+                        <mat-step>
+                            <app-step9></app-step9>
+                        </mat-step>
+                        <mat-step>
+                            <app-step10></app-step10>
+                        </mat-step>
+                        <mat-step>
+                            <app-step11></app-step11>
+                        </mat-step>
+                        <mat-step>
+                            <app-step12></app-step12>
+                        </mat-step>
+                        <mat-step>
+                            <app-step13></app-step13>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <mat-horizontal-stepper fxLayout="column" fxFlex="100" fxLayoutAlign=" stretch" #stepper style="background: #DDD">
+    <mat-step label="Step 1" fxFlex="100"  fxLayout="column">
+        <div style="border: 2px solid green;" fxFlex="100">
+            <div fxFlex="100" fxFill style="border: 2px solid red;">
+                Step 1: must fill the entire space
+      <p>Issues? <a href="mailto:&#103;&#105;&#116;&#104;&#117;&#098;&#064;&#116;&#111;&#110;&#121;&#115;&#097;&#109;&#112;&#101;&#114;&#105;&#046;&#105;&#116;">Text me!</a>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step label="Step 2">
+        <div style="border: 2px solid green;height:100%;">Step 2: must fill the entire space too, but it's shifted down!</div>
+    </mat-step>
+    <mat-step label="Step 3">
+        Step 3: This is even more shifted!
+    </mat-step>
+    <mat-step label="Step 4">
+        Step 4: ...
+    </mat-step>
+</mat-horizontal-stepper> -->

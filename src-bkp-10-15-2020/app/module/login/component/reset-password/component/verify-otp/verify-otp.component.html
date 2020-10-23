@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-5">
+        <img src="assets/images/recover-pass.png" class="img-fluid img-responsive" alt="Login image">
+    </div>
+    <div class="col-md-7">
+        <div class="row justify-content-center pt-5">
+            <form>
+                <div>
+                    <h6 class="text-center text-muted">
+                        OTP has been sent to your registered
+                        {{ authDetails.authType }}.
+                    </h6>
+                    <h6 class="text-center">
+                        {{ authTypeValue }}
+                    </h6>
+                </div>
+                <div class="form-group pt-5">
+                    <div class="row">
+                        <span class="pl-2"><label for="otp">OTP</label>
+                            <a class="resend-link" (click)="resendOtp();">Resend OTP</a>
+                        </span>
+                    </div>
+
+                    <div class="row justify-content-center pb-2 ">
+                        <ng-otp-input class="d-block" (onInputChange)="onOtpChange($event)" #ngOtpInput [config]="config"></ng-otp-input>
+                    </div>
+                    <div class="row" *ngIf="expirationTime!=0">
+                        <span class="pl-2" style="font-size: 12px;"> OTP expires in <span
+                                class="text-error font-weight-bold">{{expirationTime}} seconds</span></span>
+                    </div>
+                    <!-- <div class="row" *ngIf="expirationTime==0">
+                        <span class="text-error d-block pt-1"><img
+                            src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b>
+                        Otp Expired.</span>
+                    </div> -->
+                    <div class="row">
+                        <span class="text-error d-block pt-1" *ngIf="errorMessage"><img
+                                src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b>
+                            {{errorMessage}}</span>
+                    </div>
+                    <div *ngIf="otpLimit" class="row otp-fail pt-3">
+                        <div class="col-md-1">
+                            <img class="pt-2" src="assets/images/Alert.png" alt="alert">
+                        </div>
+                        <div class="col-md-11">
+                            <h6 style="font-size: 14px;">3 attempts for OTP verification failed!</h6>
+                            <a class="otp-fail-link">Contact Helpdesk or Chat with us.</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group pt-5">
+                    <div class="col-md-5 pt-2 pb-2">
+                        <button class="btn btn-back btn-block" (click)="hideOtp();">
+                            Back
+                        </button>
+                    </div>
+                    <div class="col-md-5 offset-md-2 pt-2 pb-2">
+                        <button class="btn btn-proceed btn-block" (click)="verifyOtp()"
+                        [disabled]="!enableContinue">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

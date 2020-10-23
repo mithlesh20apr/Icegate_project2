@@ -1,0 +1,74 @@
+<div>
+    <div><span class="text-danger">&#42;</span> indicates the mandatory fields </div>
+    <form class="col-md-12" [formGroup]="inBondFormStep10">
+        <h6 class="font-h6 text-center">Container</h6>
+        <hr>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('igm_no')">
+                <label>IGM Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="igm_no">
+                <validation-messages [control]="inBondFormStep10.controls.igm_no" ></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2"  [ngClass]="displayFieldCss('igm_no')">
+                <label>IGM Date</label><span class="required">*</span> 
+                <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label> 
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="igm_date" formControlName="igm_date">
+                    <mat-datepicker-toggle matSuffix [for]="igm_date"></mat-datepicker-toggle>
+                    <mat-datepicker #igm_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                </div>
+                <validation-messages [control]="inBondFormStep10.controls.igm_date" ></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('lcl_fcl')">
+                <div class="form-group">
+                    <span>LCL/FCL </span>  
+                    <div>
+
+                        <mat-radio-group aria-label="Select an option" formControlName="lcl_fcl"> 
+                           
+                            <mat-radio-button value="Lcl" >Yes</mat-radio-button> &nbsp; &nbsp;
+                            <mat-radio-button value="Fcl">No</mat-radio-button>
+                           
+                        </mat-radio-group>
+                    </div>
+                    <validation-messages [control]="inBondFormStep10.controls.lcl_fcl" ></validation-messages>
+                </div>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('container_number')">
+                <label>Container Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="container_number">
+                <validation-messages [control]="inBondFormStep10.controls.container_number" ></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('seal_number')" >
+                <label>Seal Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="seal_number">
+                <validation-messages [control]="inBondFormStep10.controls.seal_number" ></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('truck_number')">
+                <label>Truck Number</label>
+                <input type="text" class="form-control" formControlName="truck_number">
+                <validation-messages [control]="inBondFormStep10.controls.truck_number" ></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+</div>

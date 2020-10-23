@@ -1,0 +1,102 @@
+<div>
+    <div class="row pt-5">
+        <div class="col-md-7">
+            <img src="assets/images/login.png" class="img-fluid img-responsive" alt="Login image">
+        </div>
+        <div class="col-md-5 pt-2">
+            <div *ngIf="unlockAccount" class="row success-box ml-5">
+                <div class="col-md-1 pt-3">
+                    <img src="assets/images/check-1.png" alt="success">
+                </div>
+                <div class="col-md-11 pt-2">
+                    <h6 style="font-size: 14px;">Account Unlocked Successfully!</h6>
+                    <p class="text-muted" style="font-size: 12px;">Login to continue.</p>
+                </div>
+            </div>
+            <div *ngIf="forgotPass" class="row success-box ml-5">
+                <div class="col-md-1 pt-3">
+                    <img src="assets/images/check-1.png" alt="success">
+                </div>
+                <div class="col-md-11 pt-2">
+                    <h6 style="font-size: 14px;">Password is set Successfully!</h6>
+                    <p class="text-muted" style="font-size: 12px;">Login to continue.</p>
+                </div>
+            </div>
+            <h5 *ngIf="!forgotPass && !unlockAccount" class="text-center">Welcome! Login to ICEGATE</h5>
+            <div class="row justify-content-center">
+                <form [formGroup]="loginForm" class="pt-4">
+                    <div class="form-group">
+                        <label for="icegateId">ICEGATE ID</label>
+                        <input class="form-control" type="text" formControlName="icegateId"
+                            id="icegateId" placeholder="Enter ICEGATE ID">
+                        <span class="text-error d-block pt-1"
+                            *ngIf="loginForm.get('icegateId').touched && loginForm.get('icegateId').errors?.required"><img
+                                src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b> Icegate
+                            ID is Required.</span>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <label for="email">Email ID</label>
+                        <input class="form-control" type="text" formControlName="email"
+                            id="email" placeholder="Enter Email ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <span style="padding-left: 150px;"><input type="checkbox" (click)="viewPass()" id="viewPass"/> <label for="viewPass">&nbsp;Show</label></span>
+                        <input class="form-control" [type]="passType" formControlName="password"
+                            id="password" placeholder="Enter Password">
+                        <span class="text-error d-block pt-1"
+                            *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.required"><img
+                                src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b> Password
+                            is Required.</span>
+                        <span class="text-error d-block pt-1 break-text" *ngIf="errorMessage"><img
+                                src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b>
+                            {{errorMessage}}</span>
+                    </div>
+                    <div *ngIf="internalUserLocked" class="row otp-fail pt-3">
+                        <div class="col-md-2">
+                            <img class="pt-2" src="assets/images/Alert.png" alt="alert">
+                        </div>
+                        <div class="col-md-10">
+                            <h6 style="font-size: 14px;">Account is Locked!</h6>
+                            <a class="otp-fail-link">Contact Helpdesk or Chat with us.</a>
+                        </div>
+                    </div>
+                    <div id="content" class="form-group pt-4 text-center">
+                        <a routerLink="/reset-password">Forgot ICEGATE ID/ Password?</a>
+                    </div>
+                    <div class="row justify-content-center">
+                        <button class="btn login" [disabled]="loginForm.invalid" (click)="login()">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div class="row justify-content-center pt-5 pb-5">
+                <div>
+                    <h6 class="text-muted text-center">New to ICEGATE?</h6>
+                    <button class="btn register mt-4" routerLink="/registration">Register Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Account Lock Template -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="col-md-8 offset-md-4">
+                <img src="assets/images/lock-icon.png" alt="">
+            </div>
+            <h5 class="text-center pt-2" style="opacity: 1 !important;">
+                <b class="font-italic">OOPS !! </b> <span style="color: grey;">Your Account has got locked due to</span>
+                <br>
+                <span style="color: grey;">multiple wrong password attempt.</span>
+            </h5>
+
+            <h5 class="text-center text-muted pt-5">But we have got you covered !</h5>
+            <div class="row justify-content-center pt-3">
+                <button class="btn btn-proceed" routerLink="/unlock-account">Unlock Account</button>
+            </div>
+
+        </div>
+    </div>
+</ng-template>

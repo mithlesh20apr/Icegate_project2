@@ -1,0 +1,219 @@
+<br>
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<div>
+    <form [formGroup]="shipingBillSStepTen">
+        <button mat-raised-button class="example-add-tab-button" (click)="addTab3()" id="support-add-option">
+            Add Supporting Documents
+            <mat-icon>add</mat-icon>
+        </button>
+        <mat-tab-group [selectedIndex]="selected3.value" (selectedIndexChange)="selected3.setValue($event)">
+            <mat-tab *ngFor="let tab of tabs3; let index = index">
+                <ng-template mat-tab-label>
+                    <span>Supporting Document {{index + 1}}</span>
+                    <mat-icon *ngIf="tabs3.length != 1" (click)="removeTab3(index)">cancel
+                    </mat-icon>
+                </ng-template>
+                
+            </mat-tab>
+        </mat-tab-group>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Invoice Serial No.</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="invoice_serial_no">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.invoice_serial_no.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.invoice_serial_no.errors?.pattern">Only numbers are allowed in this field, please update</mat-error> -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-2">
+                <label>Item Serial No.</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="item_serial_no">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.item_serial_no.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.item_serial_no.errors?.pattern">Only numbers are allowed in this field, please update</mat-error> -->
+            </div>
+            <div class="form-group col-md-2">
+                <label>Serial No.</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="serial_no">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.serial_no.errors?.required && shipingBillSStepTen.controls.serial_no.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.serial_no.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.serial_no.errors?.pattern">Only numbers are allowed in this field, please update</mat-error> -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Image Reference Number </label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="image_reference_number">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.image_reference_number.errors?.required && shipingBillSStepTen.controls.image_reference_number.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.image_reference_number.errors?.maxlength">The maximum field length is 16, please update the field</mat-error> -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Type Code</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_type_code">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_type_code.errors?.required && shipingBillSStepTen.controls.document_type_code.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_type_code.errors?.maxlength">The maximum field length is 6, please update the field</mat-error>  -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issuing Party Code </label>
+                <input type="text" class="form-control" formControlName="document_issuing_party_code">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_code.errors?.maxlength">The maximum field length is 35, please update the field</mat-error> -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issuing Party Name Address1</label> 
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_address1">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name_address1.errors?.required && shipingBillSStepTen.controls.document_issuing_party_name_address1.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name_address1.errors?.maxlength">The maximum field length is 70, please update the field</mat-error>  -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issuing Party Name Address2</label> 
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_address2">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name_address2.errors?.required && shipingBillSStepTen.controls.document_issuing_party_name_address2.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name_address2.errors?.maxlength">The maximum field length is 70, please update the field</mat-error>  -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issuing Party Name City</label> 
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_city">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name_city.errors?.required && shipingBillSStepTen.controls.document_issuing_party_name_city.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name_city.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>  -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issuing Party Name Pin</label> 
+                <input type="text" class="form-control" formControlName="document_issuing_party_name_pin">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name_pin.errors?.required && shipingBillSStepTen.controls.document_issuing_party_name_pin.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name_pin.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>  -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Reference Number</label> 
+                <input type="text" class="form-control" formControlName="document_reference_number">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_reference_number.errors?.required && shipingBillSStepTen.controls.document_reference_number.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_reference_number.errors?.maxlength">The maximum field length is 17, please update the field</mat-error>  -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Place of Issue</label><span class="required"> *</span> 
+                <input type="text" class="form-control" formControlName="place_of_issue">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.place_of_issue.errors?.required && shipingBillSStepTen.controls.place_of_issue.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.place_of_issue.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>  -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                 <label>Document Issue Date</label><span class="required"> *</span> 
+                 <br>
+                <mat-form-field >
+                    <mat-label>Choose a Date</mat-label>   
+                       <input matInput [matDatepicker]="document_issue_date" formControlName="document_issue_date">
+                       <mat-datepicker-toggle matSuffix [for]="document_issue_date"></mat-datepicker-toggle>
+                       <mat-datepicker #document_issue_date></mat-datepicker>     
+               </mat-form-field>
+               <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_issue_date.errors?.required && shipingBillSStepTen.controls.document_issue_date.touched">This field is required</mat-error> -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Document Expiry Date</label><span class="required"> *</span> 
+                <br>
+                <mat-form-field >
+                     <mat-label>Choose a Date</mat-label>   
+                       <input matInput [matDatepicker]="document_expiry_date" formControlName="document_expiry_date">
+                       <mat-datepicker-toggle matSuffix [for]="document_expiry_date"></mat-datepicker-toggle>
+                       <mat-datepicker #document_expiry_date></mat-datepicker>     
+               </mat-form-field>
+               <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_expiry_date.errors?.required && shipingBillSStepTen.controls.document_expiry_date.touched">This field is required</mat-error> -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficiary Party Code</label>
+                <input type="text" class="form-control" formControlName="document_beneficiary_party_code">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_code.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>  -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficiary Party Name Address1</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_beneficiary_party_name_address1">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name_address1.errors?.required && shipingBillSStepTen.controls.document_beneficiary_party_name_address1.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name_address1.errors?.maxlength">The maximum field length is 70, please update the field</mat-error>  -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficiary Party Name Address2</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_beneficiary_party_name_address2">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name_address2.errors?.required && shipingBillSStepTen.controls.document_beneficiary_party_name_address2.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name_address2.errors?.maxlength">The maximum field length is 70, please update the field</mat-error>  -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficiary Party Name City</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_beneficiary_party_name_city">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name_city.errors?.required && shipingBillSStepTen.controls.document_beneficiary_party_name_city.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name_city.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>  -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficiary Party Name Pin</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_beneficiary_party_name_pin">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name_pin.errors?.required && shipingBillSStepTen.controls.document_beneficiary_party_name_pin.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name_pin.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>  -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>File Type</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="file_type">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.file_type.errors?.required && shipingBillSStepTen.controls.file_type.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.file_type.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>  -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Document Issue Party Name</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="document_issuing_party_name">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name.errors?.required && shipingBillSStepTen.controls.document_issuing_party_name.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_issuing_party_name.errors?.maxlength">The maximum field length is 70, please update the field</mat-error>  -->
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Document Beneficiary Party Name </label> 
+                <input type="text" class="form-control" formControlName="document_beneficiary_party_name">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name.errors?.required && shipingBillSStepTen.controls.document_beneficiary_party_name.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.document_beneficiary_party_name.errors?.maxlength">The maximum field length is 70, please update the field</mat-error>  -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>ICEGATE</label> <span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="icegate_user_id">
+                <!-- <mat-error *ngIf="shipingBillSStepTen.controls.icegate_user_id.errors?.required && shipingBillSStepTen.controls.icegate_user_id.touched">This field is required</mat-error>
+                <mat-error *ngIf="shipingBillSStepTen.controls.icegate_user_id.errors?.maxlength">The maximum field length is 15, please update the field</mat-error>  -->
+            </div>
+        </div>   
+        <div class="btncontainer">
+            <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+            <div class="col-md-4 offset-md-4"></div>
+            <button mat-raised-button id="back_draft">Save as Draft</button>
+            <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+        </div>  
+    </form>
+</div>

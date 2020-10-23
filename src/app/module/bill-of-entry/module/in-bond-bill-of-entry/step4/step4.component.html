@@ -1,0 +1,49 @@
+<div>
+    <div><span class="text-danger">&#42;</span> indicates the mandatory fields </div>
+    <form class="col-md-12" [formGroup]= "inBondFormStep4">
+        <h6 class="font-h6 text-center">Misc. Charges {{index}}</h6>
+        <hr>
+        <div class="form-row">
+            <div class=" form-group col-md-4 offset-md-1">
+                <label>Invoice Serial No</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="invoice_serial_number">
+                    <validation-messages [control]="inBondFormStep4.controls.invoice_serial_number"></validation-messages>
+
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Misc. Charges Code</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="misc_charge_code">
+                    <validation-messages [control]="inBondFormStep4.controls.misc_charge_code"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class=" form-group col-md-4 offset-md-1">
+                <label> Misc. Charges Description</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="misc_description">
+                    <validation-messages [control]="inBondFormStep4.controls.misc_description"></validation-messages>
+            </div>
+            <div class="form-group col-md-2 offset-md-2">
+                <label>Misc. Charges</label>
+                <input type="text" class="form-control"
+                    formControlName="misc_charges">
+                    <validation-messages [control]="inBondFormStep4.controls.misc_charges"></validation-messages>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label>Misc. Rate</label>
+                <input type="text" class="form-control" formControlName="misc_rate">
+                <validation-messages [control]="inBondFormStep4.controls.misc_rate"></validation-messages>
+            </div>
+        </div>
+
+    </form>
+    <div class="btncontainer">
+        <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+        <div class="col-md-4 offset-md-4"></div>
+        <button mat-raised-button id="back_draft">Save as Draft</button>
+        <button mat-flat-button id="savecon">Save & Continue</button>
+    </div>
+</div>

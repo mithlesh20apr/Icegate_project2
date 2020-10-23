@@ -1,0 +1,154 @@
+<div>
+    <div><span class="text-danger">&#42;</span> indicates the mandatory fields </div>
+    <form class="col-md-12" [formGroup]="inBondFormStep9">
+        <h6 class="font-h6 text-center">IGM</h6>
+        <hr>
+        <div class="form-row">
+            <div class=" form-group col-md-4 offset-md-1">
+                <label>IGM Number</label><span class="required">*</span>
+                <input type="text" class="form-control" formControlName="igm_no">
+                <validation-messages [control]="inBondFormStep9.controls.igm_no"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <div>IGM Date<span class="required"> *</span></div>
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="igm_date" formControlName="igm_date">
+                    <mat-datepicker-toggle matSuffix [for]="igm_date"></mat-datepicker-toggle>
+                    <mat-datepicker #igm_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                <validation-messages [control]="inBondFormStep9.controls.igm_date"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <div>Inward Date<span class="required"> *</span></div>   
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="inward_date" formControlName="inward_date">
+                    <mat-datepicker-toggle matSuffix [for]="inward_date"></mat-datepicker-toggle>
+                    <mat-datepicker #inward_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                <validation-messages [control]="inBondFormStep9.controls.inward_date"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Gateway IGM Number</label>
+                <input type="text" class="form-control" formControlName="gateway_igm_number">
+                <validation-messages [control]="inBondFormStep9.controls.gateway_igm_number"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <div>Gateway IGM Date<span class="required"> *</span></div>
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="gateway_igm_date" formControlName="gateway_igm_date">
+                    <mat-datepicker-toggle matSuffix [for]="gateway_igm_date"></mat-datepicker-toggle>
+                    <mat-datepicker #gateway_igm_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Gateway Port Code</label>
+                <input type="text" class="form-control" formControlName="gateway_port_code">
+                <validation-messages [control]="inBondFormStep9.controls.gateway_port_code"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>MAWB/BL No</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="mawb_bl_no">
+                <validation-messages [control]="inBondFormStep9.controls.mawb_bl_no"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <div>MAWB/BL Date<span class="required"> *</span></div>
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="mawb_bl_date" formControlName="mawb_bl_date">
+                    <mat-datepicker-toggle matSuffix [for]="mawb_bl_date"></mat-datepicker-toggle>
+                    <mat-datepicker #mawb_bl_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                <validation-messages [control]="inBondFormStep9.controls.mawb_bl_date"></validation-messages>
+            </div>
+
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>HAWB/BL No</label>
+                <input type="text" class="form-control" formControlName="hawb_hbl_no">
+                <validation-messages [control]="inBondFormStep9.controls.hawb_hbl_no"></validation-messages>
+             
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <div>HAWB/HBL Date<span class="required"> *</span></div>
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="hawb_hbl_date" formControlName="hawb_hbl_date">
+                    <mat-datepicker-toggle matSuffix [for]="hawb_hbl_date"></mat-datepicker-toggle>
+                    <mat-datepicker #hawb_hbl_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                <validation-messages [control]="inBondFormStep9.controls.hawb_hbl_date"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-1">
+                <label>Total Number Of Packages</label><span class="required">*</span>
+                <input type="number" class="form-control" formControlName="total_number_of_packages">
+                <validation-messages [control]="inBondFormStep9.controls.total_number_of_packages"></validation-messages>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Gross weight</label><span class="required"> *</span>
+                <input type="number" class="form-control" formControlName="gross_weight">
+                <validation-messages [control]="inBondFormStep9.controls.gross_weight"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Unit Quantity Code</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="unit_quantity_code">
+                <validation-messages [control]="inBondFormStep9.controls.unit_quantity_code"></validation-messages>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Package Code</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="package_code">
+                <validation-messages [control]="inBondFormStep9.controls.package_code"></validation-messages>
+
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Marks And Numbers 1</label><span class="required">*</span>
+                <input type="text" class="form-control" formControlName="marks_number1">
+                <validation-messages [control]="inBondFormStep9.controls.marks_number1"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Marks And Numbers 2</label>
+                <input type="text" class="form-control" formControlName="marks_number2">
+                <validation-messages [control]="inBondFormStep9.controls.marks_number2"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Marks And Numbers 3</label>
+                <input type="text" class="form-control" formControlName="marks_number3">
+                <validation-messages [control]="inBondFormStep9.controls.marks_number3"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button>Save & Continue</button>
+</div>

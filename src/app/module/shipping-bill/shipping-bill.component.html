@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="card">
+        <b class="m-2">Shipping Bill</b>
+        <div class="box-color">
+            <div class="row">
+                <div class="col-md-12 form-row mt-1">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 form-group">
+                        <label>IEC Available</label><br>
+                        <mat-radio-group aria-label="Select an option" (change)="isIecAvailable($event)">
+                            <mat-radio-button value="Y">Yes</mat-radio-button>&nbsp;
+                            <mat-radio-button value="N">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label>NFEI (No foreign exchange involved)</label><br>
+                        <mat-radio-group aria-label="Select an option" (change)="isNfeiAvailable($event)">
+                            <mat-radio-button value="Y">Yes</mat-radio-button>&nbsp;
+                            <mat-radio-button value="N">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <form [formGroup]="ShippingBill">
+                        <div class="col-lg-12 text-right">
+                            <label>
+                                <p class="import_json_files"><b>Import Json file</b></p>
+                               <input type="file"  (change)="uploadFile($event)"/>
+                            </label>
+                            <a class="btn btn-clear export_as_json" title="Download JSON"  (click)="downloadbillentry()" [href]="downloadJsonHref" download="shiping-bill.json"> 
+                                <img src="assets/images/json_files_icon.webp"/> 
+                                Export as Json
+                            </a>
+                         </div>
+                    <mat-horizontal-stepper #stepper class="stepperscroll">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon [inline]="true">check_circle</mat-icon>
+                        </ng-template>
+                        <mat-step>
+                            <app-step1 formControlName="shipingBillSStepOne"></app-step1>
+                        </mat-step>
+                        <mat-step>
+                            <app-step2 formControlName="shipingBillStepTwo"></app-step2>
+                        </mat-step>
+                        <mat-step>
+                            <app-step3 formControlName="shippingBillStepThree"></app-step3>
+                        </mat-step>
+                        <mat-step>
+                            <app-step4 formControlName="shippingBillstepFour"></app-step4>
+                        </mat-step>
+                        <mat-step>
+                            <app-step5 formControlName="shippingBillstepFive"></app-step5> 
+                        </mat-step>
+                        <mat-step>
+                            <app-step6 formControlName="shipingBillStepSix"></app-step6>
+                        </mat-step>
+                        <mat-step>
+                            <app-step7 formControlName="shipingBillStepSeven"></app-step7> 
+                        </mat-step>
+                        <mat-step>
+                            <app-step8 formControlName="shipingBillStepEight"></app-step8>   
+                        </mat-step>
+                        <mat-step>
+                            <app-step9 formControlName="shippingBillStepNine"></app-step9> 
+                        </mat-step>
+                        <mat-step>
+                            <app-step10 formControlName="shipingBillSStepTen"></app-step10>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

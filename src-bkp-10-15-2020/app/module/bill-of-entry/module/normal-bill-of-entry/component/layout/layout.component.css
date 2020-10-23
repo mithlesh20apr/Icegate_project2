@@ -1,0 +1,8 @@
+:host /deep/ .mat-step-header {
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    box-sizing: content-box;
+    -webkit-tap-highlight-color: white !important;
+  }

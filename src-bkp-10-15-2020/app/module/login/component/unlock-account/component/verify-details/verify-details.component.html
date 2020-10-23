@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-md-7">
+        <div class="row justify-content-center mt-5">
+            <h4 class="text-center text-padding">Verification Option</h4>
+            <p class="text-center text-muted text-padding">
+                We have <span *ngIf="mobile">mobile {{mobile}}</span>
+                <span *ngIf="mobile && email"> and </span> <span *ngIf="email">Email Id- {{email}}</span>
+                <br> registered with this ICEGATE ID - <b>{{userDetails.icegateId}}</b>
+            </p>
+        </div>
+        <div class="row justify-content-center pt-5">
+            <!-- <div class="col-md-7"> -->
+            <form>
+                <h5 class="text-muted text-center">Please select how you want to verify ?</h5>
+                <div class="form-group pt-3">
+                    <label class="pr-4 pl-3" for="">Verify Using :</label>
+                    <div class="form-check form-check-inline pr-4">
+                        <input class="form-check-input" type="radio" id="mobile" name="authType" value="mobile"
+                            [disabled]="!mobile || showOtp" (click)="getOtp('mobile')" />
+                        <label class="form-check-label pt-1" for="mobile">Mobile</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="email" name="authType" value="email"
+                            [disabled]="!email || showOtp" (click)="getOtp('email')" />
+                        <label class="form-check-label pt-1" for="email">Email</label>
+                    </div>
+                </div>
+                <div *ngIf="showOtp" class="form-group">
+                    <div class="row">
+                        <span class="pl-3"><label for="otp">OTP</label>
+                            <a class="resend-link" (click)="resendOtp();">Resend OTP</a>
+                        </span>
+                    </div>
+                    <div class="row justify-content-center pb-1">
+                        <ng-otp-input class="d-block" (onInputChange)="onOtpChange($event)"  #ngOtpInput [config]="config"></ng-otp-input>
+                    </div>
+                    <div class="row pl-2" *ngIf="expirationTime!=0">
+                        <span style="font-size: 12px;"> OTP expires in <span
+                                class="text-error font-weight-bold">{{expirationTime}} seconds</span></span>
+                    </div>                    
+                    <!-- <div class="row pl-2" *ngIf="expirationTime==0">
+                        <span class="text-error d-block"><img
+                            src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b>
+                        Otp Expired.</span>
+                    </div> -->
+                    <div class="row">
+                        <span class="text-error d-block pt-1 pl-2" *ngIf="errorMessage"><img
+                            src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b>
+                        {{errorMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="otpLimit" class="row otp-fail pt-3">
+                    <div class="col-md-1">
+                        <img class="pt-2" src="assets/images/Alert.png" alt="alert">
+                    </div>
+                    <div class="col-md-11">
+                        <h6 style="font-size: 14px;">3 attempts for OTP verification failed!</h6>
+                        <a class="otp-fail-link">Contact Helpdesk or Chat with us.</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row pt-5">
+                    <div class="col-md-5 pt-2 pb-2">
+                        <button class="btn btn-back btn-block" (click)="back()">
+                            Back
+                        </button>
+                    </div>
+                    <div class="col-md-5 offset-md-2 pt-2 pb-2">
+                        <button class="btn btn-proceed btn-block" (click)="verifyOtp()"
+                            [disabled]="!enableContinue">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- </div> -->
+        </div>
+    </div>
+    <div class="col-md-5">
+        <img src="assets/images/account-lock.png" class="img-fluid img-responsive" alt="Login image">
+    </div>
+</div>

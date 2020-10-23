@@ -1,0 +1,185 @@
+<mat-expansion-panel [expanded]="1" class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            General Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="generalDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>Message Type</label>
+                    <input type="text" class="form-control" formControlName="message_type" readonly>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Custom House Code</label>
+                    <input type="text" class="form-control" formControlName="custom_house_code">
+                    <mat-error *ngIf="generalDetails.controls.custom_house_code.errors?.maxlength">The maximum field length is 6, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>Job Number</label>
+                    <input type="text" class="form-control" formControlName="job_number">
+                    <mat-error *ngIf="generalDetails.controls.job_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>
+                    <mat-error *ngIf="generalDetails.controls.job_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Job Date</label>
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="job_date" formControlName="job_date">
+                        <mat-datepicker-toggle matSuffix [for]="job_date"></mat-datepicker-toggle>
+                        <mat-datepicker #job_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>SB No.</label>
+                    <input type="text" class="form-control" formControlName="sb_number">
+                    <mat-error *ngIf="generalDetails.controls.sb_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>
+                    <mat-error *ngIf="generalDetails.controls.sb_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>SB Date</label>
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="sb_date" formControlName="sb_date">
+                        <mat-datepicker-toggle matSuffix [for]="sb_date"></mat-datepicker-toggle>
+                        <mat-datepicker #sb_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>CHA License Number</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="cha_license_number">
+                    <mat-error *ngIf="generalDetails.controls.cha_license_number.errors?.required && generalDetails.controls.cha_license_number.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="generalDetails.controls.cha_license_number.errors?.maxlength">The maximum field length is 15, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Importer Exporter Code</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="importer_exporter_code" matTooltip="* If user selects IEC No - then user to provide non-standard IEC">
+                    <mat-error *ngIf="generalDetails.controls.importer_exporter_code.errors?.required && generalDetails.controls.importer_exporter_code.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="generalDetails.controls.importer_exporter_code.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Branch Sr No of Exporter</label> <span *ngIf="isIecAvailable == 'Y' || isIecAvailable == undefined" class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="branch_sr_no_of_exporter">
+                    <mat-error *ngIf="generalDetails.controls.branch_sr_no_of_exporter.errors?.required && generalDetails.controls.branch_sr_no_of_exporter.touched 
+                        && (isIecAvailable == undefined || isIecAvailable == 'Y')">
+                        This field is required <br></mat-error>
+                    <mat-error *ngIf="generalDetails.controls.branch_sr_no_of_exporter.errors?.maxlength">The maximum field length is 3, please update the field <br></mat-error>
+                    <mat-error *ngIf='generalDetails.controls.branch_sr_no_of_exporter.errors?.pattern'>
+                        Only numbers are allowed in this field, please update <br>
+                    </mat-error>
+                </div>
+            </div>
+            <div class="col-md-12" *ngIf="isIecAvailable == 'N'" class="dropdown-color">
+                <br>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Importer Exporter Name</label><span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="importer_exporter_name">
+                        <mat-error *ngIf="generalDetails.controls.importer_exporter_name.errors?.required && generalDetails.controls.importer_exporter_name.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="generalDetails.controls.importer_exporter_name.errors?.maxlength">The maximum field length is 50, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Imp. Exp. Address1</label><span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="imp_exp_address1">
+                        <mat-error *ngIf="generalDetails.controls.imp_exp_address1.errors?.required && generalDetails.controls.imp_exp_address1.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="generalDetails.controls.imp_exp_address1.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Imp. Exp Address2</label>
+                        <input type="text" class="form-control" formControlName="imp_exp_address2">
+                        <mat-error *ngIf="generalDetails.controls.imp_exp_address2.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Imp. Exp. City</label>
+                        <input type="text" class="form-control" formControlName="imp_exp_city">
+                        <mat-error *ngIf="generalDetails.controls.imp_exp_city.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Imp. Exp. State</label>
+                        <input type="text" class="form-control" formControlName="imp_exp_state">
+                        <mat-error *ngIf="generalDetails.controls.imp_exp_state.errors?.maxlength">The maximum field length is 25, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Imp. Exp PIN</label>
+                        <input type="text" class="form-control" formControlName="imp_exp_pin">
+                        <mat-error *ngIf="generalDetails.controls.imp_exp_pin.errors?.maxlength">The maximum field length is 6, please update the field <br></mat-error>
+                        <mat-error *ngIf='generalDetails.controls.imp_exp_pin.errors?.pattern'>
+                            Only numbers are allowed in this field, please update
+                        </mat-error>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>Type of Exporter</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="type_of_exporter">
+                    <mat-error *ngIf="generalDetails.controls.type_of_exporter.errors?.required && generalDetails.controls.type_of_exporter.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="generalDetails.controls.type_of_exporter.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Exporter Class</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="exporter_class">
+                    <mat-error *ngIf="generalDetails.controls.exporter_class.errors?.required && generalDetails.controls.exporter_class.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="generalDetails.controls.exporter_class.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>State of origin Exporter</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="state_of_origin_exporter">
+                    <mat-error *ngIf="generalDetails.controls.state_of_origin_exporter.errors?.required && generalDetails.controls.state_of_origin_exporter.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="generalDetails.controls.state_of_origin_exporter.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Authorized Dealer Code</label> <span *ngIf="isNfeiAvailable == 'N' || isNfeiAvailable == undefined" class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="authorized_dealer_code">
+                    <mat-error *ngIf="generalDetails.controls.authorized_dealer_code.errors?.required && generalDetails.controls.authorized_dealer_code.touched 
+                        && (isNfeiAvailable == 'N' || isNfeiAvailable == undefined)">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="generalDetails.controls.authorized_dealer_code.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>EPZ code</label>
+                    <input type="text" class="form-control" formControlName="epz_code">
+                    <mat-error *ngIf="generalDetails.controls.epz_code.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>

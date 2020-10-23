@@ -1,0 +1,103 @@
+<mat-expansion-panel [expanded]="1" class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Invoice Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="invoiceDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>Invoice Sr. No.</label>
+                    <input type="text" class="form-control" formControlName="invoice_sr_number">
+                    <mat-error *ngIf="invoiceDetails.controls.invoice_sr_number.errors?.maxlength">The maximum field length is 2, please update the field</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Actual Invoice number</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="invoice_number">
+                    <mat-error *ngIf="invoiceDetails.controls.invoice_number.errors?.required && invoiceDetails.controls.invoice_number.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="invoiceDetails.controls.invoice_number.errors?.maxlength">The maximum field length is 17, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>Invoice Currency</label> <span class="required"> *</span>
+                    <select class="form-control" formControlName="invoice_currency">
+                        <option value="IND">IND</option>
+                        <option value="USD">USD</option>
+                    </select>
+                    <mat-error *ngIf="invoiceDetails.controls.invoice_currency.errors?.required && invoiceDetails.controls.invoice_currency.touched">
+                        This field is required</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Nature of contract</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="nature_of_contract">
+                        <option value="CIF">CIF</option>
+                        <option value="CF">CF</option>
+                        <option value="CI">CI</option>
+                        <option value="FOB">FOB</option>
+                    </select>
+                    <mat-error *ngIf="invoiceDetails.controls.nature_of_contract.errors?.required && invoiceDetails.controls.nature_of_contract.touched">
+                        This field is required</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>Invoice Date</label><span class="required"> *</span>
+                    <br>
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="invoice_date" formControlName="invoice_date">
+                        <mat-datepicker-toggle matSuffix [for]="invoice_date"></mat-datepicker-toggle>
+                        <mat-datepicker #invoice_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                    <mat-error *ngIf="invoiceDetails.controls.invoice_date.errors?.required && invoiceDetails.controls.invoice_date.touched">
+                        Enter valid date</mat-error>
+                </div>
+                <div class="form-group col-md-4"></div>
+                <div class="form-group col-md-4">
+                    <label>Buyer Name</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="buyer_name">
+                    <mat-error *ngIf="invoiceDetails.controls.buyer_name.errors?.required && invoiceDetails.controls.buyer_name.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="invoiceDetails.controls.buyer_name.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Buyer address 1</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="buyer_address_1">
+                    <mat-error *ngIf="invoiceDetails.controls.buyer_address_1.errors?.required && invoiceDetails.controls.buyer_address_1.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="invoiceDetails.controls.buyer_address_1.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Buyer address 2</label>
+                    <input type="text" class="form-control" formControlName="buyer_address_2">
+                    <mat-error *ngIf="invoiceDetails.controls.buyer_address_2.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Buyer address 3</label>
+                    <input type="text" class="form-control" formControlName="buyer_address_3">
+                    <mat-error *ngIf="invoiceDetails.controls.buyer_address_3.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Buyer address 4</label>
+                    <input type="text" class="form-control" formControlName="buyer_address_4">
+                    <mat-error *ngIf="invoiceDetails.controls.buyer_address_4.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>

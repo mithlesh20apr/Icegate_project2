@@ -1,0 +1,961 @@
+<div class="mt-2"><span class="required">&#42;</span> indicates the mandatory fields </div>
+<div>
+    <h6 class="font-h6 text-center">Invoice</h6>
+    <hr>
+<button mat-raised-button (click)="openDialog()" id="add-option">
+    Add Items <mat-icon>add</mat-icon>
+</button>
+<br>
+<br>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" *ngFor="let item of [1]; first as isFirst"
+            [expanded]="isFirst" class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Invoice Details 
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <br>
+                <form class="col-md-12" [formGroup]="homeConsumptionFormStep3">
+                    <br>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class=" form-group col-md-4">
+                            <label>Invoice Serial Number</label>
+                            <input type="text" class="form-control" formControlName="invoice_serial_number">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep3.controls.invoice_serial_number.touched'
+                                class="text-danger">This field is required <br></mat-error>
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.invoice_serial_number.errors?.maxlength '
+                                class="text-danger">The maximum field length is 5, please update the field <br>
+                            </mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.invoice_serial_number.errors?.pattern'
+                                class="text-danger">Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Invoice Date</label>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <!-- #docregion toggle -->
+                                <input matInput [matDatepicker]="invoice_date" formControlName="invoice_date">
+                                <mat-datepicker-toggle matSuffix [for]="invoice_date"></mat-datepicker-toggle>
+                                <mat-datepicker #invoice_date></mat-datepicker>
+                                <!-- #enddocregion toggle -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class=" form-group col-md-4">
+                            <label>Purchase Order Number</label>
+                            <input type="text" class="form-control" formControlName="purchase_order_number">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.purchase_order_number.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 20, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Purchase Order Date</label>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <!-- #docregion toggle -->
+                                <input matInput [matDatepicker]="purchase_order_date"
+                                    formControlName="purchase_order_date">
+                                <mat-datepicker-toggle matSuffix [for]="purchase_order_date"></mat-datepicker-toggle>
+                                <mat-datepicker #purchase_order_date></mat-datepicker>
+                                <!-- #enddocregion toggle -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class=" form-group col-md-4">
+                            <label>Contract Number</label>
+                            <input type="text" class="form-control" formControlName="contract_number">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.contract_number.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 20, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Contract Date</label>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <!-- #docregion toggle -->
+                                <input matInput [matDatepicker]="contract_date" formControlName="contract_date">
+                                <mat-datepicker-toggle matSuffix [for]="contract_date"></mat-datepicker-toggle>
+                                <mat-datepicker #contract_date></mat-datepicker>
+                                <!-- #enddocregion toggle -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class=" form-group col-md-4">
+                            <label>LC Number</label>
+                            <input type="text" class="form-control" formControlName="lc_number">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.lc_number.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 20, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-4">
+                            <label>LC Date</label>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <!-- #docregion toggle -->
+                                <input matInput [matDatepicker]="lc_date" formControlName="lc_date">
+                                <mat-datepicker-toggle matSuffix [for]="lc_date"></mat-datepicker-toggle>
+                                <mat-datepicker #lc_date></mat-datepicker>
+                                <!-- #enddocregion toggle -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class=" form-group col-md-4">
+                            <label>SVB Reference Number</label>
+                            <input type="text" class="form-control" formControlName="svb_reference_number">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.svb_reference_number.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 20, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-4">
+                            <label>SVB Reference Date</label>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <!-- #docregion toggle -->
+                                <input matInput [matDatepicker]="svb_reference_date"
+                                    formControlName="svb_reference_date">
+                                <mat-datepicker-toggle matSuffix [for]="svb_reference_date"></mat-datepicker-toggle>
+                                <mat-datepicker #svb_reference_date></mat-datepicker>
+                                <!-- #enddocregion toggle -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-2">
+                            <label>SVB Load Assessable Number</label>
+                            <input type="text" class="form-control" formControlName="svb_load_assessable_value">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.svb_load_assessable_value.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 10, please update the field <br>
+                            </mat-error>
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.svb_load_assessable_value.errors?.pattern'
+                                class="text-danger">
+                                Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                        <div class="form-group  col-md-2">
+                            <label>SVB Load on Duty </label>
+                            <input type="text" class="form-control" formControlName="svb_load_on_duty">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.svb_load_on_duty.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 10, please update the field <br>
+                            </mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.svb_load_on_duty.errors?.pattern'
+                                class="text-danger"> Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <span>SVB Flag</span> <br><br>
+                            <label class=" col-md-4">
+                                <input type="radio" value="A" formControlName="svb_flag"> A
+                                (Assessable)&nbsp;
+                            </label>
+                            <label class="col-md-4 ">
+                                <input type="radio" value="O" formControlName="svb_flag">O (On Duty)
+                            </label>
+                            <label class="col-md-4">
+                                <input type="radio" value="B" formControlName="svb_flag">B (Both)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <span>Whether Load Final/ Provisional on Ass. Value</span><br><br>
+                            <label class="col-md-3 ">
+                                <input type="radio" value="F" formControlName='load_final_provisional_on_ass_value'>F
+                            </label>
+                            <label class="col-md-3">
+                                <input type="radio" value="P" formControlName='load_final_provisional_on_ass_value'>P
+                            </label>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Whether Load Final/ Provisional on Duty</label>
+                            <input type="text" class="form-control" formControlName="load_final_provisional_on_duty">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.load_final_provisional_on_duty.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 1, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Custom House Code which has imposed Load</label>
+                            <select class="form-control">
+                                <option></option>
+                                <option>1</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Supplier Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row">
+                <br>
+                <form class="col-md-12" [formGroup]="homeConsumptionFormStep3">
+                    <br>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Supplier Name</label><span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="name_supplier">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.name_supplier.errors?.required && homeConsumptionFormStep3.controls.name_supplier.errors?.touched'
+                                class="text-danger">This field is required
+                            </mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.name_supplier.errors?.maxlength'
+                                class="text-danger">The maximum field length is 50, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Supplier Country Name</label>
+                            <select class="form-control">
+                                <option value=""> </option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Supplier Address 1</label>
+                            <input type="text" class="form-control" formControlName="address1_supplier">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address1_supplier.errors?.maxlength'
+                                class="text-danger">The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Supplier Address 2</label>
+                            <input type="text" class="form-control" formControlName="address2_supplier">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address2_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Supplier Address 3</label>
+                            <input type="text" class="form-control" formControlName="address3_supplier">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address3_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-2">
+                            <label>Country</label>
+                            <input type="text" class="form-control" formControlName="country_supplier">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.country_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+
+                        <div class="form-group  col-md-2">
+                            <label>Pin</label>
+                            <input type="text" class="form-control" formControlName="pin_supplier">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.pin_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 10, please update the field
+                            </mat-error><br>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.pin_supplier.errors?.pattern'
+                                class="text-danger"> Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Seller Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <br>
+                <form class="col-md-12" [formGroup]="homeConsumptionFormStep3">
+                    <br>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Seller Name</label>
+                            <input type="text" class="form-control" formControlName="name_seller">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.name_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Seller Country Name</label>
+                            <select class="form-control">
+                                <option value=""> </option>
+                                <option value="Afganistan">Afghanistan</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Seller Address 1</label>
+                            <input type="text" class="form-control" formControlName="address1_seller">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address1_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Seller Address 2</label>
+                            <input type="text" class="form-control" formControlName="address2_seller">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address2_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Seller Address 3</label>
+                            <input type="text" class="form-control" formControlName="address3_seller">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address3_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-2">
+                            <label>State</label>
+                            <input type="text" class="form-control" formControlName="country_seller">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.country_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Pin</label>
+                            <input type="text" class="form-control" formControlName="pin_seller">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.pin_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 10, please update the field
+                            </mat-error><br>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.pin_seller.errors?.pattern'
+                                class="text-danger"> Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Broker Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row">
+                <br>
+                <form class="col-md-12" [formGroup]="homeConsumptionFormStep3">
+                    <br>
+                    <div class="form-row">
+                        <br>
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Broker Name</label>
+                            <input type="text" class="form-control">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.name_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 50, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-4">
+                            <label>Broker Country Name</label>
+                            <select class="form-control">
+                                <option value=""> </option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Broker Address 1</label>
+                            <input type="text" class="form-control" formControlName="address1_broker">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address1_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Broker Address 2</label>
+                            <input type="text" class="form-control" formControlName="address2_broker">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address2_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Broker Address 3</label>
+                            <input type="text" class="form-control" formControlName="address3_broker">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address3_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-2">
+                            <label>Country</label>
+                            <input type="text" class="form-control" formControlName="country_broker">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.country_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Pin</label>
+                            <input type="text" class="form-control" formControlName="pin_broker">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.pin_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 10, please update the field
+                            </mat-error><br>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.pin_broker.errors?.pattern'
+                                class="text-danger"> Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Invoice Rates and Commercial Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <br>
+                <form class="col-md-12" [formGroup]="homeConsumptionFormStep3">
+                    <br>
+                    <div class="form-row">
+                        <br>
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Invoice Value</label> <span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="invoice_value">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.invoice_value.errors?.required && homeConsumptionFormStep3.controls.invoice_value.touched'
+                                class="text-danger">
+                                This field is required <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.invoice_value.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 16, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.invoice_value.errors?.pattern '>
+                                Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-2">
+                            <label> Terms of Invoice </label> <span class="required">
+                                *</span>
+                            <input type="text" class="form-control" formControlName="terms_of_invoice">
+
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.terms_of_invoice.errors?.required && homeConsumptionFormStep3.controls.terms_of_invoice.touched'
+                                class="text-danger">
+                                This field is required <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.terms_of_invoice.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                        </div>
+
+                        <div class="form-group  col-md-2">
+                            <label>Invoice Currency</label> <span class="required">
+                                *</span>
+                            <input type="text" class="form-control" formControlName="invoice_currency">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.invoice_currency.errors?.required && homeConsumptionFormStep3.controls.invoice_currency.touched'
+                                class="text-danger">
+                                This field is required <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.invoice_currency.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Nature of Discount</label>
+                            <input type="text" class="form-control" formControlName="nature_of_discount">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.nature_of_discount.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 35, please update the field </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-2">
+                            <label> Discount Rate </label>
+                            <input type="text" class="form-control" formControlName="discount_rate">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.discount_rate.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 6, please update the field </mat-error>
+                        </div>
+                        <div class="form-group  col-md-2">
+                            <label> Discount Amount</label>
+                            <input type="text" class="form-control" formControlName="discount_amount">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.discount_amount.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 6, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.discount_amount.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-2">
+                            <label>HSS Load Rate</label>
+                            <input type="text" class="form-control" formControlName="discount_amount">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.discount_amount.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 6, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.discount_amount.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+
+                        <div class="form-group  col-md-2">
+                            <label> HSS Load Amount</label>
+                            <input type="text" class="form-control" formControlName="hss_load_amount">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.hss_load_amount.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 16, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.hss_load_amount.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-2">
+                            <label> Freight Value </label>
+                            <input type="text" class="form-control" formControlName="freight_value">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.freight_value.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 16, please update the field</mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.freight_value.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                        <div class="form-group  col-md-2">
+                            <label> Freight Rate in %</label>
+                            <input type="text" class="form-control" formControlName="freight_rate">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.freight_rate.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 7, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.freight_rate.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Whether Freight Rate is actual?</label>
+                            <input type="text" class="form-control" formControlName="freight_actual">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.freight_actual.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 1, please update the field</mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-2">
+                            <label> Freight Currency</label>
+                            <input type="text" class="form-control" formControlName="freight_currency">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.freight_currency.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Insurace Value</label>
+                            <input type="text" class="form-control" formControlName="insurance_value">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.insurance_value.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 16, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.insurance_value.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-2">
+                            <label> Insurance Currency</label>
+                            <input type="text" class="form-control" formControlName="insurance_currency">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.insurance_currency.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                        </div>
+
+                        <div class="form-group  col-md-2">
+                            <label> Insurance Rate</label>
+                            <input type="text" class="form-control" formControlName="insurance_rate">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.insurance_rate.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 7, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.insurance_rate.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-2">
+                            <label>Misc. Charges</label>
+                            <input type="text" class="form-control" formControlName="misc_charge">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.misc_charge.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 16, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.insurance_rate.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+
+                        <div class="form-group  col-md-2">
+                            <label> Misc. Currency</label>
+                            <input type="text" class="form-control" formControlName="misc_currency">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.misc_currency.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-2">
+                            <label> Misc. Rate</label>
+                            <input type="text" class="form-control" formControlName="misc_rate">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.misc_rate.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 3, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-2">
+                            <label>Landing Rate</label>
+                            <input type="text" class="form-control" formControlName="landing_rate">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.landing_rate.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 7, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.landing_rate.errors?.pattern'
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+
+                        <div class="form-group  col-md-2">
+                            <label> Londing Charges</label>
+                            <input type="text" class="form-control" formControlName="loading_charge">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.loading_charge.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 16, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.loading_charge.errors?.pattern'
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-2">
+                            <label> Loading Currency </label>
+                            <input type="text" class="form-control" formControlName="loading_currency">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.loading_currency.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                        </div>
+
+                        <div class="form-group  col-md-2">
+                            <label> Loading Rate</label>
+                            <input type="text" class="form-control" formControlName="load_rate">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.load_rate.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 7, please update the field <br>
+                            </mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.load_rate.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Agency Comission</label>
+                            <input type="text" class="form-control" formControlName="agency_commission">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.agency_commission.errors?.maxlength'>
+                                The maximum field length is 16, please update the field
+                                <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.agency_commission.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-2">
+                            <label> Agency Comm. Currency </label>
+                            <input type="text" class="form-control" formControlName="agency_commission_currency">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.agency_commission_currency.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                        </div>
+                        <div class="form-group  col-md-2">
+                            <label> Agency Comm. Rate</label>
+                            <input type="text" class="form-control" formControlName="agency_commission_rate">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.agency_commission_rate.errors?.maxlength'
+                                class="text-danger">
+                                The maximum field length is 7, please update the field <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.agency_commission_rate.errors?.pattern '
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Nature of Transaction Comission</label> <span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="nature_of_transaction">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.nature_of_transaction.errors?.required && homeConsumptionFormStep3.controls.nature_of_transaction.touched'
+                                class="text-danger">This field is required <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.nature_of_transaction.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 1, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label> Payment Terms </label> <span class="required">
+                                *</span>
+                            <input type="text" class="form-control" formControlName="payment_terms">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.payment_terms.errors?.required && homeConsumptionFormStep3.controls.payment_terms.touched'
+                                class="text-danger">This field is required</mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.payment_terms.errors?.maxlength'
+                                class="text-danger">The maximum field length is 3, please update the field </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Conditions attached with sale 1</label>
+                            <input type="text" class="form-control" formControlName="cond_sale_1">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.cond_sale_1.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label> Conditions attached with sale 2</label>
+                            <input type="text" class="form-control" formControlName="cond_sale_2">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.cond_sale_2.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field</mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Conditions attached with sale 3</label>
+                            <input type="text" class="form-control" formControlName="cond_sale_3">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.cond_sale_3.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label> Conditions attached with sale 4 </label>
+                            <input type="text" class="form-control" formControlName="cond_sale_4">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.cond_sale_4.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Conditions attached with sale 5</label>
+                            <input type="text" class="form-control" formControlName="cond_sale_5">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.cond_sale_5.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field</mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label> Valuation method applicable</label>
+                            <input type="text" class="form-control" formControlName="valuation_method_applicable">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.valuation_method_applicable.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Actual Invoice Number</label> <span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="actual_invoice_number">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.actual_invoice_number.errors?.required && homeConsumptionFormStep3.controls.actual_invoice_number.touched'
+                                class="text-danger">This field is required <br></mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.actual_invoice_number.errors?.maxlength'
+                                class="text-danger">The maximum field length is 16, please update the field </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-4">
+                            <label> Other Relevant Information</label>
+                            <input type="text" class="form-control" formControlName="other_relevant_information">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.other_relevant_information.errors?.maxlength'
+                                class="text-danger">The maximum field length is 100, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Terms Place</label>
+                            <input type="text" class="form-control" formControlName="terms_place">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.terms_place.errors?.maxlength'
+                                class="text-danger">The maximum field length is 35, please update the field </mat-error>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Third Party Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <br>
+                <form class="col-md-12" [formGroup]="homeConsumptionFormStep3">
+                    <br>
+                    <div class="form-row">
+                        <br>
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Third Party Name</label>
+                            <input type="text" class="form-control" formControlName="name_third_party">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.name_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 70, please update the field </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Third Party Name Address 1</label>
+                            <input type="text" class="form-control" formControlName="address1_third_party">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address1_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 70, please update the field </mat-error>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+
+                        <div class="form-group col-md-4">
+                            <label>Third Party Name Address 2</label>
+                            <input type="text" class="form-control" formControlName="address2_third_party">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.address2_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 50, please update the field </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-4">
+                            <label>Third Party Name City</label>
+                            <input type="text" class="form-control" formControlName="city_third_party">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.city_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 35, please update the field </mat-error>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Third Party Country Sub. Division</label>
+                            <input type="text" class="form-control" formControlName="country_sub_division_third_party">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.country_sub_division_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 35, please update the field </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+
+                        <div class="form-group  col-md-2">
+                            <label>Third Party Country Code </label>
+                            <input type="text" class="form-control" formControlName="country_code_third_party">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.country_code_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 2, please update the field </mat-error>
+                        </div>
+
+                        <div class="form-group  col-md-2">
+                            <label>Third Party Pin</label>
+                            <input type="text" class="form-control" formControlName="pin_third_party">
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.pin_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 10, please update the field <br>
+                            </mat-error>
+                            <mat-error *ngIf='homeConsumptionFormStep3.controls.pin_third_party.errors?.pattern'
+                                class="text-danger">Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Authorized Economic Operator Code</label>
+                            <input type="text" class="form-control" formControlName="authorized_economic_operator_code">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.authorized_economic_operator_code.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 17, please update the field <br>
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Authorized Economic Operator Country </label>
+                            <select class="form-control">
+                                <option value=""> </option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Authorized Economic Operator Role</label>
+                            <input type="text" class="form-control" formControlName="authorized_economic_operator_role">
+                            <mat-error
+                                *ngIf='homeConsumptionFormStep3.controls.authorized_economic_operator_role.errors?.maxlength'
+                                class="text-danger">The maximum field length is 3, please update the field </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Whether Buyer or Seller related</label>
+                            <div class="radio-inline">
+                                <input type="radio" name="option">Yes &nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="option">No &nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion><br>
+</div>

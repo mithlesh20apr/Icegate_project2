@@ -1,0 +1,95 @@
+<div>
+    <form class="col-md-12" [formGroup]="inBondFormStep2">
+        <h6 class="font-h6 text-center">Exchange Rate</h6>
+        <hr>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Currency Code</label><span class="required">*</span>
+                <input type="text" class="form-control" formControlName="currency_code">
+                <mat-error
+                    *ngIf='inBondFormStep2.controls.currency_code.errors?.required && inBondFormStep2.controls.currency_code.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep2.controls.currency_code.errors?.maxlength'
+                    class="text-danger">The maximum field length is <3>, please update the fields</mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <div class="form-group">
+                    <span>Standard Currency</span> <span class="required"> *</span><br><br>
+                    <label class="col-md-3">
+                        <input type="radio" value="Yes">Yes
+                    </label>
+                    <label class=" col-md-3">
+                        <input type="radio" value="No">No
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-2">
+                <label>Unit in Rs.</label>
+                <input type="text" class="form-control" formControlName="unit_in_rs">
+                <mat-error *ngIf='inBondFormStep2.controls.unit_in_rs.errors?.maxlength'
+                    class="text-danger">The maximum field length is <7>, please update the fields</mat-error>
+                <mat-error *ngIf='inBondFormStep2.controls.unit_in_rs.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update</mat-error>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label>Rate</label>
+                <input type="text" class="form-control" formControlName="rate">
+                <mat-error *ngIf='inBondFormStep2.controls.rate.errors?.maxlength'
+                    class="text-danger">The maximum field length is <9>, please update the fields
+                </mat-error>
+                <mat-error *ngIf='inBondFormStep2.controls.rate.errors?.pattern'
+                class="text-danger">Only numbers are allowed in this field, please update
+            </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Effective Date</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Bank name for Non-Standard Currency</label>
+                <input type="text" class="form-control"
+                    formControlName="bankname_non_standard_currency">
+                <mat-error
+                    *ngIf='inBondFormStep2.controls.bankname_non_standard_currency.errors?.maxlength'
+                    class="text-danger">The maximum field length is <35>, please update the fields</mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Certificate Number</label>
+                <input type="text" class="form-control"
+                    formControlName="certificate_number">
+                <mat-error *ngIf='inBondFormStep2.controls.certificate_number.errors?.maxlength'
+                    class="text-danger">The maximum field length is <20>, please update the fields
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Certificate Date</label>
+                <input type="date" class="form-control" formControlName="certificate_date">
+            </div>
+        </div>
+    
+    </form>
+</div>
+
+
+
+
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

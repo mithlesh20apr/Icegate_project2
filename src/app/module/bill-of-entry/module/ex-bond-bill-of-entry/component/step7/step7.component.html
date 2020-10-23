@@ -1,0 +1,51 @@
+<div>
+    <form class="col-md-12" [formGroup]="exBondFormStep7">
+        <h6 class="font-h6 text-center">Commercial Tax</h6>
+        <hr>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1">
+                <label>Sate Code</label><span class="required"> *</span>
+                <select class="form-control" formControlName="state_code">
+                    <option></option>
+                    <option></option>
+                </select>
+                <mat-error
+                    *ngIf='exBondFormStep7.controls.state_code.errors?.required && exBondFormStep7.controls.state_code.touched'
+                    class="text-danger">This field is required</mat-error>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Commercial Tax Type</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="commercial_tax_type">
+                <mat-error
+                    *ngIf='exBondFormStep7.controls.commercial_tax_type.errors?.required && exBondFormStep7.controls.commercial_tax_type.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='exBondFormStep7.controls.commercial_tax_type.errors?.maxlength' class="text-danger">
+                    The maximum field length is <1>, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1">
+                <label>Commercial Tax Registration No.</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="commercial_tax_registration">
+                <mat-error
+                    *ngIf='exBondFormStep7.controls.commercial_tax_registration.errors?.required && exBondFormStep7.controls.commercial_tax_registration.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='exBondFormStep7.controls.commercial_tax_registration.errors?.maxlength' class="text-danger">
+                    The maximum field length is <20>, please update the field
+                </mat-error>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

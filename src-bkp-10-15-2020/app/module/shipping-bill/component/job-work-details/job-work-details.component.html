@@ -1,0 +1,131 @@
+<mat-expansion-panel class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Job Work Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="jobWorkDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Number</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_number">
+                    <mat-error
+                        *ngIf='jobWorkDetails.controls.be_number.errors?.required && jobWorkDetails.controls.be_number.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_number.errors?.maxlength' >
+                        The maximum field length is 7, please update the field <br>
+                    </mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_number.errors?.pattern' >
+                        Only numbers are allowed in this field, please update
+                    </mat-error>
+
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Date</label><span class="required"> *</span>
+                    <br>
+                    <mat-form-field >
+                        <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="be_date" formControlName="be_date">
+                        <mat-datepicker-toggle matSuffix [for]="be_date"></mat-datepicker-toggle>
+                        <mat-datepicker #be_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                    <mat-error
+                        *ngIf='jobWorkDetails.controls.be_date.errors?.required && jobWorkDetails.controls.be_date.touched'
+                        >This field is required <br></mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Invoice Serial No</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_invoice_serial_number">
+                    <mat-error
+                        *ngIf='jobWorkDetails.controls.be_invoice_serial_number.errors?.required && jobWorkDetails.controls.be_invoice_serial_number.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_invoice_serial_number.errors?.pattern'
+                        >
+                        Only numbers are allowed in this field, please update <br>
+                    </mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_invoice_serial_number.errors?.maxlength'
+                        >
+                        The maximum field length is 2, please update the field
+                    </mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Invoice Number</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_invoice_number">
+                    <mat-error
+                        *ngIf='jobWorkDetails.controls.be_invoice_number.errors?.required && jobWorkDetails.controls.be_invoice_number.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_invoice_number.errors?.maxlength' >
+                        The maximum field length is 16, please update the field <br>
+                    </mat-error>
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Item Number</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_item_number">
+                    <mat-error
+                        *ngIf='jobWorkDetails.controls.be_item_number.errors?.required && jobWorkDetails.controls.be_item_number.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_item_number.errors?.maxlength' >
+                        The maximum field length is 4, please update the field
+                    </mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_item_number.errors?.pattern' >
+                        Only numbers are allowed in this field, please update <br>
+                    </mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Port Code</label>
+                    <input type="text" class="form-control" formControlName="be_port_code">
+                    <mat-error *ngIf='jobWorkDetails.controls.be_port_code.errors?.maxlength' >
+                        The maximum field length is 6, please update the field
+                    </mat-error>
+                    <mat-error
+                        *ngIf='jobWorkDetails.controls.be_port_code.errors?.required && jobWorkDetails.controls.be_port_code.touched'
+                        >This field is required <br></mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Qty Used</label>
+                    <input type="text" class="form-control" formControlName="be_qty_used">
+                    <mat-error
+                        *ngIf='jobWorkDetails.controls.be_qty_used.errors?.required && jobWorkDetails.controls.be_qty_used.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_qty_used.errors?.maxlength' >
+                        The maximum field length is 14, please update the field <br>
+                    </mat-error>
+                    <mat-error *ngIf='jobWorkDetails.controls.be_qty_used.errors?.pattern' >
+                        Only numbers are allowed in this field, please update <br>
+                    </mat-error>
+
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Qty Units</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="qty_units">
+                    <mat-error *ngIf='jobWorkDetails.controls.qty_units.errors?.maxlength' >
+                        The maximum field length is 3, please update the field <br>
+                    </mat-error>
+                    <mat-error
+                        *ngIf='jobWorkDetails.controls.qty_units.errors?.required && jobWorkDetails.controls.qty_units.touched'
+                        >This field is required </mat-error>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>

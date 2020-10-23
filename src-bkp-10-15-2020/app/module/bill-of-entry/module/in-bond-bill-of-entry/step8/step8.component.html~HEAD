@@ -1,0 +1,88 @@
+<div>
+    <form class="col-md-12" [formGroup]="inBondFormStep8">
+        <h6 class="font-h6 text-center">Bond</h6>
+        <hr>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Bond Number</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="bond_number">
+                <mat-error
+                    *ngIf='inBondFormStep8.controls.bond_number.errors?.required && inBondFormStep8.controls.bond_number.touched' class="text-danger">
+                    This field is required</mat-error>
+                <mat-error *ngIf='inBondFormStep8.controls.bond_number.errors?.maxlength' class="text-danger">
+                    The maximum field length is <10>, please update the field 
+                </mat-error>
+                <mat-error *ngIf='inBondFormStep8.controls.bond_number.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Bond Code</label><span class="required"> *</span>
+                <select formControlName="bond" class="form-control">
+                    <option></option>
+                    <option value="EO">EO</option>
+                </select>
+            </div>
+        </div>
+        <div *ngIf="inBondFormStep8.controls.bond.value==='EO'" class="dropdown-color">
+            <br>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Certificate Number</label><span class="required"> *</span>
+                    <input type="text" class="form-control"
+                        formControlName="certificate_number">
+                        <mat-error
+                        *ngIf='inBondFormStep8.controls.certificate_number.errors?.required && inBondFormStep8.controls.certificate_number.touched' class="text-danger">
+                        This field is required</mat-error>
+                        <mat-error *ngIf='inBondFormStep8.controls.certificate_number.errors?.required && inBondFormStep8.controls.certificate_number.errors?.touched' class="text-danger">This field is requried</mat-error><br>
+                    <mat-error
+                        *ngIf='inBondFormStep8.controls.certificate_number.errors?.maxlength' class="text-danger">
+                        The maximum field length is 30, please update the field </mat-error><br>
+                            <mat-error
+                        *ngIf='inBondFormStep8.controls.certificate_number.errors?.pattern' class="text-danger">
+                        Only numbers are allowed in this field, please update</mat-error>
+
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group  col-md-4">
+                    <label>Certificate Type</label><span class="required"> *</span>
+                    <select class="form-control">
+                        <option></option>
+                        <option value=""></option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Certificate Date</label><span class="required"> *</span>
+                    <input type="date" class="form-control" formControlName="certificate_date">
+                    <mat-error *ngIf='inBondFormStep8.controls.certificate_date.errors?.required && inBondFormStep8.controls.certificate_date.errors?.touched' class="text-danger">This field is requried</mat-error>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Bond Port</label>
+                <input type="text" class="form-control" formControlName="bond_port">
+                <mat-error *ngIf='inBondFormStep8.controls.bond_port.errors?.maxlength' class="text-danger">
+                    The maximum field length is <6>, please update the field
+                </mat-error>
+               
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

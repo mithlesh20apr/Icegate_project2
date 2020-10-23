@@ -1,0 +1,108 @@
+<mat-expansion-panel class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Container Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="containerDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Container Number</label>
+                    <input type="text" class="form-control" formControlName="container_number">
+                    <mat-error *ngIf="containerDetails.controls.container_number.errors?.maxlength">The maximum field length is 15, please update the field</mat-error>
+                    
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Container Size</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="container_size">
+                    <mat-error *ngIf="containerDetails.controls.container_size.errors?.required && containerDetails.controls.container_size.touched">This field is required</mat-error>
+                    <mat-error *ngIf="containerDetails.controls.container_size.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Excise Seal No.</label>
+                    <input type="text" class="form-control" formControlName="excise_seal_number">
+                    <mat-error *ngIf="containerDetails.controls.excise_seal_number.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Seal Date</label>
+                    <br>
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label> 
+                        <input matInput [matDatepicker]="seal_date" formControlName="seal_date">
+                        <mat-datepicker-toggle matSuffix [for]="seal_date"></mat-datepicker-toggle>
+                        <mat-datepicker #seal_date></mat-datepicker>
+                    </mat-form-field> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <span>Seal Type Indicator</span> <span class="required"> *</span> <br> <br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio" matTooltip="Bottle Seal" formControlName="seal_type_indicator"  value="BTSL">BTSL
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  matTooltip="Electronic Seal" formControlName="seal_type_indicator"  value="RSEAL">RSEAL
+                    </label> 
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"   matTooltip="Radio Frequency Identifier" formControlName="seal_type_indicator"  value="RFID">RFID
+                    </label>
+                    <mat-error *ngIf="containerDetails.controls.seal_type_indicator.errors?.required && containerDetails.controls.seal_type_indicator.touched">This field is required</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Seal Device ID</label>
+                    <input type="text" class="form-control" formControlName="seal_device_id"> 
+                    <mat-error *ngIf="containerDetails.controls.seal_device_id.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Movement Document Type</label>
+                    <input type="text" class="form-control" formControlName="movement_document_type">      
+                    <mat-error *ngIf="containerDetails.controls.movement_document_type.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>                   
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Movement Document Number</label>
+                    <input type="text" class="form-control" formControlName="movement_document_number">                   
+                    <mat-error *ngIf="containerDetails.controls.movement_document_number.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Eqmnt Type</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="eqmnt_type"> 
+                    <mat-error *ngIf="containerDetails.controls.eqmnt_type.errors?.required && containerDetails.controls.eqmnt_type.touched">This field is required</mat-error>
+                    <mat-error *ngIf="containerDetails.controls.eqmnt_type.errors?.maxlength">The maximum field length is 3, please update the field</mat-error>                   
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Eqmnt Qty</label>
+                    <input type="text" class="form-control" formControlName="eqmnt_qty">                   
+                    <mat-error *ngIf="containerDetails.controls.eqmnt_qty.errors?.maxlength">The maximum field length is 8, please update the field</mat-error>                    
+                    <mat-error *ngIf="containerDetails.controls.eqmnt_qty.errors?.pattern">Only numbers allowed in this field, please update</mat-error>                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Eqmnt Qty Code</label>
+                    <input type="text" class="form-control" formControlName="eqmnt_qty_code">      
+                    <mat-error *ngIf="containerDetails.controls.eqmnt_qty_code.errors?.maxlength">The maximum field length is 3, please update the field</mat-error>                   
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>
+

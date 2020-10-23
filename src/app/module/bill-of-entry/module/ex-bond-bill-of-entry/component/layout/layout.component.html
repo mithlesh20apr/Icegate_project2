@@ -1,0 +1,81 @@
+
+<div class="container-fluid">
+    <div class="card">
+        <b style="margin: 25px;">Bill of Entry</b>
+        <div class="box-color">
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-horizontal-stepper #stepper class="stepperscroll" (selectionChange)="selectionChange($event)">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon [inline]="true">check_circle</mat-icon>
+                          </ng-template>
+                        <mat-step>
+                            <app-step1></app-step1>
+                        </mat-step>
+                        <mat-step>
+                            <nav mat-tab-nav-bar class="invoice">
+                                <a mat-tab-link *ngFor="let dynamic of dynamicArray;let i = index" (click)="onTabChanged(i)"
+                                    [active]="TabIndex == i">
+                                    <span>Invoice {{dynamic}}</span>
+                                    <mat-icon [inline]="true" *ngIf="i>0" (click)="delete(i)">cancel</mat-icon>
+                                </a>
+                                <a (click)="add()" *ngIf="flag"><img src="assets/icons/NewInvoice.png" /></a>
+                            </nav>
+                            <mat-progress-bar class="audio-progress-bar" value="{{progress}}">
+                            </mat-progress-bar>
+                            <br>
+                            <div *ngFor="let item of dynamicArray;let i = index">
+                                <app-step2 [index]="item" *ngIf="i==TabIndex"></app-step2>
+                            </div>
+
+                            <div class="btncontainer">
+                                <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button id="back_draft" mat-raised-button>Save as Draft</button>
+                                <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+                            </div>
+
+                        </mat-step>
+                       
+                        <mat-step>
+                            <nav mat-tab-nav-bar class="invoice">
+                                <a mat-tab-link *ngFor="let dynamic of dynamicArray2;let i = index" (click)="onTabChanged2(i)"
+                                    [active]="TabIndex2 == i">
+                                    <span>Item {{dynamic}}</span>
+                                    <mat-icon [inline]="true" *ngIf="i>0" (click)="delete2(i)">cancel</mat-icon>
+                                </a>
+                                <a (click)="add2()" *ngIf="flag2"><img src="assets/icons/NewInvoice.png" /></a>
+                            </nav>
+                            <mat-progress-bar class="audio-progress-bar" value="{{progress2}}">
+                            </mat-progress-bar>
+                            <br>
+                            <div *ngFor="let item of dynamicArray2;let i = index">
+                                <app-step3 [index]="item" *ngIf="i==TabIndex2"></app-step3>
+                            </div>
+
+                            <div class="btncontainer">
+                                <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button id="back_draft" mat-raised-button>Save as Draft</button>
+                                <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <app-step4></app-step4>
+                        </mat-step>
+                        <mat-step>
+                            <app-step5></app-step5>
+                        </mat-step>
+                        <mat-step>
+                            <app-step6></app-step6>
+                        </mat-step>
+                        <mat-step>
+                            <app-step7></app-step7>
+                        </mat-step>
+                                                
+                    </mat-horizontal-stepper>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

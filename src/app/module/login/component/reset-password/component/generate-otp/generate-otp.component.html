@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-5">
+        <img src="assets/images/forgot-pass.png" class="img-fluid img-responsive" alt="Login image">
+    </div>
+    <div class="col-md-7">
+        <div class="row justify-content-center mt-5">
+            <!-- <h4 class="text-center">Icegate ID/Password Recovery</h4> -->
+            <p class="text-center text-muted text-padding">
+                Enter your <b class="text-dark">mobile number</b> or <b class="text-dark">email</b> used during
+                registration, for verification.
+            </p>
+        </div>
+        <div class="row justify-content-center pt-4">
+            <form [formGroup]="forgotPassForm">
+                <div class="form-group">
+                    <label class="pr-5" for="">Verify Using :</label>
+                    <div class="form-check form-check-inline pr-4">
+                        <input class="form-check-input" type="radio" id="mobile" formControlName="authType"
+                            [value]="radioOptions[0]" (click)="changeSelected('mobile')" />
+                        <label class="form-check-label pt-1" for="mobile">Mobile</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="email" formControlName="authType"
+                            [value]="radioOptions[1]" (click)="changeSelected('email')" />
+                        <label class="form-check-label pt-1" for="email">Email</label>
+                    </div>
+                </div>
+                <div *ngIf="selectedRadio == 'mobile'" class="form-group pt-4">
+                    <label class="d-block" for="mobileNo">Mobile</label>
+                    <input class="form-control" style="width: 113%;" type="text" formControlName="mobileNo" ng2TelInput
+                        [ng2TelInputOptions]="{initialCountry: 'in', separateDialCode: true}" id="mobileNo"
+                        placeholder="Enter Mobile No." (countryChange)="onCountryChange($event)" />
+                        <span class="text-error d-block pt-1"
+                            *ngIf="forgotPassForm.get('mobileNo').touched && forgotPassForm.get('mobileNo').errors?.required"><img
+                                src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b> Mobile No.
+                            is Required.</span>
+                        <span class="text-error d-block pt-1" *ngIf="errorMessage"><img src="assets/images/round-error.png"
+                                alt="error"> <b class="pl-1">Error:</b>
+                            {{errorMessage}}</span>
+                </div>
+                <div *ngIf="selectedRadio == 'email'" class="form-group pt-4">
+                    <label for="emailId">Email</label>
+                    <input type="text" class="form-control" id="emailId" formControlName="email" placeholder="Enter Email ID">
+                    <span class="text-error d-block pt-1"
+                        *ngIf="forgotPassForm.get('email').touched && forgotPassForm.get('email').errors?.required"><img
+                            src="assets/images/round-error.png" alt="error"> <b class="pl-1">Error:</b> Email Id
+                        is Required.</span>
+                    <span class="text-error d-block pt-1" *ngIf="errorMessage"><img src="assets/images/round-error.png"
+                            alt="error"> <b class="pl-1">Error:</b>
+                        {{errorMessage}}</span>
+                </div>
+                <div class="row form-group pt-5">
+                    <div class="col-md-5 pt-2 pb-2">
+                        <a class="btn btn-back btn-block" routerLink="/login">
+                            Back
+                        </a>
+                    </div>
+                    <div class="col-md-5 offset-md-2 pt-2 pb-2">
+                        <button class="btn btn-proceed btn-block" (click)="getOtp()"
+                            [disabled]="forgotPassForm.get('mobileNo').errors && forgotPassForm.get('email').errors">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

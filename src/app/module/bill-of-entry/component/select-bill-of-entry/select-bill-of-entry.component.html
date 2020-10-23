@@ -1,0 +1,50 @@
+
+<div class="container-fluid">
+
+    <div class="card cardRow">
+        <br>
+        <b style="margin-left: 20px;">Bill of Entry</b>
+
+        <div class="box-color">
+            <br>
+            <br>
+            <h6 style="text-align: center;"><b>Please choose the type of 'Bill of Entry'</b></h6>
+            <br>
+            <br>
+            <div class="row">
+                <div class="column">
+                    <div class="card-type" [ngClass]="[isSelected ? 'blueClass' : 'whiteClass']"
+                        (click)="getSelectedAll('a')">
+                        <h3> <img src="assets/icons/house-consumption.png"></h3>
+                        <p>Home </p>
+                        <p>Consumption</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card-type" [ngClass]="[isSelected1 ? 'blueClass' : 'whiteClass']"
+                        (click)="getSelectedAll('b')">
+                        <h3> <img src="assets/icons/in-bond.png"></h3>
+                        <p>In-Bond </p>
+                        <p>(Warehouse)</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card-type" [ngClass]="[isSelected2 ? 'blueClass' : 'whiteClass']"
+                        (click)="getSelectedAll('c')">
+                        <h3> <img src="assets/icons/ex-bond.png"></h3>
+                        <p>Ex-Bond</p>
+                        <p>(Warehouse)</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-9"></div>
+                <button id="savecon" (click)="goToForm()">Save & Continue</button>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+</div>

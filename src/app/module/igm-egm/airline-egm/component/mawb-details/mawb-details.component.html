@@ -1,0 +1,95 @@
+<button mat-raised-button (click)="openDialog()" id="add-option" >
+    Add HAWB Details <mat-icon>add</mat-icon>
+</button>
+<br>
+<div class="row">
+    <form class="col-md-12" [formGroup]="mawbDetails">
+        <h2 class="text-center">MAWB Details</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>MAWB Number</label> 
+                <input type="text" formControlName="mawb_no" class="form-control">
+                <validation-messages [control]="mawbDetails.controls.mawb_no"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>MAWB Date</label> <br>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label> 
+                    <input matInput [matDatepicker]="mawb_date" formControlName="mawb_date">
+                    <mat-datepicker-toggle matSuffix [for]="mawb_date"></mat-datepicker-toggle>
+                    <mat-datepicker #mawb_date></mat-datepicker>
+                </mat-form-field>
+                <validation-messages [control]="mawbDetails.controls.mawb_date"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Port of Loading</label> <span class="required"> *</span>
+                <select formControlName="port_loading" class="form-control">
+                    <option></option>
+                </select>
+                <validation-messages [control]="mawbDetails.controls.port_loading"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Port of Destination</label>  <span class="required"> *</span>
+                <select formControlName="port_destination" class="form-control">
+                    <option></option>
+                </select>
+                <validation-messages [control]="mawbDetails.controls.port_destination"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Shipment Type</label>  <span class="required"> *</span>
+                <div>
+                    <mat-radio-group aria-label="Select an option" formControlName="shippment_type">
+                        <mat-radio-button value="T" matTooltip="Total-Shippment"  >T</mat-radio-button>&nbsp;&nbsp;
+                        <mat-radio-button value="P"  matTooltip="Part-Shippment" >P</mat-radio-button>
+                        
+                    </mat-radio-group>
+                <!-- <label class=" col-md-3 radio-inline">
+                    <input type="radio"  matTooltip="Total-Shippment" formControlName="shippment_type"  value="T" >T
+                </label>
+                <label class=" col-md-3 radio-inline ">
+                <input type="radio"  matTooltip="Part-Shippment"  formControlName="shippment_type"  value="P">P
+                </label> -->
+                </div>
+                <validation-messages [control]="mawbDetails.controls.shippment_type"></validation-messages>
+            </div>
+           
+            <div class="form-group col-md-4 offset-md-2">
+                <label>No. of Packages</label> <span class="required"> *</span>
+                <input type="text" formControlName="total_packages" class="form-control">
+                <validation-messages [control]="mawbDetails.controls.total_packages"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+           
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Gross Weight</label> <span class="required"> *</span>
+                <input type="text" formControlName="gross_weight" class="form-control">
+                <validation-messages [control]="mawbDetails.controls.gross_weight"></validation-messages>
+                <div *ngIf="mawbDetails.controls.gross_weight.errors?.alphabetNotAllowed_d && mawbDetails.controls.gross_weight.dirty" class="text-danger">Only numbers are allowed, please update field</div>
+                <div *ngIf="mawbDetails.controls.gross_weight.errors?.decimalRestricted_d && mawbDetails.controls.gross_weight.dirty" class="text-danger">Only upto 3 decimal values are allowed</div>
+                <div *ngIf="mawbDetails.controls.gross_weight.errors?.digitsBeforeDecimal_d && mawbDetails.controls.gross_weight.dirty" class="text-danger">Only 13 digits are allowed, use decimal values to enter further digits</div>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Item Description</label> <span class="required"> *</span>
+                <input type="text" formControlName="item_description" class="form-control">
+                <validation-messages [control]="mawbDetails.controls.item_description"></validation-messages>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+
+

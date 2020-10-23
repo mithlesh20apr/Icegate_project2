@@ -1,0 +1,249 @@
+<br>
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<button mat-raised-button (click)="openDialog()" id="add-option">
+    Add Container<mat-icon>add</mat-icon>
+</button>
+<br>
+<div class="row">
+    <form class="col-md-12" [formGroup]="cargoManifest">
+
+        <h2 class="text-center">Cargo Manifest</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Line No.</label>
+                <input type="text" class="form-control" formControlName="line_no">
+                <validation-messages [control]="cargoManifest.controls.line_no"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Sub line No.</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="sub_line_no">
+                <validation-messages [control]="cargoManifest.controls.sub_line_no"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>B/L No.</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="bl_no">
+                <validation-messages [control]="cargoManifest.controls.bl_no"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>B/L Date</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="bl_date">
+                <validation-messages [control]="cargoManifest.controls.bl_date"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Port of Loading</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="port_of_loading">
+                <validation-messages [control]="cargoManifest.controls.port_of_loading"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Port of Destination</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="port_of_destination">
+                <validation-messages [control]="cargoManifest.controls.port_of_destination"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>House B/L No.</label>
+                <input type="text" class="form-control" formControlName="house_bl_no">
+                <validation-messages [control]="cargoManifest.controls.house_bl_no"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>House B/L Date</label>
+                <input type="text" class="form-control" formControlName="house_bl_date">
+                <validation-messages [control]="cargoManifest.controls.house_bl_date"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Importer‟s Name</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="importer_name">
+                <validation-messages [control]="cargoManifest.controls.importer_name"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Address 1</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="address1">
+                <validation-messages [control]="cargoManifest.controls.address1"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Address 2</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="address2">
+                <validation-messages [control]="cargoManifest.controls.address2"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Address 3</label>
+                <input type="text" class="form-control" formControlName="address3">
+                <validation-messages [control]="cargoManifest.controls.address3"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Name of any other Notified Party</label>
+                <input type="text" class="form-control" formControlName="name_of_other_notified_party">
+                <validation-messages [control]="cargoManifest.controls.name_of_other_notified_party">
+                </validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Nature of Cargo</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="nature_of_cargo">
+                <validation-messages [control]="cargoManifest.controls.nature_of_cargo"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Item Type</label>
+                <input type="text" class="form-control" formControlName="item_type">
+                <validation-messages [control]="cargoManifest.controls.item_type"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Cargo Movement</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="cargo_movement">
+                <validation-messages [control]="cargoManifest.controls.cargo_movement"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Port of Discharge</label>
+                <input type="text" class="form-control" formControlName="port_of_discharge">
+                <validation-messages [control]="cargoManifest.controls.port_of_discharge"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Number of Packages</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="number_of_packages">
+                <validation-messages [control]="cargoManifest.controls.number_of_packages"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Type of packages</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="type_of_packages">
+                <validation-messages [control]="cargoManifest.controls.type_of_packages"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Gross weight</label><span class="required"> *</span>
+                <input class="form-control" formControlName="gross_weight">
+                <!-- <div *ngIf="cargoManifest.controls.gross_weight.errors?.maxlength">The maximum field length is 15, please update the field</div>
+                <div *ngIf="cargoManifest.controls.gross_weight.errors?.required && cargoManifest.controls.gross_weight.touched" class="text-danger">This field is required</div> -->
+                <validation-messages [control]="cargoManifest.controls.gross_weight"></validation-messages>
+                <div *ngIf="cargoManifest.controls.gross_weight.errors?.alphabetNotAllowed_d && cargoManifest.controls.gross_weight.dirty" class="text-danger">Only numbers are allowed, please update field</div>
+                <div *ngIf="cargoManifest.controls.gross_weight.errors?.decimalRestricted_d && cargoManifest.controls.gross_weight.dirty" class="text-danger">Only upto 3 decimal values are allowed</div>
+                <div *ngIf="cargoManifest.controls.gross_weight.errors?.digitsBeforeDecimal_d && cargoManifest.controls.gross_weight.dirty" class="text-danger">Only 12 digits are allowed, use decimal values to enter further digits</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Unit of Weight</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="unit_of_weight">
+                <validation-messages [control]="cargoManifest.controls.unit_of_weight"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Gross Volume</label>
+                <input class="form-control" formControlName="gross_vol">
+                <validation-messages [control]="cargoManifest.controls.gross_vol"></validation-messages>
+                <div *ngIf="cargoManifest.controls.gross_vol.errors?.alphabetNotAllowed_d && cargoManifest.controls.gross_vol.dirty" class="text-danger">Only numbers are allowed in this field, please update the field</div>
+                <div *ngIf="cargoManifest.controls.gross_vol.errors?.decimalRestricted_d && cargoManifest.controls.gross_vol.dirty" class="text-danger">Only upto 3 decimal values are allowed</div>
+                <div *ngIf="cargoManifest.controls.gross_vol.errors?.digitsBeforeDecimal_d && cargoManifest.controls.gross_vol.dirty" class="text-danger">Only 12 digits are allowed, use decimal values to enter further digits </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Unit of Volume</label>
+                <input type="text" class="form-control" formControlName="unit_of_vol">
+                <validation-messages [control]="cargoManifest.controls.unit_of_vol"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Marks of Numbers</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="marks_of_numbers">
+                <validation-messages [control]="cargoManifest.controls.marks_of_numbers"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Goods Description</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="goods_description">
+                <validation-messages [control]="cargoManifest.controls.goods_description"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>UNO Code</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="uno_code">
+                <validation-messages [control]="cargoManifest.controls.uno_code"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>IMO Code</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="imo_code">
+                <validation-messages [control]="cargoManifest.controls.imo_code"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Transit Bond No.</label>
+                <input type="text" class="form-control" formControlName="transit_bond_no">
+                <validation-messages [control]="cargoManifest.controls.transit_bond_no"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Carrier Code</label>
+                <input type="text" class="form-control" formControlName="carrier_code">
+                <validation-messages [control]="cargoManifest.controls.carrier_code"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Mode of transport</label>
+                <input type="text" class="form-control" formControlName="mode_of_transport">
+                <validation-messages [control]="cargoManifest.controls.mode_of_transport"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>MLO Code</label>
+                <input type="text" class="form-control" formControlName="mlo_code">
+                <validation-messages [control]="cargoManifest.controls.mlo_code"></validation-messages>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+    </form>
+</div>

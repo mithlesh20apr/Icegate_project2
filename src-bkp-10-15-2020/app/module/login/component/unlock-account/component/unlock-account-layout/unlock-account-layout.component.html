@@ -1,0 +1,11 @@
+<div class="">
+    <div *ngIf="showIcegateIdComponent">
+        <app-check-icegate-id (proceedNext)="verifyOtpFun($event)" [userDetails]="userDetails"></app-check-icegate-id>
+    </div>
+    <div *ngIf="showOtpComponent">
+        <app-verify-details [userDetails]="userDetails" (proceedBack)="hideOtp($event)" (changePass)="changePass($event)"></app-verify-details>
+    </div>
+    <div  *ngIf="showcreatePasswordComponent">
+        <app-create-new-password [userDetails]="userDetails" (hidePass)="verifyOtpFun($event)"></app-create-new-password>
+    </div>
+</div>

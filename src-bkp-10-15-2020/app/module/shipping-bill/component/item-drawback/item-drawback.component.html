@@ -1,0 +1,32 @@
+<mat-expansion-panel class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Item Raw Material Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="itemDrawbackDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>DBK Schedule Number</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="dbk_schedule_number">
+                    <mat-error *ngIf="itemDrawbackDetails.controls.dbk_schedule_number.errors?.required && itemDrawbackDetails.controls.dbk_schedule_number.touched">This field is required</mat-error>
+                    <mat-error *ngIf="itemDrawbackDetails.controls.dbk_schedule_number.errors?.maxlength">The maximum field length is 15, please update the field</mat-error>
+                    <mat-error *ngIf="itemDrawbackDetails.controls.dbk_schedule_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label> Drawback Quantity</label>
+                    <input type="text" class="form-control" formControlName="drawback_quantity">
+                   
+                    <mat-error *ngIf="itemDrawbackDetails.controls.drawback_quantity.errors?.maxlength">The maximum field length is 11, please update the field</mat-error>
+                    <mat-error *ngIf="itemDrawbackDetails.controls.drawback_quantity.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</mat-expansion-panel>
+

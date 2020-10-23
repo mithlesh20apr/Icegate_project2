@@ -1,0 +1,182 @@
+<div class="container-fluid">
+    <div class="card">
+        <b class="m-2">Shipping Bill</b>
+        <div class="box-color">
+            <div class="row">
+                <div class="col-md-12 form-row mt-1">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 form-group">
+                        <label>IEC Available</label><br>
+                        <mat-radio-group aria-label="Select an option" (change)="isIecAvailable($event)">
+                            <mat-radio-button value="Y">Yes</mat-radio-button>&nbsp;
+                            <mat-radio-button value="N">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label>NFEI (No foreign exchange involved)</label><br>
+                        <mat-radio-group aria-label="Select an option" (change)="isNfeiAvailable($event)">
+                            <mat-radio-button value="Y">Yes</mat-radio-button>&nbsp;
+                            <mat-radio-button value="N">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <mat-horizontal-stepper #stepper class="stepperscroll">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon [inline]="true">check_circle</mat-icon>
+                        </ng-template>
+                        <mat-step>
+                            <app-step1></app-step1>
+                            <div class="btncontainer">
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <button mat-raised-button class="example-add-tab-button" (click)="addTab()" id="add-option" [disabled]="disableAddButton">
+                                Add new tab
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+                                <mat-tab *ngFor="let tab of tabs; let index = index">
+                                    <ng-template mat-tab-label>
+                                        <span>Invoice {{index + 1}}</span>
+                                        <mat-icon *ngIf="tabs.length != 1" (click)="removeTab(index)">cancel</mat-icon>
+                                    </ng-template>
+                                    <app-step2></app-step2>
+                                </mat-tab>
+                            </mat-tab-group>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <app-step3></app-step3>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <!-- <mat-step>
+                            <button mat-raised-button class="example-add-tab-button" (click)="addTab2()">
+                                Add new tab
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <mat-tab-group [selectedIndex]="selected2.value"
+                                (selectedIndexChange)="selected2.setValue($event)">
+                                <mat-tab *ngFor="let tab of tabs2; let index = index">
+                                    <ng-template mat-tab-label>
+                                        <span>Invoice {{index + 1}}</span>
+                                        <mat-icon *ngIf="tabs2.length != 1" (click)="removeTab2(index)">cancel
+                                        </mat-icon>
+                                    </ng-template>
+                                    <app-step4></app-step4>
+                                </mat-tab>
+                            </mat-tab-group>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step> -->
+                        <mat-step>
+                            <app-step5></app-step5>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <button mat-raised-button class="example-add-tab-button" (click)="addTab1()" id="add-option">
+                                Add new tab
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <mat-tab-group [selectedIndex]="selected1.value" (selectedIndexChange)="selected1.setValue($event)">
+                                <mat-tab *ngFor="let tab of tabs1; let index = index">
+                                    <ng-template mat-tab-label>
+                                        <span>Invoice {{index + 1}}</span>
+                                        <mat-icon *ngIf="tabs1.length != 1" (click)="removeTab1(index)">cancel
+                                        </mat-icon>
+                                    </ng-template>
+                                    <app-step6></app-step6>
+                                </mat-tab>
+                            </mat-tab-group>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <app-step7></app-step7>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <app-step8></app-step8>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <app-step9></app-step9>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <button mat-raised-button class="example-add-tab-button" (click)="addTab3()" id="support-add-option">
+                                Add Supporting Documents
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <mat-tab-group [selectedIndex]="selected3.value" (selectedIndexChange)="selected3.setValue($event)">
+                                <mat-tab *ngFor="let tab of tabs3; let index = index">
+                                    <ng-template mat-tab-label>
+                                        <span>Supporting Document {{index + 1}}</span>
+                                        <mat-icon *ngIf="tabs3.length != 1" (click)="removeTab3(index)">cancel
+                                        </mat-icon>
+                                    </ng-template>
+                                    <app-step10></app-step10>
+                                </mat-tab>
+                            </mat-tab-group>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <app-step11></app-step11>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<mat-expansion-panel class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Item Third Party Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="itemThirdPartyDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>IEC</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="iec">
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.iec.errors?.required && itemThirdPartyDetails.controls.iec.touched">This field is required</mat-error>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.iec.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Branch Serial Number.</label>
+                    <input type="text" class="form-control" formControlName="branch_serial_number">
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.branch_serial_number.errors?.required && itemThirdPartyDetails.controls.branch_serial_number.touched">This field is required <br></mat-error>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.branch_serial_number.errors?.maxlength">The maximum field length is 3, please update the field <br></mat-error>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.branch_serial_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Exporter Name</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="exporter_name">
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.exporter_name.errors?.required && itemThirdPartyDetails.controls.exporter_name.touched">This field is required</mat-error>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.exporter_name.errors?.maxlength">The maximum field length is 50, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Exporter Addr1.</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="address1">
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.address1.errors?.required && itemThirdPartyDetails.controls.address1.touched">This field is required</mat-error>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.address1.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Exporter Addr2</label>
+                    <input type="text" class="form-control" formControlName="address2">
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.address2.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>City</label> <span class="required"></span>
+                    <input type="text" class="form-control" formControlName="city">
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.city.errors?.required && itemThirdPartyDetails.controls.city.touched">This field is required</mat-error>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.city.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Pin</label>
+                    <input type="text" class="form-control" formControlName="pin">
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.pin.errors?.maxlength">The maximum field length is 6, please update the field</mat-error>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.pin.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>GSTN ID</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="gstn_id">
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.gstn_id.errors?.required && itemThirdPartyDetails.controls.gstn_id.touched">This field is required</mat-error>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.gstn_id.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
+                   
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>GSTN Type</label> <span class="required"> *</span>
+                    <select class="form-control" formControlName="gstn_type">
+                        <option value="GSN">GSN</option>
+                        <option value="GSG">GSG</option>
+                        <option value="GSD">GSD</option>
+                        <option value="PAN">PAN</option>
+                        <option value="TAN">TAN</option>
+                        <option value="PSP">PSP</option>
+                        <option value="ADH">ADH</option>
+                    </select>
+                    <mat-error *ngIf="itemThirdPartyDetails.controls.gstn_type.errors?.required && itemThirdPartyDetails.controls.gstn_type.touched">This field is required</mat-error>    
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>
+
+

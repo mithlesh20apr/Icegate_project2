@@ -1,0 +1,107 @@
+<div class="row">
+    <form class="col-md-12" [formGroup]="containerDetails">
+
+        <h2 class="text-center">Container Details</h2>
+        <hr>
+        <div class="col-md-12"></div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Line No.</label>
+                <input type="text" class="form-control" formControlName="line_no">
+                <validation-messages [control]="containerDetails.controls.line_no"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Sub line No.</label>
+                <input type="text" class="form-control" formControlName="sub_line_no">
+                <validation-messages [control]="containerDetails.controls.sub_line_no"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Container No.</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="container_no">
+                <validation-messages [control]="containerDetails.controls.container_no">
+                </validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Container Seal No.</label>
+                <input type="text" class="form-control" formControlName="container_seal_no">
+                <validation-messages [control]="containerDetails.controls.container_seal_no">
+                </validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Container Agent Code</label>
+                <input type="text" class="form-control" formControlName="container_agent_code">
+                <validation-messages [control]="containerDetails.controls.container_agent_code">
+                </validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Container Status</label><span class="required"> *</span>
+                <div>
+                    <mat-radio-group aria-label="Select an option" formControlName="container_status">
+                        <mat-radio-button value="E"  matTooltip="Empty">E</mat-radio-button>&nbsp;&nbsp;
+                        <mat-radio-button value="L" matTooltip="Loaded">L</mat-radio-button>                            
+                    </mat-radio-group>
+                <!-- <label class="col-md-3 radio-inline" matTooltip="Empty">
+                    <input type="radio" formControlName="container_status" value="E"> E
+                </label>
+                <label class="col-md-3 radio-inline" matTooltip="Loaded">
+                    <input type="radio" formControlName="container_status" value="L"> L
+                </label> -->
+                </div>
+                <validation-messages [control]="containerDetails.controls.container_status">
+                </validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Total No. of Packages in Container</label>
+                <input type="text" class="form-control" formControlName="total_no_of_packages_in_container">
+                <validation-messages
+                    [control]="containerDetails.controls.total_no_of_packages_in_container">
+                </validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Container weight</label>
+                <input type="text" class="form-control" formControlName="container_weight">
+                <validation-messages [control]="containerDetails.controls.container_weight">
+                </validation-messages>
+                <div *ngIf="containerDetails.controls.container_weight.errors?.alphabetNotAllowed_d && containerDetails.controls.container_weight.dirty"
+                    class="text-danger">Only numbers are allowed, please update field</div>
+                <div *ngIf="containerDetails.controls.container_weight.errors?.decimalRestricted_d && containerDetails.controls.container_weight.dirty"
+                    class="text-danger">Only upto 3 decimal values are allowed</div>
+                <div *ngIf="containerDetails.controls.container_weight.errors?.digitsBeforeDecimal_d && containerDetails.controls.container_weight.dirty"
+                    class="text-danger">Only 14 digits are allowed, use decimal values to enter further
+                    digits </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>ISO Code</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="iso_code">
+                <validation-messages [control]="containerDetails.controls.iso_code"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>SOC Flag (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="soc_flag">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="containerDetails.controls.soc_flag"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>

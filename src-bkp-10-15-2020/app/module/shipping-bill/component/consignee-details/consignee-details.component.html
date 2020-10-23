@@ -1,0 +1,311 @@
+<mat-expansion-panel class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Consignee Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="consigneeDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Consignee Name</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="consignee_name">
+                    <mat-error *ngIf="consigneeDetails.controls.consignee_name.errors?.required && consigneeDetails.controls.consignee_name.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="consigneeDetails.controls.consignee_name.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Consignee Address 1</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="consignee_address_1">
+                    <mat-error *ngIf="consigneeDetails.controls.consignee_address_1.errors?.required && consigneeDetails.controls.consignee_address_1.touched">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="consigneeDetails.controls.consignee_address_1.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Consignee Address 2</label>
+                    <input type="text" class="form-control" formControlName="consignee_address_2">
+                    <mat-error *ngIf="consigneeDetails.controls.consignee_address_2.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Consignee Address 3</label>
+                    <input type="text" class="form-control" formControlName="consignee_address_3">
+                    <mat-error *ngIf="consigneeDetails.controls.consignee_address_3.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Consignee Address 4</label>
+                    <input type="text" class="form-control" formControlName="consignee_address_4">
+                    <mat-error *ngIf="consigneeDetails.controls.consignee_address_4.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>Consignee Country</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="consignee_country">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <mat-error *ngIf="consigneeDetails.controls.consignee_country.errors?.required && consigneeDetails.controls.consignee_country.touched">
+                        This field is required</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Category of NFEI SB</label> <span *ngIf="isNfeiAvailable == 'Y'"> *</span>
+                    <input type="text" class="form-control" formControlName="category_nfei_sb">
+                    <mat-error *ngIf="consigneeDetails.controls.category_nfei_sb.errors?.required && consigneeDetails.controls.category_nfei_sb.touched
+                        && isNfeiAvailable == 'Y'">
+                        This field is required</mat-error>
+                    <mat-error *ngIf="consigneeDetails.controls.category_nfei_sb.errors?.maxlength">The maximum field length is 2, please update the field</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>RBI waiver number</label>
+                    <input type="text" class="form-control" formControlName="rbi_waiver_number">
+                    <mat-error *ngIf="consigneeDetails.controls.rbi_waiver_number.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>RBI waiver date</label>
+                    <br>
+                    <mat-form-field >
+                        <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="rbi_waiver_date" formControlName="rbi_waiver_date">
+                        <mat-datepicker-toggle matSuffix [for]="rbi_waiver_date"></mat-datepicker-toggle>
+                        <mat-datepicker #rbi_waiver_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>Port of Loading</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="port_of_loading">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <mat-error *ngIf="consigneeDetails.controls.port_of_loading.errors?.required && consigneeDetails.controls.port_of_loading.touched">
+                        This field is required</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Port of final destination</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="port_of_final_destination">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <mat-error *ngIf="consigneeDetails.controls.port_of_final_destination.errors?.required && consigneeDetails.controls.port_of_final_destination.touched">
+                        This field is required</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-2">
+                    <label>Country of final destination</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="country_final_destination">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <mat-error *ngIf="consigneeDetails.controls.country_final_destination.errors?.required && consigneeDetails.controls.country_final_destination.touched">
+                        This field is required</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Country of Discharge</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="country_discharge">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <mat-error *ngIf="consigneeDetails.controls.country_discharge.errors?.required && consigneeDetails.controls.country_discharge.touched">
+                        This field is required</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>Port of Discharge</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="port_of_discharge">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <mat-error *ngIf="consigneeDetails.controls.port_of_discharge.errors?.required && consigneeDetails.controls.port_of_discharge.touched">
+                        This field is required</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <span>Seal Type</span><br><br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio" matTooltip="A" formControlName="seal_type" value="A"> A
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio" matTooltip="S" formControlName="seal_type" value="S"> S
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio" matTooltip="W" formControlName="seal_type" value="W"> W
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-12" *ngIf="consigneeDetails.value.seal_type=='A' || consigneeDetails.value.seal_type=='S'">
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-2">
+                        <label>IE Code of the EOU</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="ie_code_eou">
+                        <mat-error *ngIf="consigneeDetails.controls.ie_code_eou.errors?.required && consigneeDetails.controls.ie_code_eou.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.ie_code_eou.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Branch Sr Number of IE</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="branch_sr_number_ie">
+                        <mat-error *ngIf="consigneeDetails.controls.branch_sr_number_ie.errors?.required && consigneeDetails.controls.branch_sr_number_ie.touched">
+                            This field is required <br></mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.branch_sr_number_ie.errors?.maxlength">The maximum field length is 3, please update the field <br></mat-error>
+                        <mat-error *ngIf='consigneeDetails.controls.branch_sr_number_ie.errors?.pattern'>
+                            Only numbers are allowed in this field, please update 
+                        </mat-error>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-2">
+                        <label>Examination Date</label> <span class="required"> *</span>
+                        <br>
+                        <mat-form-field >
+                            <mat-label>Choose a date</mat-label>
+                            <!-- #docregion toggle -->
+                            <input matInput [matDatepicker]="examination_date" formControlName="examination_date">
+                            <mat-datepicker-toggle matSuffix [for]="examination_date"></mat-datepicker-toggle>
+                            <mat-datepicker #examination_date></mat-datepicker>
+                            <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                        <mat-error *ngIf="consigneeDetails.controls.examination_date.errors?.required && consigneeDetails.controls.examination_date.touched">
+                            This field is required</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Examining Officer Name</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="examining_officer_name">
+                        <mat-error *ngIf="consigneeDetails.controls.examining_officer_name.errors?.required && consigneeDetails.controls.examining_officer_name.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.examining_officer_name.errors?.maxlength">The maximum field length is 30, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Examining Officer Designation</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="examining_officer_designation">
+                        <mat-error *ngIf="consigneeDetails.controls.examining_officer_designation.errors?.required && consigneeDetails.controls.examining_officer_designation.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.examining_officer_designation.errors?.maxlength">The maximum field length is 30, please update the field</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Supervising Officer Name</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="supervising_officer_name">
+                        <mat-error *ngIf="consigneeDetails.controls.supervising_officer_name.errors?.required && consigneeDetails.controls.supervising_officer_name.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.supervising_officer_name.errors?.maxlength">The maximum field length is 30, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Supervising Officer designation</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="supervising_officer_designation">
+                        <mat-error *ngIf="consigneeDetails.controls.supervising_officer_designation.errors?.required && consigneeDetails.controls.supervising_officer_designation.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.supervising_officer_designation.errors?.maxlength">The maximum field length is 30, please update the field</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Commissionerate</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="commissionerate">
+                        <mat-error *ngIf="consigneeDetails.controls.commissionerate.errors?.required && consigneeDetails.controls.commissionerate.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.commissionerate.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Division</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="division">
+                        <mat-error *ngIf="consigneeDetails.controls.division.errors?.required && consigneeDetails.controls.division.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.division.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Range</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="range">
+                        <mat-error *ngIf="consigneeDetails.controls.range.errors?.required && consigneeDetails.controls.range.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.range.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Seal No</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="seal_number">
+                        <mat-error *ngIf="consigneeDetails.controls.seal_number.errors?.required && consigneeDetails.controls.seal_number.touched">
+                            This field is required</mat-error>
+                        <mat-error *ngIf="consigneeDetails.controls.seal_number.errors?.maxlength">The maximum field length is 100, please update the field</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-2">
+                        <label matTooltip="Item Values Verified by Examining Officer">Item Values Verified by Examining Officer(Y/N)</label><span class="required"> *</span>
+                        <select class="form-control" formControlName="item_values_verified">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <mat-error *ngIf="consigneeDetails.controls.item_values_verified.errors?.required && consigneeDetails.controls.item_values_verified.touched">
+                            This field is required</mat-error>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Sample forwarded</label> <span class="required"> *</span>
+                        <select class="form-control" formControlName="sample_forwarded">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <mat-error *ngIf="consigneeDetails.controls.sample_forwarded.errors?.required && consigneeDetails.controls.sample_forwarded.touched">
+                            This field is required</mat-error>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-2">
+                        <label>Amendment Type</label>
+                        <input type="text" class="form-control" formControlName="amendment_type">
+                        <mat-error *ngIf="consigneeDetails.controls.amendment_type.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Amendment No.</label>
+                        <input type="text" class="form-control" formControlName="amendment_number">
+                        <mat-error *ngIf="consigneeDetails.controls.amendment_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-2">
+                        <label>Amendment Date</label>
+                        <br>
+                        <mat-form-field >
+                            <mat-label>Choose a date</mat-label>
+                            <!-- #docregion toggle -->
+                            <input matInput [matDatepicker]="amendment_date" formControlName="amendment_date">
+                            <mat-datepicker-toggle matSuffix [for]="amendment_date"></mat-datepicker-toggle>
+                            <mat-datepicker #amendment_date></mat-datepicker>
+                            <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>

@@ -1,0 +1,129 @@
+<mat-expansion-panel class="matnotexpand">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Dfia Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <form class="col-md-12" [formGroup]="dfiaDetails">
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>SION Group Code</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="sion_group_code">
+                    <mat-error
+                        *ngIf='dfiaDetails.controls.sion_group_code.errors?.required && dfiaDetails.controls.sion_group_code.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.sion_group_code.errors?.maxlength' >
+                        The maximum field length is 3, please update the field <br>
+                    </mat-error>
+
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>SION serial Number</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="sion_sr_number">
+                    <mat-error
+                        *ngIf='dfiaDetails.controls.sion_sr_number.errors?.required && dfiaDetails.controls.sion_sr_number.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.sion_sr_number.errors?.maxlength'
+                        >
+                        The maximum field length is 8, please update the field <br>
+                    </mat-error>
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>SION IO Norm Serial No</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="sion_io_norm_sr_number">
+                    <mat-error
+                        *ngIf='dfiaDetails.controls.sion_io_norm_sr_number.errors?.required && dfiaDetails.controls.sion_io_norm_sr_number.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.sion_io_norm_sr_number.errors?.pattern' >
+                        Only numbers are allowed in this field, please update <br>
+                    </mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.sion_io_norm_sr_number.errors?.maxlength' >
+                        The maximum field length is 8, please update the field
+                    </mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Quantity</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="quantity">
+                    <mat-error
+                        *ngIf='dfiaDetails.controls.quantity.errors?.required && dfiaDetails.controls.quantity.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.quantity.errors?.maxlength' >
+                        The maximum field length is 13, please update the field <br>
+                    </mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.quantity.errors?.pattern' >
+                        Only numbers are allowed in this field, please update
+                    </mat-error>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Unit of measurement</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="unit_of_measurement">
+                    <mat-error
+                        *ngIf='dfiaDetails.controls.unit_of_measurement.errors?.required && dfiaDetails.controls.unit_of_measurement.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.unit_of_measurement.errors?.maxlength' >
+                        The maximum field length is 3, please update the field
+                    </mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>Item Description</label>
+                    <input type="text" class="form-control" formControlName="item_description">
+                    <mat-error *ngIf='dfiaDetails.controls.item_description.errors?.maxlength' >
+                        The maximum field length is 120, please update the field
+                    </mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Technical Characteristics</label>
+                    <input type="text" class="form-control" formControlName="technical_characteristics">
+                    <mat-error *ngIf='dfiaDetails.controls.technical_characteristics.errors?.maxlength' >
+                        The maximum field length is 250, please update the field
+                    </mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>File Number</label><span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="file_number">
+                    <mat-error *ngIf='dfiaDetails.controls.file_number.errors?.maxlength' >
+                        The maximum field length is 25, please update the field <br>
+                    </mat-error>
+                    <mat-error
+                        *ngIf='dfiaDetails.controls.file_number.errors?.required && dfiaDetails.controls.file_number.touched'
+                        >This field is required </mat-error>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>License Number</label>
+                    <input type="text" class="form-control" formControlName="license_number">
+                    <mat-error
+                        *ngIf='dfiaDetails.controls.license_number.errors?.required && dfiaDetails.controls.license_number.touched'
+                        >This field is required <br></mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.license_number.errors?.maxlength' >
+                        The maximum field length is 10, please update the field <br>
+                    </mat-error>
+                    <mat-error *ngIf='dfiaDetails.controls.license_number.errors?.pattern' >
+                        Only numbers are allowed in this field, please update
+                    </mat-error>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-expansion-panel>

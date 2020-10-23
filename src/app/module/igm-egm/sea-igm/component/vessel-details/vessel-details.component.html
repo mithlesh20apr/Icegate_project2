@@ -1,0 +1,211 @@
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+
+<div class="row">
+    <form class="col-md-12" [formGroup]="vesselDetails">
+
+        <h2 class="text-center">Vessel Details</h2>
+        <hr>
+        <div class="col-md-12"></div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Message Type</label>
+                <input type="text" class="form-control" formControlName="message_type" readonly>
+                <validation-messages [control]="vesselDetails.controls.message_type"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Custom House Code</label>
+                <input type="text" class="form-control" formControlName="custom_house_code">
+                <validation-messages [control]="vesselDetails.controls.custom_house_code"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>IMO Code of Vessel.</label>
+                <input type="text" class="form-control" formControlName="imo_code_of_vessel">
+                <validation-messages [control]="vesselDetails.controls.imo_code_of_vessel"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Vessel Code (Call sign)</label>
+                <input type="text" class="form-control" formControlName="vessel_code">
+                <validation-messages [control]="vesselDetails.controls.vessel_code"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1 ">
+                <label>Voyage No.</label>
+                <input type="text" class="form-control" formControlName="voyage_no">
+                <validation-messages [control]="vesselDetails.controls.voyage_no"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Shipping Line Code</label>
+                <input type="text" class="form-control" formControlName="shipping_line_code">
+                <validation-messages [control]="vesselDetails.controls.shipping_line_code"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Shipping Agent Code</label>
+                <input type="text" class="form-control" formControlName="shipping_agent_code">
+                <validation-messages [control]="vesselDetails.controls.shipping_agent_code"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Master Name</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="master_name">
+                <validation-messages [control]="vesselDetails.controls.master_name"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Port of Arrival</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="port_of_arrival">
+                <validation-messages [control]="vesselDetails.controls.port_of_arrival"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Last Port Called</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="last_port_called">
+                <validation-messages [control]="vesselDetails.controls.last_port_called"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Port Called prior to S.No.12</label>
+                <input type="text" class="form-control" formControlName="port_called_prior_sno_12">
+                <validation-messages [control]="vesselDetails.controls.port_called_prior_sno_12"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Port Called prior to S.No.13</label>
+                <input type="text" class="form-control" formControlName="port_called_prior_sno_13">
+                <validation-messages [control]="vesselDetails.controls.port_called_prior_sno_13"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Vessel type</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="vessel_type">
+                <validation-messages [control]="vesselDetails.controls.vessel_type"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Total No. of Lines</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="total_no_of_lines">
+                <validation-messages [control]="vesselDetails.controls.total_no_of_lines"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Brief Cargo Description</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="brief_cargo_description">
+                <validation-messages [control]="vesselDetails.controls.brief_cargo_description"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Expected Date and Time of Arrival</label><span class="required"> *</span>
+                <div>
+                <mat-form-field>
+                    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose date and time"
+                        formControlName="expected_date_and_time" [min]="minDate" [max]="maxDate" [disabled]="disabled">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+                        [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond" [touchUi]="touchUi"
+                        [color]="color" [enableMeridian]="enableMeridian">
+                    </ngx-mat-datetime-picker>
+                </mat-form-field>
+                </div>
+                <validation-messages [control]="vesselDetails.controls.expected_date_and_time"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Light house dues (in INR)</label>
+                <input type="text" class="form-control" formControlName="light_house_dues">
+                <validation-messages [control]="vesselDetails.controls.light_house_dues"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Same Bottom Cargo(Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="same_bottom_cargo">
+                    <option value="Y">Yes</option>
+                    <option value="N">N<o/option>
+                </select>
+                <validation-messages [control]="vesselDetails.controls.same_bottom_cargo"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Ship Stores Declaration (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="ship_stores_declaration">
+                    <option value="Y">Yes</option>
+                    <option value="N">N<o/option>
+                </select>
+                <validation-messages [control]="vesselDetails.controls.ship_stores_declaration"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Crew List Declaration (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="crew_list_declaration">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="vesselDetails.controls.crew_list_declaration"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Passenger List (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="passenger_list">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="vesselDetails.controls.passenger_list"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Crew Effect Declaration (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="crew_effect_declaration">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="vesselDetails.controls.crew_effect_declaration"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Maritime Declaration (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="maritime_declaration">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="vesselDetails.controls.maritime_declaration"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Terminal Operator Code</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="terminal_operator_code">
+                <validation-messages [control]="vesselDetails.controls.terminal_operator_code"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>

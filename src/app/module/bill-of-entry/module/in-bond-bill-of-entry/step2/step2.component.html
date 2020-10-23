@@ -1,0 +1,88 @@
+<div>
+    <div><span class="text-danger">&#42;</span> indicates the mandatory fields </div>
+    <form class="col-md-12" [formGroup]="inBondFormStep2">
+        <h6 class=" font-h6 text-center">Exchange Rate</h6>
+        <hr>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Currency Code</label><span class="text-danger">*</span>
+                <input type="text" class="form-control" formControlName="currency_code">
+                <validation-messages [control]="inBondFormStep2.controls.currency_code"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <div class="form-group">
+                    <div>Standard Currency <span class="text-danger"> *</span></div>
+                    <label class="mt-3 col-md-3">
+                        <input type="radio" value="Y" formControlName="standard_currency">Yes
+                    </label>
+                    <label class="mt-3 col-md-3">
+                        <input type="radio" value="N" formControlName="standard_currency">No
+                    </label>
+                </div>
+                <validation-messages [control]="inBondFormStep2.controls.standard_currency"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-1">
+                <label>Unit in Rs.</label>
+                <input type="text" class="form-control" formControlName="unit_in_rs">
+                <div *ngIf="inBondFormStep2.controls.unit_in_rs.errors?.alphabetNotAllowed_d && inBondFormStep2.controls.unit_in_rs.dirty" class="text-danger" >Only Numbers are allowed</div>
+                <div *ngIf="inBondFormStep2.controls.unit_in_rs.errors?.decimalRestricted_d && inBondFormStep2.controls.unit_in_rs.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                <div *ngIf="inBondFormStep2.controls.unit_in_rs.errors?.digitsBeforeDecimal_d && inBondFormStep2.controls.unit_in_rs.dirty" class="text-danger">Only 7 digits are allowed before decimal</div>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Rate</label>
+                <input type="text" class="form-control" formControlName="rate">
+                <div *ngIf="inBondFormStep2.controls.rate.errors?.alphabetNotAllowed_d && inBondFormStep2.controls.rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                <div *ngIf="inBondFormStep2.controls.rate.errors?.decimalRestricted_d && inBondFormStep2.controls.rate.dirty" class="text-danger">Only upto 4 decimal values are allowed</div>
+                <div *ngIf="inBondFormStep2.controls.rate.errors?.digitsBeforeDecimal_d && inBondFormStep2.controls.rate.dirty" class="text-danger">Only 9 digits are allowed before decimal</div>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <div>Effective Date</div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="effective_date" formControlName="effective_date">
+                    <mat-datepicker-toggle matSuffix [for]="effective_date"></mat-datepicker-toggle>
+                    <mat-datepicker #effective_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                <validation-messages [control]="inBondFormStep2.controls.effective_date"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Bank name for Non-Standard Currency</label>
+                <input type="text" class="form-control" formControlName="bankname_non_standard_currency">
+                <validation-messages [control]="inBondFormStep2.controls.bankname_non_standard_currency"></validation-messages>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Certificate Number</label>
+                <input type="text" class="form-control" formControlName="certificate_number">
+                <validation-messages [control]="inBondFormStep2.controls.certificate_number"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 offset-md-1">
+                <div>Certificate Date</div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="certificate_date" formControlName="certificate_date">
+                    <mat-datepicker-toggle matSuffix [for]="certificate_date"></mat-datepicker-toggle>
+                    <mat-datepicker #certificate_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                <validation-messages [control]="inBondFormStep2.controls.certificate_date"></validation-messages>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

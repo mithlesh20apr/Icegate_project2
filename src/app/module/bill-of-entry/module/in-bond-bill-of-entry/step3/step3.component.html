@@ -1,0 +1,802 @@
+<div class="mt-2"><span class="required">&#42;</span> indicates the mandatory fields </div>
+<button mat-raised-button class="mt-3" (click)="openItemDialog()" id="add-option">
+    Add Items <mat-icon>add</mat-icon>
+</button>
+<div class="row mt-2">
+    <form class="col-md-12" [formGroup]="inBondFormStep3">
+        <mat-accordion>
+            <mat-expansion-panel [expanded]="1" class="matnotexpand">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Invoice Details
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="mt-3 col-md-12">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Invoice Serial Number</label>
+                                <input type="text" class="form-control" formControlName="invoice_serial_number">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.invoice_serial_number.errors?.maxlength '
+                                class="text-danger">The maximum field length is 5, please update the field</mat-error>
+                            <mat-error
+                                *ngIf='inBondFormStep3.controls.invoice_serial_number.errors?.pattern'
+                                class="text-danger">Only numbers are allowed in this field, please update
+                            </mat-error> 
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Invoice Date</label>
+                                <input type="date" class="form-control">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.purchase_order_number.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 20, please update the field
+                            </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class=" form-group col-md-4 offset-md-1">
+                                <label>Purchase Order Number</label>
+                                <input type="text" class="form-control" formControlName="purchase_order_number">
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Purchase Order Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Contract Number</label>
+                                <input type="text" class="form-control" formControlName="contract_number">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.contract_number.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 20, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Contract Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>LC Number</label>
+                                <input type="text" class="form-control" formControlName="lc_number">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.lc_number.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 20, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>LC Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class=" form-group col-md-4 offset-md-1">
+                                <label>SVB Reference Number</label>
+                                <input type="text" class="form-control" formControlName="svb_reference_number">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.svb_reference_number.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 20, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>SVB Reference Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2 offset-md-1">
+                                <label>SVB Load Assessable Number</label>
+                                <input type="text" class="form-control" formControlName="svb_load_assessable_value">
+                                <div *ngIf="inBondFormStep3.controls.svb_load_assessable_value.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.svb_load_assessable_value.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.svb_load_assessable_value.errors?.decimalRestricted_d && inBondFormStep3.controls.svb_load_assessable_value.dirty" class="text-danger">Only upto 5 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.svb_load_assessable_value.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.svb_load_assessable_value.dirty" class="text-danger">Only 10 digits are allowed before decimal</div>
+
+                            </div>
+                            <div class="form-group  col-md-2">
+                                <label>SVB Load on Duty </label>
+                                <input type="text" class="form-control" formControlName="svb_load_on_duty">
+                                <div *ngIf="inBondFormStep3.controls.svb_load_on_duty.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.svb_load_on_duty.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.svb_load_on_duty.errors?.decimalRestricted_d && inBondFormStep3.controls.svb_load_on_duty.dirty" class="text-danger">Only upto 5 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.svb_load_on_duty.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.svb_load_on_duty.dirty" class="text-danger">Only 10 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                    <div>SVB Flag</div> 
+                                    <label class="mt-2 col-md-4">
+                                    <input type="radio" value="A" formControlName="svb_flag"> A
+                                    (Assessable)
+                                </label>
+                                    <label class="mt-2 col-md-4">
+                                    <input type="radio" value="O" formControlName="svb_flag">O (On Duty)
+                                </label>
+                                    <label class="mt-2 col-md-4">
+                                    <input type="radio" value="B" formControlName="svb_flag">B (Both)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <div>Whether Load Final/ Provisional on Ass. Value</div>
+                                <label class="mt-2 col-md-3 ">
+                                <input type="radio" value="F" formControlName='load_final_provisional_on_ass_value'>F
+                            </label>
+                                <label class="mt-2 col-md-3">
+                                <input type="radio" value="P" formControlName='load_final_provisional_on_ass_value'>P
+                            </label>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Whether Load Final/ Provisional on Duty</label>
+                                <input type="text" class="form-control" formControlName="load_final_provisional_on_duty">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.load_final_provisional_on_duty.errors?.maxlength' class="text-danger"> The maximum field length is 1, please update the field  
+                            </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Custom House Code which has imposed Load</label>
+                                <select class="form-control">
+                                <option></option>
+                                <option>1</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="matnotexpand">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Supplier Details
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Supplier Name</label><span class="required"> *</span>
+                                <input type="text" class="form-control" formControlName="name_supplier">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.name_supplier.errors?.required && inBondFormStep3.controls.name_supplier.errors?.touched'
+                                class="text-danger">This field is required
+                                </mat-error>
+                            <mat-error
+                                *ngIf='inBondFormStep3.controls.name_supplier.errors?.maxlength'
+                                class="text-danger">The maximum field length is 50 please update the field
+                                </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Supplier Country Name</label>
+                                <select class="form-control">
+                                <option value=""> </option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Supplier Address 1</label>
+                                <input type="text" class="form-control" formControlName="address1_supplier">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address1_supplier.errors?.maxlength'
+                                class="text-danger">The maximum field length is 35, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Supplier Address 2</label>
+                                <input type="text" class="form-control" formControlName="address2_supplier">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address2_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Supplier Address 3</label>
+                                <input type="text" class="form-control" formControlName="address3_supplier">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address3_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label>Country</label>
+                                <input type="text" class="form-control" formControlName="country_supplier">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.country_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group  col-md-2">
+                                <label>Pin</label>
+                                <input type="text" class="form-control" formControlName="pin_supplier">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.pin_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 10, please update the field
+                            </mat-error>
+                            <mat-error  *ngIf='inBondFormStep3.controls.pin_supplier.errors?.pattern'
+                            class="text-danger"> Only numbers are allowed in this field, please update
+                            </mat-error>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="matnotexpand">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Seller Details
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Seller Name</label>
+                                <input type="text" class="form-control" formControlName="name_seller">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.name_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                             </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Seller Country Name</label>
+                                <select class="form-control">
+                                <option value=""> </option>
+                                <option value="Afganistan">Afghanistan</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Seller Address 1</label>
+                                <input type="text" class="form-control" formControlName="address1_seller">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address1_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                                </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Seller Address 2</label>
+                                <input type="text" class="form-control" formControlName="address2_seller">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address2_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                               </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Seller Address 3</label>
+                                <input type="text" class="form-control" formControlName="address3_seller">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address3_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                                </mat-error>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label>State</label>
+                                <input type="text" class="form-control" formControlName="country_seller">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.country_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                                 </mat-error>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Pin</label>
+                                <input type="text" class="form-control" formControlName="pin_seller">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.pin_seller.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 10, please update the field
+                            </mat-error>
+                            <mat-error  *ngIf='inBondFormStep3.controls.pin_seller.errors?.pattern'
+                            class="text-danger"> Only numbers are allowed in this field, please update
+                            </mat-error>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="matnotexpand">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Broker Details
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Broker Name</label>
+                                <input type="text" class="form-control">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.name_supplier.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 50, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Broker Country Name</label>
+                                <select class="form-control">
+                                <option value=""> </option>
+
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Broker Address 1</label>
+                                <input type="text" class="form-control" formControlName="address1_broker">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address1_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Broker Address 2</label>
+                                <input type="text" class="form-control" formControlName="address2_broker">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address2_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Broker Address 3</label>
+                                <input type="text" class="form-control" formControlName="address3_broker">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address3_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label>Country</label>
+                                <input type="text" class="form-control" formControlName="country_broker">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.country_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 35, please update the field
+                             </mat-error>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Pin</label>
+                                <input type="text" class="form-control" formControlName="pin_broker">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.pin_broker.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 10, please update the field
+                                 </mat-error>
+                                <mat-error  *ngIf='inBondFormStep3.controls.pin_broker.errors?.pattern'
+                                class="text-danger"> Only numbers are allowed in this field, please update
+                                </mat-error>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="matnotexpand">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Invoice Rates and Commercial Details
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Invoice Value</label> <span class="required"> *</span>
+                                <input type="text" class="form-control" formControlName="invoice_value">
+                                <div *ngIf="inBondFormStep3.controls.invoice_value.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.invoice_value.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.invoice_value.errors?.decimalRestricted_d && inBondFormStep3.controls.invoice_value.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.invoice_value.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.invoice_value.dirty" class="text-danger">Only 16 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label> Terms of Invoice </label> <span class="required">
+                                *</span>
+                                <input type="text" class="form-control" formControlName="terms_of_invoice">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.terms_of_invoice.errors?.required && inBondFormStep3.controls.terms_of_invoice.touched' class="text-danger">
+                                This field is required</mat-error>
+                            <mat-error
+                                *ngIf='inBondFormStep3.controls.terms_of_invoice.errors?.maxlength' class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Invoice Currency</label> <span class="required">
+                                *</span>
+                                <input type="text" class="form-control" formControlName="invoice_currency">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.invoice_currency.errors?.required && inBondFormStep3.controls.invoice_currency.touched' class="text-danger">
+                                This field is required</mat-error>
+                            <mat-error
+                                *ngIf='inBondFormStep3.controls.invoice_currency.errors?.maxlength'  class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Nature of Discount</label>
+                                <input type="text" class="form-control" formControlName="nature_of_discount">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.nature_of_discount.errors?.maxlength' class="text-danger">
+                                The maximum field length is 35, please update the field</mat-error>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label> Discount Rate </label>
+                                <input type="text" class="form-control" formControlName="discount_rate">
+                                <div *ngIf="inBondFormStep3.controls.discount_rate.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.discount_rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.discount_rate.errors?.decimalRestricted_d && inBondFormStep3.controls.discount_rate.dirty" class="text-danger">Only upto 4 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.discount_rate.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.discount_rate.dirty" class="text-danger">Only 6 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label> Discount Amount</label>
+                                <input type="text" class="form-control" formControlName="discount_amount">
+                                <div *ngIf="inBondFormStep3.controls.discount_amount.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.discount_amount.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.discount_amount.errors?.decimalRestricted_d && inBondFormStep3.controls.discount_amount.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.discount_amount.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.discount_amount.dirty" class="text-danger">Only 16 digits are allowed before decimal</div>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2 offset-md-1">
+                                <label>HSS Load Rate</label>
+                                <input type="text" class="form-control" formControlName="hss_load_rate">
+                                <div *ngIf="inBondFormStep3.controls.hss_load_rate.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.hss_load_rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.hss_load_rate.errors?.decimalRestricted_d && inBondFormStep3.controls.hss_load_rate.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.hss_load_rate.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.hss_load_rate.dirty" class="text-danger">Only 6 digits are allowed before decimal</div>
+
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label> HSS Load Amount</label>
+                                <input type="text" class="form-control" formControlName="hss_load_amount">
+                                <div *ngIf="inBondFormStep3.controls.hss_load_amount.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.hss_load_amount.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.hss_load_amount.errors?.decimalRestricted_d && inBondFormStep3.controls.hss_load_amount.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.hss_load_amount.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.hss_load_amount.dirty" class="text-danger">Only 16 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label> Freight Value </label>
+                                <input type="text" class="form-control" formControlName="freight_value">
+                                <div *ngIf="inBondFormStep3.controls.freight_value.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.freight_value.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.freight_value.errors?.decimalRestricted_d && inBondFormStep3.controls.freight_value.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.freight_value.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.freight_value.dirty" class="text-danger">Only 16 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group  col-md-2">
+                                <label> Freight Rate in %</label>
+                                <input type="text" class="form-control" formControlName="freight_rate">
+                                <div *ngIf="inBondFormStep3.controls.freight_rate.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.freight_rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.freight_rate.errors?.decimalRestricted_d && inBondFormStep3.controls.freight_rate.dirty" class="text-danger">Only upto 4 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.freight_rate.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.freight_rate.dirty" class="text-danger">Only 7 digits are allowed before decimal</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Whether Freight Rate is actual?</label>
+                                <input type="text" class="form-control" formControlName="freight_actual">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.freight_actual.errors?.maxlength'  class="text-danger">
+                                The maximum field length is 1, please update the field</mat-error>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label> Freight Currency</label>
+                                <input type="text" class="form-control" formControlName="freight_currency">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.freight_currency.errors?.maxlength'  class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Insurace Value</label>
+                                <input type="text" class="form-control" formControlName="insurance_value">
+                                <div *ngIf="inBondFormStep3.controls.insurance_value.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.insurance_value.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.insurance_value.errors?.decimalRestricted_d && inBondFormStep3.controls.insurance_value.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.insurance_value.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.insurance_value.dirty" class="text-danger">Only 16 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label> Insurance Currency</label>
+                                <input type="text" class="form-control" formControlName="insurance_currency">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.insurance_currency.errors?.maxlength' class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                            </div>
+                            <div class="form-group  col-md-2">
+                                <label> Insurance Rate</label>
+                                <input type="text" class="form-control" formControlName="insurance_rate">
+                                <div *ngIf="inBondFormStep3.controls.insurance_rate.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.insurance_rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.insurance_rate.errors?.decimalRestricted_d && inBondFormStep3.controls.insurance_rate.dirty" class="text-danger">Only upto 4 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.insurance_rate.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.insurance_rate.dirty" class="text-danger">Only 7 digits are allowed before decimal</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2 offset-md-1">
+                                <label>Misc. Charges</label>
+                                <input type="text" class="form-control" formControlName="misc_charge">
+                                <div *ngIf="inBondFormStep3.controls.misc_charge.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.misc_charge.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.misc_charge.errors?.decimalRestricted_d && inBondFormStep3.controls.misc_charge.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.misc_charge.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.misc_charge.dirty" class="text-danger">Only 16 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label> Misc. Currency</label>
+                                <input type="text" class="form-control" formControlName="misc_currency">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.misc_currency.errors?.maxlength'  class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label> Misc. Rate</label>
+                                <input type="text" class="form-control" formControlName="misc_rate">
+                                <div *ngIf="inBondFormStep3.controls.misc_rate.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.misc_rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.misc_rate.errors?.decimalRestricted_d && inBondFormStep3.controls.misc_rate.dirty" class="text-danger">Only upto 4 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.misc_rate.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.misc_rate.dirty" class="text-danger">Only 7 digits are allowed before decimal</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2 offset-md-1">
+                                <label>Landing Rate</label>
+                                <input type="text" class="form-control" formControlName="landing_rate">
+                                <div *ngIf="inBondFormStep3.controls.landing_rate.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.landing_rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.landing_rate.errors?.decimalRestricted_d && inBondFormStep3.controls.landing_rate.dirty" class="text-danger">Only upto 4 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.landing_rate.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.landing_rate.dirty" class="text-danger">Only 7 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label> Loading Charges</label>
+                                <input type="text" class="form-control" formControlName="loading_charge">
+                                <div *ngIf="inBondFormStep3.controls.loading_charge.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.loading_charge.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.loading_charge.errors?.decimalRestricted_d && inBondFormStep3.controls.loading_charge.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.loading_charge.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.loading_charge.dirty" class="text-danger">Only 16 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label> Loading Currency </label>
+                                <input type="text" class="form-control" formControlName="loading_currency">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.loading_currency.errors?.maxlength'  class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                            </div>
+                            <div class="form-group  col-md-2">
+                                <label> Loading Rate</label>
+                                <input type="text" class="form-control" formControlName="load_rate">
+                                <div *ngIf="inBondFormStep3.controls.load_rate.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.load_rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.load_rate.errors?.decimalRestricted_d && inBondFormStep3.controls.load_rate.dirty" class="text-danger">Only upto 4 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.load_rate.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.load_rate.dirty" class="text-danger">Only 7 digits are allowed before decimal</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Agency Comission</label>
+                                <input type="text" class="form-control" formControlName="agency_commission">
+                                <div *ngIf="inBondFormStep3.controls.agency_commission.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.agency_commission.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.agency_commission.errors?.decimalRestricted_d && inBondFormStep3.controls.agency_commission.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.agency_commission.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.agency_commission.dirty" class="text-danger">Only 16 digits are allowed before decimal</div>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label> Agency Comm. Currency </label>
+                                <input type="text" class="form-control" formControlName="agency_commission_currency">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.agency_commission_currency.errors?.maxlength'  class="text-danger">
+                                The maximum field length is 3, please update the field</mat-error>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label> Agency Comm. Rate</label>
+                                <input type="text" class="form-control" formControlName="agency_commission_rate">
+                                <div *ngIf="inBondFormStep3.controls.agency_commission_rate.errors?.alphabetNotAllowed_d && inBondFormStep3.controls.agency_commission_rate.dirty" class="text-danger" >Only Numbers are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.agency_commission_rate.errors?.decimalRestricted_d && inBondFormStep3.controls.agency_commission_rate.dirty" class="text-danger">Only upto 4 decimal values are allowed</div>
+                                <div *ngIf="inBondFormStep3.controls.agency_commission_rate.errors?.digitsBeforeDecimal_d && inBondFormStep3.controls.agency_commission_rate.dirty" class="text-danger">Only 7 digits are allowed before decimal</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Nature of Transaction Comission</label> <span class="required"> *</span>
+                                <input type="text" class="form-control" formControlName="nature_of_transaction">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.nature_of_transaction.errors?.required && inBondFormStep3.controls.nature_of_transaction.touched'
+                                class="text-danger">This field is required</mat-error> 
+                            <mat-error
+                                *ngIf='inBondFormStep3.controls.nature_of_transaction.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 1, please update the field
+                            </mat-error> 
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label> Payment Terms </label> <span class="required">
+                                *</span>
+                                <input type="text" class="form-control" formControlName="payment_terms">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.payment_terms.errors?.required && inBondFormStep3.controls.payment_terms.touched'
+                                class="text-danger">This field is required</mat-error>
+                            <mat-error
+                                *ngIf='inBondFormStep3.controls.payment_terms.errors?.maxlength'
+                                class="text-danger">The maximum field length is 3, please update the field </mat-error>       
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Conditions attached with sale 1</label>
+                                <input type="text" class="form-control" formControlName="cond_sale_1">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.cond_sale_1.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label> Conditions attached with sale 2</label>
+                                <input type="text" class="form-control" formControlName="cond_sale_2">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.cond_sale_2.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field</mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Conditions attached with sale 3</label>
+                                <input type="text" class="form-control" formControlName="cond_sale_3">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.cond_sale_3.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label> Conditions attached with sale 4 </label>
+                                <input type="text" class="form-control" formControlName="cond_sale_4">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.cond_sale_4.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Conditions attached with sale 5</label>
+                                <input type="text" class="form-control" formControlName="cond_sale_5">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.cond_sale_5.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field</mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label> Valuation method applicable</label>
+                                <input type="text" class="form-control" formControlName="valuation_method_applicable">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.valuation_method_applicable.errors?.maxlength'
+                                class="text-danger">The maximum field length is 40, please update the field </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Actual Invoice Number</label> <span class="required">  *</span>
+                                <input type="text" class="form-control" formControlName="actual_invoice_number">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.actual_invoice_number.errors?.required && inBondFormStep3.controls.actual_invoice_number.touched'
+                                class="text-danger">This field is required</mat-error>
+                            <mat-error
+                                *ngIf='inBondFormStep3.controls.actual_invoice_number.errors?.maxlength'
+                                class="text-danger">The maximum field length is 16, please update the field </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label> Other Relevant Information</label>
+                                <input type="text" class="form-control" formControlName="other_relevant_information">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.other_relevant_information.errors?.maxlength'
+                                class="text-danger">The maximum field length is 100, please update the field  </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Terms Place</label>
+                                <input type="text" class="form-control" formControlName="terms_place">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.terms_place.errors?.maxlength'
+                                class="text-danger">The maximum field length is 35, please update the field </mat-error>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="matnotexpand">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Third Party Details
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Third Party Name</label>
+                                <input type="text" class="form-control" formControlName="name_third_party">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.name_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 70, please update the field  </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Third Party Name Address 1</label>
+                                <input type="text" class="form-control" formControlName="address1_third_party">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address1_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 70, please update the field </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Third Party Name Address 2</label>
+                                <input type="text" class="form-control" formControlName="address2_third_party">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.address2_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 50, please update the field  </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Third Party Name City</label>
+                                <input type="text" class="form-control" formControlName="city_third_party">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.city_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 35, please update the field </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Third Party Country Sub. Division</label>
+                                <input type="text" class="form-control" formControlName="country_sub_division_third_party">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.country_sub_division_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 35, please update the field  </mat-error>
+                            </div>
+                            <div class="form-group col-md-2 offset-md-2">
+                                <label>Third Party Country Code </label>
+                                <input type="text" class="form-control" formControlName="country_code_third_party">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.country_code_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 2, please update the field  </mat-error>
+                            </div>
+                            <div class="form-group  col-md-2">
+                                <label>Third Party Pin</label>
+                                <input type="text" class="form-control" formControlName="pin_third_party">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.pin_third_party.errors?.maxlength'
+                                class="text-danger">The maximum field length is 10, please update the field 
+                               </mat-error>
+                               <mat-error
+                               *ngIf='inBondFormStep3.controls.pin_third_party.errors?.pattern'
+                               class="text-danger">Only numbers are allowed in this field, please update
+                              </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Authorized Economic Operator Code</label>
+                                <input type="text" class="form-control" formControlName="authorized_economic_operator_code">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.authorized_economic_operator_code.errors?.maxlength'
+                                class="text-danger"> The maximum field length is 17, please update the field 
+                            </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Authorized Economic Operator Country </label>
+                                <select class="form-control">
+                                <option value=""> </option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Authorized Economic Operator Role</label>
+                                <input type="text" class="form-control" formControlName="authorized_economic_operator_role">
+                                <mat-error
+                                *ngIf='inBondFormStep3.controls.authorized_economic_operator_role.errors?.maxlength'
+                                class="text-danger">The maximum field length is 3, please update the field </mat-error>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Whether Buyer or Seller related</label>
+                                <div class="radio-inline">
+                                    <input type="radio" name="option">Yes &nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="option">No &nbsp;&nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

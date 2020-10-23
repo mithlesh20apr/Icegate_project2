@@ -1,0 +1,644 @@
+<div><span class="required">&#42;</span> indicates the mandatory fields </div>
+<br>
+<div class="row">
+    <form class="col-md-12" [formGroup]="inBondFormStep1">
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" *ngFor="let item of [1]; first as isFirst"
+        [expanded]="isFirst" class="matnotexpand">
+        <mat-expansion-panel-header class="disable_ripple">
+            <mat-panel-title>
+                General Details
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+               
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-2 offset-md-1">
+                        <label>BE Type</label> <br>
+                        <b>In Bond (Warehouse) BE</b>
+                      
+                    </div>
+                    <div class="form-group col-md-2" >
+                        <label>Message Type</label><span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="message_type" placeholder="F" readonly>
+                    </div>
+                    <div class="form-group  col-md-2 offset-md-2"  [ngClass]="displayFieldCss('custom_house_code')">
+                        <label class="control-label requiredFeild">Custom House Code</label>
+                        <input type="text" formControlName="custom_house_code" class="form-control">
+                        <validation-messages [control]="inBondFormStep1.controls.custom_house_code" ></validation-messages>
+                    </div>
+                    <div class="form-group   col-md-2">
+                        <label>Branch Sr.No.</label><span class="required"> *</span>
+                        <input class="form-control" formControlName="branch_sr_no">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.branch_sr_no.errors?.required && inBondFormStep1.controls.branch_sr_no.touched'
+                            class="text-danger">This field is required</mat-error> <br>
+                        <mat-error *ngIf='inBondFormStep1.controls.branch_sr_no.errors?.maxlength ' class="text-danger">
+                            The maximum field length is 3, please update the field
+                        </mat-error>
+                        <mat-error *ngIf='inBondFormStep1.controls.branch_sr_no.errors?.pattern' class="text-danger">
+                            Only numbers are allowed in this field, please update
+                        </mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-2">
+                        <label>User Job No.</label><span class="required">*</span>
+                        <input class="form-control" formControlName="user_job_no" placeholder="User Job No.">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.user_job_no.errors?.required && inBondFormStep1.controls.user_job_no.touched'
+                            class="text-danger">This field is required</mat-error> <br>
+                        <mat-error *ngIf='inBondFormStep1.controls.user_job_no.errors?.maxlength' class="text-danger">
+                            The maximum field length is 7, please update the field
+                        </mat-error><br>
+                        <mat-error *ngIf='inBondFormStep1.controls.user_job_no.errors?.pattern' class="text-danger">Only
+                            numbers are allowed in this field, please update</mat-error>
+                        <br>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label>User Job Date</label><span class="required">*</span>
+                        <input type="date" class="form-control" formControlName="user_job_date" required
+                            placeholder="User Job Date">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.user_job_date.errors?.required && inBondFormStep1.controls.user_job_date.touched'
+                            class="text-danger">This field is required</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-2">
+                        <label>BE Number</label>
+                        <input class="form-control" formControlName="be_number">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.be_number.errors?.required && inBondFormStep1.controls.be_number.touched'
+                            class="text-danger">This field is required</mat-error> <br>
+                        <mat-error *ngIf='inBondFormStep1.controls.be_number.errors?.maxlength ' class="text-danger">The
+                            maximum field length is 7, please update the field
+                        </mat-error><br>
+                        <mat-error *ngIf='inBondFormStep1.controls.be_number.errors?.pattern' class="text-danger">Only
+                            numbers are allowed in this field, please update</mat-error><br>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label>BE Date</label>
+                        <input type="date" class="form-control" formControlName="be_date">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.be_date.errors?.required && inBondFormStep1.controls.be_date.touched'
+                            class="text-danger">This field is required</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>IEC Code</label><span class="required">*</span>
+                        <input class="form-control" formControlName="iec_code">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.iec_code.errors?.required && inBondFormStep1.controls.iec_code.touched'
+                            class="text-danger">This field is required</mat-error>
+                        <mat-error *ngIf='inBondFormStep1.controls.iec_code.errors?.maxlength ' class="text-danger"> The
+                            maximum field length is 10, please update the field
+                        </mat-error>
+                        <mat-error *ngIf='inBondFormStep1.controls.iec_code.errors?.pattern' class="text-danger">Only
+                            numbers are allowed in this field, please update</mat-error><br>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group  col-md-4 col-sd-1">
+                        <label>Name of the importer</label>
+                        <input type="text" class="form-control" formControlName="name_importer">
+                        <mat-error *ngIf='inBondFormStep1.controls.name_importer.errors?.maxlength '
+                            class="text-danger">
+                            The maximum field length is 50, please update the field</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Address 1</label>
+                        <input class="form-control" formControlName="address1_importer">
+
+                        <mat-error *ngIf='inBondFormStep1.controls.address1_importer.errors?.maxlength '
+                            class="text-danger">The maximum field length is <35>, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+
+                    <div class="form-group  col-md-4">
+                        <label>Address 2</label>
+                        <input type="text" class="form-control" formControlName="address2_importer">
+                        <mat-error *ngIf='inBondFormStep1.controls.address2_importer.errors?.maxlength '
+                            class="text-danger">The maximum field length is 35, please update the field</mat-error>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>City</label>
+                        <input class="form-control" formControlName="city_importer">
+                        <mat-error *ngIf='inBondFormStep1.controls.city_importer.errors?.maxlength '
+                            class="text-danger"> The maximum field length is 35, please update the field
+                        </mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+
+                    <div class="form-group  col-md-2">
+                        <label>State</label>
+                        <input class="form-control" formControlName="state_importer">
+
+                        <mat-error *ngIf='inBondFormStep1.controls.state_importer.errors?.maxlength '
+                            class="text-danger"> The maximum field length is 35, please update the field
+                        </mat-error>
+                    </div>
+
+                    <div class="form-group  col-md-2">
+                        <label>Pin</label>
+                        <input type="text" class="form-control" formControlName="pin">
+                        <mat-error *ngIf='inBondFormStep1.controls.pin.errors?.maxlength ' class="text-danger">
+                            The maximum field length is 6, please update the field
+                        </mat-error><br>
+                        <mat-error *ngIf='inBondFormStep1.controls.pin.errors?.pattern' class="text-danger">
+                            Only numbers are allowed in this field, please update</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group">
+                            <span>Mode of Transport </span> <span class="required"> *</span> <br><br>
+                            <label class="col-md-3">
+                                <input type="radio" id="mode_of_transport" formControlName="mode_of_transport"
+                                    type="radio" value="Land">Land
+                            </label>
+                            <label class="col-md-3">
+                                <input type="radio" id="mode_of_transport" formControlName="mode_of_transport"
+                                    type="radio" value="Sea">Sea
+                            </label>
+                            <label class="col-md-3">
+                                <input type="radio" id="mode_of_transport" formControlName="mode_of_transport"
+                                    type="radio" value="Air">Air
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group  col-md-4">
+                        <span>Importer Type</span> <span class="required"> *</span> <br><br>
+                        <label class=" col-md-3">
+                            <input type="radio" id="importer_type" formControlName="importer_type" value="G">G
+                        </label>
+                        <label class=" col-md-3">
+                            <input type="radio" id="importer_type" formControlName="importer_type" value="U">U
+                        </label>
+                        <label class=" col-md-3">
+                            <input type="radio" id="importer_type" formControlName="importer_type" value="O">O
+                        </label>
+                        <label class=" col-md-3">
+                            <input type="radio" id="importer_type" formControlName="importer_type" value="P">P
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group">
+                            <span>Kachcha BE </span> <span class="required"> *</span> <br><br>
+                            <label class="col-md-3">
+                                <input type="radio" formControlName="kachcha_be" value="Yes">Yes
+                            </label>
+                            <label class=" col-md-3">
+                                <input type="radio" formControlName="kachcha_be" value="No">No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group  col-md-4">
+                        <div class="form-group">
+                            <span>High Sea Sale Flag</span> <br><br>
+                            <label class="col-md-3">
+                                <input type="radio" formControlName="high_sea_sale_flag" value="Yes">Yes
+                            </label>
+                            <label class="col-md-3" style="padding-left:0px ">
+                                <input type="radio" formControlName="high_sea_sale_flag" value="No">No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="inBondFormStep1.controls.high_sea_sale_flag.value==='Yes'" class="dropdown-color">
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Permission Code</label><span class="required"> *</span>
+                            <input class="form-control" formControlName="permission_code">
+                            <mat-error
+                                *ngIf='inBondFormStep1.controls.permission_code.errors?.required && inBondFormStep1.controls.permission_code.touched'
+                                class="text-danger">This field is required</mat-error><br>
+                            <mat-error *ngIf='inBondFormStep1.controls.permission_code.errors?.maxlength '
+                                class="text-danger">The maximum field length is 3, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Reason for Request</label><span class="required"> *</span>
+                            <input class="form-control" formControlName="reason_for_request">
+                            <mat-error
+                                *ngIf='inBondFormStep1.controls.reason_for_request.errors?.required && inBondFormStep1.controls.reason_for_request.touched'
+                                class="text-danger">This field is required</mat-error> <br>
+                            <mat-error *ngIf='inBondFormStep1.controls.reason_for_request.errors?.maxlength '
+                                class="text-danger">The maximum field length is 2000, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Invoice Serial Number</label><span class="required"> *</span>
+                            <input class="form-control" formControlName="invoice_serial_number">
+                            <mat-error
+                                *ngIf='inBondFormStep1.controls.invoice_serial_number.errors?.required && inBondFormStep1.controls.invoice_serial_number.touched'
+                                class="text-danger">This field is required</mat-error>
+                            <mat-error *ngIf='inBondFormStep1.controls.invoice_serial_number.errors?.maxlength '
+                                class="text-danger">The maximum field length is 5, please update the field</mat-error>
+                            <mat-error *ngIf='inBondFormStep1.controls.invoice_serial_number.errors?.pattern'
+                                class="text-danger">Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Branch Serial Number</label><span class="required"> *</span>
+                            <input class="form-control" formControlName="branch_sr_no">
+                            <mat-error
+                                *ngIf='inBondFormStep1.controls.branch_sr_no.errors?.required && inBondFormStep1.controls.branch_sr_no.touched'
+                                class="text-danger">This field is required</mat-error> <br>
+                            <mat-error *ngIf='inBondFormStep1.controls.branch_sr_no.errors?.maxlength '
+                                class="text-danger">The maximum field length is 3, please update the field
+                            </mat-error>
+                            <mat-error *ngIf='inBondFormStep1.controls.branch_sr_no.errors?.pattern'
+                                class="text-danger">Only numbers are allowed in this field, please update
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Importer Name</label>
+                            <input class="form-control" formControlName="name_importer">
+                            <mat-error *ngIf='inBondFormStep1.controls.name_importer.errors?.maxlength '
+                                class="text-danger">
+                                The maximum field length is 50, please update the field</mat-error>
+
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Preceding Level</label><span class="required">*</span>
+                            <input class="form-control" formControlName="preceding_level">
+                            <mat-error
+                                *ngIf='inBondFormStep1.controls.preceding_level.errors?.required && inBondFormStep1.controls.preceding_level.touched'
+                                class="text-danger">This field is required</mat-error> <br>
+
+                            <mat-error *ngIf='inBondFormStep1.controls.preceding_level.errors?.maxlength'
+                                class="text-danger">The maximum field length is 50, please update the field
+                            </mat-error>
+
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Importer Address 1</label>
+                            <input class="form-control" formControlName="address1_importer">
+                            <mat-error *ngIf='inBondFormStep1.controls.address1_importer.errors?.maxlength '
+                                class="text-danger">The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group  col-md-4">
+                            <label>Importer Address 2</label><span class="required">*</span>
+                            <input class="form-control" formControlName="address2_importer">
+                            <mat-error *ngIf='inBondFormStep1.controls.address2_importer.errors?.maxlength '
+                                class="text-danger">The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Importer City</label>
+                            <input class="form-control" formControlName="city_importer">
+                            <mat-error *ngIf='inBondFormStep1.controls.city_importer.errors?.maxlength '
+                                class="text-danger"> The maximum field length is 35, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+
+                        <div class="form-group  col-md-4">
+                            <label>Importer PIN</label>
+                            <input class="form-control" formControlName="pin_importer">
+                            <mat-error *ngIf='inBondFormStep1.controls.pin_importer.errors?.maxlength '
+                                class="text-danger">The maximum field length is 6, please update the field
+                            </mat-error><br>
+                            <mat-error *ngIf='inBondFormStep1.controls.pin_importer.errors?.pattern'
+                                class="text-danger">Only numbers are allowed in this field, please update</mat-error>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Port of Origin</label><span class="required"> *</span>
+                        <input class="form-control" formControlName="port_of_origin">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.port_of_origin.errors?.required && inBondFormStep1.controls.port_of_origin.touched'
+                            class="text-danger">This field is required</mat-error><br>
+
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>CHA Code</label>
+                        <input type="text" class="form-control" formControlName="cha_code">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.cha_code.errors?.required && inBondFormStep1.controls.cha_code.touched'
+                            class="text-danger">This field is required</mat-error> <br>
+                        <mat-error *ngIf='inBondFormStep1.controls.cha_code.errors?.maxlength ' class="text-danger">The
+                            maximum field length is 15, please update the field”</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Country of Origin</label><span class="required"> *</span>
+                        <input class="form-control" formControlName="country_of_origin">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.country_of_origin.errors?.required && inBondFormStep1.controls.country_of_origin.touched'
+                            class="text-danger">This field is required</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group  col-md-4">
+                        <label>Country of Consignment</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="country_of_consignment">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.country_of_consignment.errors?.required && inBondFormStep1.controls.country_of_consignment.touched'
+                            class="text-danger">This field is required</mat-error>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Port of Shipment</label><span class="required"> *</span>
+                        <input class="form-control" formControlName="port_of_shipment">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.port_of_shipment.errors?.required && inBondFormStep1.controls.port_of_shipment.touched'
+                            class="text-danger">This field is required</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group   col-md-4">
+                        <div class="form-group">
+                            <span>Green Channel Requested </span> <span class="required"> *</span><br><br>
+                            <label class="col-md-3">
+                                <input type="radio" formControlName="green_channel_requested" value="Yes">Yes
+                            </label>
+                            <label class="radio-inline col-md-3">
+                                <input type="radio" formControlName="green_channel_requested" value="No">No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group">
+                            <span>Section 48</span><span class="required"> *</span>
+                            <br><br>
+                            <label class="col-md-3">
+                                <input type="radio" formControlName="section" value="Yes">Yes
+                            </label>
+                            <label class="col-md-3">
+                                <input type="radio" formControlName="section" value="No">No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group">
+                            <span>Whether Prior BE</span><span class="required"> *</span>
+                            <br><br>
+                            <label class="col-md-3">
+                                <input type="radio" formControlName="prior_be" value="Yes">Yes
+                            </label>
+                            <label class=" col-md-3">
+                                <input type="radio" formControlName="prior_be" value="No">No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="inBondFormStep1.controls.section.value==='Yes'" class="dropdown-color">
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <label>Permission Code</label><span class="required">*</span>
+                            <input class="form-control" formControlName="permission_code">
+                            <mat-error
+                                *ngIf='inBondFormStep1.controls.permission_code.errors?.required && inBondFormStep1.controls.permission_code.touched'
+                                class="text-danger">This field is required</mat-error><br>
+                            <mat-error *ngIf='inBondFormStep1.controls.permission_code.errors?.maxlength '
+                                class="text-danger">The maximum field length is 3, please update the field
+                            </mat-error>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="form-group col-md-4">
+                            <label>Reason for Request</label><span class="required">*</span>
+                            <input class="form-control" formControlName="reason_for_request">
+                            <mat-error
+                                *ngIf='inBondFormStep1.controls.reason_for_request.errors?.required && inBondFormStep1.controls.reason_for_request.touched'
+                                class="text-danger">This field is required</mat-error> <br>
+                            <mat-error *ngIf='inBondFormStep1.controls.reason_for_request.errors?.maxlength '
+                                class="text-danger">The maximum field length is 2000, please update the field
+                            </mat-error>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Authorized Dealer Code</label><span class="required"> *</span>
+                        <input class="form-control" formControlName="authorized_dealer_code">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.authorized_dealer_code.errors?.required && inBondFormStep1.controls.authorized_dealer_code.touched'
+                            class="text-danger">This field is required</mat-error>
+                        <mat-error *ngIf='inBondFormStep1.controls.authorized_dealer_code.errors?.maxlength'
+                            class="text-danger">The maximum field length is 10, please update the field”
+                        </mat-error> <br>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group   col-md-4">
+                        <label>First Check Requested</label><span class="required"> *</span><br>
+                        <label class=" col-md-3">
+                            <input type="radio" formControlName="first_check_requested" value="Yes">Yes
+                        </label>
+                        <label class="col-md-3">
+                            <input type="radio" formControlName="first_check_requested" value="No">No
+                        </label>
+                    </div>
+                </div>
+          
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="matnotexpand">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Warehouse Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+            <br>
+                 <br>
+                <div class="form-row">
+                    <br>
+                    <br>
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Warehouse Code</label>
+                        <input type="text" class="form-control" formControlName="warehouse_code">
+                        <mat-error *ngIf='inBondFormStep1.controls.warehouse_code.errors?.maxlength'
+                            class="text-danger">
+                            The maximum field length is 8, please update the field
+                        </mat-error> <br>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group  col-md-2">
+                        <label>Warehouse Customs Site ID</label>
+                        <input class="form-control" formControlName="warehouse_custom_site_id">
+                        <mat-error *ngIf='inBondFormStep1.controls.warehouse_custom_site_id.errors?.maxlength'
+                            class="text-danger">The maximum field length is 7, please update the field
+                        </mat-error> <br>
+                        <mat-error *ngIf='inBondFormStep1.controls.warehouse_custom_site_id.errors?.pattern'
+                            class="text-danger">Only numbers are allowed in this field, please update
+                        </mat-error><br>
+                    </div>
+                    <div class="form-group  col-md-2">
+                        <label>Warehouse BE No</label>
+                        <input type="text" class="form-control" formControlName="warehouse_be_no">
+                        <mat-error *ngIf='inBondFormStep1.controls.warehouse_be_no.errors?.maxlength'
+                            class="text-danger">The maximum field length is 6, please update the field
+                        </mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Warehouse BE Date</label>
+                        <input type="date" class="form-control" formControlName="warehouse_be_date">
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group  col-md-4">
+                        <label>No of packages released</label>
+                        <input class="form-control" formControlName="no_packages_released">
+                        <mat-error *ngIf='inBondFormStep1.controls.no_packages_released.errors?.maxlength'
+                            class="text-danger">The maximum field length is 8, please update the field
+                        </mat-error> <br>
+                        <mat-error *ngIf='inBondFormStep1.controls.no_packages_released.errors?.pattern'
+                            class="text-danger">Only numbers are allowed in this field, please update
+                        </mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Package Code</label>
+                        <input type="text" class="form-control" formControlName="package_code">
+                        <mat-error *ngIf='inBondFormStep1.controls.package_code.errors?.maxlength' class="text-danger">
+                            The maximum field length is 13, please update the field
+                        </mat-error> <br>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group  col-md-2">
+                        <label>Gross Weight</label>
+                        <input formControlName="gross_weight" class="form-control">
+                        <mat-error *ngIf='inBondFormStep1.controls.gross_weight.errors?.maxlength' class="text-danger">
+                            The maximum field length is 12, please update the field
+                        </mat-error> <br>
+                        <mat-error *ngIf='inBondFormStep1.controls.gross_weight.errors?.pattern' class="text-danger">
+                            Only numbers are allowed in this field, please update
+                        </mat-error>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Unit of Measurement</label>
+                        <input type="text" class="form-control" formControlName="unit_of_measurement">
+                        <mat-error *ngIf='inBondFormStep1.controls.unit_of_measurement.errors?.maxlength'
+                            class="text-danger">The maximum field length is 3, please update the field
+                        </mat-error> <br>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Additional Charges if any Purchase on high seas</label>
+                        <input type="text" class="form-control" formControlName="additional_charges">
+                        <mat-error *ngIf='inBondFormStep1.controls.additional_charges.errors?.maxlength'
+                            class="text-danger">The maximum field length is 6, please update the field
+                        </mat-error> <br>
+                        <mat-error *ngIf='inBondFormStep1.controls.additional_charges.errors?.pattern'
+                            class="text-danger">Only numbers are allowed in this field, please update
+                        </mat-error><br>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group  col-md-4">
+                        <label>Miscellaneous load</label>
+                        <input type="text" class="form-control" formControlName="misc_load">
+                        <mat-error *ngIf='inBondFormStep1.controls.misc_load.errors?.maxlength' class="text-danger">The
+                            maximum field length is 6, please update the field
+                        </mat-error>
+                        <mat-error *ngIf='inBondFormStep1.controls.misc_load.errors?.pattern' class="text-danger">Only
+                            numbers are allowed in this field, please update
+                        </mat-error><br>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4 ">
+                        <label>Unique Consignment Reference Number (UCR)</label>
+                        <input class="form-control" formControlName="ucr">
+                        <mat-error *ngIf='inBondFormStep1.controls.ucr.errors?.maxlength' class="text-danger">The
+                            maximum field length is 35, please update the field
+                        </mat-error> <br>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>UCR Type</label>
+                        <input type="text" class="form-control" formControlName="ucr_type">
+                        <mat-error *ngIf='inBondFormStep1.controls.ucr_type.errors?.maxlength' class="text-danger">The
+                            maximum field length is 6, please update the field
+                        </mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Payment Method Code</label><span class="required"> *</span>
+                        <input class="form-control" formControlName="payment_method_code">
+                        <mat-error
+                            *ngIf='inBondFormStep1.controls.payment_method_code.errors?.required && inBondFormStep1.controls.payment_method_code.touched'
+                            class="text-danger">This field is required</mat-error><br>
+                        <mat-error *ngIf='inBondFormStep1.controls.payment_method_code.errors?.maxlength'
+                            class="text-danger">The maximum field length is 1, please update the field
+                        </mat-error> <br>
+                    </div>
+                </div>
+          
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+  
+    <button id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+</div>
+</form>
+</div>

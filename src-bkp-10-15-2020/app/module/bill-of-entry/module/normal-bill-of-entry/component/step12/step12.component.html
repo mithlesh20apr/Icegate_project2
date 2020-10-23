@@ -1,0 +1,118 @@
+<div>
+    <form class="col-md-12" [formGroup]="homeConsumptionFormStep12">
+        <h6 class="font-h6 text-center">Decleration Statement</h6>
+        <hr>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Declaration Type</label><span class="required">*</span>
+                <input type="text" class="form-control"
+                    formControlName="decleration_type">
+                <mat-error *ngIf='homeConsumptionFormStep12.controls.decleration_type.errors?.pattern'
+                    class="text-danger">
+                    Enter valid Decleration Type <br></mat-error>
+                <mat-error
+                    *ngIf='homeConsumptionFormStep12.controls.decleration_type.errors?.maxlength'
+                    class="text-danger">Dont extend the limit of 1 character <br>
+                </mat-error>
+
+                <mat-error
+                    *ngIf='homeConsumptionFormStep12.controls.decleration_type.errors?.required && homeConsumptionFormStep12.controls.decleration_type.touched'
+                    class="text-danger">This field is required</mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Declaration Number</label>
+                <input type="text" class="form-control"
+                    formControlName="decleration_number">
+                <mat-error
+                    *ngIf='homeConsumptionFormStep12.controls.decleration_number.errors?.pattern'
+                    class="text-danger">
+                    Enter valid Decleration Number <br></mat-error>
+                <mat-error
+                    *ngIf='homeConsumptionFormStep12.controls.decleration_number.errors?.maxlength'
+                    class="text-danger">Dont extend the limit of 7 digits only
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Declaration Date</label><span class="required">*</span>
+                <input type="date" class="form-control">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Invoice Serial Number</label><span class="required">*</span>
+                <input type="text" class="form-control"
+                    formControlName="invoice_serial_number">
+                    <mat-error
+                    *ngIf='homeConsumptionFormStep12.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep12.controls.invoice_serial_number.touched'>
+                    This field is required
+                </mat-error> <br>
+                <mat-error *ngIf='homeConsumptionFormStep12.controls.invoice_serial_number.errors?.maxlength'>
+                    The maximum field length is 5, please update the field
+                </mat-error><br>
+                <mat-error *ngIf='homeConsumptionFormStep12.controls.invoice_serial_number.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Item Sr.Number</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="item_serial_number">    
+                <mat-error
+                *ngIf='homeConsumptionFormStep12.controls.item_serial_number.errors?.required && homeConsumptionFormStep12.controls.item_serial_number.touched'
+                class="text-danger">This field is required <br></mat-error> 
+                <mat-error
+                    *ngIf='homeConsumptionFormStep12.controls.item_serial_number.errors?.maxlength'
+                    class="text-danger">The maximum field length is 4, please update the field <br>
+                </mat-error>
+                <mat-error
+                    *ngIf='homeConsumptionFormStep12.controls.item_serial_number.errors?.pattern'
+                    class="text-danger">Only numbers are allowed in this field, please update
+                    </mat-error>
+    
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Statement Type</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="statement_type">
+                    <mat-error
+                    *ngIf='homeConsumptionFormStep12.controls.statement_type.errors?.required && homeConsumptionFormStep12.controls.statement_type.touched'
+                    class="text-danger">This field is required <br></mat-error>
+                <mat-error *ngIf='homeConsumptionFormStep12.controls.statement_type.errors?.maxlength'
+                    class="text-danger">The maximum field length is 3, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Statement Code</label>
+                <input class="form-control"  fromControlName="statement_code">
+                <mat-error *ngIf='homeConsumptionFormStep12.controls.statement_code.errors?.maxlength'
+                    class="text-danger">The maximum field length is 7, please update the field
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Statement Text</label>
+                <input class="form-control" formControlName="statement_text" >
+                <mat-error *ngIf='homeConsumptionFormStep12.controls.statement_text.errors?.maxlength'
+                    class="text-danger">The maximum field length is 4000, please update the field
+                </mat-error>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

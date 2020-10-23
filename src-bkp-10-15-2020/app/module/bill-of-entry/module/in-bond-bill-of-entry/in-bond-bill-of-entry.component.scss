@@ -1,0 +1,19 @@
+.export_as_json {
+    img {
+        width: 29px;
+    }
+    padding-top: 0px;
+    color: #0b6baf;
+    font-weight: 500;
+}
+.import_json_files {
+    text-align: left;
+    margin-bottom: 6px;
+    margin-top: 18px;
+    font-weight: 500;
+    color: #2b669f;
+    font-size: 15px;
+}
+.btn:focus, .btn.focus {
+    box-shadow: none !important;
+}

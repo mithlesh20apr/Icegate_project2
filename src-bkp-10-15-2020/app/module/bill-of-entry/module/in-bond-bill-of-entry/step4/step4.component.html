@@ -1,0 +1,83 @@
+<div>
+    <form class="col-md-12" [formGroup]= "inBondFormStep4">
+        <h6 class="font-h6 text-center">Misc. Charges {{index}}</h6>
+        <hr>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label>Invoice Serial No</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="invoice_serial_number">
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.invoice_serial_number.errors?.required && inBondFormStep4.controls.invoice_serial_number.touched' class="text-danger"> 
+                    This field is required
+                </mat-error> <br>
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.invoice_serial_number.errors?.maxlength' class="text-danger">
+                    The maximum field length is <5>, please update the field 
+                </mat-error><br>
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.invoice_serial_number.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Misc. Charges Code</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="misc_charge_code">
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.misc_charge_code.errors?.required && inBondFormStep4.controls.misc_charge_code.touched' class="text-danger">
+                    This field is required
+                </mat-error> <br>
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.misc_charge_code.errors?.maxlength' class="text-danger">
+                    The maximum field length is <2>, please update the field 
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class=" form-group col-md-4">
+                <label> Misc. Charges Description</label><span class="required"> *</span>
+                <input type="text" class="form-control"
+                    formControlName="misc_description">
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.misc_description.errors?.required && inBondFormStep4.controls.misc_description.touched' class="text-danger"> 
+                    This field is required
+                </mat-error><br>
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.misc_description.errors?.maxlength' class="text-danger">
+                    The maximum field length is <35>, please update the field 
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-2">
+                <label>Misc. Charges</label>
+                <input type="text" class="form-control"
+                    formControlName="misc_charges">
+                <mat-error *ngIf='inBondFormStep4.controls.misc_charges.errors?.maxlength' class="text-danger">
+                    The maximum field length is <10>, please update the field 
+                </mat-error><br>
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.misc_charges.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label>Misc. Rate</label>
+                <input type="text" class="form-control" formControlName="misc_rate">
+                <mat-error *ngIf='inBondFormStep4.controls.misc_rate.errors?.maxlength' class="text-danger">
+                    The maximum field length is 3, please update the field 
+                </mat-error><br>
+                <mat-error
+                    *ngIf='inBondFormStep4.controls.misc_rate.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+
+    </form>
+</div>

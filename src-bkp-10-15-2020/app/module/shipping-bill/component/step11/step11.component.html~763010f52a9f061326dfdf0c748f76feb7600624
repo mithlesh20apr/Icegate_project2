@@ -1,0 +1,247 @@
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<div>
+    <form [formGroup]="sbReExportDetails">
+        <h2 class="text-center">SB Re-export</h2>
+        <hr>
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>Invoice Serial No.</label>
+                    <input type="text" class="form-control" formControlName="invoice_serial_no">
+                    <mat-error *ngIf="sbReExportDetails.controls.invoice_serial_no.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.invoice_serial_no.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-2">
+                    <label>Item Serial No.</label>
+                    <input type="text" class="form-control" formControlName="item_serial_no">
+                    <mat-error *ngIf="sbReExportDetails.controls.item_serial_no.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.item_serial_no.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Serial No.</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="serial_no">
+                    <mat-error *ngIf="sbReExportDetails.controls.serial_no.errors?.required && sbReExportDetails.controls.serial_no.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.serial_no.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.serial_no.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Site </label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_site">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_site.errors?.required && sbReExportDetails.controls.be_site.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_site.errors?.maxlength">The maximum field length is 6, please update the field</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>BE No</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_no">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_no.errors?.required && sbReExportDetails.controls.be_no.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_no.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_no.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                    <label>BE Date</label><span class="required"> *</span> <br>
+                    <mat-form-field >
+                          <mat-label>BE Date</mat-label>   
+                            <input matInput [matDatepicker]="be_date" formControlName="be_date">
+                            <mat-datepicker-toggle matSuffix [for]="be_date"></mat-datepicker-toggle>
+                            <mat-datepicker #be_date></mat-datepicker>     
+                    </mat-form-field>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_date.errors?.required && sbReExportDetails.controls.be_date.touched">This field is required</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>BE Invoice No.</label>  <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="be_invoice_no">
+                        <mat-error *ngIf="sbReExportDetails.controls.be_invoice_no.errors?.required && sbReExportDetails.controls.be_invoice_no.touched">This field is required</mat-error>
+                        <mat-error *ngIf="sbReExportDetails.controls.be_invoice_no.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>  
+                        <mat-error *ngIf="sbReExportDetails.controls.be_invoice_no.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                    </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Item </label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_item">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_item.errors?.required && sbReExportDetails.controls.be_item.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_item.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_item.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <span>Manual BE(Y/N)</span>  <span class="required"> *</span> <br><br> 
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="manual_be" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="manual_be" value="N"> N
+                    </label>   
+                    <mat-error *ngIf="sbReExportDetails.controls.manual_be.errors?.required && sbReExportDetails.controls.manual_be.touched">This field is required</mat-error> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Quantity Utilised </label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_quantity_utilised">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_quantity_utilised.errors?.required && sbReExportDetails.controls.be_quantity_utilised.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_quantity_utilised.errors?.maxlength">The maximum field length is 16, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_quantity_utilised.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Item description</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_item_description">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_item_description.errors?.required && sbReExportDetails.controls.be_item_description.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_item_description.errors?.required && sbReExportDetails.controls.be_item_description.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_item_description.errors?.maxlength">The maximum field length is 120, please update the field</mat-error> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Quantity  </label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_quantity">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_quantity.errors?.required && sbReExportDetails.controls.be_quantity.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_quantity.errors?.maxlength">The maximum field length is 16, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_quantity.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>BE UQC</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_uqc">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_uqc.errors?.required && sbReExportDetails.controls.be_uqc.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_uqc.errors?.maxlength">The maximum field length is 3, please update the field</mat-error> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Assessed Value  </label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_assessed_value">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_assessed_value.errors?.required && sbReExportDetails.controls.be_assessed_value.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_assessed_value.errors?.maxlength">The maximum field length is 16, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_assessed_value.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Duty Paid</label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_duty_paid">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_duty_paid.errors?.required && sbReExportDetails.controls.be_duty_paid.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_duty_paid.errors?.maxlength">The maximum field length is 16, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_duty_paid.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                    <label>BE Duty Payment Date</label><span class="required"> *</span> 
+                    <br>
+                    <mat-form-field >
+                        <mat-label>Choose a Date</mat-label>   
+                            <input matInput [matDatepicker]="be_duty_payment_date" formControlName="be_duty_payment_date">
+                            <mat-datepicker-toggle matSuffix [for]="be_duty_payment_date"></mat-datepicker-toggle>
+                            <mat-datepicker #be_duty_payment_date></mat-datepicker>     
+                    </mat-form-field>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_duty_payment_date.errors?.required && sbReExportDetails.controls.be_duty_payment_date.touched">This field is required</mat-error>
+                    </div>
+                    <div class="col-md-2"></div> 
+                    <div class="form-group col-md-4">
+                        <label>BE Other Identifiable Parameter</label>  <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="be_other_identifiable_parameter">
+                        <mat-error *ngIf="sbReExportDetails.controls.be_other_identifiable_parameter.errors?.required && sbReExportDetails.controls.be_other_identifiable_parameter.touched">This field is required</mat-error>
+                        <mat-error *ngIf="sbReExportDetails.controls.be_other_identifiable_parameter.errors?.maxlength">The maximum field length is 250, please update the field</mat-error>  
+                    </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <label>BE Assessable Value Claim </label> <span class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="be_assessed_value_claim">
+                    <mat-error *ngIf="sbReExportDetails.controls.be_assessed_value_claim.errors?.required && sbReExportDetails.controls.be_assessed_value_claim.touched">This field is required</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_assessed_value_claim.errors?.maxlength">The maximum field length is 16, please update the field</mat-error>
+                    <mat-error *ngIf="sbReExportDetails.controls.be_assessed_value_claim.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <span>BE Item Used (Y/N)</span> <span class="required"> *</span> <br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="be_item_used" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="be_item_used" value="N"> N
+                    </label>   
+                    <mat-error *ngIf="sbReExportDetails.controls.be_item_used.errors?.required && sbReExportDetails.controls.be_item_used.touched">This field is required</mat-error> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <span>Commisioner. Permission (Y/N)</span> <span class="required"> *</span> <br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="commisioner_permission" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="commisioner_permission" value="N"> N
+                    </label>   
+                    <mat-error *ngIf="sbReExportDetails.controls.commisioner_permission.errors?.required && sbReExportDetails.controls.commisioner_permission.touched">This field is required</mat-error> 
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <span>Input Credit (Y/N)</span> <span class="required"> *</span> <br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="input_credit" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="input_credit" value="N"> N
+                    </label>   
+                    <mat-error *ngIf="sbReExportDetails.controls.input_credit.errors?.required && sbReExportDetails.controls.input_credit.touched">This field is required</mat-error> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <span>Personal Used (Y/N)</span> <span class="required"> *</span> <br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="personal_used" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="personal_used" value="N"> N
+                    </label>   
+                    <mat-error *ngIf="sbReExportDetails.controls.personal_used.errors?.required && sbReExportDetails.controls.personal_used.touched">This field is required</mat-error> 
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <span>Modvat Availed (Y/N)</span> <span class="required"> *</span> <br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="modvat_availed" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="modvat_availed" value="N"> N
+                    </label>   
+                    <mat-error *ngIf="sbReExportDetails.controls.modvat_availed.errors?.required && sbReExportDetails.controls.modvat_availed.touched">This field is required</mat-error> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <span>Modvat Repaid (Y/N)</span> <span class="required"> *</span> <br>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="modvat_repaid" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="modvat_repaid" value="N"> N
+                    </label>   
+                    <mat-error *ngIf="sbReExportDetails.controls.modvat_repaid.errors?.required && sbReExportDetails.controls.modvat_repaid.touched">This field is required</mat-error> 
+                </div>                
+            </div>
+    </form>
+</div>

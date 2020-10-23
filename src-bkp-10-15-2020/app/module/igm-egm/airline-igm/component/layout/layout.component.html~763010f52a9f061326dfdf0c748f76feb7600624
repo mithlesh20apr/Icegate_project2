@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="card">
+        <b class="m-2">Airline- IGM</b>
+        <div class="box-color">
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-horizontal-stepper #stepper class="stepperscroll">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon [inline]="true">check_circle</mat-icon>
+                        </ng-template>
+                        <mat-step>
+                            <app-flight-details></app-flight-details>
+                            <div class="btncontainer">
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                        <mat-step>
+                            <div><span class="required"> *</span> indicates the mandatory fields</div> <br>
+                            <button mat-raised-button class="example-add-tab-button" (click)="addTab()" id="add-option"
+                                [disabled]="disableAddButton" style="width: 183px;">
+                                Add MAWB Details
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <mat-tab-group [selectedIndex]="selected.value"
+                                (selectedIndexChange)="selected.setValue($event)">
+                                <mat-tab *ngFor="let tab of tabs; let index = index">
+                                    <ng-template mat-tab-label>
+                                        <span>MAWB {{index + 1}}</span>
+                                        <mat-icon *ngIf="tabs.length != 1" (click)="removeTab(index)">cancel</mat-icon>
+                                    </ng-template>
+                                    <app-mawb-details></app-mawb-details>
+                                </mat-tab>
+                            </mat-tab-group>
+                            <div class="btncontainer">
+                                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                                <div class="col-md-4 offset-md-4"></div>
+                                <button mat-raised-button id="back_draft">Save as Draft</button>
+                                <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+                            </div>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

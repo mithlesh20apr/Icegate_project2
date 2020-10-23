@@ -1,0 +1,92 @@
+<form class="col-md-12" [formGroup]="hawbDetails">
+    <h2 class="text-center">HAWB Details</h2>
+    <hr>
+    <div class="col-md-12"><br></div>
+    <div class="form-row">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-4">
+            <label>HAWB Number</label> <span class="required"> *</span>
+            <input type="text" formControlName="hawb_no" class="form-control">
+            <validation-messages [control]="hawbDetails.controls.hawb_no"></validation-messages>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-4">
+            <label>HAWB Date</label> <br>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label> 
+                <!-- #docregion toggle -->
+                <input matInput [matDatepicker]="hawb_date" formControlName="hawb_date">
+                <mat-datepicker-toggle matSuffix [for]="hawb_date"></mat-datepicker-toggle>
+                <mat-datepicker #hawb_date></mat-datepicker>
+                <!-- #enddocregion toggle -->
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-4">
+            <label>Port of Origin</label> <span class="required"> *</span>
+            <select formControlName="port_origin" class="form-control">
+                <option></option>
+            </select>
+            <validation-messages [control]="hawbDetails.controls.port_origin"></validation-messages>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-4">
+            <label>Port of Destination</label>  <span class="required"> *</span>
+            <select formControlName="port_destination" class="form-control">
+                <option></option>
+            </select>
+            <validation-messages [control]="hawbDetails.controls.port_destination"></validation-messages>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-4">
+            <label>Shippment Type</label>  <span class="required"> *</span> <br>
+            <label class=" col-md-3 radio-inline">
+                <input type="radio"  matTooltip="Total" formControlName="shippment_type"  value="T" >T
+            </label>
+            <label class=" col-md-3 radio-inline ">
+                <input type="radio"  matTooltip="Part-Shippment"  formControlName="shippment_type"  value="P">P
+            </label>
+            <label class=" col-md-3 radio-inline">
+                <input type="radio"  matTooltip="Split"  formControlName="shippment_type"   value="S">S
+            </label>
+            <validation-messages [control]="hawbDetails.controls.shippment_type"></validation-messages>
+        </div>
+
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-4">
+            <label>Total Packages</label> <span class="required"> *</span>
+            <input type="text" formControlName="total_packages" class="form-control">
+            <validation-messages [control]="hawbDetails.controls.total_packages"></validation-messages>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-4">
+            <label>Gross Weight</label> <span class="required"> *</span>
+            <validation-messages [control]="hawbDetails.controls.gross_weight"></validation-messages>
+            <div *ngIf="hawbDetails.controls.gross_weight.errors?.alphabetNotAllowed_d && hawbDetails.controls.gross_weight.dirty" class="text-danger">Only numbers are allowed, please update field</div>
+            <div *ngIf="hawbDetails.controls.gross_weight.errors?.decimalRestricted_d && hawbDetails.controls.gross_weight.dirty" class="text-danger">Only upto 3 decimal values are allowed</div>
+            <div *ngIf="hawbDetails.controls.gross_weight.errors?.digitsBeforeDecimal_d && hawbDetails.controls.gross_weight.dirty" class="text-danger">Only 9 digits are allowed, use decimal values to enter further digits</div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-4">
+            <label>Item Description</label> <span class="required"> *</span>
+            <input type="text" formControlName="item_description" class="form-control">
+            <validation-messages [control]="hawbDetails.controls.item_description"></validation-messages>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-4">
+            <label>Special Handling Code</label>
+            <input type="text" formControlName="special_handling_code" class="form-control">
+            <validation-messages [control]="hawbDetails.controls.special_handling_code"></validation-messages>
+        </div>
+    </div>
+</form>

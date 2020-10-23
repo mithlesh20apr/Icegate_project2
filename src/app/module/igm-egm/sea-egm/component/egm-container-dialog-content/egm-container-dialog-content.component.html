@@ -1,0 +1,21 @@
+<div class="row">
+    <form class="col-md-12" [formGroup]="egmContainerDetails">
+        <h2 class="text-center">EGM Container Details</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Container No.</label>
+                <input type="text" class="form-control" formControlName="container_no">
+                <validation-messages [control]="egmContainerDetails.controls.container_no"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Container Status</label>
+                <input type="text" class="form-control" formControlName="container_status">
+                <validation-messages [control]="egmContainerDetails.controls.container_status"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>

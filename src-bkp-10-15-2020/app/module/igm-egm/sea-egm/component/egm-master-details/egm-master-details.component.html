@@ -1,0 +1,152 @@
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<button mat-raised-button (click)="openDialog()" id="add-option">
+    Add Container<mat-icon>add</mat-icon>
+</button>
+<br>
+<div class="row">
+    <form class="col-md-12" [formGroup]="egmMasterDetails">
+
+        <h2 class="text-center">EGM Master Details</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Message Type</label>
+                <input type="text" class="form-control" formControlName="message_type">
+                <mat-error *ngIf='egmMasterDetails.controls.message_type.errors?.maxlength'>The maximum
+                    field length is 7, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.message_type.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Customs House Code</label>
+                <input type="text" class="form-control" formControlName="custom_house_code">
+                <mat-error *ngIf='egmMasterDetails.controls.custom_house_code.errors?.maxlength'>The maximum field
+                    length is 9, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.custom_house_code.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>EGM No</label>
+                <input type="text" class="form-control" formControlName="egm_no">
+                <mat-error *ngIf='egmMasterDetails.controls.egm_no.errors?.maxlength'>The maximum
+                    field length is 7, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.egm_no.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>EGM Date</label>
+                <input type="text" class="form-control" formControlName="egm_date">
+                <mat-error *ngIf='egmMasterDetails.controls.egm_date.errors?.maxlength'>The maximum field
+                    length is 9, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.egm_date.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>SB No.</label>
+                <input type="text" class="form-control" formControlName="sb_no">
+                <mat-error *ngIf='egmMasterDetails.controls.sb_no.errors?.maxlength'>The maximum
+                    field length is 7, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.sb_no.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>SB Date</label>
+                <input type="text" class="form-control" formControlName="sb_date">
+                <mat-error *ngIf='egmMasterDetails.controls.sb_date.errors?.maxlength'>The maximum field
+                    length is 9, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.sb_date.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Port where SB filed</label>
+                <input type="text" class="form-control" formControlName="port_where_sb_filed">
+                <mat-error *ngIf='egmMasterDetails.controls.port_where_sb_filed.errors?.maxlength'>The maximum
+                    field length is 7, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.port_where_sb_filed.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Port of Destination</label>
+                <input type="text" class="form-control" formControlName="port_of_destination">
+                <mat-error *ngIf='egmMasterDetails.controls.port_of_destination.errors?.maxlength'>The maximum field
+                    length is 9, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.port_of_destination.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>Nature of Cargo</label>
+                <input type="text" class="form-control" formControlName="nature_of_cargo">
+                <mat-error *ngIf='egmMasterDetails.controls.nature_of_cargo.errors?.maxlength'>The maximum
+                    field length is 7, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.nature_of_cargo.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label>Gateway Port</label>
+                <input type="text" class="form-control" formControlName="gateway_port">
+                <mat-error *ngIf='egmMasterDetails.controls.gateway_port.errors?.maxlength'>The maximum field
+                    length is 9, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.gateway_port.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-1"></div>
+            <div class="form-group col-md-4">
+                <label>No. of Packages</label>
+                <input type="text" class="form-control" formControlName="no_of_packages">
+                <mat-error *ngIf='egmMasterDetails.controls.no_of_packages.errors?.maxlength'>The maximum
+                    field length is 7, please update the field <br>
+                </mat-error>
+                <mat-error *ngIf='egmMasterDetails.controls.no_of_packages.errors?.pattern'>
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="col-md-2"></div>
+         
+        </div>
+
+    </form>
+</div>

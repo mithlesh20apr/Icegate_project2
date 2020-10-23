@@ -1,0 +1,121 @@
+<div>
+    <form class="col-md-12" [formGroup]="exBondFormStep4">
+        <h6 class="font-h6 text-center">RSP</h6>
+        <hr>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1">
+                <label>Invoice Serial Number</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="invoice_serial_number">
+                <mat-error
+                    *ngIf='exBondFormStep4.controls.invoice_serial_number.errors?.required && exBondFormStep4.controls.invoice_serial_number.touched'
+                    class="text-danger">This field is required</mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.invoice_serial_number.errors?.maxlength '
+                    class="text-danger">The maximum field length is <5>, please update the field</mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.invoice_serial_number.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Item Sr. No.in Invoice</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="item_serial_number_invoice">
+                <mat-error
+                    *ngIf='exBondFormStep4.controls.item_serial_number_invoice.errors?.required && exBondFormStep4.controls.item_serial_number_invoice.touched'
+                    class="text-danger">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.item_serial_number_invoice.errors?.maxlength'
+                    class="text-danger">
+                    The maximum field length is <16>, please update the field
+                </mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.item_serial_number_invoice.errors?.pattern'
+                    class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Item Sr. No.in RSP</label>
+                <input type="text" class="form-control" fromControlName="item_serial_number_rsp">
+                <mat-error *ngIf='exBondFormStep4.controls.item_serial_number_rsp.errors?.maxlength' class="text-danger">
+                    The maximum field length is <16>, please update the field
+                </mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.item_serial_number_rsp.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-2 offset-md-2" >
+                <label>RSP(in Rs.)</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="rsp">
+                <mat-error
+                    *ngIf='exBondFormStep4.controls.rsp.errors?.required && exBondFormStep4.controls.rsp.touched' class="text-danger">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.rsp.errors?.maxlength' class="text-danger">
+                    The maximum field length is <16>, please update the field
+                </mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.rsp.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Quantity</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="quantity">
+                <mat-error
+                    *ngIf='exBondFormStep4.controls.quantity.errors?.required && exBondFormStep4.controls.quantity.touched' class="text-danger">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.quantity.errors?.maxlength' class="text-danger">
+                    The maximum field length is <16>, please update the field
+                </mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.quantity.errors?.pattern' class="text-danger">
+                    Only numbers are allowed in this field, please update
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Description Item</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="description">
+                <mat-error
+                    *ngIf='exBondFormStep4.controls.description.errors?.required && exBondFormStep4.controls.description.touched' class="text-danger">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf='exBondFormStep4.controls.description.errors?.maxlength' class="text-danger">
+                    The maximum field length is <40>, please update the field
+                </mat-error>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>RSP Notification</label>
+                <input type="text" class="form-control" formControlName="rsp_notification">
+                <mat-error *ngIf='exBondFormStep4.controls.rsp_notification.errors?.maxlength' class="text-danger">
+                    The maximum field length is <10>, please update the field
+                </mat-error>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>RSP Notification Serial No.</label>
+                <input type="text" class="form-control" formControlName="rsp_notification_sr_no">
+                <mat-error *ngIf='exBondFormStep4.controls.rsp_notification_sr_no.errors?.maxlength' class="text-danger">
+                    The maximum field length is <10>, please update the field
+                </mat-error>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

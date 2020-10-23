@@ -1,0 +1,16 @@
+<br>
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<button mat-raised-button (click)="openDialog()" id="add-option">
+    Add Items <mat-icon>add</mat-icon>
+</button>
+<br>
+<mat-accordion>
+    <app-invoice-details></app-invoice-details>
+</mat-accordion>
+<mat-accordion>
+    <app-freight-insurance-details></app-freight-insurance-details>
+</mat-accordion>
+<mat-accordion>
+    <app-third-party-details></app-third-party-details>
+</mat-accordion>

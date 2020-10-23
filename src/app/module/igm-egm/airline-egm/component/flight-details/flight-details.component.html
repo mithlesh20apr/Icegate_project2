@@ -1,0 +1,95 @@
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<div class="row">
+    <form class="col-md-12" [formGroup]="flightDetails">
+        <h2 class="text-center">Flight Details</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-2 offset-md-1">
+                <label>Message Type</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="message_type" placeholder="F" readonly>
+            </div>
+            <div class="form-group  col-md-2">
+                <label>Custom House Code</label>
+                <input type="text" formControlName="custom_house_code" class="form-control">
+                <validation-messages [control]="flightDetails.controls.custom_house_code"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group  col-md-2 offset-md-2">
+                <label>EGM No.</label>
+                <input type="text" formControlName="egm_no" class="form-control">
+                <validation-messages [control]="flightDetails.controls.egm_no"></validation-messages>
+            </div>
+            <div class="form-group  col-md-2">
+                <label>EGM  Date</label>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label> 
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="egm_date" formControlName="egm_date">
+                    <mat-datepicker-toggle matSuffix [for]="egm_date"></mat-datepicker-toggle>
+                    <mat-datepicker #egm_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                <validation-messages [control]="flightDetails.controls.egm_date"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group  col-md-2 offset-md-1">
+                <label>Flight No.</label>  <span class="required"> *</span> <br>
+                <input type="text" formControlName="flight_no" class="form-control">
+                <validation-messages [control]="flightDetails.controls.flight_no"></validation-messages>
+            </div>
+            <div class="form-group  col-md-2">
+                <label>Flight Origin (Departure) Date</label> <span class="required"> *</span> <br>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label> 
+                    <input matInput [matDatepicker]="flight_origin_date" formControlName="flight_origin_date">
+                    <mat-datepicker-toggle matSuffix [for]="flight_origin_date"></mat-datepicker-toggle>
+                    <mat-datepicker #flight_origin_date></mat-datepicker>
+                </mat-form-field> 
+                <validation-messages [control]="flightDetails.controls.flight_origin_date"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Port of Origin</label> <span class="required"> *</span>
+                <select formControlName="port_origin" class="form-control">
+                    <option></option>
+                </select>
+                <validation-messages [control]="flightDetails.controls.port_origin"></validation-messages>
+
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Port of Destination</label>  <span class="required"> *</span>
+                <select formControlName="port_destination" class="form-control">
+                    <option></option>
+                </select>
+                <validation-messages [control]="flightDetails.controls.port_destination"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Registraion No.</label>
+                <input type="text" formControlName="registration_no" class="form-control" >
+                <validation-messages [control]="flightDetails.controls.registration_no"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Nil Cargo Flight</label>  <span class="required"> *</span>
+                <div>
+                    <mat-radio-group aria-label="Select an option" formControlName="nil_cargo_flight">
+                        <mat-radio-button value="Yes" >Yes</mat-radio-button>&nbsp;&nbsp;
+                        <mat-radio-button value="No">No</mat-radio-button>                            
+                    </mat-radio-group>
+                </div>
+                <validation-messages [control]="flightDetails.controls.nil_cargo_flight"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>

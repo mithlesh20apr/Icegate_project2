@@ -1,0 +1,295 @@
+<div><span class="required"> *</span> indicates the mandatory fields</div>
+<br>
+<form class="col-md-12" [formGroup]="shipingBillStepSeven">
+    <mat-accordion>
+    <mat-expansion-panel  [expanded]="1">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                AR4
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+            
+                <div class="col-md-12"><br></div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Invoice Sr. Number</label>
+                        <input type="text" class="form-control" formControlName="invoice_sr_number">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.invoice_sr_number.errors?.maxlength">The maximum field length is 2, please update the field</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.invoice_sr_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Item Sr number in invoice</label>
+                        <input type="text" class="form-control" formControlName="item_sr_number_invoice">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.item_sr_number_invoice.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.item_sr_number_invoice.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>AR4 Number</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="ar4_number">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.ar4_number.errors?.required && shipingBillStepSeven.controls.ar4_number.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.ar4_number.errors?.maxlength">The maximum field length is 17, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>AR4 Date</label><span class="required"> *</span>
+                        <br>
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label> 
+                            <!-- #docregion toggle -->
+                            <input matInput [matDatepicker]="ar4_date" formControlName="ar4_date">
+                            <mat-datepicker-toggle matSuffix [for]="ar4_date"></mat-datepicker-toggle>
+                            <mat-datepicker #ar4_date></mat-datepicker>
+                            <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.ar4_date.errors?.required && shipingBillStepSeven.controls.ar4_date.touched">This field is required</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Commissionerate</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="commissionerate">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.commissionerate.errors?.required && shipingBillStepSeven.controls.commissionerate.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.commissionerate.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                   
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Division</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="division">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.division.errors?.required && shipingBillStepSeven.controls.division.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.division.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Range</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="range">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.range.errors?.required && shipingBillStepSeven.controls.range.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.range.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                   
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Remarks</label>
+                        <input type="text" class="form-control" formControlName="remarks">                   
+                        <mat-error *ngIf="shipingBillStepSeven.controls.remarks.errors?.maxlength">The maximum field length is 250, please update the field</mat-error>                    
+                    </div>
+                </div>
+         
+        </div>
+    </mat-expansion-panel>
+    
+</mat-accordion>
+<mat-accordion>
+    <mat-expansion-panel class="matnotexpand">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Packing Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+                 <div class="col-md-12"><br></div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Packing Number-From</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="packing_number_from">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.packing_number_from.errors?.required && shipingBillStepSeven.controls.packing_number_from.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.packing_number_from.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.packing_number_from.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Packing Number– To</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="packing_number_to">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.packing_number_to.errors?.required && shipingBillStepSeven.controls.packing_number_to.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.packing_number_to.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.packing_number_to.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Packing Code</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="packing_code">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.packing_code.errors?.required && shipingBillStepSeven.controls.packing_code.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.packing_code.errors?.maxlength">The maximum field length is 3, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Rotation Date</label>
+                        <br> 
+                        <mat-form-field >
+                            <mat-label>Choose a date</mat-label> 
+                            <!-- #docregion toggle -->
+                            <input matInput [matDatepicker]="rotation_date" formControlName="rotation_date">
+                            <mat-datepicker-toggle matSuffix [for]="rotation_date"></mat-datepicker-toggle>
+                            <mat-datepicker #rotation_date></mat-datepicker>
+                            <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.rotation_date.errors?.required && shipingBillStepSeven.controls.rotation_date.touched">This field is required</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Rotation Number</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="rotation_number">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.rotation_number.errors?.required && shipingBillStepSeven.controls.rotation_number.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.rotation_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>  
+                        <mat-error *ngIf="shipingBillStepSeven.controls.rotation_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>                 
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <span>Factory stuffed (Y/N)</span> <span class="required"> *</span> <br> <br>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"  formControlName="factory_stuffed"  value="Y">Y
+                        </label>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"  formControlName="factory_stuffed"  value="N">N
+                        </label>  
+                        <mat-error *ngIf="shipingBillStepSeven.controls.factory_stuffed.errors?.required && shipingBillStepSeven.controls.factory_stuffed.touched">This field is required</mat-error>                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <span>Sample Accompanied (Y/N)</span> <span class="required"> *</span> <br><br>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"  formControlName="sample_accompanied" value="Y">Y
+                        </label>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"  formControlName="sample_accompanied" value="N">N
+                        </label>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.sample_accompanied.errors?.required && shipingBillStepSeven.controls.sample_accompanied.touched">This field is required</mat-error>  
+                    </div>
+                </div>
+         
+        </div>
+    </mat-expansion-panel>
+    
+    
+</mat-accordion>
+<mat-accordion>
+    <mat-expansion-panel class="matnotexpand">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Container Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+                <div class="col-md-12"><br></div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Container Number</label>
+                        <input type="text" class="form-control" formControlName="container_number">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.container_number.errors?.maxlength">The maximum field length is 15, please update the field</mat-error>
+                        
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Container Size</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="container_size">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.container_size.errors?.required && shipingBillStepSeven.controls.container_size.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.container_size.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Excise Seal No.</label>
+                        <input type="text" class="form-control" formControlName="excise_seal_number">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.excise_seal_number.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Seal Date</label>
+                        <br>
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label> 
+                            <input matInput [matDatepicker]="seal_date" formControlName="seal_date">
+                            <mat-datepicker-toggle matSuffix [for]="seal_date"></mat-datepicker-toggle>
+                            <mat-datepicker #seal_date></mat-datepicker>
+                        </mat-form-field> 
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <span>Seal Type Indicator</span> <span class="required"> *</span> <br> <br>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio" matTooltip="Bottle Seal" formControlName="seal_type_indicator"  value="BTSL">BTSL
+                        </label>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"  matTooltip="Electronic Seal" formControlName="seal_type_indicator"  value="RSEAL">RSEAL
+                        </label> 
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"   matTooltip="Radio Frequency Identifier" formControlName="seal_type_indicator"  value="RFID">RFID
+                        </label>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.seal_type_indicator.errors?.required && shipingBillStepSeven.controls.seal_type_indicator.touched">This field is required</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Seal Device ID</label>
+                        <input type="text" class="form-control" formControlName="seal_device_id"> 
+                        <mat-error *ngIf="shipingBillStepSeven.controls.seal_device_id.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Movement Document Type</label>
+                        <input type="text" class="form-control" formControlName="movement_document_type">      
+                        <mat-error *ngIf="shipingBillStepSeven.controls.movement_document_type.errors?.maxlength">The maximum field length is 5, please update the field</mat-error>                   
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Movement Document Number</label>
+                        <input type="text" class="form-control" formControlName="movement_document_number">                   
+                        <mat-error *ngIf="shipingBillStepSeven.controls.movement_document_number.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Eqmnt Type</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="eqmnt_type"> 
+                        <mat-error *ngIf="shipingBillStepSeven.controls.eqmnt_type.errors?.required && shipingBillStepSeven.controls.eqmnt_type.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.eqmnt_type.errors?.maxlength">The maximum field length is 3, please update the field</mat-error>                   
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Eqmnt Qty</label>
+                        <input type="text" class="form-control" formControlName="eqmnt_qty">                   
+                        <mat-error *ngIf="shipingBillStepSeven.controls.eqmnt_qty.errors?.maxlength">The maximum field length is 8, please update the field</mat-error>                    
+                        <mat-error *ngIf="shipingBillStepSeven.controls.eqmnt_qty.errors?.pattern">Only numbers allowed in this field, please update</mat-error>                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Eqmnt Qty Code</label>
+                        <input type="text" class="form-control" formControlName="eqmnt_qty_code">      
+                        <mat-error *ngIf="shipingBillStepSeven.controls.eqmnt_qty_code.errors?.maxlength">The maximum field length is 3, please update the field</mat-error>                   
+                    </div>
+                </div>
+      
+        </div>
+    </mat-expansion-panel>
+    
+    
+</mat-accordion>
+<div class="btncontainer">
+    <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button mat-raised-button id="back_draft">Save as Draft</button>
+    <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
+</div>
+</form>

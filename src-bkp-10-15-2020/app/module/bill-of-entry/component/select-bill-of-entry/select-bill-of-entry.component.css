@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+  }
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 20%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {
+    margin-left:300px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    margin-left:300px;
+  }
+  @media only screen and (max-width: 420px) {
+    .column{
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+        /* float: none; */
+        margin:10px;
+    }
+    .row{
+        margin-left:30px !important;
+    }
+
+    }
+
+    .card-type {
+  
+      padding: 16px;
+      text-align: center;
+      background-color: #ffffff;
+      color: #1454A3;
+      border: 1px solid #1454A3;
+      width:178px;  
+    }
+.blueClass{
+    background-color: #1454A3;
+    color:#ffffff
+}
+.whiteClass{
+    
+    background-color:#ffffff;
+    color:#1454A3
+}
+
+#savecon{
+  background-color: #FBA218;
+  border: 1px solid #FBA218 !important;
+  color: black;
+  width: 111px;
+  height:30px;
+  border-radius: 0px !important;
+}
