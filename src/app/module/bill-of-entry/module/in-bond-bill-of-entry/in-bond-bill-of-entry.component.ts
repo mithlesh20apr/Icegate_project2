@@ -58,20 +58,7 @@ export class InBondBillOfEntryComponent implements OnInit {
     console.log( this.bill_of_entrly.value); 
   }
 
-  addTab() {
-    this.tabs.push(this.tabs.length);
-    this.selected.setValue(this.tabs.length);
-    if(this.tabs.length == 3){
-      this.disableAddButton = true;
-    }
-  }
 
-  removeTab(index: number) {
-    this.tabs.splice(index, 1);
-    if(this.tabs.length < 3){
-      this.disableAddButton = false;
-    }
-  }
   addTab1() {
     this.tabs1.push(this.tabs1.length);
     this.selected1.setValue(this.tabs1.length);
