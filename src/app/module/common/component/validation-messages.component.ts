@@ -14,9 +14,11 @@ export class ValidationMessagesComponent {
     constructor() {
     }
     get errorMessage() {
-        for (let propertyName in this.control.errors) {
-            if (this.control.errors.hasOwnProperty(propertyName) && (this.control.dirty || this.control.touched)) {
-                return ValidatorsService.getValidatorErrorMessage(propertyName, this.control.errors[propertyName]);
+      //console.log(this.control);
+        for (let propertyName in this.control?.errors) {
+           // console.log(propertyName);
+            if (this.control?.errors.hasOwnProperty(propertyName) && (this.control?.dirty || this.control?.touched)) {
+                return ValidatorsService.getValidatorErrorMessage(propertyName, this.control?.errors[propertyName]);
             }
         }
         return null;

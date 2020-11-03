@@ -27,14 +27,21 @@
                             <app-step2 formControlName="inBondFormStep2"></app-step2>
                         </mat-step>
                         <mat-step>
-                            <app-step3 formControlName="inBondFormStep3"></app-step3>
+                            <ng-template matStepLabel>
+                                <div class="mat-step-custom-click" (click)="stepThreeClickFun()">
+                                    <span></span>
+                                </div>
+                            </ng-template>
+                            <app-step3 formControlName="inBondFormStep3">
+                               
+                            </app-step3>
                         </mat-step>            
                         <mat-step>
-                            <button mat-raised-button class="example-add-tab-button" (click)="addTab1()" id="add-option" [disabled]="disableAddButton1">
+                            <!-- <button mat-raised-button class="example-add-tab-button" (click)="addTab1()" id="add-option" [disabled]="disableAddButton1">
                                 Add new tab
                                 <mat-icon>add</mat-icon>
-                            </button>
-                            <mat-tab-group [selectedIndex]="selected1.value" (selectedIndexChange)="selected1.setValue($event)">
+                            </button> -->
+                            <!-- <mat-tab-group [selectedIndex]="selected1.value" (selectedIndexChange)="selected1.setValue($event)">
                                 <mat-tab *ngFor="let tab of tabs1; let index = index">
                                     <ng-template mat-tab-label>
                                         <span>Misc. Charges {{index + 1}}</span>
@@ -43,7 +50,8 @@
                                     </ng-template>
                                     <app-step4 formControlName="inBondFormStep4"></app-step4>
                                 </mat-tab>
-                            </mat-tab-group>                        
+                            </mat-tab-group>                         -->
+                            <app-step4 formControlName="inBondFormStep4"></app-step4>
                         </mat-step>
                         <mat-step>
                             <app-step5  formControlName="inBondFormStep5"></app-step5>

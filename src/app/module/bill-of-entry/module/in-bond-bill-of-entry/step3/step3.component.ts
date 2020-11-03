@@ -1,8 +1,9 @@
 import { MatDialog } from '@angular/material/dialog';
 import { Step5Component } from '../../in-bond-bill-of-entry/step5/step5.component';
-import { Component, OnInit,ViewChild,Input,forwardRef,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,ViewChild,Input,forwardRef,Output,EventEmitter,HostListener } from '@angular/core';
 import { FormGroup,FormControl,FormArray, Validator, FormBuilder,Validators,ControlValueAccessor,NG_VALUE_ACCESSOR, NG_VALIDATORS,AbstractControl, ValidationErrors } from '@angular/forms';
 import {ValidatorsService} from '../../../../common/service/validators.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-step3',
   templateUrl: './step3.component.html',
@@ -23,12 +24,14 @@ import {ValidatorsService} from '../../../../common/service/validators.service';
 export class Step3Component implements OnInit,ControlValueAccessor,Validator {
   panelOpenState = false;
   isLinear = false;
-  tabs = [1];
+  //tabs = [1];
+  //addStep3Inoices() = ['Invoice1']
+ 
   selected = new FormControl(0);
   selecteds = new FormControl(0);
   disableAddButton = false;
   disableAddButtons= false;
-
+  formSumitAttempt: boolean;
   @Input() index: number;
   inBondFormStep3: FormGroup
   constructor(
@@ -39,9 +42,15 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
   ngOnInit(): void {
     this.inBondFormStep3= this._formBuilder.group({
       stepThree_invoice: this._formBuilder.array([]),
-    })
+    });
+    console.log('fddfdf')
+      // let element:HTMLElement = document.getElementById('step_three_add_items') as HTMLElement;
+      // element.click();
+ // });
   }
-
+  @HostListener('onload') onClick() {
+    window.alert('Host Element Clicked');
+ }
   // Add step three invoice details
   AddStepThreeInvoideDetails(): FormGroup {
     return this._formBuilder.group({
@@ -70,6 +79,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         address3_supplier:new FormControl('',[Validators.maxLength(35),Validators.pattern("^[0-9a-zA-Z]{1,}(\\W|\\s)\\d*\\s\\w{1,}\\s\\w+$")]),
         country_supplier:new FormControl('',[Validators.maxLength(25),Validators.pattern("^[0-9a-zA-Z]+$")]),
         pin_supplier:new FormControl('',[Validators.maxLength(10),Validators.pattern("[1-9]{1}[0-9]+$")]),
+        supplier_country_name: new FormControl('')
       }),
       sellerDetails: new FormGroup({
         name_seller:new FormControl('',[Validators.maxLength(35),Validators.pattern("^[a-zA-Z]+$")]),
@@ -78,6 +88,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         address3_seller:new FormControl('',[Validators.maxLength(35),Validators.pattern("^[0-9a-zA-Z]{1,}(\\W|\\s)\\d*\\s\\w{1,}\\s\\w+$")]),
         country_seller:new FormControl('',[Validators.maxLength(35),Validators.pattern("^[0-9a-zA-Z]+$")]),
         pin_seller:new FormControl('',[Validators.maxLength(10),Validators.pattern("[1-9]{1}[0-9]{5}")]),
+        Seller_country_name: new FormControl('')
       }),
       brokerDetails: new FormGroup({
         name_broker:new FormControl('',[Validators.maxLength(50),Validators.pattern("^[0-9a-zA-Z]+$")]),
@@ -86,6 +97,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         address3_broker:new FormControl('',[Validators.maxLength(35),Validators.pattern("^[0-9a-zA-Z]{1,}(\\W|\\s)\\d*\\s\\w{1,}\\s\\w+$")]),
         country_broker:new FormControl('',[Validators.maxLength(35),Validators.pattern("^[0-9a-zA-Z]+$")]),
         pin_broker:new FormControl('',[Validators.maxLength(10),Validators.pattern("[1-9]{1}[0-9]{9}")]),
+        broker_country_name: new FormControl('')
       }),
       invoiceratesDetails: new FormGroup({
         invoice_value:new FormControl('',[Validators.required,Validators.maxLength(16),ValidatorsService.Decimalcheck((/^\d*\.?\d{0,2}$/),16)]),
@@ -138,7 +150,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         authorized_economic_operator_role:new FormControl('',[Validators.maxLength(3),Validators.pattern("^[0-9a-zA-Z]+$")]),
         buyer_or_seller_related:new FormControl('',[Validators.required,Validators.maxLength(70),Validators.pattern("^[0-9a-zA-Z]+$")]),
         authorized_economic_operator_code:new FormControl('',[Validators.maxLength(17),Validators.pattern("^[0-9a-zA-Z]+$")]),
-  
+        autohrized_operator_country:new FormControl('')
       }),
       addNewItemStepThree: this._formBuilder.array([]),
     })
@@ -155,7 +167,8 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         item_category:new FormControl('',[Validators.maxLength(2),Validators.pattern("^[0-9a-zA-Z]+$")]),
         item_description_generic:new FormControl('',[Validators.maxLength(60),Validators.pattern("^[0-9a-zA-Z]+$")]),
         item_accessories:new FormControl('',[Validators.maxLength(2000),Validators.pattern("^[0-9a-zA-Z]+$")]),
-        item_category_invoice_serial_numbers:new FormControl('',[Validators.required,Validators.maxLength(5),Validators.pattern("^[0-9]+$")]),
+        item_category_invoice_serial_number:new FormControl('',[Validators.required,Validators.maxLength(5),Validators.pattern("^[0-9]+$")]),
+        item_category_item_serial_number_invoice: new FormControl(''),
         invoice_serial_numbers:new FormControl('',[Validators.required,Validators.maxLength(5),Validators.pattern("^[0-9]+$")]),
         item_serial_number:new FormControl('',[Validators.required,Validators.maxLength(4),Validators.pattern("[0-9]+$")]),
         item_category_item_serial_number:new FormControl('',[Validators.required,Validators.maxLength(4),Validators.pattern("[0-9]+$")]),
@@ -351,7 +364,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
 
   public onTouched: () => void = () => {};
 
-
+ 
   writeValue(val: any): void {
    // console.log(val);
     val && this.inBondFormStep3.patchValue(val, { emitEvent: true });
@@ -371,11 +384,53 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
     //console.log("Consignment Info validation", c);
     return this.inBondFormStep3.valid ? null : { invalidForm: {valid: false, message: "Step3 fields are invalid"}};
   }
+  // check validation when you click the continue buttons
+  isFieldValid(field: string) {
+    //this.inBondFormStep3.get("stepThree_invoice")
+    console.log(this.inBondFormStep3.get(field));
+    return (
+      //this.inBondFormStep3.get(field)
+      (!this.inBondFormStep3.get(field)?.valid && this.inBondFormStep3.get(field)?.touched) ||
+      (this.inBondFormStep3.get(field)?.untouched && this.formSumitAttempt)
+    );
+  }
 
+  displayFieldCss(field: string) {
+    // console.log(field);
+    return {
+      'has-error': this.isFieldValid(field),
+      'has-feedback': this.isFieldValid(field)
+    };
+  }
+  // convenience getter for easy access to form fields
+  get f() { return this.inBondFormStep3.controls; }
   onSubmit() {
-    // console.log(this.inBondFormStep1.valid);
-     console.log(this.inBondFormStep3.value);
+    if (this.inBondFormStep3.valid === true) {
+      this.inBondFormStep3.value
+      Swal.fire({
+        title: 'Step 3 is completed',
+        text: "Please click next for other step or click cancel",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Next &nbsp; &#8594;'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+          element.click();
+        }
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Required Validation is left. Please check',
+      }).then((result) =>{
+        this.formSumitAttempt = true
+      })
 
+    }
   }
 
 }

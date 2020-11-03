@@ -525,5 +525,10 @@ uploadFile(event) {
    this.downloadJsonHref = uri;
   // console.log(serializedForm);
  }
-
+ stepThreeClickFun(){ 
+  let element:HTMLElement = document.getElementById('step_three_add_items') as HTMLElement;
+  element.click();
+  // let elementItems:HTMLElement = document.getElementById('add-items') as HTMLElement;
+  // elementItems.click();
+}
 }

@@ -123,6 +123,8 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
 
   // check validation when you click the continue buttons
   isFieldValid(field: string) {
+  // console.log(this.inBondFormStep1.get(field));
+   
     return (
       (!this.inBondFormStep1.get(field).valid && this.inBondFormStep1.get(field).touched) ||
       (this.inBondFormStep1.get(field).untouched && this.formSumitAttempt)
