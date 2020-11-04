@@ -34,7 +34,6 @@ export class InBondBillOfEntryComponent implements OnInit {
       inBondFormStep2: new FormControl(""),
       inBondFormStep3: new FormControl(""),
       inBondFormStep4: new FormControl(""),
-      inBondFormStep5: new FormControl(""),
       inBondFormStep6: new FormControl(""),
       inBondFormStep7: new FormControl(""),
       inBondFormStep8: new FormControl(""),
@@ -292,9 +291,7 @@ uploadFile(event) {
               misc_charges:data.inBondFormStep4.misc_charges,
               misc_rate:data.inBondFormStep4.misc_rate,
              },
-             inBondFormStep5: {
-
-             },
+           
              inBondFormStep6:{
               invoice_serial_number:data.inBondFormStep6.invoice_serial_number,
               // item_serial_number:data.inBondFormStep6.item_serial_number,
