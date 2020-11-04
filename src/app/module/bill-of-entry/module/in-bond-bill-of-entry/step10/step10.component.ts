@@ -1,6 +1,8 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
-import {ValidatorsService} from '../../../../common/service/validators.service';
+import { Component, OnInit,forwardRef } from '@angular/core';
+import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms'; 
+import { ValidatorsService } from '../../../../common/service/validators.service';
+import Swal from 'sweetalert2';
+import {TooltipPosition} from '@angular/material/tooltip';
 @Component({
   selector: 'app-step10',
   templateUrl: './step10.component.html',
@@ -16,15 +18,16 @@ import {ValidatorsService} from '../../../../common/service/validators.service';
       useExisting: forwardRef(() => Step10Component),
       multi: true
     }
-  ]  
-
+  ]
 })
 export class Step10Component implements OnInit {
+
   panelOpenState = false;
   isLinear = false;
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   inBondFormStep10: FormGroup;
-  private formSumitAttempt: boolean;
-
+  private formSumitAttempt:boolean;
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -35,33 +38,34 @@ export class Step10Component implements OnInit {
       lcl_fcl: ['', [Validators.required, Validators.maxLength(1)]],
       container_number: ['', [Validators.required, Validators.maxLength(11)]],
       seal_number: ['', [Validators.required, Validators.maxLength(10)]],
-      truck_number: ['', Validators.maxLength(20)],
+      truck_number: ['', [Validators.maxLength(20)]],
     })
   }
- // validation code
- public onTouched: () => void = () => {
+  public onTouched: () => void = () => {
 
-  //console.log('data');
-};
-writeValue(val: any): void {
-  //console.log('written values')
-  val && this.inBondFormStep10.patchValue(val, { emitEvent: true });
-}
-registerOnChange(fn: any): void {
-  //console.log("on change");
-  this.inBondFormStep10.valueChanges.subscribe(fn);
-}
-registerOnTouched(fn: any): void {
-  //console.log("on blur");
-  this.onTouched = fn;
-}
-setDisabledState?(isDisabled: boolean): void {
-  isDisabled ? this.inBondFormStep10.disable() : this.inBondFormStep10.enable();
-}
-validate(c: AbstractControl): ValidationErrors | null {
-  //console.log("Consignment Info validation", c);
-  return this.inBondFormStep10.valid ? null : { invalidForm: { valid: false, message: "Step1 fields are invalid" } };
-}
+    //console.log('data');
+  };
+  writeValue(val: any): void {
+    //console.log('written values')
+    val && this.inBondFormStep10.patchValue(val, { emitEvent: true });
+  }
+  registerOnChange(fn: any): void {
+    //console.log("on change");
+    this.inBondFormStep10.valueChanges.subscribe(fn);
+  }
+  registerOnTouched(fn: any): void {
+    //console.log("on blur");
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    isDisabled ? this.inBondFormStep10.disable() : this.inBondFormStep10.enable();
+  }
+  validate(c: AbstractControl): ValidationErrors | null {
+    //console.log("Consignment Info validation", c);
+    return this.inBondFormStep10.valid ? null : { invalidForm: { valid: false, message: "Step1 fields are invalid" } };
+  }
+
+
   // check validation when you click the continue buttons
   isFieldValid(field: string) {
     return (
@@ -69,27 +73,43 @@ validate(c: AbstractControl): ValidationErrors | null {
       (this.inBondFormStep10.get(field).untouched && this.formSumitAttempt)
     );
   }
-
+  
   displayFieldCss(field: string) {
     return {
       'has-error': this.isFieldValid(field),
       'has-feedback': this.isFieldValid(field)
     };
   }
-
-
-  // submit on save and continue sections
+  
   onSubmit() {
+    // console.log(this.inBondFormStep10.valid);
+    // console.log(this.inBondFormStep10.value);
+    // console.log();
+    if (this.inBondFormStep10.valid === true) {
+      this.inBondFormStep10.value
+      Swal.fire({
+        title: 'Step 9 completed',
+        text: "Please click next for other step or click cancel",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Next &nbsp; &#8594;'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+          element.click();
+        }
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Required Validation is left. Please check',
+      }).then((result) =>{
+        this.formSumitAttempt = true
+      })
 
-
-    // stepper.next();
-     this.formSumitAttempt = true;
-     if (this.inBondFormStep10.valid) {
-       console.log('form submitted');
-       
-     }else{
-       console.log('err');
-     }
- }
-
+    }
+  }
 }

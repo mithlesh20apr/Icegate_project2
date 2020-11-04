@@ -2,6 +2,9 @@ import { Component, OnInit,forwardRef } from '@angular/core';
 import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ShippingBillService } from '../service/shipping-bill.service';
 import {ValidatorsService} from '../../common/service/validators.service'
+import Swal from 'sweetalert2';
+import {TooltipPosition} from '@angular/material/tooltip';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-step3',
@@ -23,6 +26,8 @@ import {ValidatorsService} from '../../common/service/validators.service'
 export class Step3Component implements OnInit {
 
   shippingBillStepThree: FormGroup;
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   private formSumitAttempt: boolean;
   constructor(private _formBuilder: FormBuilder) { }
 
@@ -30,13 +35,13 @@ export class Step3Component implements OnInit {
     this.shippingBillStepThree = this._formBuilder.group({
       invoice_currency_code:['', [Validators.maxLength(3), ]],
       currency_name:['', [Validators.maxLength(20), ]],
-      unit_in_rs:['', [Validators.maxLength(7), Validators.pattern("^[0-9]+$")]],
-      rate:['', [Validators.maxLength(9), Validators.pattern("^[0-9]+$")]],
+      unit_in_rs:['', [Validators.maxLength(10), ValidatorsService.Decimalcheck((/^\d*\.?\d{0,2}$/),7)]],
+      rate:['', [Validators.maxLength(14), ValidatorsService.Decimalcheck((/^\d*\.?\d{0,4}$/),9)]],
       effective_date:['', ],
       whether_standard_currency:['', [Validators.required, Validators.maxLength(1), ]],
-      amendment_type:['', [Validators.maxLength(1), ]],
-      amendment_no:['', [Validators.maxLength(7), Validators.pattern("^[0-9]+$")]],
-      amendment_date:['', ],
+      // amendment_type:['', [Validators.maxLength(1), ]],
+      // amendment_no:['', [Validators.maxLength(7), ValidatorsService.numberValidator]],
+      // amendment_date:['', ],
   });
 }
  // validation code
@@ -61,7 +66,7 @@ setDisabledState?(isDisabled: boolean): void {
 }
 validate(c: AbstractControl): ValidationErrors | null {
   //console.log("Consignment Info validation", c);
-  return this.shippingBillStepThree.valid ? null : { invalidForm: { valid: false, message: "Step1 fields are invalid" } };
+  return this.shippingBillStepThree.valid ? null : { invalidForm: { valid: false, message: "Step 3 fields are invalid" } };
 }
 
 
@@ -82,15 +87,33 @@ displayFieldCss(field: string) {
 
 // submit on save and continue sections
 onSubmit() {
-  console.log(this.shippingBillStepThree.value);
-
-  // stepper.next();
-  this.formSumitAttempt = true;
-  if (this.shippingBillStepThree.valid) {
-    console.log('form submitted');
-    
+  // console.log(this.shippingBillStepThree.valid);
+  // console.log(this.shippingBillStepThree.value);
+  // console.log();
+  if (this.shippingBillStepThree.valid === true) {
+    this.shippingBillStepThree.value
+    Swal.fire({
+      title: 'Step 3 completed',
+      text: "Please click next for other step or click cancel",
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Next &nbsp; &#8594;'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+        element.click();
+      }
+    })
   } else {
-    console.log('err');
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Required Validation is left. Please check',
+    }).then((result) =>{
+      this.formSumitAttempt = true
+    })
 
   }
 }

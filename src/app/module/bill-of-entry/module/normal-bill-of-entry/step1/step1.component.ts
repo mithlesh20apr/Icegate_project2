@@ -1,7 +1,9 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ValidatorsService } from '../../../../common/service/validators.service';
-
+import Swal from 'sweetalert2';
+import {TooltipPosition} from '@angular/material/tooltip';
+import { MatRadioChange } from '@angular/material/radio';
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
@@ -23,63 +25,91 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
 
   panelOpenState = false;
   isLinear = false;
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   homeConsumptionFormStep1: FormGroup;
   private formSumitAttempt: boolean;
+  isKachaBeAvail: String;
+  isSection48Avail: String;
   constructor(private _formBuilder: FormBuilder) { }
-
+  
   ngOnInit() {
     this.homeConsumptionFormStep1 = this._formBuilder.group ({
-    hssf: ['', Validators.required],
-    bond:['', Validators.required], 
-    message_type :['',[Validators.required,Validators.maxLength(1),Validators.pattern("^[0-9a-zA-z]+$")]],
-    house_code:['',[Validators.required,Validators.maxLength(6), Validators.pattern("^[0-9a-zA-Z]+$")]],
-    custom_house_code:['',[Validators.required,Validators.maxLength(6), Validators.pattern("^[0-9a-zA-Z]+$")]],
-    branch_sr_no:['',[Validators.required,Validators.maxLength(5),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    user_job_no:['',[Validators.required,Validators.maxLength(7),Validators.pattern("[0-9]+$")]],
-    user_job_date:['',Validators.required],
-    be_number:['',[Validators.required,Validators.maxLength(7),Validators.pattern("[0-9]+$")]],
-    be_date:['',Validators.required],
-    iec_code:['',[Validators.maxLength(10),Validators.required,Validators.pattern("[0-9]+$")]],
-    name_importer:['',[Validators.maxLength(50),Validators.pattern("^[a-zA-Z ]+$")]],
-    address1_importer:['',[Validators.maxLength(35),Validators.pattern("^[a-zA-Z0-9\\s,/'-]*$")]],
-    address2_importer:['',[Validators.maxLength(35),Validators.pattern("^[a-zA-Z0-9\\s,/'-]*$")]],
-    city_importer:['',[Validators.maxLength(35),Validators.pattern("^[a-zA-Z]+$")]],
-    state_importer:['',[Validators.maxLength(25),Validators.pattern("^[a-zA-Z]+$")]],
-    pin_importer:['',[Validators.maxLength(6),Validators.pattern("^[1-9]+[0-9]+$")]],
-    pin:['',[Validators.maxLength(6),Validators.pattern("^[1-9]+[0-9]+$")]],
-    mode_of_transport:['', Validators.required],
-    importer_type:['', Validators.required],  
-    kachcha_be:['', Validators.required],
-    high_sea_sale_flag: ['', Validators.required],
-    permission_code:['',[Validators.required,Validators.maxLength(3),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    reason_for_request:['',[Validators.required,Validators.maxLength(2000),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    invoice_serial_number:['',[Validators.required,Validators.maxLength(5),Validators.pattern("^[0-9]+$")]],
-    branch_serial_number:['',[Validators.maxLength(3),Validators.pattern("^[0-9]+$")]],
-    port_of_origin:['',[Validators.required,Validators.maxLength(3),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    cha_code:['',[Validators.maxLength(15),Validators.required,Validators.pattern("^[0-9a-zA-Z]+$")]],
-    country_of_origin:['',[Validators.required,Validators.maxLength(3),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    country_of_consignment:['',[Validators.required,Validators.maxLength(2),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    port_of_shipment:['',[Validators.required,Validators.maxLength(6),Validators.pattern("^[0-9a-zA-Z]+$")]],  
-    green_channel_requested:['', Validators.required],
-    section: ['', Validators.required],
-    prior_be:['',Validators.required],
-    authorized_dealer_code:['',[Validators.required,Validators.maxLength(10),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    first_check_requested:['',Validators.required],
-    warehouse_code:['',[Validators.required,Validators.maxLength(8),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    warehouse_custom_site_id:['',[Validators.maxLength(7),Validators.pattern("[0-9]+")]],
-    warehouse_be_no:['',[Validators.maxLength(6),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    warehouse_be_date:[''],
-    no_packages_released:['',[Validators.maxLength(8),Validators.pattern("[0-9]+")]],
-    package_code:['',[Validators.maxLength(13),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    gross_weight:['',[Validators.maxLength(13),Validators.pattern("[0-9]+")]],
-    unit_of_measurement:['',[Validators.maxLength(3),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    additional_charges:['',[Validators.maxLength(6),Validators.pattern("[0-9]+")]],
-    misc_load:['',[Validators.maxLength(6),Validators.pattern("[0-9]+$")]],
-    ucr:['',[Validators.required,Validators.maxLength(35), Validators.pattern("^[0-9a-zA-Z]+$")]],
-    ucr_type:['',[Validators.required,Validators.maxLength(6),Validators.pattern("^[0-9a-zA-Z]+$")]],
-    payment_method_code:['',[Validators.required,Validators.maxLength(1),Validators.pattern("^[0-9a-zA-Z]+$")]],
+
+      general_details: new FormGroup({    
+
+        message_type : new FormControl('F',[Validators.required,Validators.maxLength(1),]),
+        custom_house_code: new FormControl('',[Validators.required,Validators.maxLength(6), ]),
+        branch_sr_no:new FormControl('',[Validators.required,Validators.maxLength(3),ValidatorsService.numberValidator]),
+        user_job_no:new FormControl('',[Validators.required,Validators.maxLength(7),ValidatorsService.numberValidator]),
+        user_job_date:new FormControl('',Validators.required),
+        be_number:new FormControl('',[Validators.maxLength(7),ValidatorsService.numberValidator]),
+        be_date:new FormControl('',),
+        iec_code:new FormControl('',[Validators.maxLength(10),Validators.required]),
+        state_importer:new FormControl('',[Validators.maxLength(25),]),   
+        pin:new FormControl('',[Validators.maxLength(6)]), 
+        class:new FormControl('',[Validators.required,Validators.maxLength(1),]),  
+        mode_of_transport:new FormControl('', Validators.required),
+        importer_type:new FormControl('', Validators.required),  
+        kachcha_be:new FormControl('', Validators.required),
+        high_sea_sale_flag: new FormControl('', Validators.required),
+        permission_code:new FormControl(''),
+        //
+        reason_for_request:new FormControl(''),
+        // 
+        invoice_serial_number:new FormControl('',[Validators.required,Validators.maxLength(5)]), 
+        branch_sr_no_sea:new FormControl('',Validators.maxLength(3)),
+        //
+        name_importer:new FormControl('',Validators.maxLength(50)),
+        preceding_level:new FormControl('',Validators.maxLength(1)),
+        //
+        address1:new FormControl('',Validators.maxLength(35)),
+        //
+        address2:new FormControl('',Validators.maxLength(35)),
+        //
+        address1_importer:new FormControl('',Validators.maxLength(35)),
+        address2_importer:new FormControl('',Validators.maxLength(35)),   
+        city_importer:new FormControl('',Validators.maxLength(35)),   
+        pin_importer:new FormControl('',Validators.maxLength(6)),
+        port_of_origin:new FormControl('',[Validators.required,Validators.maxLength(6),]),
+        cha_code:new FormControl('',[Validators.maxLength(15),Validators.required,]),
+        country_of_origin:new FormControl('',[Validators.required,Validators.maxLength(3),]),
+        country_of_consignment:new FormControl('',[Validators.required,Validators.maxLength(2),]),
+        port_of_shipment:new FormControl('',[Validators.required,Validators.maxLength(6),]),
+        green_channel_requested:new FormControl('', Validators.required),
+        section: new FormControl('', Validators.required),
+        prior_be:new FormControl('',Validators.required),
+        authorized_dealer_code:new FormControl('',[Validators.required,Validators.maxLength(10),]),
+        first_check_requested:new FormControl('',Validators.required),
+        section_48_permission_code: new FormControl(''),
+        //
+        section_48_reason_for_request: new FormControl('')
+        //
+    }),
+
+    warehouse_details: new FormGroup({
+
+      warehouse_code:new FormControl('',[Validators.maxLength(8),]), 
+      warehouse_custom_site_id:new FormControl('',[Validators.maxLength(7),ValidatorsService.numberValidator]),
+      warehouse_be_no:new FormControl('',[Validators.maxLength(6),]),
+      warehouse_be_date:new FormControl(''),
+      no_packages_released:new FormControl('',[Validators.maxLength(8),ValidatorsService.numberValidator]),   
+      package_code:new FormControl('',[Validators.maxLength(13),]), 
+      gross_weight:new FormControl('',[Validators.maxLength(16),ValidatorsService.Decimalcheck((/^\d*\.?\d{0,3}$/),12)]), 
+      unit_of_measurement:new FormControl('',[Validators.maxLength(3),]),
+      additional_charges:new FormControl('',[Validators.maxLength(9),ValidatorsService.Decimalcheck((/^\d*\.?\d{0,2}$/),6)]),
+      misc_load:new FormControl('',[Validators.maxLength(9),ValidatorsService.Decimalcheck((/^\d*\.?\d{0,2}$/),6)]),
+      ucr:new FormControl('',[Validators.maxLength(35), ]),
+      ucr_type:new FormControl('',[Validators.maxLength(6),]),
+      payment_method_code:new FormControl('',[Validators.required,Validators.maxLength(1),]),
+    })
+
+    
     });
   }
+
+
+   // validation code
   public onTouched: () => void = () => {
 
     //console.log('data');
@@ -113,4 +143,127 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
     );
   }
 
+  displayFieldCss(field: string) {
+    return {
+      'has-error': this.isFieldValid(field),
+      'has-feedback': this.isFieldValid(field)
+    };
+  }
+
+  isKachaBeAvailable(event){
+    this.isKachaBeAvail = event.target.value;
+  }
+
+  isSection48Available(event){
+    this.isSection48Avail = event.target.value;
+  }
+  get highSeaSale(): any {
+    return this.homeConsumptionFormStep1.get('general_details.high_sea_sale_flag');
+  }
+
+   /* Set validation on yes or no check on High Sea sales Flag */
+  onHighSeaChange(value:MatRadioChange) {
+    console.log(value)
+      if(value.value === 'Y') {
+      this.homeConsumptionFormStep1.get('general_details.permission_code').setValidators([Validators.required,Validators.maxLength(3),]);
+      this.homeConsumptionFormStep1.get('general_details.reason_for_request').setValidators([Validators.required,Validators.maxLength(2000),]);
+      this.homeConsumptionFormStep1.get('general_details.invoice_serial_number').setValidators([Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]);
+      this.homeConsumptionFormStep1.get('general_details.branch_sr_no_sea').setValidators([Validators.required,Validators.maxLength(3),ValidatorsService.numberValidator]);
+      this.homeConsumptionFormStep1.get('general_details.name_importer').setValidators([Validators.maxLength(50),]);
+      this.homeConsumptionFormStep1.get('general_details.preceding_level').setValidators([Validators.required,Validators.maxLength(1),]);
+      this.homeConsumptionFormStep1.get('general_details.address1_importer').setValidators([Validators.maxLength(35)]);
+      this.homeConsumptionFormStep1.get('general_details.address2_importer').setValidators([Validators.maxLength(35)]);
+      this.homeConsumptionFormStep1.get('general_details.city_importer').setValidators([Validators.maxLength(35),]);
+      this.homeConsumptionFormStep1.get('general_details.pin_importer').setValidators([Validators.maxLength(6),ValidatorsService.numberValidator]);
+
+      //  Clear All Validators
+      this.homeConsumptionFormStep1.get('general_details.permission_code').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.reason_for_request').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.invoice_serial_number').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.branch_sr_no_sea').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.name_importer').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.preceding_level').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.address1_importer').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.address2_importer').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.city_importer').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.pin_importer').updateValueAndValidity();
+      
+    } else {
+      this.homeConsumptionFormStep1.get('general_details.permission_code').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.reason_for_request').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.invoice_serial_number').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.branch_sr_no_sea').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.name_importer').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.preceding_level').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.address1_importer').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.address2_importer').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.city_importer').clearValidators();
+      this.homeConsumptionFormStep1.get('general_details.pin_importer').clearValidators();
+      
+      //  Clear All Validators
+      this.homeConsumptionFormStep1.get('general_details.permission_code').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.reason_for_request').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.invoice_serial_number').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.branch_sr_no_sea').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.name_importer').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.preceding_level').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.address1_importer').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.address2_importer').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.city_importer').updateValueAndValidity();
+      this.homeConsumptionFormStep1.get('general_details.pin_importer').updateValueAndValidity();
+   }
+  
+}
+
+/* set validation on check yes or no of section 48 part */
+section_48Value(value:MatRadioChange) {
+  if(value.value=== 'Y') {
+    this.homeConsumptionFormStep1.get('general_details.section_48_permission_code').setValidators([Validators.required,Validators.maxLength(3),]);
+    this.homeConsumptionFormStep1.get('general_details.section_48_reason_for_request').setValidators([Validators.required,Validators.maxLength(2000),]);
+    
+    //  Clear All Validators
+    // this.homeConsumptionFormStep1.get('general_details.section_48_permission_code').clearValidators();
+    // this.homeConsumptionFormStep1.get('general_details.section_48_reason_for_request').clearValidators();
+      
+  }else{
+    this.homeConsumptionFormStep1.get('general_details.section_48_permission_code').clearValidators();
+    this.homeConsumptionFormStep1.get('general_details.section_48_reason_for_request').clearValidators();
+    
+    //  Clear All Validators
+    
+  }
+}
+  // submit on save and continue sections
+    // submit on save and continue sections
+    onSubmit() {
+      // console.log(this.homeConsumptionFormStep1.valid);
+      // console.log(this.homeConsumptionFormStep1.value);
+      // console.log();
+      if (this.homeConsumptionFormStep1.valid === true) {
+        this.homeConsumptionFormStep1.value
+        Swal.fire({
+          title: 'Step 1 completed',
+          text: "Please click next for other step or click cancel",
+          icon: 'success',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Next &nbsp; &#8594;'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+            element.click();
+          }
+        })
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Required Validation is left. Please check',
+        }).then((result) =>{
+          this.formSumitAttempt = true
+        })
+  
+      }
+    }
 }

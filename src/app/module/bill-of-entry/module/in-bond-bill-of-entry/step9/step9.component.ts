@@ -1,6 +1,8 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
-import {ValidatorsService} from '../../../../common/service/validators.service'
+import { Component, OnInit,forwardRef } from '@angular/core';
+import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms'; 
+import { ValidatorsService } from '../../../../common/service/validators.service';
+import Swal from 'sweetalert2';
+import {TooltipPosition} from '@angular/material/tooltip';
 @Component({
   selector: 'app-step9',
   templateUrl: './step9.component.html',
@@ -16,13 +18,16 @@ import {ValidatorsService} from '../../../../common/service/validators.service'
       useExisting: forwardRef(() => Step9Component),
       multi: true
     }
-  ]  
+  ]
 })
-export class Step9Component implements OnInit {
+export class Step9Component implements OnInit, ControlValueAccessor, Validator{
+
   panelOpenState = false;
   isLinear = false;
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   inBondFormStep9: FormGroup;
-  private formSumitAttempt: boolean;
+  private formSumitAttempt:boolean;
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -33,73 +38,88 @@ export class Step9Component implements OnInit {
       gateway_igm_number: ['', [Validators.maxLength(5), ValidatorsService.numberValidator]],
       gateway_igm_date: [''],
       gateway_port_code: ['', [Validators.maxLength(6)]],
-      gross_weight:['',[Validators.maxLength(12),ValidatorsService.numberValidator]],
+      gross_weight:['',[Validators.maxLength(13),ValidatorsService.Decimalcheck((/^\d*\.?\d{0,3}$/),9)]],
       mawb_bl_no: ['', [Validators.required, Validators.maxLength(20)]],
       mawb_bl_date: ['', Validators.required],
-      hawb_hbl_no: ['', [Validators.maxLength(20), ValidatorsService.numberValidator]],
+      hawb_hbl_no: ['', [Validators.maxLength(20),]],
       hawb_hbl_date: [''],
       total_number_of_packages: ['', [Validators.required, Validators.maxLength(8), ValidatorsService.numberValidator]],
-      marks_number1: ['', [Validators.required, Validators.maxLength(40), ]],
+      marks_number1: ['', [Validators.required, Validators.maxLength(40)]],
       marks_number2: ['', [Validators.maxLength(40)]],
       marks_number3: ['', [Validators.maxLength(40)]],
       unit_quantity_code:['',[Validators.required,Validators.maxLength(3)]],
-      package_code:['',[Validators.maxLength(3),,Validators.required]],
+      package_code:['',[Validators.maxLength(3),Validators.required]],
     })
   }
+  public onTouched: () => void = () => {
 
-   // validation code
- public onTouched: () => void = () => {
-
-  //console.log('data');
-};
-writeValue(val: any): void {
-  //console.log('written values')
-  val && this.inBondFormStep9.patchValue(val, { emitEvent: true });
-}
-registerOnChange(fn: any): void {
-  //console.log("on change");
-  this.inBondFormStep9.valueChanges.subscribe(fn);
-}
-registerOnTouched(fn: any): void {
-  //console.log("on blur");
-  this.onTouched = fn;
-}
-setDisabledState?(isDisabled: boolean): void {
-  isDisabled ? this.inBondFormStep9.disable() : this.inBondFormStep9.enable();
-}
-validate(c: AbstractControl): ValidationErrors | null {
-  //console.log("Consignment Info validation", c);
-  return this.inBondFormStep9.valid ? null : { invalidForm: { valid: false, message: "Step1 fields are invalid" } };
-}
- // check validation when you click the continue buttons
- isFieldValid(field: string) {
-  return (
-    (!this.inBondFormStep9.get(field).valid && this.inBondFormStep9.get(field).touched) ||
-    (this.inBondFormStep9.get(field).untouched && this.formSumitAttempt)
-  );
-}
-
-displayFieldCss(field: string) {
-  return {
-    'has-error': this.isFieldValid(field),
-    'has-feedback': this.isFieldValid(field)
+    //console.log('data');
   };
-}
+  writeValue(val: any): void {
+    //console.log('written values')
+    val && this.inBondFormStep9.patchValue(val, { emitEvent: true });
+  }
+  registerOnChange(fn: any): void {
+    //console.log("on change");
+    this.inBondFormStep9.valueChanges.subscribe(fn);
+  }
+  registerOnTouched(fn: any): void {
+    //console.log("on blur");
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    isDisabled ? this.inBondFormStep9.disable() : this.inBondFormStep9.enable();
+  }
+  validate(c: AbstractControl): ValidationErrors | null {
+    //console.log("Consignment Info validation", c);
+    return this.inBondFormStep9.valid ? null : { invalidForm: { valid: false, message: "Step1 fields are invalid" } };
+  }
 
 
-// submit on save and continue sections
-onSubmit() {
+  // check validation when you click the continue buttons
+  isFieldValid(field: string) {
+    return (
+      (!this.inBondFormStep9.get(field).valid && this.inBondFormStep9.get(field).touched) ||
+      (this.inBondFormStep9.get(field).untouched && this.formSumitAttempt)
+    );
+  }
+  
+  displayFieldCss(field: string) {
+    return {
+      'has-error': this.isFieldValid(field),
+      'has-feedback': this.isFieldValid(field)
+    };
+  }
+  
+  onSubmit() {
+    // console.log(this.inBondFormStep9.valid);
+    // console.log(this.inBondFormStep9.value);
+    // console.log();
+    if (this.inBondFormStep9.valid === true) {
+      this.inBondFormStep9.value
+      Swal.fire({
+        title: 'Step 8 completed',
+        text: "Please click next for other step or click cancel",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Next &nbsp; &#8594;'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+          element.click();
+        }
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Required Validation is left. Please check',
+      }).then((result) =>{
+        this.formSumitAttempt = true
+      })
 
-
-  // stepper.next();
-   this.formSumitAttempt = true;
-   if (this.inBondFormStep9.valid) {
-     console.log('form submitted');
-     
-   }else{
-     console.log('err');
-   }
-}
-
-
+    }
+  }
 }

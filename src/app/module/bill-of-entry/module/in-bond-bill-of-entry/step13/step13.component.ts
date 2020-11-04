@@ -1,7 +1,8 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
-import {ValidatorsService} from '../../../../common/service/validators.service';
-
+import { Component, OnInit ,forwardRef} from '@angular/core';
+import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms'; 
+import { ValidatorsService } from '../../../../common/service/validators.service';
+import Swal from 'sweetalert2';
+import {TooltipPosition} from '@angular/material/tooltip';
 @Component({
   selector: 'app-step13',
   templateUrl: './step13.component.html',
@@ -20,11 +21,13 @@ import {ValidatorsService} from '../../../../common/service/validators.service';
   ]
 })
 export class Step13Component implements OnInit {
+
   panelOpenState = false;
   isLinear = false;
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   inBondFormStep13: FormGroup;
-  private formSumitAttempt: boolean;
-  
+  private formSumitAttempt:boolean;
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -32,81 +35,102 @@ export class Step13Component implements OnInit {
 
       invoice_serial_number: ['', [Validators.required, Validators.maxLength(5), ValidatorsService.numberValidator]],
       item_serial_number: ['', [Validators.required, Validators.maxLength(4), ValidatorsService.numberValidator]],
-      decleration_type: ['', [Validators.required, Validators.maxLength(2)]],
-      cha_license_number: ['', [Validators.maxLength(15)]],
-      iec: ['', [Validators.maxLength(10)]],
-      icegate_user_id: ['', [Validators.required, Validators.maxLength(15)]],
-      image_reference_number: ['', [Validators.required, Validators.maxLength(16)]],
-      document_type_code: ['', [Validators.required, Validators.maxLength(6)]],
-      document_issuing_party_code: ['', [Validators.maxLength(35)]],
-      document_issuing_party_name: ['', [Validators.required, Validators.maxLength(70)]],
-      document_issuing_party_name_address1: ['', [Validators.maxLength(70)]],
-      document_issuing_party_name_address2: ['', [Validators.maxLength(70)]],
-      document_issuing_party_name_city: ['', [Validators.maxLength(35)]],
-      document_issuing_party_name_pin: ['', [Validators.maxLength(10),ValidatorsService.numberValidator]],
-      document_reference_number:['', Validators.maxLength(17)],
-      place_of_issue:['', [Validators.required,Validators.maxLength(35)]],
+      decleration_type: ['', [Validators.required, Validators.maxLength(1), ]],
+      cha_license_number: ['', [Validators.maxLength(15), ]],
+      iec: ['', [Validators.maxLength(10), ]],
+      icegate_user_id: ['', [Validators.required, Validators.maxLength(15), ]],
+      image_reference_number: ['', [Validators.required, Validators.maxLength(16), ]],
+      document_type_code: ['', [Validators.required, Validators.maxLength(6), ]],
+      document_issuing_party_code: ['', [Validators.maxLength(35), ]],
+      document_issuing_party_name: ['', [Validators.required, Validators.maxLength(70), ]],
+      document_issuing_party_name_address1: ['', [Validators.maxLength(70), ]],
+      document_issuing_party_name_address2: ['', [Validators.maxLength(70), ]],
+      document_issuing_party_name_city: ['', [Validators.maxLength(35), ]],
+      document_issuing_party_name_pin: ['', [Validators.maxLength(10)]],
+      document_reference_number:['', [Validators.maxLength(17),]],
+      place_of_issue:['', [Validators.required,Validators.maxLength(35),]],
       document_issue_date:['',Validators.required],
       document_expiry_date:[''],
-      document_beneficary_party_code:['',Validators.maxLength(35)],
-      document_beneficary_party_name:['', [Validators.required,Validators.maxLength(70)]],
-      document_beneficary_party_name_address1:['', [Validators.maxLength(70)]],
-      document_beneficary_party_name_address2:['', [Validators.maxLength(70)]],
-      document_beneficary_party_name_city:['', Validators.maxLength(35)],
-      document_beneficary_party_name_pin:['', [Validators.maxLength(10)]],
-      file_type: ['', [Validators.required, Validators.maxLength(5)]],
+      document_beneficiary_party_code:['', [Validators.maxLength(35),]],
+      document_beneficiary_party_name:['', [Validators.required,Validators.maxLength(70),]],
+      document_beneficiary_party_name_address1:['', [Validators.maxLength(70)]],
+      document_beneficiary_party_name_address2:['', [Validators.maxLength(70)]],
+      document_beneficiary_party_name_city:['', [Validators.maxLength(35),]],
+      document_beneficiary_party_name_pin:['', [Validators.maxLength(10)]],
+      file_type: ['', [Validators.required, Validators.maxLength(5), ]],
     })
   }
- // validation code
- public onTouched: () => void = () => {
 
-  //console.log('data');
-};
-writeValue(val: any): void {
-  //console.log('written values')
-  val && this.inBondFormStep13.patchValue(val, { emitEvent: true });
-}
-registerOnChange(fn: any): void {
-  //console.log("on change");
-  this.inBondFormStep13.valueChanges.subscribe(fn);
-}
-registerOnTouched(fn: any): void {
-  //console.log("on blur");
-  this.onTouched = fn;
-}
-setDisabledState?(isDisabled: boolean): void {
-  isDisabled ? this.inBondFormStep13.disable() : this.inBondFormStep13.enable();
-}
-validate(c: AbstractControl): ValidationErrors | null {
-  //console.log("Consignment Info validation", c);
-  return this.inBondFormStep13.valid ? null : { invalidForm: { valid: false, message: "Step1 fields are invalid" } };
-}
+  public onTouched: () => void = () => {
 
-    // check validation when you click the continue buttons
-    isFieldValid(field: string) {
-      return (
-        (!this.inBondFormStep13.get(field).valid && this.inBondFormStep13.get(field).touched) ||
-        (this.inBondFormStep13.get(field).untouched && this.formSumitAttempt)
-      );
-    }
+    //console.log('data');
+  };
+  writeValue(val: any): void {
+    //console.log('written values')
+    val && this.inBondFormStep13.patchValue(val, { emitEvent: true });
+  }
+  registerOnChange(fn: any): void {
+    //console.log("on change");
+    this.inBondFormStep13.valueChanges.subscribe(fn);
+  }
+  registerOnTouched(fn: any): void {
+    //console.log("on blur");
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    isDisabled ? this.inBondFormStep13.disable() : this.inBondFormStep13.enable();
+  }
+  validate(c: AbstractControl): ValidationErrors | null {
+    //console.log("Consignment Info validation", c);
+    return this.inBondFormStep13.valid ? null : { invalidForm: { valid: false, message: "Step1 fields are invalid" } };
+  }
+
+
+  // check validation when you click the continue buttons
+  isFieldValid(field: string) {
+    return (
+      (!this.inBondFormStep13.get(field).valid && this.inBondFormStep13.get(field).touched) ||
+      (this.inBondFormStep13.get(field).untouched && this.formSumitAttempt)
+    );
+  }
   
-    displayFieldCss(field: string) {
-      return {
-        'has-error': this.isFieldValid(field),
-        'has-feedback': this.isFieldValid(field)
-      };
-    }
-    // submit on save and continue sections
-    onSubmit() {
-      // stepper.next();
-       this.formSumitAttempt = true;
-       if (this.inBondFormStep13.valid) {
-         console.log('form submitted');
-         
-       }else{
-         console.log('err');
-       }
-   }
+  displayFieldCss(field: string) {
+    return {
+      'has-error': this.isFieldValid(field),
+      'has-feedback': this.isFieldValid(field)
+    };
+  }
   
+  onSubmit() {
+    // console.log(this.inBondFormStep13.valid);
+    // console.log(this.inBondFormStep13.value);
+    // console.log();
+    if (this.inBondFormStep13.valid === true) {
+      this.inBondFormStep13.value
+      Swal.fire({
+        title: 'Step 8 completed',
+        text: "Please click next for other step or click cancel",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Next &nbsp; &#8594;'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+          element.click();
+        }
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Required Validation is left. Please check',
+      }).then((result) =>{
+        this.formSumitAttempt = true
+      })
+
+    }
+  }
 
 }

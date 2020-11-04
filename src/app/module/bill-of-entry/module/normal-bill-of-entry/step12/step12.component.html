@@ -1,119 +1,130 @@
-<div>
+
     <form class="col-md-12" [formGroup]="homeConsumptionFormStep12">
-        <div><span class="required">&#42;</span> indicates the mandatory fields </div>
+        <div>Fill all mandatory fields indicated by<span class="required">&#42;</span> </div>
         <h6 class="font-h6 text-center">Decleration Statement</h6>
         <hr>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class=" form-group col-md-4">
-                <label>Declaration Type</label><span class="required">*</span>
-                <input type="text" class="form-control"
-                    formControlName="decleration_type">
-                <mat-error *ngIf='homeConsumptionFormStep12.controls.decleration_type.errors?.pattern'
-                    class="text-danger">
-                    Enter valid Decleration Type <br></mat-error>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep12.controls.decleration_type.errors?.maxlength'
-                    class="text-danger">Dont extend the limit of 1 character <br>
-                </mat-error>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('decleration_type')">
+                <label>Declaration Type<span class="required">*</span>
+                    <fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 1 and only characters are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                </label>
+                <input type="text" class="form-control" formControlName="decleration_type">
+                <validation-messages [control]="homeConsumptionFormStep12.controls.decleration_type" errorMsg="Decleration Type">
+                </validation-messages>
 
-                <mat-error
-                    *ngIf='homeConsumptionFormStep12.controls.decleration_type.errors?.required && homeConsumptionFormStep12.controls.decleration_type.touched'
-                    class="text-danger">This field is required</mat-error>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Declaration Number</label>
-                <input type="text" class="form-control"
-                    formControlName="decleration_number">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep12.controls.decleration_number.errors?.pattern'
-                    class="text-danger">
-                    Enter valid Decleration Number <br></mat-error>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep12.controls.decleration_number.errors?.maxlength'
-                    class="text-danger">Dont extend the limit of 7 digits only
-                </mat-error>
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('invoice_serial_number')">
+                <label>Invoice Serial Number<span class="required">*</span>
+                    <fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 5 and only numbers are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                </label>
+                <input type="text" class="form-control" formControlName="invoice_serial_number">
+                <validation-messages [control]="homeConsumptionFormStep12.controls.invoice_serial_number" errorMsg="Invoice Serial Number">
+                </validation-messages>
+
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <!-- <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('decleration_number')">
+                <label>Declaration Number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 7 and only numbers are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control" formControlName="decleration_number">
+                <validation-messages [control]="homeConsumptionFormStep12.controls.decleration_number" errorMsg="Decleration Number">
+                </validation-messages>
+
+            </div> -->
+        </div>
+        <!-- <div class="form-row"> -->
+         
+            <!-- <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('decleration_date')">
+                <label>Declaration Date<span class="required">*</span></label>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                      
+                        <input matInput [matDatepicker]="decleration_date" formControlName="decleration_date">
+                        <mat-datepicker-toggle matSuffix [for]="decleration_date"></mat-datepicker-toggle>
+                        <mat-datepicker #decleration_date></mat-datepicker>
+                       
+                    </mat-form-field>
+                </div>
+            
+            </div> -->
+            <!-- <div class="col-md-2"></div> -->
+            <!-- <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoice_serial_number')">
+                <label>Invoice Serial Number<span class="required">*</span>
+                    <fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 5 and only numbers are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                </label>
+                <input type="text" class="form-control" formControlName="invoice_serial_number">
+                <validation-messages [control]="homeConsumptionFormStep12.controls.invoice_serial_number" errorMsg="Invoice Serial Number">
+                </validation-messages>
+
+            </div> -->
+        <!-- </div> -->
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('item_serial_number')">
+                <label>Item Sr.Number<span class="required"> *</span>
+                    <fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 4 and only numbers are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                </label>
+                <input type="text" class="form-control" formControlName="item_serial_number">
+                <validation-messages [control]="homeConsumptionFormStep12.controls.item_serial_number" errorMsg="Item Serial Number">
+                </validation-messages>
+
+
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('statement_type')">
+                <label>Statement Type<span class="required"> *</span>
+                    <fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 3 and only characters are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                </label>
+                <input type="text" class="form-control" formControlName="statement_type">
+                <validation-messages [control]="homeConsumptionFormStep12.controls.statement_type" errorMsg="Statement Type">
+                </validation-messages>
+
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class=" form-group col-md-4">
-                <label>Declaration Date</label><span class="required">*</span>
-                <input type="date" class="form-control">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('statement_code')">
+                <label>Statement Code<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 7 and only characters are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                <input class="form-control" formControlName="statement_code">
+                <validation-messages [control]="homeConsumptionFormStep12.controls.statement_code" errorMsg="Statement Code">
+                </validation-messages>
+
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Invoice Serial Number</label><span class="required">*</span>
-                <input type="text" class="form-control"
-                    formControlName="invoice_serial_number">
-                    <mat-error
-                    *ngIf='homeConsumptionFormStep12.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep12.controls.invoice_serial_number.touched'>
-                    This field is required
-                </mat-error> <br>
-                <mat-error *ngIf='homeConsumptionFormStep12.controls.invoice_serial_number.errors?.maxlength'>
-                    The maximum field length is 5, please update the field
-                </mat-error><br>
-                <mat-error *ngIf='homeConsumptionFormStep12.controls.invoice_serial_number.errors?.pattern'>
-                    Only numbers are allowed in this field, please update
-                </mat-error>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class=" form-group col-md-4">
-                <label>Item Sr.Number</label><span class="required"> *</span>
-                <input type="text" class="form-control"
-                    formControlName="item_serial_number">    
-                <mat-error
-                *ngIf='homeConsumptionFormStep12.controls.item_serial_number.errors?.required && homeConsumptionFormStep12.controls.item_serial_number.touched'
-                class="text-danger">This field is required <br></mat-error> 
-                <mat-error
-                    *ngIf='homeConsumptionFormStep12.controls.item_serial_number.errors?.maxlength'
-                    class="text-danger">The maximum field length is 4, please update the field <br>
-                </mat-error>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep12.controls.item_serial_number.errors?.pattern'
-                    class="text-danger">Only numbers are allowed in this field, please update
-                    </mat-error>
-    
-            </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Statement Type</label><span class="required"> *</span>
-                <input type="text" class="form-control"
-                    formControlName="statement_type">
-                    <mat-error
-                    *ngIf='homeConsumptionFormStep12.controls.statement_type.errors?.required && homeConsumptionFormStep12.controls.statement_type.touched'
-                    class="text-danger">This field is required <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep12.controls.statement_type.errors?.maxlength'
-                    class="text-danger">The maximum field length is 3, please update the field
-                </mat-error>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('statement_text')">
+                <label>Statement Text<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 4000 and only characters are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                <input class="form-control" formControlName="statement_text">
+                <validation-messages [control]="homeConsumptionFormStep12.controls.statement_text" errorMsg="Statement Text">
+                </validation-messages>
+
             </div>
         </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class=" form-group col-md-4">
-                <label>Statement Code</label>
-                <input class="form-control"  fromControlName="statement_code">
-                <mat-error *ngIf='homeConsumptionFormStep12.controls.statement_code.errors?.maxlength'
-                    class="text-danger">The maximum field length is 7, please update the field
-                </mat-error>
-            </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Statement Text</label>
-                <input class="form-control" formControlName="statement_text" >
-                <mat-error *ngIf='homeConsumptionFormStep12.controls.statement_text.errors?.maxlength'
-                    class="text-danger">The maximum field length is 4000, please update the field
-                </mat-error>
-            </div>
-        </div>
-    </form>
-</div>
+
+
 <div class="btncontainer">
     <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
     <div class="col-md-4 offset-md-4"></div>
     <button id="back_draft" mat-raised-button>Save as Draft</button>
-    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+    <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
 </div>
+
+
+</form>

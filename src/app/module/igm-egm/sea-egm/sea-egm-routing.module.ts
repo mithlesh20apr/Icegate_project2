@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from '../sea-egm/component/layout/layout.component';
+
+import { SeaEgmComponent } from './sea-egm.component';
 
 
 const routes: Routes = [
-  {path:'layout',
-  component:LayoutComponent
+  {path:'',
+  component:SeaEgmComponent
 },
 ];
 

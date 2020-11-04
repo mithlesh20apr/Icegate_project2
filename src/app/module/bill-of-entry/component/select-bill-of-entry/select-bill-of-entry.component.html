@@ -1,9 +1,9 @@
 
-<div class="container-fluid">
+<div class="container-fluid" >
 
-    <div class="card cardRow">
+    <div>
         <br>
-        <b style="margin-left: 20px;">Bill of Entry</b>
+        <b class="ml-20">Bill of Entry</b>
 
         <div class="box-color">
             <br>
@@ -13,38 +13,42 @@
             <br>
             <div class="row">
                 <div class="column">
-                    <div class="card-type" [ngClass]="[isSelected ? 'blueClass' : 'whiteClass']"
+                    <div class="card" [ngClass]="[isSelected ? 'blueClass' : 'whiteClass']"
                         (click)="getSelectedAll('a')">
-                        <h3> <img src="assets/icons/house-consumption.png"></h3>
+                        <h3 *ngIf='!isSelected'> <img  class="img-fluid" src="assets/icons/house-consumption.png"></h3>
+                        <h3 *ngIf='isSelected'> <img   class="img-fluid" src="assets/icons/house-consumption-white.png"></h3>
                         <p>Home </p>
                         <p>Consumption</p>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="card-type" [ngClass]="[isSelected1 ? 'blueClass' : 'whiteClass']"
+                    <div class="card" [ngClass]="[isSelected1 ? 'blueClass' : 'whiteClass']"
                         (click)="getSelectedAll('b')">
-                        <h3> <img src="assets/icons/in-bond.png"></h3>
+                        <h3 *ngIf='!isSelected1'> <img  class="img-fluid" src="assets/icons/in-bond.png"></h3>
+                        <h3 *ngIf='isSelected1'> <img  class="img-fluid" src="assets/icons/in-bond-white.png"></h3>
                         <p>In-Bond </p>
                         <p>(Warehouse)</p>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="card-type" [ngClass]="[isSelected2 ? 'blueClass' : 'whiteClass']"
+                    <div class="card" [ngClass]="[isSelected2 ? 'blueClass' : 'whiteClass']"
                         (click)="getSelectedAll('c')">
-                        <h3> <img src="assets/icons/ex-bond.png"></h3>
+                        <h3 *ngIf='!isSelected2'> <img  class="img-fluid" src="assets/icons/ex-bond.png"></h3>
+                        <h3 *ngIf='isSelected2'> <img  class="img-fluid" src="assets/icons/ex-bond-white.png"></h3>
                         <p>Ex-Bond</p>
                         <p>(Warehouse)</p>
                     </div>
                 </div>
             </div>
             <br>
-            <div class="row">
-                <div class="col-md-9"></div>
-                <button id="savecon" (click)="goToForm()">Save & Continue</button>
+            <div class="form-row">
+                <div class="col-sm-2 offset-7"></div>
+                <button id="select-savecon" (click)="goToForm()">Save & Continue</button>
             </div>
             <br>
             <br>
         </div>
+        
     </div>
 
 </div>

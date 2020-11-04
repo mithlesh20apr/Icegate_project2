@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from '../airline-igm/component/layout/layout.component';
+import { AirlineIgmComponent } from './airline-igm.component';
 
 
 const routes: Routes = [
-  {path:'layout',
-  component:LayoutComponent
+  {path:'',
+  component: AirlineIgmComponent
 },
 ];
 

@@ -2,18 +2,32 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SeaIgmRoutingModule } from './sea-igm-routing.module';
-import { VesselDetailsComponent } from './component/vessel-details/vessel-details.component';
-import { LayoutComponent } from './component/layout/layout.component';
-import { CargoManifestComponent } from './component/cargo-manifest/cargo-manifest.component';
-import { ContainerDetailsComponent } from './component/container-details/container-details.component';
+
 import { MaterialModule } from '../../common/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonSharedModule } from '../../common/common-shared.module';
-import { ContainerDialogContentComponent } from './component/container-dialog-content/container-dialog-content.component';
+// import { ContainerDialogContentComponent } from './component/container-dialog-content/container-dialog-content.component';
+import { SeaIgmComponent } from './sea-igm.component';
+import { Step1Component } from './step1/step1.component';
+import {Step2Component} from './step2/step2.component';
+import {Step3Component} from './step3/step3.component';
+import {Step3DialogContentComponent} from './step3-dialog-content/step3-dialog-content.component';
+import { FontAwesomeModule,FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faSquare, faCheckSquare,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSquare as farSquare, faCheckSquare as faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 
 
 @NgModule({
-  declarations: [VesselDetailsComponent, LayoutComponent, CargoManifestComponent, ContainerDetailsComponent, ContainerDialogContentComponent],
+  declarations: [
+ 
+    SeaIgmComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component,
+    Step3DialogContentComponent
+    
+  ],
   imports: [
     CommonModule,
     SeaIgmRoutingModule,
@@ -21,6 +35,19 @@ import { ContainerDialogContentComponent } from './component/container-dialog-co
     FormsModule,
     ReactiveFormsModule,
     CommonSharedModule,
+    FontAwesomeModule
   ]
 })
-export class SeaIgmModule { }
+export class SeaIgmModule { 
+  constructor( private library: FaIconLibrary){
+    library.addIcons(
+      faSquare,
+      faExclamationCircle, 
+      faCheckSquare, 
+      farSquare, 
+      faQuestionCircle, 
+      faStackOverflow, 
+      faGithub, 
+      faMedium);
+}  
+}

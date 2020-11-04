@@ -4,23 +4,48 @@ import { CommonModule } from '@angular/common';
 import { SeaEgmRoutingModule } from './sea-egm-routing.module';
 import { MaterialModule } from '../../common/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutComponent } from '../sea-egm/component/layout/layout.component';
-import { EgmMasterDetailsComponent } from './component/egm-master-details/egm-master-details.component';
-import { EgmContainerDetailsComponent } from './component/egm-container-details/egm-container-details.component';
-import { EgmContainerDialogContentComponent } from './component/egm-container-dialog-content/egm-container-dialog-content.component';
 import { CommonSharedModule } from '../../common/common-shared.module';
-import { ShippingDetailsComponent } from './component/shipping-details/shipping-details.component';
+
+import { Step1Component } from './step1/step1.component';
+import { Step2Component } from './step2/step2.component';
+import { Step3Component } from './step3/step3.component';
+import { Step3DialogContentComponent } from './step3-dialog-content/step3-dialog-content.component';
+import { SeaEgmComponent } from './sea-egm.component';
+import { FontAwesomeModule,FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faSquare, faCheckSquare,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSquare as farSquare, faCheckSquare as faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
+
 
 
 @NgModule({
-  declarations: [LayoutComponent,EgmMasterDetailsComponent,EgmContainerDetailsComponent, EgmContainerDialogContentComponent, ShippingDetailsComponent],
+  declarations: [
+     
+    Step1Component, 
+    Step2Component, 
+    Step3Component, 
+    Step3DialogContentComponent,
+    SeaEgmComponent],
   imports: [
     CommonModule,
     SeaEgmRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonSharedModule
+    CommonSharedModule,
+    FontAwesomeModule
   ]
 })
-export class SeaEgmModule { }
+export class SeaEgmModule {
+  constructor( private library: FaIconLibrary){
+    library.addIcons(
+      faSquare,
+      faExclamationCircle, 
+      faCheckSquare, 
+      farSquare, 
+      faQuestionCircle, 
+      faStackOverflow, 
+      faGithub, 
+      faMedium);
+} 
+ }

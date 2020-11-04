@@ -1,12 +1,12 @@
 <div>
-    <br>
+    
     <h2 class="font-h6 text-center">Item</h2>
     <hr>
-    <br>
+    
     <h2 mat-dialog-title>Items</h2>
     <mat-dialog-content>
-        <div><span>&#42;</span> indicates the mandatory fields</div>
-        <br>
+        <div>Fill all mandatory fields indicated by<span>&#42;</span></div>
+        
         <button mat-raised-button (click)="addTab1()" [disabled]="disableAddButton1" id="add-option">
             Add new tab
             <mat-icon>add</mat-icon>
@@ -27,22 +27,22 @@
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <div class="row">
-                            <br>
+                           
                             <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                <br>
+                               
                                 <div class="form-row">
-                                    <br>
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-2">
+                                   
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-2 offset-md-1">
                                         <label>Invoice Serial Number</label><span class="required">*</span>
                                         <input type="text" class="form-control" formControlName="invoice_serial_number">
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep5.controls.invoice_serial_number.touched'>
-                                            This field is required <br>
+                                            This field is required 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.maxlength'>
-                                            The maximum field length is 5, please update the field <br>
+                                            The maximum field length is 5, please update the field 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.pattern'>
@@ -55,28 +55,28 @@
                                         <input type="text" class="form-control" formControlName="item_serial_number">
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.item_serial_number.errors?.required && homeConsumptionFormStep5.controls.item_serial_number.touched'>
-                                            This field is required <br>
+                                            This field is required 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.item_serial_number.errors?.maxlength'>
-                                            The maximum field length is 4, please update the field <br>
+                                            The maximum field length is 4, please update the field 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.item_serial_number.errors?.pattern'>
                                             Only numbers are allowed in this field, please update
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group  col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group  col-md-4 offset-md-2">
                                         <label>Quantity</label><span class="required">*</span>
                                         <input type="text" class="form-control" formControlName="item_quantity">
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.item_quantity.errors?.required && homeConsumptionFormStep5.controls.item_quantity.touched'>
-                                            This field is required <br>
+                                            This field is required 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.item_quantity.errors?.maxlength'>
-                                            The maximum field length is 16, please update the field <br>
+                                            The maximum field length is 16, please update the field 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.item_quantity.errors?.pattern'>
@@ -85,34 +85,34 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Unit Quantity Code</label><span class="required">*</span>
                                         <input type="text" class="form-control" formControlName="unit_quantity_code">
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.unit_quantity_code.errors?.required && homeConsumptionFormStep5.controls.unit_quantity_code.touched'>
-                                            This field is required <br>
+                                            This field is required 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.unit_quantity_code.errors?.maxlength'>
-                                            The maximum field length is 3, please update the field <br>
+                                            The maximum field length is 3, please update the field 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.unit_quantity_code.errors?.pattern'>
                                             Only numbers are allowed in this field, please update
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>RITC Number</label><span class="required">*</span>
                                         <input type="text" class="form-control" formControlName="ritc_code">
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.ritc_code.errors?.required && homeConsumptionFormStep5.controls.ritc_code.touched'>
-                                            This field is required <br>
+                                            This field is required 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.ritc_code.errors?.maxlength'>
-                                            The maximum field length is 8, please update the field <br>
+                                            The maximum field length is 8, please update the field 
                                         </mat-error>
                                         <mat-error *ngIf='homeConsumptionFormStep5.controls.ritc_code.errors?.pattern'>
                                             Only numbers are allowed in this field, please update
@@ -120,21 +120,21 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Item Description 1</label><span class="required">*</span>
                                         <input type="text" formControlName="item_description1" class="form-control">
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.item_description1.errors?.required && homeConsumptionFormStep5.controls.item_description1.touched'>
-                                            This field is required <br>
+                                            This field is required 
                                         </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.item_description1.errors?.maxlength'>
                                             The maximum field length is 60, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Item Description 2</label>
                                         <input type="text" class="form-control" formControlName="item_description2">
                                         <mat-error
@@ -144,16 +144,16 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Item Catagory (scheme Code)</label>
                                         <select formControlName="item_category" class="form-control">
                                             <option></option>
                                             <option value="LO">LO</option>
-                                        </select>
+                                        </select> 
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group  col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group  col-md-4 offset-md-2">
                                         <label>Generic Description Of the Item</label>
                                         <input class="form-control" formControlName="item_description_generic">
                                         <mat-error
@@ -165,17 +165,17 @@
                                 <div *ngIf="homeConsumptionFormStep5.controls.item_category.value==='LO'"
                                     class="dropdown-color">
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Invoice Number</label><span class="required">*</span>
                                             <input class="form-control" formControlName="invoice_serial_number">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep5.controls.invoice_serial_number.touched'>
-                                                This field is required <br>
+                                                This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.maxlength'>
-                                                The maximum field length is 5, please update the field <br>
+                                                The maximum field length is 5, please update the field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.pattern'>
@@ -183,17 +183,17 @@
                                             </mat-error>
 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>Item Sr. No. In Invoice</label><span class="required"> *</span>
                                             <input class="form-control" formControlName="item_serial_number_invoice">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.required && homeConsumptionFormStep5.controls.item_serial_number_invoice.touched'>
-                                                This field is required <br>
+                                                This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.maxlength'>
-                                                The maximum field length is 4, please update the field <br>
+                                                The maximum field length is 4, please update the field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.pattern'>
@@ -202,17 +202,17 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Item Sr. No.License</label><span class="required"> *</span>
                                             <input class="form-control" formControlName="item_serial_number_license">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_license.errors?.required && homeConsumptionFormStep5.controls.item_serial_number_license.touched'>
-                                                This field is required <br>
+                                                This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_license.errors?.maxlength'>
-                                                The maximum field length is 4, please update the field <br>
+                                                The maximum field length is 4, please update the field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_license.errors?.pattern'>
@@ -220,13 +220,13 @@
                                             </mat-error>
 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group col-md-2">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group col-md-2 offset-md-2">
                                             <label>Debt-Value</label>
                                             <input class="form-control" formControlName="debit_value">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.debit_value.errors?.maxlength'>
-                                                The maximum field length is 16, please update the field <br>
+                                                The maximum field length is 16, please update the field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.debit_value.errors?.pattern'>
@@ -239,7 +239,7 @@
                                             <input class="form-control" formControlName="debit_quantity">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.debit_quantity.errors?.maxlength'>
-                                                The maximum field length is 16, please update the field <br>
+                                                The maximum field length is 16, please update the field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.debit_quantity.errors?.pattern'>
@@ -248,8 +248,8 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-2">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-2 offset-md-1">
                                             <label>Debt Unit of measurement</label>
                                             <input class="form-control" formControlName="debit_unit_of_measurement">
                                             <mat-error
@@ -264,46 +264,46 @@
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.license_registration_number.errors?.maxlength'>
                                                 The maximum field length is 10, please update the field
-                                            </mat-error><br>
+                                            </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.license_registration_number.errors?.pattern'>
                                                 Only numbers are allowed in this field, please update
                                             </mat-error>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>License Registration Date</label><span class="required"> *</span>
                                             <input type="date" class="form-control"
                                                 formControlName="license_registration_date">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.license_registration_date.errors?.touched && homeConsumptionFormStep5.controls.license_registration_date.errors?.required'>
                                                 This field is required
-                                            </mat-error><br>
+                                            </mat-error>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>License Registration code</label><span class="required"> *</span>
                                             <input class="form-control" formControlName="license_code">
 
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.license_code.errors?.maxlength'>
                                                 The maximum field length is 2, please update the field
-                                            </mat-error><br>
+                                            </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.license_code.errors?.pattern'>
                                                 Only numbers are allowed in this field, please update
                                             </mat-error>
 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>RA/License Registration Port</label><span class="required">*</span>
                                             <input class="form-control" formControlName="license_reg_port">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.license_reg_port.errors?.required && homeConsumptionFormStep5.controls.license_reg_port.touched'
-                                                class="text-danger">This field is required <br></mat-error>
+                                                class="text-danger">This field is required </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.license_reg_port.errors?.maxlength'
                                                 class="text-danger">
@@ -313,8 +313,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Accessories for the Item Manufacture/Grower </label>
                                         <input type="text" class="form-control" formControlName="item_accessories">
                                         <mat-error
@@ -340,13 +340,12 @@
                         </mat-expansion-panel-header>
 
                         <div class="row">
-                            <br>
+                            
                             <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                <br>
-                                <div class="form-row">
-                                    <br>
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                               
+                                <div class="form-row"> 
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Producer Name</label>
                                         <input type="text" class="form-control" formControlName="name_producer">
                                         <mat-error
@@ -355,13 +354,13 @@
                                         </mat-error>
 
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Brand Name</label><span class="required"> *</span>
                                         <input type="text" class="form-control" formControlName="name_brand">
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.name_brand.errors?.required && homeConsumptionFormStep5.controls.name_brand.touched'>
-                                            This field is required <br></mat-error>
+                                            This field is required </mat-error>
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.name_brand.errors?.maxlength'>
                                             The maximum field length is 20, please update the field
@@ -369,8 +368,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Model</label><span class="required"> *</span>
                                         <input type="text" class="form-control" formControlName="model">
                                         <mat-error
@@ -381,8 +380,8 @@
                                         </mat-error>
 
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>End use of the item</label><span class="required"> *</span>
                                         <input type="text" class="form-control" formControlName="end_use_item">
                                         <mat-error
@@ -395,8 +394,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>CTH</label><span class="required">*</span>
                                         <input type="text" class="form-control" formControlName="cth">
                                         <mat-error
@@ -407,8 +406,8 @@
                                             characters
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Country of origin</label><span class="required">*</span>
                                         <input type="text" class="form-control"
                                             formControlName="country_of_origin_of_item">
@@ -423,7 +422,7 @@
                                 </div>
                                 <div *ngIf='homeConsumptionFormStep5.value.cth.length==8'>
                                     <mat-card class="cth-background">
-                                        <br>
+                                     
                                         <mat-accordion>
 
                                             <mat-expansion-panel (opened)="panelOpenState = true"
@@ -436,24 +435,24 @@
                                                 </mat-expansion-panel-header>
 
                                                 <div class="row">
-                                                    <br>
+                                                   
                                                     <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                                        <br>
+                                                      
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Invoice Serial
                                                                     Number</label><span class="required"> *</span>
                                                                 <input class="form-control"
                                                                     formControlName="invoice_serial_number">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep5.controls.invoice_serial_number.touched'>
-                                                                    This field is required<br>
+                                                                    This field is required
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.maxlength'>
                                                                     The maximum field length is 5, please update the
-                                                                    field<br>
+                                                                    field
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.pattern'>
@@ -461,20 +460,20 @@
                                                                     update
                                                                 </mat-error>
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Item Serial
                                                                     Number</label>
                                                                 <input class="form-control"
                                                                     formControlName="item_serial_number">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.item_serial_number.errors?.required && homeConsumptionFormStep5.controls.item_serial_number.touched'>
-                                                                    This field is required<br>
+                                                                    This field is required
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.item_serial_number.errors?.maxlength'>
                                                                     The maximum field length is 4, please update the
-                                                                    field<br>
+                                                                    field
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.item_serial_number.errors?.pattern'>
@@ -485,14 +484,14 @@
 
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Info Type</label><span class="required"> *</span>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="info_type">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.info_type.errors?.required && homeConsumptionFormStep5.controls.info_type.touched'>
-                                                                    This field is required<br>
+                                                                    This field is required
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.info_type.errors?.maxlength'>
@@ -501,15 +500,15 @@
                                                                 </mat-error>
 
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>RITC Qualifier</label><span
                                                                     class="required">*</span>
                                                                 <input class="form-control"
                                                                     formControlName="ritc_qualifier">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.ritc_qualifier.errors?.required && homeConsumptionFormStep5.controls.ritc_qualifier.touched'>
-                                                                    This field is required<br>
+                                                                    This field is required
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.ritc_qualifier.errors?.maxlength'>
@@ -521,8 +520,8 @@
 
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Info_code</label>
                                                                 <input type="text" formControlName="info_code"
                                                                     class="form-control">
@@ -533,8 +532,8 @@
                                                                 </mat-error>
 
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Info_text</label>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="info_text">
@@ -547,15 +546,15 @@
                                                         </div>
 
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Info_msr </label>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="info_msr">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.info_msr.errors?.maxlength'>
                                                                     The maximum field length is 16, please update the
-                                                                    field<br>
+                                                                    field
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.info_msr.errors?.pattern'>
@@ -563,15 +562,15 @@
                                                                     update
                                                                 </mat-error>
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Info_uqc</label>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="info_uqc">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.info_uqc.errors?.maxlength'>
                                                                     The maximum field length is 3, please update the
-                                                                    field<br>
+                                                                    field
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.info_uqc.errors?.pattern'>
@@ -584,7 +583,7 @@
                                                 </div>
 
                                             </mat-expansion-panel>
-                                        </mat-accordion><br>
+                                        </mat-accordion>
                                         <mat-accordion>
 
                                             <mat-expansion-panel (opened)="panelOpenState = true"
@@ -599,20 +598,20 @@
                                                 </mat-expansion-panel-header>
 
                                                 <div class="row">
-                                                    <br>
+                                                   
                                                     <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                                        <br>
+                                                       
                                                         <div class="form-row">
-                                                            <br>
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                           
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Constituent Sr. No.</label> <span
                                                                     class="required"> *</span>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="constituent_serial_number">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_serial_number.errors?.required && homeConsumptionFormStep5.controls.constituent_serial_number.touched'>
-                                                                    This field is required<br>
+                                                                    This field is required
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_serial_number.errors?.maxlength'>
@@ -626,15 +625,15 @@
                                                                 </mat-error>
 
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Constituent Element Name</label><span
                                                                     class="required">*</span>
                                                                 <input class="form-control"
                                                                     formControlName="constituent_element_name">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_element_name.errors?.required && homeConsumptionFormStep5.controls.constituent_element_name.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_element_name.errors?.maxlength'>
@@ -645,8 +644,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Constituent Element Code</label><span
                                                                     class="required">
                                                                     *</span>
@@ -654,7 +653,7 @@
                                                                     formControlName="constituent_element_code">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_element_code.errors?.required && homeConsumptionFormStep5.controls.constituent_element_code.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_element_code.errors?.maxlength'>
@@ -662,8 +661,8 @@
                                                                     field
                                                                 </mat-error>
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-2">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-2 offset-md-2">
                                                                 <label>Constituent Percentage</label><span
                                                                     class="required">
                                                                     *</span>
@@ -671,12 +670,12 @@
                                                                     formControlName="constituent_percentage">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_percentage.errors?.required && homeConsumptionFormStep5.controls.constituent_percentage.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_percentage.errors?.maxlength'>
                                                                     The maximum field length is 6, please update the
-                                                                    field <br>
+                                                                    field 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_percentage.errors?.pattern'>
@@ -693,12 +692,12 @@
                                                                     formControlName="constituent_yield_percentage">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_yield_percentage.errors?.required && homeConsumptionFormStep5.controls.constituent_yield_percentage.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_yield_percentage.errors?.maxlength'>
                                                                     The maximum field length is 6, please update the
-                                                                    field <br>
+                                                                    field 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.constituent_yield_percentage.errors?.pattern'>
@@ -709,12 +708,17 @@
 
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
-
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
+                                                                
                                                                 <span>Active ingredient (Y/N)</span> <span
-                                                                    class="required">*</span><br><br>
-                                                                <label class="col-md-3">
+                                                                    class="required">*</span>
+                                                                    <div>
+                                                                        <mat-radio-group aria-label="Select an option" formControlName="active_ingredient_flag">
+                                                                            <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                                                                            <mat-radio-button value="N">No</mat-radio-button> 
+                                                                        </mat-radio-group> </div>
+                                                                <!-- <label class="col-md-3">
                                                                     <input formControlName="active_ingredient_flag"
                                                                         type="radio" value="Yes">Yes
                                                                 </label>
@@ -722,7 +726,7 @@
                                                                 <label class="col-md-3">
                                                                     <input formControlName="active_ingredient_flag"
                                                                         type="radio" value="No">No
-                                                                </label>
+                                                                </label> -->
                                                             </div>
 
 
@@ -733,7 +737,7 @@
                                                 </div>
 
                                             </mat-expansion-panel>
-                                        </mat-accordion><br>
+                                        </mat-accordion>
                                         <mat-accordion>
 
                                             <mat-expansion-panel (opened)="panelOpenState = true"
@@ -748,20 +752,20 @@
                                                 </mat-expansion-panel-header>
 
                                                 <div class="row">
-                                                    <br>
+                                                    
                                                     <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                                        <br>
+                                                       
                                                         <div class="form-row">
-                                                            <br>
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Production Batch
                                                                     Identifier</label>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="production_batch_identifier">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.production_batch_identifier.errors?.required && homeConsumptionFormStep5.controls.production_batch_identifier.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.production_batch_identifier.errors?.maxlength'>
@@ -769,15 +773,15 @@
                                                                     field
                                                                 </mat-error>
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Production Batch
                                                                     Quantity</label><span class="required"> *</span>
                                                                 <input type="number" class="form-control"
                                                                     formControlName="production_batch_quantity">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.production_batch_quantity.errors?.required && homeConsumptionFormStep5.controls.production_batch_quantity.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.production_batch_quantity.errors?.maxlength'>
@@ -787,8 +791,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Unit Quantity Code</label> <span
                                                                     class="required"> *</span>
                                                                 <input type="text" class="form-control"
@@ -796,7 +800,7 @@
 
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.unit_quantity_code.errors?.required && homeConsumptionFormStep5.controls.unit_quantity_code.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.unit_quantity_code.errors?.maxlength'>
@@ -804,13 +808,22 @@
                                                                     field
                                                                 </mat-error>
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Date of
                                                                     Manufacturing</label><span class="required">
                                                                     *</span>
-                                                                <input type="date" class="form-control"
-                                                                    formControlName="date_manufacturing">
+                                                                    <div>
+                                                                        <mat-form-field>
+                                                                            <mat-label>Choose a date</mat-label>
+                                                                            <!-- #docregion toggle -->
+                                                                            <input matInput [matDatepicker]="date_manufacturing" formControlName="date_manufacturing">
+                                                                            <mat-datepicker-toggle matSuffix [for]="date_manufacturing"></mat-datepicker-toggle>
+                                                                            <mat-datepicker #date_manufacturing></mat-datepicker>
+                                                                            <!-- #enddocregion toggle -->
+                                                                        </mat-form-field></div>
+                                                                <!-- <input type="date" class="form-control"
+                                                                    formControlName="date_manufacturing"> -->
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.date_manufacturing.errors?.required && homeConsumptionFormStep5.controls.date_manufacturing.touched'>
                                                                     This field is required
@@ -819,12 +832,19 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Date Of Expiry</label><span class="required">
                                                                     *</span>
-                                                                <input type="date" class="form-control"
-                                                                    formControlName="date_expiry">
+                                                                    <div>
+                                                                        <mat-form-field>
+                                                                            <mat-label>Choose a date</mat-label>
+                                                                            <!-- #docregion toggle -->
+                                                                            <input matInput [matDatepicker]="date_expiry" formControlName="date_expiry">
+                                                                            <mat-datepicker-toggle matSuffix [for]="date_expiry"></mat-datepicker-toggle>
+                                                                            <mat-datepicker #date_expiry></mat-datepicker>
+                                                                            <!-- #enddocregion toggle -->
+                                                                        </mat-form-field></div>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.date_expiry.errors?.required && homeConsumptionFormStep5.controls.date_expiry.touched'>
                                                                     This field is required
@@ -834,8 +854,17 @@
                                                             <div class="form-group col-md-4">
                                                                 <label>Best Before</label><span class="required">
                                                                     *</span>
-                                                                <input type="date" class="form-control"
-                                                                    formControlName="best_before">
+                                                                    <div>
+                                                                        <mat-form-field>
+                                                                            <mat-label>Choose a date</mat-label>
+                                                                            <!-- #docregion toggle -->
+                                                                            <input matInput [matDatepicker]="best_before" formControlName="best_before">
+                                                                            <mat-datepicker-toggle matSuffix [for]="best_before"></mat-datepicker-toggle>
+                                                                            <mat-datepicker #best_before></mat-datepicker>
+                                                                            <!-- #enddocregion toggle -->
+                                                                        </mat-form-field></div>
+                                                                <!-- <input type="date" class="form-control"
+                                                                    formControlName="best_before"> -->
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.best_before.errors?.required && homeConsumptionFormStep5.controls.best_before.touched'>
                                                                     This field is required
@@ -848,7 +877,7 @@
                                                 </div>
 
                                             </mat-expansion-panel>
-                                        </mat-accordion><br>
+                                        </mat-accordion>
                                         <mat-accordion>
 
                                             <mat-expansion-panel (opened)="panelOpenState = true"
@@ -862,20 +891,20 @@
                                                     </mat-panel-description>
                                                 </mat-expansion-panel-header>
                                                 <div class="row">
-                                                    <br>
+                                                   
                                                     <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                                        <br>
+                                                       
                                                         <div class="form-row">
-                                                            <br>
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                           
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Control Type
                                                                     Code</label><span class="required">*</span>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="control_type_code">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.control_type_code.errors?.required && homeConsumptionFormStep5.controls.production_batch_quantity.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.control_type_code.errors?.maxlength'>
@@ -884,15 +913,15 @@
                                                                 </mat-error>
 
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Control Location
                                                                 </label><span class="required">*</span>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="control_location">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.control_location.errors?.required && homeConsumptionFormStep5.controls.production_batch_quantity.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.control_location.errors?.maxlength'>
@@ -902,27 +931,43 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Control Start Date</label>
-                                                                <input type="date" class="form-control">
+                                                                <div>
+                                                                    <mat-form-field>
+                                                                        <mat-label>Choose a date</mat-label>
+                                                                        <!-- #docregion toggle -->
+                                                                        <input matInput [matDatepicker]="control_start_date" formControlName="control_start_date">
+                                                                        <mat-datepicker-toggle matSuffix [for]="control_start_date"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #control_start_date></mat-datepicker>
+                                                                        <!-- #enddocregion toggle -->
+                                                                    </mat-form-field></div>
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Control End Date</label>
-                                                                <input type="date" class="form-control">
+                                                                <div>
+                                                                    <mat-form-field>
+                                                                        <mat-label>Choose a date</mat-label>
+                                                                        <!-- #docregion toggle -->
+                                                                        <input matInput [matDatepicker]="control_end_date" formControlName="control_end_date">
+                                                                        <mat-datepicker-toggle matSuffix [for]="control_end_date"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #control_end_date></mat-datepicker>
+                                                                        <!-- #enddocregion toggle -->
+                                                                    </mat-form-field></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-1"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-1">
                                                                 <label>Control Result
                                                                     Code</label><span class="required">*</span>
                                                                 <input type="text" class="form-control"
                                                                     formControlName="control_result_code">
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.control_result_code.errors?.required && homeConsumptionFormStep5.controls.control_result_code.touched'>
-                                                                    This field is required <br>
+                                                                    This field is required 
                                                                 </mat-error>
                                                                 <mat-error
                                                                     *ngIf='homeConsumptionFormStep5.controls.control_result_code.errors?.maxlength'>
@@ -930,8 +975,8 @@
                                                                     field
                                                                 </mat-error>
                                                             </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="form-group col-md-4">
+                                                            <!-- <div class="col-md-2"></div> -->
+                                                            <div class="form-group col-md-4 offset-md-2">
                                                                 <label>Control Result
                                                                     text</label>
                                                                 <input type="text" class="form-control"
@@ -951,11 +996,11 @@
                                         </mat-accordion>
 
                                     </mat-card>
-                                    <br>
+                                   
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Preferential(P)/ Standard (S) </label><span class="required">*</span>
                                         <input type="text" class="form-control"
                                             formControlName="preferential_or_standard">
@@ -966,8 +1011,8 @@
                                             *ngIf='homeConsumptionFormStep5.controls.preferential_or_standard.errors?.maxlength'>
                                             The maximum field length is 1, please update the field </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>CETH</label><span class="required">*</span>
                                         <input type="text" class="form-control" formControlName="ceth">
                                         <mat-error
@@ -993,13 +1038,13 @@
                         </mat-expansion-panel-header>
 
                         <div class="row">
-                            <br>
+                            
                             <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                <br>
+                                
                                 <div class="form-row">
-                                    <br>
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>BCD Notification</label>
                                         <input type="text" class="form-control" formControlName="bcd_notification">
                                         <mat-error
@@ -1007,8 +1052,8 @@
                                             The maximum field length is 10, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>BCD Notification Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="bcd_notification_sr_no">
@@ -1018,16 +1063,16 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>CVD Notification</label>
                                         <input type="text" class="form-control" formControlName="cvd_notification">
                                         <mat-error
                                             *ngIf='homeConsumptionFormStep5.controls.cvd_notification.errors?.maxlength'>
                                             The maximum field length is 10, please update the field </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> CVD Notification Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="cvd_notification_sr_no">
@@ -1037,8 +1082,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Additional Notification 1 </label>
                                         <input type="text" class="form-control"
                                             formControlName="additional_notification1">
@@ -1046,8 +1091,8 @@
                                             *ngIf='homeConsumptionFormStep5.controls.additional_notification1.errors?.maxlength'>
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Additional Notification 1 Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="additional_notification1_sr_no">
@@ -1057,8 +1102,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Additional Notification 2 </label>
                                         <input type="text" class="form-control"
                                             formControlName="additional_notification2">
@@ -1066,8 +1111,8 @@
                                             *ngIf='homeConsumptionFormStep5.controls.additional_notification2.errors?.maxlength'>
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Additional Notification 2 Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="additional_notification2_sr_no">
@@ -1077,8 +1122,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Other Notification </label>
                                         <input type="text" class="form-control" formControlName="other_notification">
                                         <mat-error
@@ -1086,8 +1131,8 @@
                                             The maximum field length is 10, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Other Notification Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="other_notification_sr_no">
@@ -1102,20 +1147,20 @@
 
                                 <div *ngIf="homeConsumptionFormStep5.value.other_notification.length==10"
                                     class="dropdown-color">
-                                    <br>
+                                    
                                     <div class="form-row">
-                                        <br>
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Invoice Serial Number</label><span class="required">*</span>
                                             <input class="form-control" formControlName="invoice_serial_number">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep5.controls.invoice_serial_number.touched'>
-                                                This field is required <br>
+                                                This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.maxlength'>
-                                                The maximum field length is 5, please update the field <br>
+                                                The maximum field length is 5, please update the field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.pattern'>
@@ -1123,17 +1168,17 @@
                                             </mat-error>
 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>Item Sr. No. In Invoice</label><span class="required"> *</span>
                                             <input class="form-control" formControlName="item_serial_number_invoice">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.required && homeConsumptionFormStep5.controls.item_serial_number_invoice.touched'>
-                                                This field is required <br>
+                                                This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.maxlength'>
-                                                The maximum field length is 4, please update the field <br>
+                                                The maximum field length is 4, please update the field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.pattern'>
@@ -1142,32 +1187,32 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Notification No.</label><span class="required"> *</span>
                                             <input class="form-control" formControlName="notification_number">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.notification_number.errors?.required && homeConsumptionFormStep5.controls.notification_number.touched'>
-                                                This field is required <br>
+                                                This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.notification_number.errors?.maxlength'>
-                                                The maximum field length is 10, please update the field <br>
+                                                The maximum field length is 10, please update the field 
                                             </mat-error>
 
 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group col-md-4 offset-md-2">
                                             <label>Notification Sr No.</label><span class="required">*</span>
                                             <input class="form-control" formControlName="notification_serial_number">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.notification_serial_number.errors?.required && homeConsumptionFormStep5.controls.notification_serial_number.touched'>
-                                                This field is required <br>
+                                                This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.notification_serial_number.errors?.maxlength'>
-                                                The maximum field length is 10, please update the field <br>
+                                                The maximum field length is 10, please update the field 
                                             </mat-error>
 
                                         </div>
@@ -1175,10 +1220,15 @@
 
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
-                                            <span>Duty Type</span><span class="required">*</span> <br><br>
-                                            <label class="col-md-3">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
+                                            <span>Duty Type</span><span class="required">*</span> <div>
+                                                <mat-radio-group aria-label="Select an option" formControlName="duty_type">
+                                                    <mat-radio-button value="E" >E</mat-radio-button>&nbsp;&nbsp;  &nbsp;&nbsp;  
+                                                    <mat-radio-button value="G">G</mat-radio-button> &nbsp;&nbsp; &nbsp;&nbsp; 
+                                                    <mat-radio-button value="C">C</mat-radio-button>
+                                                </mat-radio-group> </div>
+                                            <!-- <label class="col-md-3">
                                                 <input type="radio" formControlName="duty_type" value="E">E
                                             </label>
                                             <label class="col-md-3" style="padding-left:0px ">
@@ -1186,23 +1236,23 @@
                                             </label>
                                             <label class="col-md-3" style="padding-left:0px ">
                                                 <input type="radio" formControlName="duty_type" value="C">C
-                                            </label>
+                                            </label> -->
                                         </div>
 
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group col-md-4 offset-md-2 ">
                                             <label>Addl Duty Flag</label><span class="required"> *</span>
                                             <input class="form-control" formControlName="additional_duty_flag">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.additional_duty_flag.errors?.required && homeConsumptionFormStep5.controls.additional_duty_flag.touched'>
-                                                This field is required <br>
+                                                This field is required 
                                             </mat-error>
 
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Exmp Notification</label><span class="required"> </span>
                                             <input class="form-control" formControlName="exmp_notification">
 
@@ -1213,8 +1263,8 @@
 
 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>Exmp Notification Sr No.</label><span class="required"></span>
                                             <input class="form-control"
                                                 formControlName="exmp_notification_serial_number">
@@ -1230,8 +1280,8 @@
 
 
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Customs Notn Exempting IGST Flag (G/C)</label><span class="required">
                                             </span>
                                             <input class="form-control" formControlName="customs_exmp">
@@ -1242,8 +1292,8 @@
                                             </mat-error>
 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>Supplier Sl. No.</label><span class="required"></span>
                                             <input class="form-control" formControlName="suplier_number">
 
@@ -1255,13 +1305,13 @@
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Nou</label><span class="required"> </span>
                                             <input class="form-control" formControlName="nou">
 
                                             <mat-error *ngIf='homeConsumptionFormStep5.controls.nou.errors?.maxlength'>
-                                                The maximum field length is 16, please update the field <br>
+                                                The maximum field length is 16, please update the field 
                                             </mat-error>
                                             <mat-error *ngIf='homeConsumptionFormStep5.controls.nou.errors?.pattern'>
                                                 Only numbers are allowed in this field, please update
@@ -1303,8 +1353,8 @@
 
 
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Cus EDUCESS Notification </label>
                                         <input type="text" class="form-control"
                                             formControlName="cus_educess_notification">
@@ -1312,8 +1362,8 @@
                                             *ngIf='homeConsumptionFormStep5.controls.cus_educess_notification.errors?.maxlength'>
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Cus EDUCESS Notification Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="cus_educess_notification_sr_no">
@@ -1323,8 +1373,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>CEX EDUCESS Notification </label>
                                         <input type="text" class="form-control"
                                             formControlName="cex_educess_notification">
@@ -1332,8 +1382,8 @@
                                             *ngIf='homeConsumptionFormStep5.controls.cex_educess_notification.errors?.maxlength'>
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> CEX EDUCESS Notification Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="cex_educess_notification_sr_no">
@@ -1343,8 +1393,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>NCD Notification </label>
                                         <input type="text" class="form-control" formControlName="ncd_notification">
                                         <mat-error
@@ -1352,8 +1402,8 @@
                                             The maximum field length is 10, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> NCD Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="ncd_notification_sr_no">
@@ -1364,8 +1414,8 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Anti Dumping Duty Notification </label>
                                         <input type="text" class="form-control"
                                             formControlName="antii_dumping_duty_notification">
@@ -1373,8 +1423,8 @@
                                             *ngIf='homeConsumptionFormStep5.controls.antii_dumping_duty_notification.errors?.maxlength'>
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Anti Dumping Duty Notification Sr.No</label>
                                         <input type="text" class="form-control"
                                             formControlName="antii_dumping_duty_notification_sr_no">
@@ -1384,8 +1434,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>CTH Serial Number </label>
                                         <input type="text" class="form-control" formControlName="cth_serial_number">
                                         <mat-error
@@ -1393,8 +1443,8 @@
                                             The maximum field length is 10, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Supplier Serial Number</label>
                                         <input type="text" class="form-control"
                                             formControlName="supplier_serial_number">
@@ -1404,8 +1454,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-1">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-1 offset-md-1">
                                         <label>Quantity as per Anti Dumping Notification.</label>
                                         <input type="text" class="form-control"
                                             formControlName="quantity_antii_dumping_duty_notification">
@@ -1413,8 +1463,8 @@
                                             *ngIf='homeConsumptionFormStep5.controls.quantity_antii_dumping_duty_notification.errors?.maxlength'>
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-1">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-1 offset-md-1">
                                         <label>Quantity as per Tariff Value Notification</label>
                                         <input type="text" class="form-control"
                                             formControlName="quantity_tariff_value_notification">
@@ -1426,10 +1476,10 @@
                                             Only numbers are allowed in this field, please update
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-3"></div>
-                                    <div class="form-group col-md-4">
-                                        <label>Tariff Value Notification</label><br>
-                                        <div><br></div>
+                                    <!-- <div class="col-md-3"></div> -->
+                                    <div class="form-group col-md-4 offset-md-3">
+                                        <label>Tariff Value Notification</label>
+                                        <div></div>
                                         <input type="text" class="form-control"
                                             formControlName="tariff_value_notification">
                                         <mat-error
@@ -1438,8 +1488,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Tariff Value item Serial Number</label>
                                         <input type="text" class="form-control"
                                             formControlName="tariff_value_notification_sr_no">
@@ -1448,8 +1498,8 @@
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
 
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>SAPTA Notification</label>
                                         <input type="text" class="form-control" formControlName="sapta_notification">
                                         <mat-error
@@ -1460,8 +1510,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>SAPTA Notification Serial Number</label>
                                         <input type="text" class="form-control"
                                             formControlName="sapta_notification_sr_no">
@@ -1470,8 +1520,8 @@
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
 
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Health Notification</label>
                                         <input type="text" class="form-control" formControlName="health_notification">
                                         <mat-error
@@ -1482,8 +1532,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Health Notification Serial Number</label>
                                         <input type="text" class="form-control"
                                             formControlName="health_notification_sr_no">
@@ -1492,8 +1542,8 @@
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
 
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Additional CVD Notification</label>
                                         <input type="text" class="form-control"
                                             formControlName="additional_cvd_notification">
@@ -1504,8 +1554,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Additional CVD Notification Serial Number</label>
                                         <input type="text" class="form-control"
                                             formControlName="additional_cvd_notification_sr_no">
@@ -1514,8 +1564,8 @@
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
 
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Aggregate Duty Notification</label>
                                         <input type="text" class="form-control"
                                             formControlName="aggregate_duty_notification">
@@ -1527,8 +1577,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Aggregate Duty Notification Serial Number</label>
                                         <input type="text" class="form-control"
                                             formControlName="aggregate_duty_notification_sr_no">
@@ -1537,8 +1587,8 @@
                                             The maximum field length is 10, please update the field</mat-error>
                                     </div>
 
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Safe Guard Duty Notification</label>
                                         <input type="text" class="form-control"
                                             formControlName="safeguard_duty_notification">
@@ -1549,8 +1599,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Safe Guard Duty Notification Serial Number</label>
                                         <input type="text" class="form-control"
                                             formControlName="safeguard_duty_notification_sr_no">
@@ -1578,13 +1628,13 @@
                         </mat-expansion-panel-header>
 
                         <div class="row">
-                            <br>
+                           
                             <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                <br>
+                               
                                 <div class="form-row">
-                                    <br>
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-2">
+                    
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-2 offset-md-1">
                                         <label>Unit Priced Invoiced</label><span class="required"> *</span>
                                         <input type="text" class="form-control" formControlName="unit_price_invoiced">
                                         <mat-error
@@ -1612,8 +1662,8 @@
                                             Only numbers are allowed in this field, please update
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-2">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-2 offset-md-2">
                                         <label>Discount Amount</label>
                                         <input type="text" class="form-control" formControlName="discount_amount">
                                         <mat-error
@@ -1640,8 +1690,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>SVB Reference Number</label>
                                         <input type="text" class="form-control" formControlName="svb_reference_number">
                                         <mat-error
@@ -1650,15 +1700,23 @@
                                             The maximum field length is 20, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> SVB Reference Date</label>
-                                        <input type="date" class="form-control">
+                                        <div>
+                                            <mat-form-field>
+                                                <mat-label>Choose a date</mat-label>
+                                                <!-- #docregion toggle -->
+                                                <input matInput [matDatepicker]="svb_reference_date" formControlName="svb_reference_date">
+                                                <mat-datepicker-toggle matSuffix [for]="svb_reference_date"></mat-datepicker-toggle>
+                                                <mat-datepicker #svb_reference_date></mat-datepicker>
+                                                <!-- #enddocregion toggle -->
+                                            </mat-form-field></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-2">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-2 offset-md-1">
                                         <label>SVB Load Assessable Value </label>
                                         <input type="text" class="form-control"
                                             formControlName="svb_load_assessable_value">
@@ -1686,8 +1744,8 @@
                                             Only numbers are allowed in this field, please update
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> SVB Flag</label>
                                         <input type="text" class="form-control" formControlName="svb_flag">
                                         <mat-error *ngIf='homeConsumptionFormStep5.controls.svb_flag.errors?.maxlength'
@@ -1698,8 +1756,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Whether Load Final/ Provisional on Assessable Value
                                         </label>
                                         <input type="text" class="form-control"
@@ -1709,8 +1767,8 @@
                                             class="text-danger">
                                             The maximum field length is 1, please update the field</mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Whether Load Final/ Provisional on Duty</label>
                                         <input type="text" class="form-control"
                                             formControlName="load_final_provisional_on_duty">
@@ -1721,8 +1779,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Custom House Code which has been imposed load
                                         </label>
                                         <input type="text" class="form-control"
@@ -1735,8 +1793,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Policy Para No </label>
                                         <input type="text" class="form-control" formControlName="policy_para_no">
                                         <mat-error
@@ -1745,8 +1803,8 @@
                                             The maximum field length is 7, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Policy Year</label>
                                         <input type="text" class="form-control" formControlName="policy_year">
                                         <mat-error
@@ -1757,10 +1815,18 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
-                                        <span>RSP applicability? </span> <span class="required">*</span><br><br>
-                                        <label class="col-md-2">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <span>RSP applicability? </span> <span class="required">*</span>
+                                        <div>
+                                            <mat-radio-group aria-label="Select an option" formControlName="rsp_applicability">
+                                                <mat-radio-button value="Y" >Y</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp; 
+                                                <mat-radio-button value="N">N</mat-radio-button> &nbsp;&nbsp; &nbsp;&nbsp; 
+                                                <mat-radio-button value="Q">Q</mat-radio-button> &nbsp;&nbsp; &nbsp;&nbsp;
+                                                <mat-radio-button value="T">T</mat-radio-button> &nbsp;&nbsp; &nbsp;&nbsp;
+                                                <mat-radio-button value="D">D</mat-radio-button>
+                                            </mat-radio-group> </div>
+                                        <!-- <label class="col-md-2">
                                             <input type="radio" formControlName="rsp_applicability" value="Y">Y
                                         </label>
                                         <label class="col-md-2">
@@ -1774,24 +1840,28 @@
                                         </label>
                                         <label class="col-md-2">
                                             <input type="radio" formControlName="rsp_applicability" value="D">D
-                                        </label>
+                                        </label> -->
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
-                                        <span>Whether RE Importer (Y/N)? </span> <span class="required">*</span><br><br>
-                                        <label class="col-md-3">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <span>Whether RE Importer (Y/N)? </span> <span class="required">*</span> <div>
+                                            <mat-radio-group aria-label="Select an option" formControlName="re_import">
+                                                <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                                                <mat-radio-button value="N">No</mat-radio-button> 
+                                            </mat-radio-group> </div>
+                                        <!-- <label class="col-md-3">
                                             <input formControlName="re_import" type="radio" value="Yes">Yes
                                         </label>
                                         <label class="col-md-3">
                                             <input type="radio" formControlName="re_import" value="No">No
-                                        </label>
+                                        </label> -->
                                     </div>
                                 </div>
                                 <div *ngIf="homeConsumptionFormStep5.controls.re_import.value==='Yes'"
                                     class="dropdown-color">
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Permission Code</label><span class="required">*</span>
                                             <input class="form-control" formControlName="permission_code">
                                             <mat-error
@@ -1804,14 +1874,14 @@
                                                 field
                                             </mat-error>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>Reason for Request</label><span class="required">*</span>
                                             <input class="form-control" formControlName="reason_for_request">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.reason_for_request.errors?.required && homeConsumptionFormStep5.controls.reason_for_request.touched'
                                                 class="text-danger">This field is required
-                                            </mat-error><br>
+                                            </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.reason_for_request.errors?.maxlength '
                                                 class="text-danger">The maximum field length is 2000, please update the
@@ -1820,18 +1890,18 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Invoice Serial Number</label><span class="required">*</span>
                                             <input class="form-control" formControlName="invoice_serial_number">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep5.controls.invoice_serial_number.touched'
-                                                class="text-danger">This field is required <br>
+                                                class="text-danger">This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.maxlength '
                                                 class="text-danger">The maximum field length is 5, please update the
-                                                field <br>
+                                                field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_serial_number.errors?.pattern'
@@ -1839,18 +1909,18 @@
                                                 update
                                             </mat-error>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>Item Serial Number in Invoice </label><span class="required">*</span>
                                             <input class="form-control" formControlName="item_serial_number_invoice">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.required && homeConsumptionFormStep5.controls.item_serial_number_invoice.touched'
-                                                class="text-danger">This field is required <br>
+                                                class="text-danger">This field is required 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.maxlength '
                                                 class="text-danger">The maximum field length is 4, please update the
-                                                field <br>
+                                                field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_serial_number_invoice.errors?.pattern'
@@ -1860,17 +1930,17 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label> * Shipping Bill No.</label><span class="required">*</span>
                                             <input type="text" class="form-control" formControlName="shipping_bill_no">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.shipping_bill_no.errors?.required && homeConsumptionFormStep5.controls.shipping_bill_no.touched'
-                                                class="text-danger">This field is required <br></mat-error>
+                                                class="text-danger">This field is required </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.shipping_bill_no.errors?.maxlength'
                                                 class="text-danger">The maximum field length is 7, please update the
-                                                field <br>
+                                                field 
                                             </mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.shipping_bill_no.errors?.pattern'
@@ -1879,19 +1949,28 @@
                                             </mat-error>
 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label> * Shipping Bill Date</label><span class="required"> *</span>
-                                            <input type="date" class="form-control"
-                                                formControlName="shipping_bill_date">
+                                            <div>
+                                                <mat-form-field>
+                                                    <mat-label>Choose a date</mat-label>
+                                                    <!-- #docregion toggle -->
+                                                    <input matInput [matDatepicker]="shipping_bill_date" formControlName="shipping_bill_date">
+                                                    <mat-datepicker-toggle matSuffix [for]="shipping_bill_date"></mat-datepicker-toggle>
+                                                    <mat-datepicker #shipping_bill_date></mat-datepicker>
+                                                    <!-- #enddocregion toggle -->
+                                                </mat-form-field></div>
+                                            <!-- <input type="date" class="form-control"
+                                                formControlName="shipping_bill_date"> -->
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.shipping_bill_date.errors?.required && homeConsumptionFormStep5.controls.shipping_bill_date.touched'
                                                 class="text-danger">This field is required</mat-error>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label> * Port of Export</label><span class="required"> *</span>
                                             <select class="form-control" formControlName="port_of_export">
                                                 <option> </option>
@@ -1900,77 +1979,77 @@
                                                 *ngIf='homeConsumptionFormStep5.controls.port_of_export.errors?.required && homeConsumptionFormStep5.controls.port_of_export.touched'
                                                 class="text-danger">This field is required</mat-error>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>* Invoice No. (SB)</label>
                                             <input tyepe="text" class="form-control" formControlName="invoice_no_sb">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_no_sb.errors?.required && homeConsumptionFormStep5.controls.invoice_no_sb.touched'
-                                                class="text-danger">This field is required</mat-error><br>
+                                                class="text-danger">This field is required</mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_no_sb.errors?.maxlength'
                                                 class="text-danger">The maximum field length is 2, please update the
                                                 field
-                                            </mat-error> <br>
+                                            </mat-error> 
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.invoice_no_sb.errors?.pattern'
                                                 class="text-danger">Only numbers are allowed in this field, please
                                                 update
-                                            </mat-error><br>
+                                            </mat-error>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label> * Item No. (SB)</label>
                                             <input type="text" class="form-control" formControlName="item_no_sb">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_no_sb.errors?.maxlength'
                                                 class="text-danger"> The maximum field length is 4, please update the
                                                 field
-                                            </mat-error> <br>
+                                            </mat-error> 
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.item_no_sb.errors?.pattern'
                                                 class="text-danger">
-                                                Only numbers are allowed in this field, please update</mat-error><br>
+                                                Only numbers are allowed in this field, please update</mat-error>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>Notification No</label><span class="required"> *</span>
                                             <input type="text" class="form-control" formControlName="notification_no">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.notification_no.errors?.required && homeConsumptionFormStep5.controls.notification_no.touched'
-                                                class="text-danger">This field is required</mat-error><br>
+                                                class="text-danger">This field is required</mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.notification_no.errors?.maxlength'
                                                 class="text-danger">The maximum field length is 10, please update the
                                                 field
-                                            </mat-error> <br>
+                                            </mat-error> 
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label>Notification Sr. Number</label><span class="required"> *</span>
                                             <input type="text" class="form-control"
                                                 formControlName="notification_sr_no">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.notification_sr_no.errors?.required && homeConsumptionFormStep5.controls.notification_sr_no.touched'
-                                                class="text-danger">This field is required</mat-error> <br>
+                                                class="text-danger">This field is required</mat-error> 
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.notification_sr_no.errors?.maxlength'
                                                 class="text-danger">The maximum field length is 10, please update the
                                                 field
-                                            </mat-error> <br>
+                                            </mat-error> 
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label>** Export Freight</label>
                                             <input type="text" class="form-control" formControlName="export_freight">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.export_freight.errors?.pattern'
                                                 class="text-danger">
-                                                Only numbers are allowed in this field, please update</mat-error><br>
+                                                Only numbers are allowed in this field, please update</mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.export_freight.errors?.maxlength'
                                                 class="text-danger">The maximum field length is 16, please update the
@@ -1981,44 +2060,44 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label> ** Export Insurance</label>
                                             <input type="text" class="form-control" formControlName="export_insurance">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.export_insurance.errors?.pattern'
                                                 class="text-danger">
-                                                Only numbers are allowed in this field, please update</mat-error><br>
+                                                Only numbers are allowed in this field, please update</mat-error>
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.export_insurance.errors?.maxlength'
                                                 class="text-danger">The maximum field length is 16, please update the
                                                 field
                                             </mat-error>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="form-group  col-md-4">
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group  col-md-4 offset-md-2">
                                             <label> ** Excise Duty</label>
                                             <input class="form-control" formControlName="excise_duty">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.excise_duty.errors?.maxlength'
-                                                class="text-danger">Dont extend the limit of 16 digits </mat-error> <br>
+                                                class="text-danger">Dont extend the limit of 16 digits </mat-error> 
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.excise_duty.errors?.pattern'
                                                 class="text-danger"> Only numbers are allowed in this field, please
                                                 update
-                                            </mat-error><br>
+                                            </mat-error>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-1"></div>
-                                        <div class="form-group col-md-4">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="form-group col-md-4 offset-md-1">
                                             <label> *** Customs Duty</label>
                                             <input type="text" class="form-control" formControlName="customs_duty">
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.customs_duty.errors?.maxlength'
                                                 class="text-danger"> The maximum field length is 16, please update the
                                                 field
-                                            </mat-error> <br>
+                                            </mat-error> 
                                             <mat-error
                                                 *ngIf='homeConsumptionFormStep5.controls.customs_duty.errors?.pattern'
                                                 class="text-danger">
@@ -2027,8 +2106,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Previous BE No. </label>
                                         <input type="text" class="form-control" formControlName="prev_be_no">
                                         <mat-error
@@ -2039,16 +2118,25 @@
                                             Only numbers are allowed in this field, please update
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Previous BE Date</label>
-                                        <input type="date" class="form-control" formControlName="prev_be_date">
+                                        <div>
+                                            <mat-form-field>
+                                                <mat-label>Choose a date</mat-label>
+                                                <!-- #docregion toggle -->
+                                                <input matInput [matDatepicker]="prev_be_date" formControlName="prev_be_date">
+                                                <mat-datepicker-toggle matSuffix [for]="prev_be_date"></mat-datepicker-toggle>
+                                                <mat-datepicker #prev_be_date></mat-datepicker>
+                                                <!-- #enddocregion toggle -->
+                                            </mat-form-field></div>
+                                        <!-- <input type="date" class="form-control" formControlName="prev_be_date"> -->
                                     </div>
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-2">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-2 offset-md-1">
                                         <label>Previous Unit Price </label>
                                         <input type="text" class="form-control" formControlName="prev_unit_price">
                                         <mat-error
@@ -2065,8 +2153,8 @@
                                             The maximum field length is 3, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label> Previous Custom Site </label>
                                         <input type="text" class="form-control" formControlName="prev_customm_site">
                                         <mat-error
@@ -2076,8 +2164,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Customs Notn exempting central excise flag </label>
                                         <input type="text" class="form-control"
                                             formControlName="custom_notifictaion_exempting_central_excise_flag">
@@ -2097,13 +2185,13 @@
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <div class="row">
-                            <br>
+                            
                             <form class="col-md-12" [formGroup]="homeConsumptionFormStep5">
-                                <br>
+                                
                                 <div class="form-row">
-                                    <br>
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Item Manufacturer/Producer Code Type </label>
                                         <input type="text" class="form-control" formControlName="producer_code">
                                         <mat-error
@@ -2112,8 +2200,8 @@
                                         </mat-error>
 
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Item Manufacturer/Producer/Grower Code</label>
                                         <input type="text" class="form-control" formControlName="grower_code">
                                         <mat-error
@@ -2125,8 +2213,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Item Manufacturer/Producer/ Grower Address1 </label>
                                         <input type="text" class="form-control" formControlName="address1_grower">
                                         <mat-error
@@ -2135,8 +2223,8 @@
                                         </mat-error>
 
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Item Manufacturer/Producer/ Grower Address2</label>
                                         <input type="text" class="form-control" formControlName="address2_grower">
                                         <mat-error
@@ -2148,8 +2236,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Item Manufacturer/Producer/ Grower City </label>
                                         <input type="text" class="form-control" formControlName="city_grower">
                                         <mat-error
@@ -2157,8 +2245,8 @@
                                             The maximum field length is 35, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Item Manufacturer/Producer/ Grower Country
                                             Subdivision</label>
                                         <input type="text" class="form-control"
@@ -2170,8 +2258,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Item Manufacturer/Producer/ Grower Pin</label>
                                         <input type="text" class="form-control" formControlName="pin_grower">
                                         <mat-error
@@ -2182,8 +2270,8 @@
                                             Only numbers are allowed in this field, please update
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Item Manufacturer Country</label>
                                         <input type="text" class="form-control" formControlName="country_grower">
                                         <mat-error
@@ -2194,8 +2282,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label>Source Country</label>
                                         <input type="text" class="form-control" formControlName="source_country">
                                         <mat-error
@@ -2203,8 +2291,8 @@
                                             The maximum field length is 2, please update the field
                                         </mat-error>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-2">
                                         <label>Transit Country</label>
                                         <input type="text" class="form-control" formControlName="transit_country">
                                         <mat-error
@@ -2215,8 +2303,8 @@
 
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-1"></div>
-                                    <div class="form-group col-md-4">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
                                         <label> Accessory Status</label> <span class="required"> *</span>
                                         <input type="text" class="form-control" formControlName="accessory_status">
                                         <mat-error
@@ -2231,7 +2319,7 @@
                             </form>
                         </div>
                     </mat-expansion-panel>
-                </mat-accordion><br>
+                </mat-accordion>
             </mat-tab>
         </mat-tab-group>
     </mat-dialog-content>

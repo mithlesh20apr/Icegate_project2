@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValu
 import { ShippingBillService } from '../service/shipping-bill.service';
 import {ValidatorsService} from '../../common/service/validators.service'
 import { MatDialog } from '@angular/material/dialog';
+import {Step4Component} from '../step4/step4.component'
 @Component({
   selector: 'app-step2',
   templateUrl: './step2.component.html',
@@ -35,7 +36,7 @@ export class Step2Component implements OnInit {
   ngOnInit(): void {
     this.shipingBillStepTwo = this._formBuilder.group({
       // invoice details
-      invoice_sr_number: ['', [Validators.maxLength(2)]],
+      invoice_sr_number: ['', [Validators.maxLength(2),ValidatorsService.numberValidator]],
       invoice_number: ['', [Validators.required, Validators.maxLength(17)]],
       invoice_currency: ['', [Validators.required]],
       nature_of_contract: ['', [Validators.required]],
@@ -66,9 +67,9 @@ export class Step2Component implements OnInit {
       exporter_contract_number: ['', [Validators.maxLength(30)]],
       nature_of_payment: ['', [Validators.maxLength(2)]],
       period_of_payments: ['', [Validators.maxLength(3)]],
-      amendment_type: ['', [Validators.maxLength(1)]],
-      amendment_number: ['', [Validators.maxLength(3), Validators.pattern("^[0-9]*$")]],
-      amendment_date: [''],
+      // amendment_type: ['', [Validators.maxLength(1)]],
+      // amendment_number: ['', [Validators.maxLength(3), Validators.pattern("^[0-9]*$")]],
+      // amendment_date: [''],
 
       // thrid party details
       iec:['',[Validators.required,Validators.maxLength(10)]],
@@ -97,10 +98,10 @@ export class Step2Component implements OnInit {
     }
   }
   openDialog(){
-    // let dialogRef = this._dialog.open(Step4Component);
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(result);
-    // });
+    let dialogRef = this._dialog.open(Step4Component);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
    // validation code
  public onTouched: () => void = () => {

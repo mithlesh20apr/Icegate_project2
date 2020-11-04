@@ -1,275 +1,382 @@
-<div><span class="required"> *</span> indicates the mandatory fields</div>
+<div class="col-md-2 form-group">
+    <label>IEC Available</label><br>
+    <mat-radio-group aria-label="Select an option" (change)="isIecAvailable1($event)">
+        <mat-radio-button value="Y">Yes</mat-radio-button>&nbsp;
+        <mat-radio-button value="N">No</mat-radio-button>
+    </mat-radio-group>
+</div>
+<div class="col-md-2 form-group">
+    <label>NFEI (No foreign exchange involved)</label><br>
+    <mat-radio-group aria-label="Select an option" (change)="isNfeiAvailable1($event)">
+        <mat-radio-button value="Y">Yes</mat-radio-button>&nbsp;
+        <mat-radio-button value="N">No</mat-radio-button>
+    </mat-radio-group>
+</div>
+<div>Fill all the mandatory fields indicated by <span class="required"> *</span> </div>
 <form class="col-md-12" [formGroup]="shipingBillSStepOne">
-<mat-accordion>
-    <mat-expansion-panel [expanded]="1" class="matnotexpand">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                General Details
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row">
-             <div class="form-row col-lg-12 ">
-                <div class="col-lg-4 offset-md-1">
-                    <div class="form-group col-md-6 padding_left float_left">
-                        <label>Message Type</label>
-                        <input type="text" class="form-control" formControlName="message_type" readonly>
-                    </div>
-                    <div class="form-group col-md-6 float_left">
-                        <label>Custom House Code</label>
-                        <input type="text" class="form-control" formControlName="custom_house_code">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.custom_house_code.errors?.maxlength">The maximum field length is 6, please update the field</mat-error>
-                    </div>
+    <mat-accordion formGroupName="general_details">
+        <mat-expansion-panel [expanded]="1" class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    General Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row">
+                <div class="form-group col-md-2 offset-1">
+                    <label>Message Type</label>
+                    <input type="text" class="form-control" formControlName="message_type" readonly>
                 </div>
-                   
-                    <div class="col-lg-4 offset-md-2">
-                        <div class="form-group col-md-6 padding_left float_left">
-                            <label>Job Number</label>
-                            <input type="text" class="form-control" formControlName="job_number">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.job_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.job_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
-                        </div>
-                        <div class="form-group col-md-6 padding_left float_left">
-                            <label>Job Date</label>
-                            <mat-form-field>
-                                <mat-label>Choose a date</mat-label>
-                                <!-- #docregion toggle -->
-                                <input matInput [matDatepicker]="job_date" formControlName="job_date">
-                                <mat-datepicker-toggle matSuffix [for]="job_date"></mat-datepicker-toggle>
-                                <mat-datepicker #job_date></mat-datepicker>
-                                <!-- #enddocregion toggle -->
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('general_details.custom_house_code')">
+                    <label>Custom House Code<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 6 and number or text both are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="custom_house_code">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].custom_house_code"
+                        errorMsg="Custom House Code"></validation-messages>
                 </div>
+
+
+                <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('general_details.job_number')">
+                    <label>Job Number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 7 and only number are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="job_number">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].job_number"
+                        errorMsg="Job Number"></validation-messages>
+                </div>
+                <div class="form-group col-md-2 ">
+                    <label>Job Date</label>
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="job_date" formControlName="job_date">
+                        <mat-datepicker-toggle matSuffix [for]="job_date"></mat-datepicker-toggle>
+                        <mat-datepicker #job_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                </div>
+
             </div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>SB No.</label>
-                        <input type="text" class="form-control" formControlName="sb_number">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.sb_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.sb_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>SB Date</label>
+
+
+            <div class="form-row">   
+                <!-- <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('general_details.sb_number')">
+                    <label>SB No.<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 7 and only number are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="sb_number">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].sb_number"
+                        errorMsg="SB Number"></validation-messages>
+                </div> -->
+
+                <!-- <div class="form-group col-md-2">
+                    <label>SB Date</label>
+                    <div>
                         <mat-form-field>
                             <mat-label>Choose a date</mat-label>
-                            <!-- #docregion toggle -->
+                           
                             <input matInput [matDatepicker]="sb_date" formControlName="sb_date">
                             <mat-datepicker-toggle matSuffix [for]="sb_date"></mat-datepicker-toggle>
                             <mat-datepicker #sb_date></mat-datepicker>
-                            <!-- #enddocregion toggle -->
+                           
                         </mat-form-field>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-4">
-                        <label>CHA License Number</label><span class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="cha_license_number">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.cha_license_number.errors?.required && shipingBillSStepOne.controls.cha_license_number.touched">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.cha_license_number.errors?.maxlength">The maximum field length is 15, please update the field</mat-error>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-4">
-                        <label>Importer Exporter Code</label><span class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="importer_exporter_code" matTooltip="* If user selects IEC No - then user to provide non-standard IEC">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.importer_exporter_code.errors?.required && shipingBillSStepOne.controls.importer_exporter_code.touched">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.importer_exporter_code.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-4">
-                        <label>Branch Sr No of Exporter</label> 
-                        <!-- <span *ngIf="isIecAvailable == 'Y' || isIecAvailable == undefined" class="required"> *</span> -->
-                        <input type="text" class="form-control" formControlName="branch_sr_no_of_exporter">
-                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.branch_sr_no_of_exporter.errors?.required && shipingBillSStepOne.controls.branch_sr_no_of_exporter.touched 
-                            && (isIecAvailable == undefined || isIecAvailable == 'Y')">
-                            This field is required <br></mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.branch_sr_no_of_exporter.errors?.maxlength">The maximum field length is 3, please update the field <br></mat-error>
-                        <mat-error *ngIf='shipingBillSStepOne.controls.branch_sr_no_of_exporter.errors?.pattern'>
-                            Only numbers are allowed in this field, please update <br>
-                        </mat-error> -->
-                    </div>
-                </div>
-                <!-- <div class="col-md-12" *ngIf="isIecAvailable == 'N'" class="dropdown-color">
-                    <br>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Importer Exporter Name</label><span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="importer_exporter_name">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.importer_exporter_name.errors?.required && shipingBillSStepOne.controls.importer_exporter_name.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.importer_exporter_name.errors?.maxlength">The maximum field length is 50, please update the field</mat-error>
-                        </div>
-                        <div class="col-md-2"></div>
-                        <div class="form-group col-md-4">
-                            <label>Imp. Exp. Address1</label><span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="imp_exp_address1">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.imp_exp_address1.errors?.required && shipingBillSStepOne.controls.imp_exp_address1.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.imp_exp_address1.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Imp. Exp Address2</label>
-                            <input type="text" class="form-control" formControlName="imp_exp_address2">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.imp_exp_address2.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
-                        </div>
-                        <div class="col-md-2"></div>
-                        <div class="form-group col-md-4">
-                            <label>Imp. Exp. City</label>
-                            <input type="text" class="form-control" formControlName="imp_exp_city">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.imp_exp_city.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Imp. Exp. State</label>
-                            <input type="text" class="form-control" formControlName="imp_exp_state">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.imp_exp_state.errors?.maxlength">The maximum field length is 25, please update the field</mat-error>
-                        </div>
-                        <div class="col-md-2"></div>
-                        <div class="form-group col-md-4">
-                            <label>Imp. Exp PIN</label>
-                            <input type="text" class="form-control" formControlName="imp_exp_pin">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.imp_exp_pin.errors?.maxlength">The maximum field length is 6, please update the field <br></mat-error>
-                            <mat-error *ngIf='shipingBillSStepOne.controls.imp_exp_pin.errors?.pattern'>
-                                Only numbers are allowed in this field, please update
-                            </mat-error>
-                        </div>
-                    </div>
                 </div> -->
+               
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.cha_license_number')">
+                    <label>CHA License Number<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                    matTooltip="Maximum length is 15 and number or text both are allowed"
+                    [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="cha_license_number">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].cha_license_number"
+                        errorMsg="Cha License Number"></validation-messages>
+                </div>
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.importer_exporter_code')">
+                    <label>Importer Exporter Code<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                    matTooltip="Maximum length is 10 and number or text both are allowed"
+                    [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="importer_exporter_code"
+                        matTooltip="* If user selects IEC No - then user to provide non-standard IEC">
+                        <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].importer_exporter_code"
+                        errorMsg="Importer Exporter Code"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+              
+                <!-- <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.importer_exporter_code')">
+                    <label>Importer Exporter Code<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                    matTooltip="Maximum length is 10 and number or text both are allowed"
+                    [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="importer_exporter_code"
+                        matTooltip="* If user selects IEC No - then user to provide non-standard IEC">
+                        <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].importer_exporter_code"
+                        errorMsg="Importer Exporter Code"></validation-messages>
+                </div> -->
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.branch_sr_no_of_exporter')">
+                    <label>Branch Sr No of Exporter<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 8 and only number are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <span *ngIf="isNfeiAvailable == 'Y' || isNfeiAvailable == undefined" class="required"> *</span>
+                    <input type="text" class="form-control" formControlName="branch_sr_no_of_exporter">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].branch_sr_no_of_exporter"
+                    errorMsg="Branch Sr No of Exporter"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.branch_sr_no_of_exporter.errors?.required && shipingBillSStepOne.controls.branch_sr_no_of_exporter.touched 
+                            && (isIecAvailable == undefined || isIecAvailable == 'Y')">
+                        This field is required <br></mat-error>
+                    <mat-error *ngIf="shipingBillSStepOne.controls.branch_sr_no_of_exporter.errors?.maxlength">The
+                        maximum field length is 3, please update the field <br></mat-error>
+                    <mat-error *ngIf='shipingBillSStepOne.controls.branch_sr_no_of_exporter.errors?.pattern'>
+                        Only numbers are allowed in this field, please update <br>
+                    </mat-error> -->
+                </div>
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.type_of_exporter')">
+                    <label>Type of Exporter <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                    matTooltip="Maximum length is 1 and number or text both are allowed"
+                    [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="type_of_exporter">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].type_of_exporter"
+                        errorMsg="Type Of Exporter"></validation-messages>
+                </div>
+            </div>
+            <div class="col-md-12" *ngIf="isIecAvailable == 'N'" class="dropdown-color">
+                <br>
                 <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>Type of Exporter</label> <span class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="type_of_exporter">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.type_of_exporter.errors?.required && shipingBillSStepOne.controls.type_of_exporter.touched">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.type_of_exporter.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
+                  
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.importer_exporter_name')">
+                        <label>Importer Exporter Name<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 50 and number or text both are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="importer_exporter_name">
+                        <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].importer_exporter_name"
+                        errorMsg="Importer Exporter Name"></validation-messages>
                     </div>
-                    <div class="form-group col-md-2">
-                        <label>Exporter Class</label> <span class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="exporter_class">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.exporter_class.errors?.required && shipingBillSStepOne.controls.exporter_class.touched">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.exporter_class.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.imp_exp_address1')">
+                        <label>Imp. Exp. Address1<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 35 and number or text both are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="imp_exp_address1">
+                        <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].imp_exp_address1"
+                        errorMsg="Imp. Exp. Address1"></validation-messages>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-2">
-                        <label>State of origin Exporter</label> <span class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="state_of_origin_exporter">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.state_of_origin_exporter.errors?.required && shipingBillSStepOne.controls.state_of_origin_exporter.touched">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.state_of_origin_exporter.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
+                </div>
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.imp_exp_address2')">
+                        <label>Imp. Exp Address2<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 35 and number or text both are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="imp_exp_address2">
+                        <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].imp_exp_address2"
+                        errorMsg="Imp. Exp. Address2"></validation-messages>
                     </div>
-                    <div class="form-group col-md-2">
-                        <label>Authorized Dealer Code</label> <span *ngIf="isNfeiAvailable == 'N' || isNfeiAvailable == undefined" class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="authorized_dealer_code">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.authorized_dealer_code.errors?.required && shipingBillSStepOne.controls.authorized_dealer_code.touched 
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.imp_exp_city')">
+                        <label>Imp. Exp. City<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 35 and number or text both are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="imp_exp_city">
+                        <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].imp_exp_city"
+                        errorMsg="Imp Exp. City"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.imp_exp_state')">
+                        <label>Imp. Exp. State<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 25 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="imp_exp_state">
+                        <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].imp_exp_state"
+                        errorMsg="Imp. Exp. State"></validation-messages>
+                    </div>
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.imp_exp_pin')">
+                        <label>Imp. Exp PIN<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 6 and only number are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="imp_exp_pin">
+                        <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].imp_exp_pin"
+                        errorMsg="Imp. Exp Pin"></validation-messages>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+              
+                <div class="form-group col-md-4 offset-1" [ngClass]="displayFieldCss('general_details.exporter_class')">
+                    <label>Exporter Class<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                    matTooltip="Maximum length is 1 and number or text both are allowed"
+                    [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="exporter_class">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].exporter_class"
+                        errorMsg="Exporter Class"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('general_details.state_of_origin_exporter')">
+                    <label>State of origin Exporter<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                    matTooltip="Maximum length is 2 and number or text both are allowed"
+                    [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <select type="text" class="form-control" formControlName="state_of_origin_exporter">
+                        <option>IND</option>
+                    </select>
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].state_of_origin_exporter"
+                        errorMsg="State Of Origin Exporter"></validation-messages>
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('general_details.authorized_dealer_code')">
+                    <label>Authorized Dealer Code <span
+                        *ngIf="isNfeiAvailable == 'N' || isNfeiAvailable == undefined" class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 10 and number or text both are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="authorized_dealer_code">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].authorized_dealer_code"
+                    errorMsg="Authorized Dealer Code"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.authorized_dealer_code.errors?.required && shipingBillSStepOne.controls.authorized_dealer_code.touched 
                             && (isNfeiAvailable == 'N' || isNfeiAvailable == undefined)">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.authorized_dealer_code.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>
-                    </div>
+                        This field is required</mat-error>
+                    <mat-error *ngIf="shipingBillSStepOne.controls.authorized_dealer_code.errors?.maxlength">The maximum
+                        field length is 10, please update the field</mat-error> -->
                 </div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>EPZ code</label>
-                        <input type="text" class="form-control" formControlName="epz_code">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.epz_code.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
-                    </div>
+            </div>
+            <div class="form-row">
+              
+                <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('general_details.epz_code')">
+                    <label>EPZ code<fa-icon [icon]="['fas', 'exclamation-circle']"
+                        matTooltip="Maximum length is 1 and number or text both are allowed"
+                        [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="epz_code">
+                    <validation-messages [control]="shipingBillSStepOne.get('general_details')['controls'].epz_code"
+                        errorMsg="EPZ Code"></validation-messages>
                 </div>
-        
-        
-    </mat-expansion-panel>
-</mat-accordion>
-<mat-accordion>
-    <mat-expansion-panel class="matnotexpand">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Consignee Details
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row">
-         
-                <div class="col-md-12"><br></div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-4">
-                        <label>Consignee Name</label><span class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="consignee_name">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.consignee_name.errors?.required && shipingBillSStepOne.controls.consignee_name.touched">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.consignee_name.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-4">
-                        <label>Consignee Address 1</label><span class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="consignee_address_1">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.consignee_address_1.errors?.required && shipingBillSStepOne.controls.consignee_address_1.touched">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.consignee_address_1.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
-                    </div>
+            </div>
+
+
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion formGroupName="consignee_details">
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Consignee Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row">
+              
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('consignee_details.consignee_name')">
+                    <label>Consignee Name<span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 35 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="consignee_name">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].consignee_name"
+                        errorMsg="Consignee Name"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                 </div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-4">
-                        <label>Consignee Address 2</label>
-                        <input type="text" class="form-control" formControlName="consignee_address_2">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.consignee_address_2.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-4">
-                        <label>Consignee Address 3</label>
-                        <input type="text" class="form-control" formControlName="consignee_address_3">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.consignee_address_3.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
-                    </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2"
+                    [ngClass]="displayFieldCss('consignee_details.consignee_address_1')">
+                    <label>Consignee Address 1<span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 35 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="consignee_address_1">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].consignee_address_1"
+                        errorMsg="Consignee Address 1"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                 </div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-4">
-                        <label>Consignee Address 4</label>
-                        <input type="text" class="form-control" formControlName="consignee_address_4">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.consignee_address_4.errors?.maxlength">The maximum field length is 35, please update the field</mat-error>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-2">
-                        <label>Consignee Country</label><span class="required"> *</span>
-                        <select class="form-control" formControlName="consignee_country">
-                            <option value="IND">IND</option>
-                            <option value="USA">USA</option>
-                        </select>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.consignee_country.errors?.required && shipingBillSStepOne.controls.consignee_country.touched">
-                            This field is required</mat-error>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Category of NFEI SB</label> <span *ngIf="isNfeiAvailable == 'Y'"> *</span>
-                        <input type="text" class="form-control" formControlName="category_nfei_sb">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.category_nfei_sb.errors?.required && shipingBillSStepOne.controls.category_nfei_sb.touched
+            </div>
+            <div class="form-row">
+              
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('consignee_details.consignee_address_2')">
+                    <label>Consignee Address 2<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 35 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="consignee_address_2">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].consignee_address_2"
+                        errorMsg="Consignee Address 2"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2"
+                    [ngClass]="displayFieldCss('consignee_details.consignee_address_3')">
+                    <label>Consignee Address 3<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 3 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="consignee_address_3">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].consignee_address_3"
+                        errorMsg="Consignee Address 3"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+            </div>
+            <div class="form-row">
+              
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('consignee_details.consignee_address_4')">
+                    <label>Consignee Address 4<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 35 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="consignee_address_4">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].consignee_address_4"
+                        errorMsg="Consignee Address 4"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-2 offset-md-2"
+                    [ngClass]="displayFieldCss('consignee_details.consignee_country')">
+                    <label>Consignee Country</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="consignee_country">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].consignee_country"
+                        errorMsg="Consignee Country"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('consignee_details.category_nfei_sb')">
+                    <label>Category of NFEI SB <span *ngIf="isNfeiAvailable == 'Y'" class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 2 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="category_nfei_sb">
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.category_nfei_sb.errors?.required && shipingBillSStepOne.controls.category_nfei_sb.touched
                             && isNfeiAvailable == 'Y'">
                             This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.category_nfei_sb.errors?.maxlength">The maximum field length is 2, please update the field</mat-error>
-                    </div>
+                        <mat-error *ngIf="shipingBillSStepOne.controls.category_nfei_sb.errors?.maxlength">The maximum field length is 2, please update the field</mat-error> -->
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].category_nfei_sb"
+                        errorMsg="Category NFEI SB"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                 </div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>RBI waiver number</label>
-                        <input type="text" class="form-control" formControlName="rbi_waiver_number">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.rbi_waiver_number.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>RBI waiver date</label>
-                        <br>
-                        <mat-form-field >
+            </div>
+            <div class="form-row">
+              
+                <div class="form-group col-md-2 offset-md-1"
+                    [ngClass]="displayFieldCss('consignee_details.rbi_waiver_number')">
+                    <label>RBI waiver number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 20 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="rbi_waiver_number">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].rbi_waiver_number"
+                        errorMsg="RBI Waiver Number"></validation-messages>
+                       
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <div class="form-group col-md-2">
+                    <label>RBI waiver date</label>
+                    <div>
+                        <mat-form-field>
                             <mat-label>Choose a date</mat-label>
                             <!-- #docregion toggle -->
                             <input matInput [matDatepicker]="rbi_waiver_date" formControlName="rbi_waiver_date">
@@ -278,62 +385,80 @@
                             <!-- #enddocregion toggle -->
                         </mat-form-field>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-2">
-                        <label>Port of Loading</label><span class="required"> *</span>
-                        <select class="form-control" formControlName="port_of_loading">
-                            <option value="IND">IND</option>
-                            <option value="USA">USA</option>
-                        </select>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.port_of_loading.errors?.required && shipingBillSStepOne.controls.port_of_loading.touched">
-                            This field is required</mat-error>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Port of final destination</label><span class="required"> *</span>
-                        <select class="form-control" formControlName="port_of_final_destination">
-                            <option value="IND">IND</option>
-                            <option value="USA">USA</option>
-                        </select>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.port_of_final_destination.errors?.required && shipingBillSStepOne.controls.port_of_final_destination.touched">
-                            This field is required</mat-error>
-                    </div>
                 </div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>Country of final destination</label><span class="required"> *</span>
-                        <select class="form-control" formControlName="country_final_destination">
-                            <option value="IND">IND</option>
-                            <option value="USA">USA</option>
-                        </select>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.country_final_destination.errors?.required && shipingBillSStepOne.controls.country_final_destination.touched">
-                            This field is required</mat-error>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Country of Discharge</label><span class="required"> *</span>
-                        <select class="form-control" formControlName="country_discharge">
-                            <option value="IND">IND</option>
-                            <option value="USA">USA</option>
-                        </select>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.country_discharge.errors?.required && shipingBillSStepOne.controls.country_discharge.touched">
-                            This field is required</mat-error>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-2">
-                        <label>Port of Discharge</label><span class="required"> *</span>
-                        <select class="form-control" formControlName="port_of_discharge">
-                            <option value="IND">IND</option>
-                            <option value="USA">USA</option>
-                        </select>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.port_of_discharge.errors?.required && shipingBillSStepOne.controls.port_of_discharge.touched">
-                            This field is required</mat-error>
-                    </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-2 offset-md-2">
+                    <label>Port of Loading</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="port_of_loading">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].port_of_loading"
+                        errorMsg="Port Of Loading"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                 </div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-4">
-                        <span>Seal Type</span><br><br>
-                        <label class="col-md-3 radio-inline">
+                <div class="form-group col-md-2">
+                    <label>Port of final destination</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="port_of_final_destination">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].port_of_final_destination"
+                        errorMsg="Port Of Final Destination"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+            </div>
+            <div class="form-row">
+              
+                <div class="form-group col-md-2 offset-md-1">
+                    <label>Country of final destination</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="country_final_destination">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].country_final_destination"
+                        errorMsg="Country Final Destination"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Country of Discharge</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="country_discharge">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].country_discharge"
+                        errorMsg="Country Discharge"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-2 offset-md-2">
+                    <label>Port of Discharge</label><span class="required"> *</span>
+                    <select class="form-control" formControlName="port_of_discharge">
+                        <option value="IND">IND</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('consignee_details')['controls'].port_of_discharge"
+                        errorMsg="Port Of Discharge"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <span>Seal Type</span>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="seal_type" (change)="onSealChange($event)">
+                            <mat-radio-button value="A" matTooltip="A">A</mat-radio-button>&nbsp;&nbsp; &nbsp;&nbsp;
+                            <mat-radio-button value="S" matTooltip="S">S</mat-radio-button> &nbsp;&nbsp; &nbsp;&nbsp;
+                            <mat-radio-button value="W" matTooltip="W">W</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <!-- <label class="col-md-3 radio-inline">
                             <input type="radio" matTooltip="A" formControlName="seal_type" value="A"> A
                         </label>
                         <label class="col-md-3 radio-inline">
@@ -341,34 +466,44 @@
                         </label>
                         <label class="col-md-3 radio-inline">
                             <input type="radio" matTooltip="W" formControlName="seal_type" value="W"> W
-                        </label>
-                    </div>
+                        </label></div> -->
                 </div>
-                <div class="col-md-12" *ngIf="shipingBillSStepOne.value.seal_type=='A' || shipingBillSStepOne.value.seal_type=='S'">
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-2">
-                            <label>IE Code of the EOU</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="ie_code_eou">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.ie_code_eou.errors?.required && shipingBillSStepOne.controls.ie_code_eou.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.ie_code_eou.errors?.maxlength">The maximum field length is 10, please update the field</mat-error>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label>Branch Sr Number of IE</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="branch_sr_number_ie">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.branch_sr_number_ie.errors?.required && shipingBillSStepOne.controls.branch_sr_number_ie.touched">
-                                This field is required <br></mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.branch_sr_number_ie.errors?.maxlength">The maximum field length is 3, please update the field <br></mat-error>
-                            <mat-error *ngIf='shipingBillSStepOne.controls.branch_sr_number_ie.errors?.pattern'>
-                                Only numbers are allowed in this field, please update 
-                            </mat-error>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-2">
-                            <label>Examination Date</label> <span class="required"> *</span>
-                            <br>
-                            <mat-form-field >
+            </div>
+            <div class="col-md-12"
+                *ngIf="shipingBillSStepOne.get('consignee_details')['controls'].seal_type.value==='A' || shipingBillSStepOne.get('consignee_details')['controls'].seal_type.value==='S'">
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-2 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.ie_code_eou')">
+                        <label>IE Code of the EOU <span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 10 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="ie_code_eou">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].ie_code_eou"
+                            errorMsg="IE Code EOU"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                    </div>
+                    <div class="form-group col-md-2"
+                        [ngClass]="displayFieldCss('consignee_details.branch_sr_number_ie')">
+                        <label>Branch Sr Number of IE<span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 3 and only number are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="branch_sr_number_ie">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].branch_sr_number_ie"
+                            errorMsg="Branch Sr Number IE"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                    </div>
+                  
+                    <div class="form-group col-md-2 offset-md-1">
+                        <label>Examination Date</label> <span class="required"> *</span>
+                        <div>
+                            <mat-form-field>
                                 <mat-label>Choose a date</mat-label>
                                 <!-- #docregion toggle -->
                                 <input matInput [matDatepicker]="examination_date" formControlName="examination_date">
@@ -376,278 +511,315 @@
                                 <mat-datepicker #examination_date></mat-datepicker>
                                 <!-- #enddocregion toggle -->
                             </mat-form-field>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.examination_date.errors?.required && shipingBillSStepOne.controls.examination_date.touched">
-                                This field is required</mat-error>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Examining Officer Name</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="examining_officer_name">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.examining_officer_name.errors?.required && shipingBillSStepOne.controls.examining_officer_name.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.examining_officer_name.errors?.maxlength">The maximum field length is 30, please update the field</mat-error>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Examining Officer Designation</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="examining_officer_designation">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.examining_officer_designation.errors?.required && shipingBillSStepOne.controls.examining_officer_designation.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.examining_officer_designation.errors?.maxlength">The maximum field length is 30, please update the field</mat-error>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Supervising Officer Name</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="supervising_officer_name">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.supervising_officer_name.errors?.required && shipingBillSStepOne.controls.supervising_officer_name.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.supervising_officer_name.errors?.maxlength">The maximum field length is 30, please update the field</mat-error>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Supervising Officer designation</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="supervising_officer_designation">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.supervising_officer_designation.errors?.required && shipingBillSStepOne.controls.supervising_officer_designation.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.supervising_officer_designation.errors?.maxlength">The maximum field length is 30, please update the field</mat-error>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Commissionerate</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="commissionerate">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.commissionerate.errors?.required && shipingBillSStepOne.controls.commissionerate.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.commissionerate.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Division</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="division">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.division.errors?.required && shipingBillSStepOne.controls.division.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.division.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Range</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="range">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.range.errors?.required && shipingBillSStepOne.controls.range.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.range.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-4">
-                            <label>Seal No</label> <span class="required"> *</span>
-                            <input type="text" class="form-control" formControlName="seal_number">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.seal_number.errors?.required && shipingBillSStepOne.controls.seal_number.touched">
-                                This field is required</mat-error>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.seal_number.errors?.maxlength">The maximum field length is 100, please update the field</mat-error>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-2">
-                            <label matTooltip="Item Values Verified by Examining Officer">Item Values Verified by Examining Officer(Y/N)</label><span class="required"> *</span>
-                            <select class="form-control" formControlName="item_values_verified">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.item_values_verified.errors?.required && shipingBillSStepOne.controls.item_values_verified.touched">
-                                This field is required</mat-error>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label>Sample forwarded</label> <span class="required"> *</span>
-                            <select class="form-control" formControlName="sample_forwarded">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                            <mat-error *ngIf="shipingBillSStepOne.controls.sample_forwarded.errors?.required && shipingBillSStepOne.controls.sample_forwarded.touched">
-                                This field is required</mat-error>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-2">
-                            <label>Amendment Type</label>
-                            <input type="text" class="form-control" formControlName="amendment_type">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.amendment_type.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label>Amendment No.</label>
-                            <input type="text" class="form-control" formControlName="amendment_number">
-                            <mat-error *ngIf="shipingBillSStepOne.controls.amendment_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-1"></div>
-                        <div class="form-group col-md-2">
-                            <label>Amendment Date</label>
-                            <br>
-                            <mat-form-field >
-                                <mat-label>Choose a date</mat-label>
-                                <!-- #docregion toggle -->
-                                <input matInput [matDatepicker]="amendment_date" formControlName="amendment_date">
-                                <mat-datepicker-toggle matSuffix [for]="amendment_date"></mat-datepicker-toggle>
-                                <mat-datepicker #amendment_date></mat-datepicker>
-                                <!-- #enddocregion toggle -->
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-            
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>
-<mat-accordion>
-    <mat-expansion-panel class="matnotexpand">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Package Details
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row">
-            
-                <div class="col-md-12"><br></div>
-                <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>Nature of Cargo</label>
-                        <select class="form-control" formControlName="nature_of_cargo">
-                            <option>-- select --</option>
-                            <option value="C">C</option>
-                            <option value="CP">CP</option>
-                            <option value="P">P</option>
-                            <option value="LB">LB</option>
-                            <option value="DB">DB</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Gross weight</label>
-                        <input type="text" class="form-control" formControlName="gross_weight">
-                        <validation-messages [control]="shipingBillSStepOne.controls.gross_weight"></validation-messages>
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].examination_date"
+                            errorMsg="Examination Date"></validation-messages>
                         <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
-                        <div *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.alphabetNotAllowed_d && shipingBillSStepOne.controls.gross_weight.dirty" class="required">Only Numbers are allowed</div>
-                        <div *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.decimalRestricted_d && shipingBillSStepOne.controls.gross_weight.dirty" class="required">Only upto 3 decimal values are allowed</div>
-                        <div *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.digitsBeforeDecimal_d && shipingBillSStepOne.controls.gross_weight.dirty" class="required">Only 13 digits are allowed before decimal</div>
-    
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-2">
-                        <label>Net weight</label>
-                        <input type="text" class="form-control" formControlName="net_weight">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Unit of measurement</label>
-                        <input type="text" class="form-control" formControlName="unit_measurement">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.unit_measurement.errors?.maxlength">The maximum field length is 3, please update the field</mat-error>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>Total number of packages</label>
-                        <input type="text" class="form-control" formControlName="total_number_packages">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.total_number_packages.errors?.maxlength">The maximum field length is 8, please update the field <br></mat-error>
-                        <mat-error *ngIf='shipingBillSStepOne.controls.total_number_packages.errors?.pattern'>
-                        Only numbers are allowed in this field, please update <br>
-                    </mat-error>
+                  
+                    <div class="form-group col-md-4 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.examining_officer_name')">
+                        <label>Examining Officer Name <span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 30 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="examining_officer_name">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].examining_officer_name"
+                            errorMsg="Examining Officer Name"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                     </div>
-                    <div class="form-group col-md-2">
-                        <label>Marks & Numbers</label>
-                        <input type="text" class="form-control" formControlName="marks_and_numbers">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.marks_and_numbers.errors?.maxlength">The maximum field length is 300, please update the field</mat-error>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-2">
-                        <label>Number of loose packets</label>
-                        <input type="text" class="form-control" formControlName="loose_packates_number">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.loose_packates_number.errors?.maxlength">The maximum field length is 8, please update the field</mat-error>
-                        <mat-error *ngIf='shipingBillSStepOne.controls.loose_packates_number.errors?.pattern'>
-                        Only numbers are allowed in this field, please update <br>
-                    </mat-error>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Number of containers</label>
-                        <input type="text" class="form-control" formControlName="containers_number">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.containers_number.errors?.maxlength">The maximum field length is 2, please update the field</mat-error>
-                        <mat-error *ngIf='shipingBillSStepOne.controls.containers_number.errors?.pattern'>
-                        Only numbers are allowed in this field, please update <br>
-                    </mat-error>
+                  
+                    <div class="form-group col-md-4 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.examining_officer_designation')">
+                        <label>Examining Officer Designation<span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 30 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="examining_officer_designation">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].examining_officer_designation"
+                            errorMsg="Examining Officer Designation"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>MAWB Number</label>
-                        <input type="text" class="form-control" formControlName="mawb_number">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.mawb_number.errors?.maxlength">The maximum field length is 15, please update the field</mat-error>
+                  
+                    <div class="form-group col-md-4 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.supervising_officer_name')">
+                        <label>Supervising Officer Name<span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 30 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="supervising_officer_name">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].supervising_officer_name"
+                            errorMsg="Supervising Officer Name"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                     </div>
-                    <div class="form-group col-md-2">
-                        <label>HAWB Number</label>
-                        <input type="text" class="form-control" formControlName="hawb_number">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.hawb_number.errors?.maxlength">The maximum field length is 15, please update the field</mat-error>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="form-group col-md-2">
-                        <label>Amendment Type</label>
-                        <input type="text" class="form-control" formControlName="amendment_type">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.amendment_type.errors?.maxlength">The maximum field length is 1, please update the field</mat-error>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Amendment No.</label>
-                        <input type="text" class="form-control" formControlName="amendment_number">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.amendment_number.errors?.maxlength">The maximum field length is 7, please update the field</mat-error>
+                  
+                    <div class="form-group col-md-4 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.supervising_officer_designation')">
+                        <label>Supervising Officer designation<span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 30 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="supervising_officer_designation">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].supervising_officer_designation"
+                            errorMsg="Supervising Officer Designation"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-1"></div>
-                    <div class="form-group col-md-2">
-                        <label>Amendment Date</label>
-                        <br>
-                        <mat-form-field >
-                            <mat-label>Choose a date</mat-label>
-                            <!-- #docregion toggle -->
-                            <input matInput [matDatepicker]="amendment_date" formControlName="amendment_date">
-                            <mat-datepicker-toggle matSuffix [for]="amendment_date"></mat-datepicker-toggle>
-                            <mat-datepicker #amendment_date></mat-datepicker>
-                            <!-- #enddocregion toggle -->
-                        </mat-form-field>
+                  
+                    <div class="form-group col-md-4 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.commissionerate')">
+                        <label>Commissionerate <span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 20 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="commissionerate">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].commissionerate"
+                            errorMsg="Commissionerate"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
                     </div>
-                    <div class="col-md-4"></div>
-                    <div class="form-group col-md-2">
-                        <label>GSTN Type</label> <span class="required"> *</span>
-                        <select class="form-control" formControlName="gstn_type">
-                            <option value="GSN">GSN</option>
-                            <option value="GSG">GSG</option>
-                            <option value="GSD">GSD</option>
-                            <option value="PAN">PAN</option>
-                            <option value="TAN">TAN</option>
-                            <option value="PSP">PSP</option>
-                            <option value="ADH">ADH</option>
+                  
+                    <div class="form-group col-md-4 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.division')">
+                        <label>Division<span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 20 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="division">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].division"
+                            errorMsg="Division"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                    </div>
+                </div>
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('consignee_details.range')">
+                        <label>Range<span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 20 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="range">
+                        <validation-messages [control]="shipingBillSStepOne.get('consignee_details')['controls'].range"
+                            errorMsg="Range"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                    </div>
+                  
+                    <div class="form-group col-md-4 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.seal_number')">
+                        <label>Seal No<span class="required"> *</span>
+                            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                matTooltip="Maximum length is 100 and number or text both are allowed"
+                                [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                        </label>
+                        <input type="text" class="form-control" formControlName="seal_number">
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].seal_number"
+                            errorMsg="Seal Number"></validation-messages>
+                        <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                    </div>
+                </div>
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-2 offset-md-1"
+                        [ngClass]="displayFieldCss('consignee_details.item_values_verified')">
+                        <label matTooltip="Item Values Verified by Examining Officer">Item Values Verified by Examining
+                            Officer(Y/N)</label><span class="required"> *</span>
+                        <select class="form-control" formControlName="item_values_verified">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                         </select>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.gstn_type.errors?.required && shipingBillSStepOne.controls.gstn_type.touched">
-                            This field is required</mat-error>
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].item_values_verified"
+                            errorMsg="Item Values Verified"></validation-messages>
                     </div>
-                    <div class="form-group col-md-2">
-                        <label>GSTN ID</label> <span class="required"> *</span>
-                        <input type="text" class="form-control" formControlName="gstn_id">
-                        <mat-error *ngIf="shipingBillSStepOne.controls.gstn_id.errors?.required && shipingBillSStepOne.controls.gstn_id.touched">
-                            This field is required</mat-error>
-                        <mat-error *ngIf="shipingBillSStepOne.controls.gstn_id.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>
+                    <div class="form-group col-md-2" [ngClass]="displayFieldCss('consignee_details.sample_forwarded')">
+                        <label>Sample forwarded</label> <span class="required"> *</span>
+                        <select class="form-control" formControlName="sample_forwarded">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <validation-messages
+                            [control]="shipingBillSStepOne.get('consignee_details')['controls'].sample_forwarded"
+                            errorMsg="Sample Forwarded"></validation-messages>
                     </div>
+
                 </div>
-            
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>
-<div class="btncontainer">
-    <button mat-raised-button id="back_draft">Save as Draft</button>
-    <button mat-flat-button matStepperNext id="savecon">Save & Continue</button>
-</div>
+                <div class="form-row">
+
+
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion formGroupName="package_details">
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Package Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row">
+
+                <div class="col-md-12"><br></div>
+
+              
+                <div class="form-group col-md-2 offset-md-1">
+                    <label>Nature of Cargo</label>
+                    <select class="form-control" formControlName="nature_of_cargo">
+                        <option>-- select --</option>
+                        <option value="C">C</option>
+                        <option value="CP">CP</option>
+                        <option value="P">P</option>
+                        <option value="LB">LB</option>
+                        <option value="DB">DB</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('package_details.gross_weight')">
+                    <label>Gross weight<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 17 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="gross_weight">
+                    <validation-messages [control]="shipingBillSStepOne.get('package_details')['controls'].gross_weight"
+                        errorMsg="Gross Weight"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                    <!-- <div *ngIf="shipingBillSStepOne.get('package_details)['controls'].gross_weight.errors?.alphabetNotAllowed_d && shipingBillSStepOne.get('package_details)['controls'].gross_weight.dirty" class="required">Only Numbers are allowed</div>
+                        <div *ngIf="shipingBillSStepOne.get('package_details)['controls'].gross_weight.errors?.decimalRestricted_d && shipingBillSStepOne.get('package_details)['controls'].gross_weight.dirty" class="required">Only upto 3 decimal values are allowed</div>
+                        <div *ngIf="shipingBillSStepOne.get('package_details)['controls'].gross_weight.errors?.digitsBeforeDecimal_d && shipingBillSStepOne.get('package_details)['controls'].gross_weight.dirty" class="required">Only 13 digits are allowed before decimal</div> -->
+
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('package_details.net_weight')">
+                    <label>Net weight<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 17 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="net_weight">
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('package_details.unit_measurement')">
+                    <label>Unit of measurement<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 3 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="unit_measurement">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('package_details')['controls'].unit_measurement"
+                        errorMsg="Unit Measurement"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+            </div>
+            <div class="form-row">
+              
+                <div class="form-group col-md-2 offset-md-1"
+                    [ngClass]="displayFieldCss('package_details.total_number_packages')">
+                    <label>Total number of packages<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 8 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="total_number_packages">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('package_details')['controls'].total_number_packages"
+                        errorMsg="Total Number Packages"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('package_details.marks_and_numbers')">
+                    <label>Marks & Numbers<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 300 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="marks_and_numbers">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('package_details')['controls'].marks_and_numbers"
+                        errorMsg="Marks and Numbers"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-2 offset-md-2"
+                    [ngClass]="displayFieldCss('package_details.loose_packates_number')">
+                    <label>Number of loose packets<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 8 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="loose_packates_number">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('package_details')['controls'].loose_packates_number"
+                        errorMsg="Loose Packates Number"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('package_details.containers_number')">
+                    <label>Number of containers<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 2 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="containers_number">
+                    <validation-messages
+                        [control]="shipingBillSStepOne.get('package_details')['controls'].containers_number"
+                        errorMsg="Containers Number"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+            </div>
+            <div class="form-row">
+              
+                <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('package_details.mawb_number')">
+                    <label>MAWB Number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 15 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="mawb_number">
+                    <validation-messages [control]="shipingBillSStepOne.get('package_details')['controls'].mawb_number"
+                        errorMsg="MAWB Number"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('package_details.hawb_number')">
+                    <label>HAWB Number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 15 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="hawb_number">
+                    <validation-messages [control]="shipingBillSStepOne.get('package_details')['controls'].hawb_number"
+                        errorMsg="HAWB Number"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <div class="form-group col-md-2 offset-md-2">
+                    <label>GSTN Type</label> <span class="required"> *</span>
+                    <select class="form-control" formControlName="gstn_type">
+                        <option value="GSN">GSN</option>
+                        <option value="GSG">GSG</option>
+                        <option value="GSD">GSD</option>
+                        <option value="PAN">PAN</option>
+                        <option value="TAN">TAN</option>
+                        <option value="PSP">PSP</option>
+                        <option value="ADH">ADH</option>
+                    </select>
+                    <validation-messages [control]="shipingBillSStepOne.get('package_details')['controls'].gstn_type"
+                        errorMsg="GSTN Type"></validation-messages>
+                    <!-- <mat-error *ngIf="shipingBillSStepOne.controls.gross_weight.errors?.maxlength">The maximum field length is 17, please update the field </mat-error> -->
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('package_details.gstn_id')">
+                    <label>GSTN ID<span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 20 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="gstn_id">
+                        <validation-messages [control]="shipingBillSStepOne.get('package_details')['controls'].gstn_id"
+                            errorMsg="GSTN Id"></validation-messages>
+                </div>
+
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <div class="btncontainer">
+        <button mat-raised-button id="back_draft">Save as Draft</button>
+        <button id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+        <button id="save_continues" matStepperNext style="display: none;"></button>
+    </div>
 </form>

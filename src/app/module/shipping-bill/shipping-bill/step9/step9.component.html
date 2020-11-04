@@ -1,0 +1,254 @@
+<div>Fill all the mandatory fields inidicated by<span class="required"> *</span> </div>
+
+<div>
+    <form [formGroup]="shippingBillStepNine">
+        <h2 class="text-center">SW Declaration</h2>
+        <hr>
+            <div class="col-md-12"></div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('site_id')">
+                    <label>Site ID<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and number or text both are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="site_id">
+                    <validation-messages [control]="shippingBillStepNine.controls.site_id" errorMsg="Site Id"></validation-messages>                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('invoice_serial_no')">
+                    <label>Invoice Serial No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only numbers are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="invoice_serial_no">
+                    <validation-messages [control]="shippingBillStepNine.controls.invoice_serial_no" errorMsg="Invoice Serial No"></validation-messages>                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('item_serial_no')">
+                    <label>Item Serial No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="item_serial_no">
+                    <validation-messages [control]="shippingBillStepNine.controls.item_serial_no" errorMsg="Item Serial No"></validation-messages>                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('serial_no')">
+                    <label>Serial No.<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="serial_no">
+                    <validation-messages [control]="shippingBillStepNine.controls.serial_no" errorMsg="Serial No"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('info_type')">
+                    <label>Info Type<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="info_type">
+                    <validation-messages [control]="shippingBillStepNine.controls.info_type" errorMsg="Info Type"></validation-messages>                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('info_qualifier')">
+                    <label>Info Qualifier<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 100 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="info_qualifier">
+                    <validation-messages [control]="shippingBillStepNine.controls.info_qualifier" errorMsg="Info Qualifier"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('info_code')">
+                    <label>Info Code<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 100 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="info_code">
+                    <validation-messages [control]="shippingBillStepNine.controls.info_code" errorMsg="Info Code"></validation-messages>                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('info_text')">
+                    <label>Info Text<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 100 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="info_text">
+                    <validation-messages [control]="shippingBillStepNine.controls.info_text" errorMsg="Info Text"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('info_msr')">
+                    <label>Info Msr<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="info_msr"> 
+                    <validation-messages [control]="shippingBillStepNine.controls.info_msr" errorMsg="Info Msr"></validation-messages>                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('info_uqc')">
+                    <label>Info Uqc<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 100 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="info_uqc">
+                    <validation-messages [control]="shippingBillStepNine.controls.info_uqc" errorMsg="Info Uqc"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('constituent_element_name')">
+                    <label>Constituent Element Name<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 256 and number or text both are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="constituent_element_name"> 
+                    <validation-messages [control]="shippingBillStepNine.controls.constituent_element_name" errorMsg="Constituent Element Name"></validation-messages>                    
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('constituent_code')">
+                    <label>Constituent Code <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="constituent_code">
+                    <validation-messages [control]="shippingBillStepNine.controls.constituent_code" errorMsg="Constituent Code"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('constituent_percentage')">
+                    <label>Constituent Percentage <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="constituent_percentage"> 
+                    <validation-messages [control]="shippingBillStepNine.controls.constituent_percentage" errorMsg="Constituent Percentage"></validation-messages>                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('constituent_yield_percentage')">
+                    <label>Constituent Yield Percentage<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="constituent_yield_percentage">
+                    <validation-messages [control]="shippingBillStepNine.controls.constituent_yield_percentage" errorMsg="Constituent Yield Percentage"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('active_ingredient')">
+                    <span>Active Ingredient (Y/N)</span>  <span class="required"> *</span>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="active_ingredient">
+                            <mat-radio-button value="Y" >Y</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">N</mat-radio-button> 
+                          
+                        </mat-radio-group> 
+                    </div> 
+                    <!-- <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="active_ingredient" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="active_ingredient" value="N"> N
+                    </label>                   --> 
+                    <validation-messages [control]="shippingBillStepNine.controls.active_ingredient" errorMsg="Active Ingredient"></validation-messages>              
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('production_batch_identifier')">
+                    <label>Production Batch Identifier<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="production_batch_identifier">
+                    <validation-messages [control]="shippingBillStepNine.controls.production_batch_identifier" errorMsg="Production Batch Identifier"></validation-messages>                </div>
+            </div>
+            
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('production_batch_quantity')">
+                    <label>Production Batch Quantity <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="production_batch_quantity"> 
+                    <validation-messages [control]="shippingBillStepNine.controls.production_batch_quantity" errorMsg="Production Batch Quantity"></validation-messages>                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('unit_quantity_code')">
+                    <label>Unit Quantity Code <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="unit_quantity_code">
+                    <validation-messages [control]="shippingBillStepNine.controls.unit_quantity_code" errorMsg="Unit Quantity Code"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Date of Manufacturing</label> <span class="required"> *</span>
+                        <div>
+                        <mat-form-field >
+                                <mat-label>Choose a Date</mat-label>  
+                            <input matInput [matDatepicker]="manufacturing_date" formControlName="manufacturing_date">
+                            <mat-datepicker-toggle matSuffix [for]="manufacturing_date"></mat-datepicker-toggle>
+                            <mat-datepicker #manufacturing_date></mat-datepicker>  
+                        </mat-form-field> </div>
+                        <validation-messages [control]="shippingBillStepNine.controls.manufacturing_date" errorMsg="Manufacturing Date"></validation-messages>                    </div>
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label>Date of Expiry</label>  <span class="required"> *</span><div>
+                        <mat-form-field > 
+                            <mat-label>Choose a Date</mat-label> 
+                            <input matInput [matDatepicker]="expiry_date" formControlName="expiry_date">
+                            <mat-datepicker-toggle matSuffix [for]="expiry_date"></mat-datepicker-toggle>
+                            <mat-datepicker #expiry_date></mat-datepicker> 
+                        </mat-form-field>  </div>
+                        <validation-messages [control]="shippingBillStepNine.controls.expiry_date" errorMsg="Expiry Date"></validation-messages>                    </div> 
+                </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1">
+                    <label>Best Before <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> <div>
+                    <mat-form-field >
+                        <mat-label>Choose a Date</mat-label>   
+                        <input matInput [matDatepicker]="best_before" formControlName="best_before">
+                        <mat-datepicker-toggle matSuffix [for]="best_before"></mat-datepicker-toggle>
+                        <mat-datepicker #best_before></mat-datepicker> 
+                    </mat-form-field></div>
+                    <validation-messages [control]="shippingBillStepNine.controls.best_before" errorMsg="Best Before"></validation-messages>                </div>
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('control_location')">
+                        <label>Control Location <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and number or text both are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="control_location">
+                        <validation-messages [control]="shippingBillStepNine.controls.control_location" errorMsg="Control Location"></validation-messages>                    </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Control Start Date</label> <span class="required"> *</span>
+                        <div>
+                        <mat-form-field >
+                                <mat-label>Choose a Date</mat-label>  
+                            <input matInput [matDatepicker]="control_start_date" formControlName="control_start_date">
+                            <mat-datepicker-toggle matSuffix [for]="control_start_date"></mat-datepicker-toggle>
+                            <mat-datepicker #control_start_date></mat-datepicker>  
+                        </mat-form-field> </div>
+                        <validation-messages [control]="shippingBillStepNine.controls.control_start_date" errorMsg="Control Start Date"></validation-messages>                    </div>
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label>Control End Date</label>  <span class="required"> *</span>
+                        <div>
+                        <mat-form-field > 
+                            <mat-label>Choose a Date</mat-label> 
+                            <input matInput [matDatepicker]="control_end_date" formControlName="control_end_date">
+                            <mat-datepicker-toggle matSuffix [for]="control_end_date"></mat-datepicker-toggle>
+                            <mat-datepicker #control_end_date></mat-datepicker> 
+                        </mat-form-field>   </div>
+                        <validation-messages [control]="shippingBillStepNine.controls.control_end_date" errorMsg="Control end Date"></validation-messages>                    </div> 
+                </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('control_result_code')">
+                    <label>Control Result Code<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>  
+                    <input type="text" class="form-control" formControlName="control_result_code"> 
+                    <validation-messages [control]="shippingBillStepNine.controls.control_result_code" errorMsg="Control Result Code"></validation-messages>                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('control_result_text')">
+                    <label>Control Result Remarks <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4000 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="control_result_text">
+                    <validation-messages [control]="shippingBillStepNine.controls.control_result_text" errorMsg="Control Result Text"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('statement_type')">
+                    <label>Statement Type<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="statement_type"> 
+                    <validation-messages [control]="shippingBillStepNine.controls.statement_type" errorMsg="Statement Type"></validation-messages>                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('statement_code')">
+                    <label>Statement Code<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="statement_code">
+                    <validation-messages [control]="shippingBillStepNine.controls.statement_code" errorMsg="Statement Code"></validation-messages>                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('statement_text')">
+                    <label>Statement Text<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>  
+                    <input type="text" class="form-control" formControlName="statement_text"> 
+                    <validation-messages [control]="shippingBillStepNine.controls.statement_text" errorMsg="Statement Text"></validation-messages>                </div>  
+            </div> 
+            <div class="btncontainer">
+                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                <div class="col-md-4 offset-md-4"></div>
+                <button mat-raised-button id="back_draft">Save as Draft</button>
+                <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+                <button id="save_continues"  matStepperNext style="display: none;"></button>
+            </div> 
+    </form>
+</div>

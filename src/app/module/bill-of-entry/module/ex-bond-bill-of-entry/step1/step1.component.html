@@ -1,0 +1,562 @@
+<div> Fill all the mandatory fields indicated by <span class="required">&#42;</span> </div>
+<div class="row">
+    <form class="col-md-12" [formGroup]="exBondFormStep1">
+        <mat-accordion formGroupName="general_details">
+            <mat-expansion-panel (opened)="panelOpenState = true" *ngFor="let item of [1]; first as isFirst" [expanded]="isFirst" class="matnotexpand">
+                <mat-expansion-panel-header class="disable_ripple">
+                    <mat-panel-title>
+                        General Details
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="form-row">
+                    <div class="form-group col-md-2 offset-md-1">
+                        <label>BE Type</label>
+                        <div>
+                            <b>Ex Bond BE</b>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2" [ngClass]="displayFieldCss('general_details.message_type')">
+                        <label>Message Type </label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="message_type" disabled>
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].message_type" errorMsg="Message Type"></validation-messages>
+                    </div>
+
+                    <div class="form-group  col-md-2 offset-md-2" [ngClass]="displayFieldCss('general_details.custom_house_code')">
+                        <label>Custom House Code<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" formControlName="custom_house_code" class="form-control">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].custom_house_code" errorMsg="Custom House Code"></validation-messages>
+                    </div>
+                    <div class="form-group col-md-2" [ngClass]="displayFieldCss('general_details.branch_sr_no')">
+                        <label>Branch Sr.No.<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and characters are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="branch_sr_no">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].branch_sr_no" errorMsg="Branch Sr.No."></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                        
+                        <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('general_details.user_job_no')">
+                            <label>User Job No.<span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="user_job_no" placeholder="User Job No.">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].user_job_no" ></validation-messages>                        
+                        </div>
+                        <div class="form-group col-md-2" >
+                            <label>User Job Date</label><span class="required">*</span>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label> 
+                                
+                                <input matInput [matDatepicker]="user_job_date" formControlName="user_job_date">
+                                <mat-datepicker-toggle matSuffix [for]="user_job_date"></mat-datepicker-toggle>
+                                <mat-datepicker #user_job_date></mat-datepicker>
+                                
+                            </mat-form-field>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].user_job_date" ></validation-messages>                        
+                        </div>
+                        
+                        <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('general_details.be_number')">
+                            <label>BE Number<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and characters are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="be_number">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].be_number" ></validation-messages>                        
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>BE Date</label>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label> 
+                                
+                                <input matInput [matDatepicker]="be_date" formControlName="be_date">
+                                <mat-datepicker-toggle matSuffix [for]="be_date"></mat-datepicker-toggle>
+                                <mat-datepicker #be_date></mat-datepicker>
+                                
+                            </mat-form-field>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].be_date" ></validation-messages>                        
+                        </div>
+                    </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.iec_code')">
+                        <label>IEC Code<span class="required">*</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and only numbers are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="iec_code">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].iec_code" errorMsg="IEC Code"></validation-messages>
+                    </div>
+                    <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.name')">
+                        <label>Name of the importer &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 50 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="name">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].name" errorMsg="Name of the Importer"></validation-messages>
+
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.address1')">
+                        <label>Address 1 &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="address1">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].address1" errorMsg="Address 1"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group  col-md-2 offset-md-2" [ngClass]="displayFieldCss('general_details.address2')">
+                        <label>Address 2 &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="address2">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].address2" errorMsg="Address2"></validation-messages>
+                    </div>
+                    <div class="form-group col-md-2 " [ngClass]="displayFieldCss('general_details.class')" >
+                        <label>Class<span class="text-danger"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and only number and text are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="class">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].class" errorMsg="Class"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.city')">
+                        <label>City &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="city">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].city" errorMsg="City"></validation-messages>
+
+                    </div>
+                    <div class="form-group  col-md-2 offset-md-2" [ngClass]="displayFieldCss('general_details.state')">
+                        <label>State &nbsp;  <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 25 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="state">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].state" errorMsg="State"></validation-messages>
+                    </div>
+                    <div class="form-group  col-md-2" [ngClass]="displayFieldCss('general_details.pin')">
+                        <label>Pin  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="pin">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].pin" errorMsg="Pin"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.mode_of_transport')">
+                        <div class="form-group">
+                            <span>Mode of Transport </span> <span class="required"> *</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="mode_of_transport">
+                                    <mat-radio-button value="Land">Land</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button value="Sea">Sea</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button value="Air">Air</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].mode_of_transport" errorMsg="Mode of Transport"></validation-messages>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.importer_type')">
+                        <span>Importer Type </span> <span class="required"> *</span>
+                        <div>
+                            <mat-radio-group aria-label="Select an option" formControlName="importer_type">
+                                <mat-radio-button value="G">G</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <mat-radio-button value="U">U</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <mat-radio-button value="O">O</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <mat-radio-button value="P">P</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].importer_type" errorMsg="Importer Type"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.kachcha_be')">
+                        <div class="form-group">
+                            <span>Kachcha BE </span> <span class="required"> *</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="kachcha_be">
+                                    <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;&nbsp;
+                                    <mat-radio-button value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].kachcha_be" errorMsg="Kachcha BE"></validation-messages>
+                        </div>
+                    </div>
+
+                    <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.high_sea_sale_flag')">
+                        <div class="form-group">
+                            <span>High Sea Sale Flag </span><span class="required"> *</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="high_sea_sale_flag" >
+                                    <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;&nbsp;
+                                    <mat-radio-button value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].high_sea_sale_flag" errorMsg="High Sea Sale Flag"></validation-messages>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="exBondFormStep1.get('general_details')['controls'].high_sea_sale_flag.value==='Yes'" class="dropdown-color">
+                    <div class="form-row">
+
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.permission_code')">
+                            <label>Permission Code <span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="permission_code">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].permission_code" errorMsg="Permission Code"></validation-messages>
+
+                        </div>
+
+                        <div class="form-group  col-md-4 offset-md-2 " [ngClass]="displayFieldCss('general_details.reason_for_request')">
+                            <label>Reason for Request<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2000 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="reason_for_request">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].reason_for_request" errorMsg="Reason for Request"></validation-messages>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.invoice_serial_number')">
+                            <label>Invoice Serial Number<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only numbers are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="invoice_serial_number">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].invoice_serial_number" errorMsg="Invoice Serial Number"></validation-messages>
+
+                        </div>
+
+                        <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.branch_serial_no')">
+                            <label>Branch Serial Number<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and only number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="branch_serial_no">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].branch_serial_no" errorMsg="Branch Serial Number"></validation-messages>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.name_importer')">
+                            <label>Importer Name &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 50 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="name_importer">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].name_importer" errorMsg="Importer Name"></validation-messages>
+                        </div>
+                        <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.preceding_level')">
+                            <label>Preceding Level<span class="required">*</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and character is allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="preceding_level">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].preceding_level" errorMsg="Preceding Level"></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.address1_importer')">
+                            <label>Importer Address 1 &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="address1_importer">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].address1_importer" errorMsg="Importer Address 1"></validation-messages>
+                        </div>
+                        <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.address2_importer')">
+                            <label>Importer Address 2<span class="required">*</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="address2_importer">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].address2_importer" errorMsg="Importer Address 2"></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.city_importer')">
+                            <label>Importer City &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                            <select class="form-control" formControlName="city_importer">
+                                <option value="IN">India</option>
+                            </select>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].city_importer" errorMsg="Importer City"></validation-messages>
+                        </div>
+                        <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.pin_importer')">
+                            <label>Importer PIN  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="pin_importer">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].pin_importer" errorMsg="Importer PIN"></validation-messages>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.port_of_origin')">
+                        <label>Port of Origin </label><span class="required"> *</span>
+                        <select class="form-control" formControlName="port_of_origin">
+                            <option value="ind">IND</option>
+                            <option value="cad">CAD</option>
+                        </select>
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].port_of_origin" errorMsg="Port of Origin"></validation-messages>
+                    </div>
+
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.cha_code')">
+                        <label>CHA Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 15 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="cha_code">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].cha_code" errorMsg="CHA Code"></validation-messages>
+
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.country_of_origin')">
+                        <label>Country of Origin  </label><span class="required"> *</span>
+                        <select class="form-control" formControlName="country_of_origin">
+                            <option value="ind">IND</option>
+                            <option value="cad">CAD</option>
+                        </select>
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].country_of_origin" errorMsg="Country of Origin"></validation-messages>
+
+                    </div>
+
+                    <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.country_of_consignment')">
+                        <label>Country of Consignment  </label><span class="required"> *</span>
+                        <select class="form-control" formControlName="country_of_consignment">
+                            <option value="in">IND</option>
+                            <option value="ca">CAD</option>
+                        </select>
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].country_of_consignment" errorMsg="Country of Consignment"></validation-messages>
+
+                    </div>
+
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.port_of_shipment')">
+                        <label>Port of Shipment  </label><span class="required"> *</span>
+                        <select class="form-control" formControlName="port_of_shipment">
+                            <option value="ind">IND</option>
+                            <option value="cad">CAD</option>
+                        </select>
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].port_of_shipment" errorMsg="Port of Shipment"></validation-messages>
+
+                    </div>
+
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.green_channel_requested')">
+                        <div class="form-group">
+                            <span>Green Channel Requested </span> <span class="required"> *</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="green_channel_requested">
+                                    <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;&nbsp;
+                                    <mat-radio-button value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].green_channel_requested" errorMsg="Green Channel Requested"></validation-messages>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.section')">
+                        <div class="form-group">
+                            <span>Section 48 </span><span class="required"> *</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="section" >
+                                    <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;&nbsp;
+                                    <mat-radio-button value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].section" errorMsg="Section 48"></validation-messages>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.prior_be')">
+                        <div class="form-group">
+                            <span>Whether Prior BE </span><span class="required"> *</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="prior_be">
+                                    <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;&nbsp;
+                                    <mat-radio-button value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].prior_be" errorMsg="Whether Prior BE"></validation-messages>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="exBondFormStep1.get('general_details')['controls'].section.value==='Yes'" class="dropdown-color">
+                    <div class="form-row">
+
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.section_48_permission_code')">
+                            <label>Permission Code<span class="required">*</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="permission_code">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].section_48_permission_code" errorMsg="Section 48 Permission Code"></validation-messages>
+
+                        </div>
+
+                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.section_48_reason_for_request')">
+                            <label>Reason for Request<span class="required">*</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2000 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                            <input class="form-control" formControlName="reason_for_request">
+                            <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].section_48_reason_for_request" errorMsg="Section 48 Reason for Request"></validation-messages>
+
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('general_details.authorized_dealer_code')">
+                        <label>Authorized Dealer Code<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="authorized_dealer_code">
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].authorized_dealer_code" errorMsg="Authorized Dealer Code"></validation-messages>
+
+                    </div>
+
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('general_details.first_check_requested')">
+                        <label>First Check Requested </label><span class="required"> *</span>
+                        <div>
+                            <mat-radio-group aria-label="Select an option" formControlName="first_check_requested">
+                                <mat-radio-button value="Yes">Yes</mat-radio-button> &nbsp; &nbsp;
+                                <mat-radio-button value="No">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <validation-messages [control]="exBondFormStep1.get('general_details')['controls'].first_check_requested" errorMsg="First Check Requested"></validation-messages>
+
+                    </div>
+                </div>
+
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion formGroupName="warehouse_details">
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="matnotexpand">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Warehouse Details
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('warehouse_details.warehouse_code')">
+                        <label>Warehouse Code  </label> <span class="required"> *</span>
+                        <select type="text" class="form-control" formControlName="warehouse_code">
+                                <option value="in">IND</option>
+                                <option value="ca">cad</option>
+                            </select>
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].warehouse_code" errorMsg="Warehouse Code"></validation-messages>
+                    </div>
+                    <div class="form-group  col-md-2 offset-md-2" [ngClass]="displayFieldCss('warehouse_details.warehouse_custom_site_id')">
+                        <label>Warehouse Customs Site ID <span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only numbers are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="warehouse_custom_site_id">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].warehouse_custom_site_id" errorMsg="Warehouse Customs Site ID"></validation-messages>
+                    </div>
+                    <div class="form-group  col-md-2" [ngClass]="displayFieldCss('warehouse_details.warehouse_be_no')">
+                        <label>Warehouse BE No<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and characters are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="warehouse_be_no">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].warehouse_be_no" errorMsg="Warehouse BE No"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('warehouse_details.warehouse_be_date')">
+                        <label>Warehouse BE Date  </label> <span class="required"> *</span>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <!-- #docregion toggle -->
+                                <input matInput [matDatepicker]="warehouse_be_date" formControlName="warehouse_be_date">
+                                <mat-datepicker-toggle matSuffix [for]="warehouse_be_date"></mat-datepicker-toggle>
+                                <mat-datepicker #warehouse_be_date></mat-datepicker>
+                                <!-- #enddocregion toggle -->
+                            </mat-form-field>
+                        </div>
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].warehouse_be_date" errorMsg="Warehouse BE Date"></validation-messages>
+                    </div>
+
+                    <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('warehouse_details.no_packages_released')">
+                        <label>No of packages released <span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="no_packages_released">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].no_packages_released" errorMsg="No of packages released"></validation-messages>
+
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('warehouse_details.package_code')">
+                        <label>Package Code <span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 13 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="package_code">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].package_code" errorMsg="Package Code"></validation-messages>
+
+                    </div>
+
+                    <div class="form-group  col-md-2 offset-md-2" [ngClass]="displayFieldCss('warehouse_details.gross_weight')" >
+                        <label>Gross Weight<span class="required"> *</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 12 and only number with decimal number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input formControlName="gross_weight" class="form-control">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].gross_weight" errorMsg="Gross Weight"></validation-messages>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].gross_weight.errors?.alphabetNotAllowed_d && exBondFormStep1.get('warehouse_details')['controls'].gross_weight.dirty" class="text-danger" >Only Numbers are allowed</div>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].gross_weight.errors?.decimalRestricted_d && exBondFormStep1.get('warehouse_details')['controls'].gross_weight.dirty" class="text-danger">Only upto 3 decimal values are allowed</div>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].gross_weight.errors?.digitsBeforeDecimal_d && exBondFormStep1.get('warehouse_details')['controls'].gross_weight.dirty" class="text-danger">Only 12 digits are allowed before decimal</div>
+                    </div>
+                    <div class="form-group col-md-2" [ngClass]="displayFieldCss('warehouse_details.unit_of_measurement')">
+                        <label>Unit of Measurement <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and characters are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="unit_of_measurement">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].unit_of_measurement" errorMsg="Unit of Measurement"></validation-messages>
+                    </div>
+
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('warehouse_details.additional_charges')">
+                        <label>Additional Charges if any Purchase on high seas <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 9 and only numbers are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="additional_charges">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].additional_charges" errorMsg="Additional Charges if any Purchase on high seas"></validation-messages>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].additional_charges.errors?.alphabetNotAllowed_d && exBondFormStep1.get('warehouse_details')['controls'].additional_charges.dirty" class="text-danger">Only numbers are allowed, please update field</div>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].additional_charges.errors?.decimalRestricted_d && exBondFormStep1.get('warehouse_details')['controls'].additional_charges.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].additional_charges.errors?.digitsBeforeDecimal_d && exBondFormStep1.get('warehouse_details')['controls'].additional_charges.dirty" class="text-danger">Only 9 digits are allowed, use decimal values to enter further digits</div>
+                    </div>
+
+                    <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('warehouse_details.misc_load')">
+                        <label>Miscellaneous load<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 9 and only numbers
+                                are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="misc_load">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].misc_load" errorMsg="Miscellaneous load"></validation-messages>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].misc_load.errors?.alphabetNotAllowed_d && exBondFormStep1.get('warehouse_details')['controls'].misc_load.dirty" class="text-danger">Only numbers are allowed, please update field</div>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].misc_load.errors?.decimalRestricted_d && exBondFormStep1.get('warehouse_details')['controls'].misc_load.dirty" class="text-danger">Only upto 2 decimal values are allowed</div>
+                        <div *ngIf="exBondFormStep1.get('warehouse_details')['controls'].misc_load.errors?.digitsBeforeDecimal_d && exBondFormStep1.get('warehouse_details')['controls'].misc_load.dirty" class="text-danger">Only 9 digits are allowed, use decimal values to enter further digits</div>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('warehouse_details.ucr')">
+                        <label>Unique Consignment Reference Number (UCR)<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="ucr">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].ucr" errorMsg="Unique Consignment Reference Number (UCR)"></validation-messages>
+                    </div>
+
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('warehouse_details.ucr_type')">
+                        <label>UCR Type<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="ucr_type">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].ucr_type" errorMsg="UCR Type"></validation-messages>
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('warehouse_details.payment_method_code')">
+                        <label>Payment Method Code<span class="required"> *</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and character is allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label>
+                        <input class="form-control" formControlName="payment_method_code">
+                        <validation-messages [control]="exBondFormStep1.get('warehouse_details')['controls'].payment_method_code" errorMsg="Payment Method Code"></validation-messages>
+                    </div>
+                </div>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <div class="btncontainer">
+            <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+            <div class="col-md-4 offset-md-4"></div>
+            <!-- <button id="back_draft" mat-raised-button>Save as Draft</button> -->
+            <button id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+            <button id="save_continues" matStepperNext style="display: none;"></button>
+        </div>
+    </form>
+</div>

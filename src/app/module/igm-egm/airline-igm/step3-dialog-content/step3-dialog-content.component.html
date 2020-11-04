@@ -1,0 +1,101 @@
+<!-- <form class="col-md-12" [formGroup]="airlineIgmStep3">
+    <h2 class="text-center">HAWB Details</h2>
+    <hr>
+    <div class="col-md-12"><br></div>
+    <div class="form-row">
+       
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('hawb_no')">
+            <label>HAWB Number<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and characters are allowed " [matTooltipPosition]="position.value"
+            class="icon_tooltips"></fa-icon> </label>
+            <input type="text" formControlName="hawb_no" class="form-control">
+            <validation-messages [control]="airlineIgmStep3.controls.hawb_no" errorMsg="HAWB Number"></validation-messages>
+        </div>
+      
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('hawb_date')">
+            <label>HAWB Date</label> 
+            <div>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label> 
+               
+                <input matInput [matDatepicker]="hawb_date" formControlName="hawb_date">
+                <mat-datepicker-toggle matSuffix [for]="hawb_date"></mat-datepicker-toggle>
+                <mat-datepicker #hawb_date></mat-datepicker>
+                
+            </mat-form-field>
+            </div>
+            <validation-messages [control]="airlineIgmStep3.controls.hawb_date" errorMsg="HAWB Date"></validation-messages>
+        </div>
+    </div>
+    <div class="form-row">
+       
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('port_origin')">
+            <label>Port of Origin</label> <span class="required"> *</span>
+            <select formControlName="port_origin" class="form-control">
+                <option value="ind">IND</option>
+                <option value="can">CAN</option>
+            </select>
+            <validation-messages [control]="airlineIgmStep3.controls.port_origin" errorMsg="Port of Origin"></validation-messages>
+        </div>
+      
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('port_destination')">
+            <label>Port of Destination</label>  <span class="required"> *</span>
+            <select formControlName="port_destination" class="form-control">
+                <option value="ind">IND</option>
+                <option value="can">CAN</option>
+            </select>
+            <validation-messages [control]="airlineIgmStep3.controls.port_destination" errorMSg="Port of Destination"></validation-messages>
+        </div>
+
+    </div>
+    <div class="form-row">
+       
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('shippment_type')">
+            <label>Shippment Type</label>  <span class="required"> *</span> 
+            <div>
+                <mat-radio-group aria-label="Select an option" formControlName="shippment_type">
+                    <mat-radio-button value="T" matTooltip="Total-Shippment"  >T</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <mat-radio-button value="P"  matTooltip="Part-Shippment" >P</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <mat-radio-button value="s"  matTooltip="Split-Shippment" >S</mat-radio-button>                          
+                </mat-radio-group>
+            </div>
+            <validation-messages [control]="airlineIgmStep3.controls.shippment_type" errorMsg="shippment_type"></validation-messages>
+        </div>
+
+      
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('total_packages')">
+            <label>Total Packages<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
+            class="icon_tooltips"></fa-icon> </label>
+            <input type="text" formControlName="total_packages" class="form-control">
+            <validation-messages [control]="airlineIgmStep3.controls.total_packages" errorMsg="Total Packages"></validation-messages>
+        </div>
+
+    </div>
+    <div class="form-row">
+       
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('gross_weight')">
+            <label>Gross Weight<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 13 and only numbers are allowed " [matTooltipPosition]="position.value"
+            class="icon_tooltips"></fa-icon> </label>
+            <input type="text" formControlName="gross_weight" class="form-control">
+            <validation-messages [control]="airlineIgmStep3.controls.gross_weight" errorMsg="Gross Weight"></validation-messages>
+            <div *ngIf="airlineIgmStep3.controls.gross_weight.errors?.alphabetNotAllowed_d && airlineIgmStep3.controls.gross_weight.dirty" class="text-danger">Only numbers are allowed, please update field</div>
+            <div *ngIf="airlineIgmStep3.controls.gross_weight.errors?.decimalRestricted_d && airlineIgmStep3.controls.gross_weight.dirty" class="text-danger">Only upto 3 decimal values are allowed</div>
+            <div *ngIf="airlineIgmStep3.controls.gross_weight.errors?.digitsBeforeDecimal_d && airlineIgmStep3.controls.gross_weight.dirty" class="text-danger">Only 9 digits are allowed, use decimal values to enter further digits</div>
+        </div>
+      
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('item_description')">
+            <label>Item Description <span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 30 and characters are allowed " [matTooltipPosition]="position.value"
+            class="icon_tooltips"></fa-icon> </label>
+            <input type="text" formControlName="item_description" class="form-control">
+            <validation-messages [control]="airlineIgmStep3.controls.item_description"></validation-messages>
+        </div>
+    </div>
+    <div class="form-row">
+       
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('special_handling_code')">
+            <label>Special Handling Code  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 15 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+            <input type="text" formControlName="special_handling_code" class="form-control">
+            <validation-messages [control]="airlineIgmStep3.controls.special_handling_code" errorMsg="Special Handling Code"></validation-messages>
+        </div>
+    </div>
+</form> -->

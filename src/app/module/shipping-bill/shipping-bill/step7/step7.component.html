@@ -1,0 +1,394 @@
+<div>Fill all the mandatory fields inidicated by<span class="required"> *</span> </div>
+<br>
+<form class="col-md-12" [formGroup]="shipingBillStepSeven">
+    <!-- <mat-accordion>
+    <mat-expansion-panel  [expanded]="1">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                AR4
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+            
+                <div class="col-md-12"><br></div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Invoice Sr. Number</label>
+                        <input type="text" class="form-control" formControlName="invoice_sr_number">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.invoice_sr_number.errors?.maxlength">The maximum field length is 2, please update the field</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.invoice_sr_number.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Item Sr number in invoice</label>
+                        <input type="text" class="form-control" formControlName="item_sr_number_invoice">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.item_sr_number_invoice.errors?.maxlength">The maximum field length is 4, please update the field</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.item_sr_number_invoice.errors?.pattern">Only numbers are allowed in this field, please update</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>AR4 Number</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="ar4_number">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.ar4_number.errors?.required && shipingBillStepSeven.controls.ar4_number.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.ar4_number.errors?.maxlength">The maximum field length is 17, please update the field</mat-error>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>AR4 Date</label><span class="required"> *</span>
+                        <br>
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label> 
+                         
+                            <input matInput [matDatepicker]="ar4_date" formControlName="ar4_date">
+                            <mat-datepicker-toggle matSuffix [for]="ar4_date"></mat-datepicker-toggle>
+                            <mat-datepicker #ar4_date></mat-datepicker>
+                            
+                        </mat-form-field>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.ar4_date.errors?.required && shipingBillStepSeven.controls.ar4_date.touched">This field is required</mat-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Commissionerate</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="commissionerate">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.commissionerate.errors?.required && shipingBillStepSeven.controls.commissionerate.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.commissionerate.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                   
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Division</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="division">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.division.errors?.required && shipingBillStepSeven.controls.division.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.division.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="form-group col-md-4">
+                        <label>Range</label> <span class="required"> *</span>
+                        <input type="text" class="form-control" formControlName="range">
+                        <mat-error *ngIf="shipingBillStepSeven.controls.range.errors?.required && shipingBillStepSeven.controls.range.touched">This field is required</mat-error>
+                        <mat-error *ngIf="shipingBillStepSeven.controls.range.errors?.maxlength">The maximum field length is 20, please update the field</mat-error>                   
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label>Remarks</label>
+                        <input type="text" class="form-control" formControlName="remarks">                   
+                        <mat-error *ngIf="shipingBillStepSeven.controls.remarks.errors?.maxlength">The maximum field length is 250, please update the field</mat-error>                    
+                    </div>
+                </div>
+         
+    
+    </mat-expansion-panel>
+    
+</mat-accordion> -->
+    <mat-accordion formGroupName="packing_details">
+        <mat-expansion-panel [expanded]="1" class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Packing Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('packing_details.packing_number_from')">
+                    <label>Packing Number-From<span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 5 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="packing_number_from">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('packing_details')['controls'].packing_number_from"
+                        errorMsg="Packing Number From"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2"
+                    [ngClass]="displayFieldCss('packing_details.packing_number_to')">
+                    <label>Packing Number– To<span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 5 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="packing_number_to">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('packing_details')['controls'].packing_number_to"
+                        errorMsg="Packing Number To"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('packing_details.packing_code')">
+                    <label>Packing Code <span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 3 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="packing_code">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('packing_details')['controls'].packing_code"
+                        errorMsg="Packing Code"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2">
+                    <label>Rotation Date</label><span class="required"> *</span>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label>
+                            <!-- #docregion toggle -->
+                            <input matInput [matDatepicker]="rotation_date" formControlName="rotation_date">
+                            <mat-datepicker-toggle matSuffix [for]="rotation_date"></mat-datepicker-toggle>
+                            <mat-datepicker #rotation_date></mat-datepicker>
+                            <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                    </div>
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('packing_details')['controls'].rotation_date"
+                        errorMsg="Rotation Date"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('packing_details.rotation_number')">
+                    <label>Rotation Number <span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 7 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="rotation_number">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('packing_details')['controls'].rotation_number"
+                        errorMsg="Rotation Number"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2">
+                    <span>Factory stuffed (Y/N)</span> <span class="required"> *</span>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="factory_stuffed">
+                            <mat-radio-button value="Y">Y</mat-radio-button>&nbsp;&nbsp;
+                            <mat-radio-button value="N">N</mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                    <!-- <label class="col-md-3 radio-inline">
+                            <input type="radio"  formControlName="factory_stuffed"  value="Y">Y
+                        </label>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"  formControlName="factory_stuffed"  value="N">N
+                        </label>   -->
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('packing_details')['controls'].factory_stuffed"
+                        errorMsg="Factory Stuffed"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    <span>Sample Accompanied (Y/N)</span> <span class="required"> *</span>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="sample_accompanied">
+                            <mat-radio-button value="Y">Y</mat-radio-button>&nbsp;&nbsp;
+                            <mat-radio-button value="N">N</mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                    <!-- <label class="col-md-3 radio-inline">
+                            <input type="radio"  formControlName="sample_accompanied" value="Y">Y
+                        </label>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"  formControlName="sample_accompanied" value="N">N
+                        </label> -->
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('packing_details')['controls'].sample_accompanied"
+                        errorMsg="Sample Accompanied"></validation-messages>
+                </div>
+            </div>
+         
+
+
+        </mat-expansion-panel>
+
+
+    </mat-accordion>
+    <mat-accordion formGroupName="container_details">
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Container Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('container_details.container_number')">
+                    <label>Container Number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 15 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="container_number">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].container_number"
+                        errorMsg="Container Number"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2"
+                    [ngClass]="displayFieldCss('container_details.container_size')">
+                    <label>Container Size<span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 4 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="container_size">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].container_size"
+                        errorMsg="Container Size"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('container_details.excise_seal_number')">
+                    <label>Excise Seal No.<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 35 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="excise_seal_number">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].excise_seal_number"
+                        errorMsg="Excise Seal Number"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2">
+                    <label>Seal Date</label>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="seal_date" formControlName="seal_date">
+                            <mat-datepicker-toggle matSuffix [for]="seal_date"></mat-datepicker-toggle>
+                            <mat-datepicker #seal_date></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1">
+                    <span>Seal Type Indicator</span> <span class="required"> *</span>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="seal_type_indicator">
+                            <mat-radio-button value="BTSL" matTooltip="Bottle Seal">BTSL</mat-radio-button>&nbsp;&nbsp;
+                            <mat-radio-button value="RSEAL" matTooltip="Electronic Seal">RSEAL</mat-radio-button>
+                            &nbsp;&nbsp;
+                            <mat-radio-button value="RFID" matTooltip="Radio Frequency Identifier">RFID
+                            </mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                    <!-- <label class="col-md-3 radio-inline">
+                            <input type="radio" matTooltip="Bottle Seal" formControlName="seal_type_indicator"  value="BTSL">BTSL
+                        </label>
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"  matTooltip="Electronic Seal" formControlName="seal_type_indicator"  value="RSEAL">RSEAL
+                        </label> 
+                        <label class="col-md-3 radio-inline">
+                            <input type="radio"   matTooltip="Radio Frequency Identifier" formControlName="seal_type_indicator"  value="RFID">RFID
+                        </label> -->
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].seal_type_indicator"
+                        errorMsg="Seal Type Indicator"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2"
+                    [ngClass]="displayFieldCss('container_details.seal_device_id')">
+                    <label>Seal Device ID<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 35 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="seal_device_id">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].seal_device_id"
+                        errorMsg="Seal Device Id"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('container_details.movement_document_type')">
+                    <label>Movement Document Type<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 35 and number or text are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="movement_document_type">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].movement_document_type"
+                        errorMsg="Movement Document Type"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2"
+                    [ngClass]="displayFieldCss('container_details.movement_document_number')">
+                    <label>Movement Document Number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 35 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="movement_document_number">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].movement_document_number"
+                        errorMsg="Movement Document Number"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('container_details.eqmnt_type')">
+                    <label>Eqmnt Type<span class="required"> *</span>
+                        <fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 3 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon>
+                    </label>
+                    <input type="text" class="form-control" formControlName="eqmnt_type">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].eqmnt_type"
+                        errorMsg="Eqmnt Type"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('container_details.eqmnt_qty')">
+                    <label>Eqmnt Qty<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 8 and only number are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="eqmnt_qty">
+                    <validation-messages [control]="shipingBillStepSeven.get('container_details')['controls'].eqmnt_qty"
+                        errorMsg="Eqmnt Qty"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1"
+                    [ngClass]="displayFieldCss('container_details.eqmnt_qty_code')">
+                    <label>Eqmnt Qty Code<fa-icon [icon]="['fas', 'exclamation-circle']"
+                            matTooltip="Maximum length is 3 and number or text both are allowed"
+                            [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="eqmnt_qty_code">
+                    <validation-messages
+                        [control]="shipingBillStepSeven.get('container_details')['controls'].eqmnt_qty_code"
+                        errorMsg="Eqmnt Qty Code"></validation-messages>
+                </div>
+            </div>
+
+
+        </mat-expansion-panel>
+
+
+    </mat-accordion>
+    <div class="btncontainer">
+        <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+        <div class="col-md-4 offset-md-4"></div>
+        <button mat-raised-button id="back_draft">Save as Draft</button>
+        <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+        <button id="save_continues"  matStepperNext style="display: none;"></button>
+    </div>
+</form>

@@ -1,0 +1,79 @@
+
+<div class="container-fluid">
+    <div class="card">
+        <b style="margin: 25px;">Bill of Entry</b>
+        <div class="box-color">
+            <div class="row">
+                <div class="col-md-12">
+                    <form [formGroup]="bill_of_entry" (ngSubmit)="onFormSubmit()" >
+                        <div class="col-lg-12 text-right">
+                            <label>
+                                <p class="import_json_files"><b>Import Json file</b></p>
+                               <input type="file"  (change)="uploadFile($event)"/>
+                            </label>
+                            <a class="btn btn-clear export_as_json" title="Download JSON"  (click)="downloadbillentry()" [href]="downloadJsonHref" download="bill-of-entry.json"> 
+                                <img src="assets/images/json_files_icon.webp"/> 
+                                Export as Json
+                            </a>
+                        </div>
+                       
+                    <mat-horizontal-stepper #stepper class="stepperscroll" (selectionChange)="selectionChange($event)">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon [inline]="true">check_circle</mat-icon>
+                          </ng-template>
+                        <mat-step>
+                            <app-step1  formControlName="exBondFormStep1"></app-step1>
+                        </mat-step>
+                        <mat-step>
+                            <button mat-raised-button class="example-add-tab-button" (click)="addTab()" id="add-option" [disabled]="disableAddButton">
+                                Add new Invoice
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+                                <mat-tab *ngFor="let tab of tabs; let index = index">
+                                    <ng-template mat-tab-label>
+                                        <span>Invoice {{index + 1}}</span>
+                                        <mat-icon *ngIf="tabs.length != 1" (click)="removeTab(index)">cancel</mat-icon>
+                                    </ng-template>
+                                    <app-step2  formControlName="exBondFormStep2"></app-step2>
+                                </mat-tab>
+                            </mat-tab-group>  
+                        </mat-step>
+                        <mat-step>  
+                            <button mat-raised-button class="example-add-tab-button" (click)="addTab1()" id="add-option" [disabled]="disableAddButton1">
+                                Add new Item
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <mat-tab-group [selectedIndex]="selected1.value" (selectedIndexChange)="selected1.setValue($event)">
+                                <mat-tab *ngFor="let tab of tabs1; let index = index">
+                                    <ng-template mat-tab-label>
+                                        <span>Item {{index + 1}}</span>
+                                        <mat-icon *ngIf="tabs1.length != 1" (click)="removeTab1(index)" >cancel
+                                        </mat-icon>
+                                    </ng-template>
+                                    <app-step3  formControlName="exBondFormStep3"></app-step3>
+                                </mat-tab>
+                            </mat-tab-group>      
+                            
+                        </mat-step>
+                        <mat-step>
+                            <app-step4  formControlName="exBondFormStep4"></app-step4>
+                        </mat-step>
+                        <mat-step>
+                            <app-step5  formControlName="exBondFormStep5"></app-step5>
+                        </mat-step>
+                        <mat-step>
+                            <app-step6  formControlName="exBondFormStep6"></app-step6>
+                        </mat-step>
+                        <mat-step>
+                            <app-step7  formControlName="exBondFormStep7"></app-step7>
+                        </mat-step>
+                                                
+                    </mat-horizontal-stepper>
+                    <!-- <button type="submit">Submit</button> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

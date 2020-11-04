@@ -1,88 +1,69 @@
-<div>
+
     <form class="col-md-12" [formGroup]="homeConsumptionFormStep7">
-        <div><span class="required">&#42;</span> indicates the mandatory fields </div>
+        <div>Fill all mandatory fields indicated by<span class="required">&#42;</span> </div>
         <h6 class="font-h6 text-center">DEPB</h6>
         <hr>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Invoice Serial Number</label><span class="required">*</span>
-                <input type="text" class="form-control"
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoice_serial_number')">
+                <label>Invoice Serial Number<span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+                <input class="form-control"
                     formControlName="invoice_serial_number">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep7.controls.invoice_serial_number.touched'
-                    class="text-danger">This field is required <br></mat-error>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.invoice_serial_number.errors?.maxlength '
-                    class="text-danger">The maximum field length is 5, please update the field  <br></mat-error><br>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.invoice_serial_number.errors?.pattern'
-                    class="text-danger">
-                    Only numbers are allowed in this field, please update</mat-error>                                           
+                    <validation-messages [control]="homeConsumptionFormStep7.controls.invoice_serial_number" errorMsg="Invoice Serial Number"></validation-messages>                                         
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label> Item Sr. Number in Invoice</label><span
-                    class="required">*</span>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('item_serial_number_invoice')">
+                <label> Item Sr. Number in Invoice<span
+                    class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is four and only number are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
                 <input type="text" class="form-control"
                     formControlName="item_serial_number_invoice">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.item_serial_number_invoice.errors?.required && homeConsumptionFormStep7.controls.item_serial_number_invoice.touched'
-                    class="text-danger">This field is required  <br></mat-error>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.item_serial_number_invoice.errors?.maxlength '
-                    class="text-danger">The maximum field length is 4, please update the field  <br></mat-error>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.item_serial_number_invoice.errors?.pattern'
-                    class="text-danger">Only numbers are allowed in this field, please update</mat-error>                                                                                   
+                    <validation-messages [control]="homeConsumptionFormStep7.controls.item_serial_number_invoice" errorMsg="Item Sr. Number in Invoice"></validation-messages>                                                                                   
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <span>Whether Exemption Required? </span> <br><br>
-                <label class="col-md-3">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('exemption_required')">
+                <span>Whether Exemption Required? </span>  <div>
+                    <mat-radio-group aria-label="Select an option" formControlName="exemption_required">
+                        <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                        <mat-radio-button value="N">No</mat-radio-button> 
+                    </mat-radio-group> </div>
+                <!-- <label class="col-md-3">
                     <input type="radio" value="Yes" formControlName="exemption_required">Yes
                 </label>
 
                 <label class="col-md-3">
                     <input type="radio" value="No" formControlName="exemption_required">No
-                </label>
+                </label> -->
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>BCD Notification</label><span class="required"> *</span>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('bcd_notification')">
+                <label>BCD Notification<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and number or text both are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
                 <input type="text" class="form-control"
                     formControlName="bcd_notification">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.bcd_notification.errors?.required && homeConsumptionFormStep7.controls.bcd_notification.touched'
-                    class="text-danger">This field is required</mat-error>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.bcd_notification.errors?.maxlength'  class="text-danger">
-                    The maximum field length is <10>, please update the field 
-                </mat-error>
+                    <validation-messages [control]="homeConsumptionFormStep7.controls.bcd_notification" errorMsg="BCD Notification"></validation-messages>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>BCD Notification Sr. No.</label><span class="required"> *</span>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('bcd_notification_sr_no')">
+                <label>BCD Notification Sr. No.<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and number or text both are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
                 <input type="text" class="form-control"
                     formControlName="bcd_notification_sr_no">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.bcd_notification_sr_no.errors?.required && homeConsumptionFormStep7.controls.bcd_notification_sr_no.touched'
-                    class="text-danger">This field is required</mat-error>
-                <mat-error
-                    *ngIf='homeConsumptionFormStep7.controls.bcd_notification_sr_no.errors?.maxlength'  class="text-danger">
-                    The maximum field length is <10>, please update the field 
-                </mat-error>
+                    <validation-messages [control]="homeConsumptionFormStep7.controls.bcd_notification_sr_no" errorMsg="BCD Notification Se. No."></validation-messages>
             </div>
         </div>
-    </form>
-</div>
+ 
 <div class="btncontainer">
     <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
     <div class="col-md-4 offset-md-4"></div>
     <button id="back_draft" mat-raised-button>Save as Draft</button>
-    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+    <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
 </div>
+
+</form>

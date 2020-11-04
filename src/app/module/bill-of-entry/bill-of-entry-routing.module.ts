@@ -8,8 +8,8 @@ const normalBillOfEntryModule = () => import('./module/normal-bill-of-entry/norm
 const inBondBillOfEntryModule = () => import('./module/in-bond-bill-of-entry/in-bond-bill-of-entry.module')
   .then(x => x.InBondBillOfEntryModule);
 
-const ExBondBillOfEntryModule = () => import('./module/ex-bond-bill-of-entry/ex-bond-bill-of-entry.module')
-  .then(x => x.ExBondBillOfEntryModule);
+const ExBondBillOfEntryModule = () => import('./module/ex-bond-bill-of-entry/exbond-bill-of-entry.module')
+  .then(x => x.ExbondBillOfEntryModule);
 
 const routes: Routes = [
   {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input,forwardRef } from '@angular/core';
-import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms'; 
-
+import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors,FormArray } from '@angular/forms'; 
+import {ValidatorsService} from '../../../../common/service/validators.service';
 @Component({
   selector: 'app-step4',
   templateUrl: './step4.component.html',
@@ -26,18 +26,46 @@ export class Step4Component implements OnInit, ControlValueAccessor, Validator {
   private formSumitAttempt:boolean
 
   homeConsumptionFormStep4: FormGroup;
+  selected = new FormControl(0);
+  disableAddButton = false;
   @Input() index: number;
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.homeConsumptionFormStep4 = this._formBuilder.group ({
-      invoice_serial_number:['',[Validators.required,Validators.maxLength(5),Validators.pattern("^[0-9]+$")]],
-      misc_charge_code:['',[Validators.required,Validators.maxLength(2),Validators.pattern("^[0-9a-zA-Z]+$")]],
-      misc_description:['',[Validators.required,Validators.maxLength(35),Validators.pattern("^[0-9a-zA-Z]+$")]],
-      misc_charges:['',[Validators.maxLength(10),Validators.pattern("[0-9]+$")]],
-      misc_rate:['',[Validators.maxLength(3),Validators.pattern("[0-9]")]]
+    this.homeConsumptionFormStep4= this._formBuilder.group({
+      miscCharges: this._formBuilder.array([]),
+    })
+  }
+
+  AddStepMiscCharges(): FormGroup {
+    return this._formBuilder.group ({
+      invoice_serial_number:['',[Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]],
+      misc_charge_code:['',[Validators.required,Validators.maxLength(2)]],
+      misc_description:['',[Validators.required,Validators.maxLength(35)]],
+      misc_charges:['',[Validators.maxLength(10),ValidatorsService.numberValidator]],
+      misc_rate:['',[Validators.maxLength(3),ValidatorsService.numberValidator]]
     });
   }
+
+  addMiscCharges(): FormArray {
+        return this.homeConsumptionFormStep4.get("miscCharges") as FormArray
+  }
+
+  addMiscChargesTabs() {
+    this.addMiscCharges().push(this.AddStepMiscCharges());
+    this.selected.setValue(this.addMiscCharges().controls.length);
+    if(this.addMiscCharges().controls.length == 3){
+      this.disableAddButton = true;
+    }
+  }
+
+  removeMiscChargesTabs(index: number) {
+    this.addMiscCharges().controls.splice(index, 1);
+    if(this.addMiscCharges().controls.length < 3){
+      this.disableAddButton = false;
+    }
+  }
+
   public onTouched: () => void = () => {
 
     //console.log('data');

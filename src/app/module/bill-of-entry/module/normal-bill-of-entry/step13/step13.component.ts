@@ -1,5 +1,8 @@
 import { Component, OnInit ,forwardRef} from '@angular/core';
 import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms'; 
+import { ValidatorsService } from '../../../../common/service/validators.service';
+import Swal from 'sweetalert2';
+import {TooltipPosition} from '@angular/material/tooltip';
 @Component({
   selector: 'app-step13',
   templateUrl: './step13.component.html',
@@ -21,6 +24,8 @@ export class Step13Component implements OnInit {
 
   panelOpenState = false;
   isLinear = false;
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   homeConsumptionFormStep13: FormGroup;
   private formSumitAttempt:boolean;
   constructor(private _formBuilder: FormBuilder) { }
@@ -28,31 +33,31 @@ export class Step13Component implements OnInit {
   ngOnInit(): void {
     this.homeConsumptionFormStep13 = this._formBuilder.group({
 
-      invoice_serial_number: ['', [Validators.required, Validators.maxLength(5), Validators.pattern("^[0-9]+$")]],
-      item_serial_number: ['', [Validators.required, Validators.maxLength(4), Validators.pattern("[0-9]+$")]],
-      decleration_type: ['', [Validators.required, Validators.maxLength(2), Validators.pattern("^[a-zA-Z]+$")]],
-      cha_license_number: ['', [Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]],
-      iec: ['', [Validators.maxLength(10), Validators.pattern("^[a-zA-Z]+$")]],
-      icegate_user_id: ['', [Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]],
-      image_reference_number: ['', [Validators.required, Validators.maxLength(16), Validators.pattern("^[a-zA-Z]+$")]],
-      document_type_code: ['', [Validators.required, Validators.maxLength(6), Validators.pattern("^[a-zA-Z]+$")]],
-      document_issuing_party_code: ['', [Validators.maxLength(35), Validators.pattern("^[a-zA-Z]+$")]],
-      document_issuing_party_name: ['', [Validators.required, Validators.maxLength(70), Validators.pattern("^[a-zA-Z]+$")]],
-      document_issuing_party_name_address1: ['', [Validators.maxLength(70), Validators.pattern("^[a-zA-Z]+$")]],
-      document_issuing_party_name_address2: ['', [Validators.maxLength(70), Validators.pattern("^[a-zA-Z]+$")]],
-      document_issuing_party_name_city: ['', [Validators.maxLength(35), Validators.pattern("^[a-zA-Z]+$")]],
-      document_issuing_party_name_pin: ['', [Validators.maxLength(10), Validators.pattern("[1-9]{1}[0-9]{5}")]],
-      document_reference_number:['', [Validators.maxLength(17),Validators.pattern("^[a-zA-Z]+$")]],
-      place_of_issue:['', [Validators.required,Validators.maxLength(35),Validators.pattern("^[a-zA-Z]+$")]],
+      invoice_serial_number: ['', [Validators.required, Validators.maxLength(5), ValidatorsService.numberValidator]],
+      item_serial_number: ['', [Validators.required, Validators.maxLength(4), ValidatorsService.numberValidator]],
+      decleration_type: ['', [Validators.required, Validators.maxLength(1), ]],
+      cha_license_number: ['', [Validators.maxLength(15), ]],
+      iec: ['', [Validators.maxLength(10), ]],
+      icegate_user_id: ['', [Validators.required, Validators.maxLength(15), ]],
+      image_reference_number: ['', [Validators.required, Validators.maxLength(16), ]],
+      document_type_code: ['', [Validators.required, Validators.maxLength(6), ]],
+      document_issuing_party_code: ['', [Validators.maxLength(35), ]],
+      document_issuing_party_name: ['', [Validators.required, Validators.maxLength(70), ]],
+      document_issuing_party_name_address1: ['', [Validators.maxLength(70), ]],
+      document_issuing_party_name_address2: ['', [Validators.maxLength(70), ]],
+      document_issuing_party_name_city: ['', [Validators.maxLength(35), ]],
+      document_issuing_party_name_pin: ['', [Validators.maxLength(10)]],
+      document_reference_number:['', [Validators.maxLength(17),]],
+      place_of_issue:['', [Validators.required,Validators.maxLength(35),]],
       document_issue_date:['',Validators.required],
       document_expiry_date:[''],
-      document_beneficary_party_code:['', [Validators.maxLength(35),Validators.pattern("^[a-zA-Z]+$")]],
-      document_beneficary_party_name:['', [Validators.required,Validators.maxLength(70),Validators.pattern("^[a-zA-Z]+$")]],
-      document_beneficary_party_name_address1:['', [Validators.maxLength(70),Validators.pattern("^[0-9a-zA-Z]{1,}(\\W|\\s)\\d*\\s\\w{1,}\\s\\w+$")]],
-      document_beneficary_party_name_address2:['', [Validators.maxLength(70),Validators.pattern("^[0-9a-zA-Z]{1,}(\\W|\\s)\\d*\\s\\w{1,}\\s\\w+$")]],
-      document_beneficary_party_name_city:['', [Validators.maxLength(35),Validators.pattern("^[a-zA-Z]+$")]],
-      document_beneficary_party_name_pin:['', [Validators.maxLength(10),Validators.pattern("[1-9]{1}[0-9]{9}")]],
-      file_type: ['', [Validators.required, Validators.maxLength(5), Validators.pattern("^[a-zA-Z]+$")]],
+      document_beneficiary_party_code:['', [Validators.maxLength(35),]],
+      document_beneficiary_party_name:['', [Validators.required,Validators.maxLength(70),]],
+      document_beneficiary_party_name_address1:['', [Validators.maxLength(70)]],
+      document_beneficiary_party_name_address2:['', [Validators.maxLength(70)]],
+      document_beneficiary_party_name_city:['', [Validators.maxLength(35),]],
+      document_beneficiary_party_name_pin:['', [Validators.maxLength(10)]],
+      file_type: ['', [Validators.required, Validators.maxLength(5), ]],
     })
   }
 
@@ -89,5 +94,43 @@ export class Step13Component implements OnInit {
     );
   }
   
+  displayFieldCss(field: string) {
+    return {
+      'has-error': this.isFieldValid(field),
+      'has-feedback': this.isFieldValid(field)
+    };
+  }
+  
+  onSubmit() {
+    // console.log(this.homeConsumptionFormStep13.valid);
+    // console.log(this.homeConsumptionFormStep13.value);
+    // console.log();
+    if (this.homeConsumptionFormStep13.valid === true) {
+      this.homeConsumptionFormStep13.value
+      Swal.fire({
+        title: 'Step 8 completed',
+        text: "Please click next for other step or click cancel",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Next &nbsp; &#8594;'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+          element.click();
+        }
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Required Validation is left. Please check',
+      }).then((result) =>{
+        this.formSumitAttempt = true
+      })
+
+    }
+  }
 
 }

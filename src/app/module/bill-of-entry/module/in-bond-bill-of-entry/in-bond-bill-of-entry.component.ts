@@ -58,7 +58,20 @@ export class InBondBillOfEntryComponent implements OnInit {
     console.log( this.bill_of_entrly.value); 
   }
 
+  addTab() {
+    this.tabs.push(this.tabs.length);
+    this.selected.setValue(this.tabs.length);
+    if(this.tabs.length == 3){
+      this.disableAddButton = true;
+    }
+  }
 
+  removeTab(index: number) {
+    this.tabs.splice(index, 1);
+    if(this.tabs.length < 3){
+      this.disableAddButton = false;
+    }
+  }
   addTab1() {
     this.tabs1.push(this.tabs1.length);
     this.selected1.setValue(this.tabs1.length);
@@ -109,7 +122,7 @@ uploadFile(event) {
        }).then((result) => {
          if (result.isConfirmed) {  
          var data = JSON.parse(fileReader.result as string);
-      //  console.log(data);
+        console.log(data);
          this.bill_of_entrly.patchValue({
              inBondFormStep1: {
                custom_house_code: data.inBondFormStep1.custom_house_code,
@@ -127,6 +140,7 @@ uploadFile(event) {
                state_importer: data.inBondFormStep1.state_importer,
                pin_importer: data.inBondFormStep1.pin_importer,
                pin: data.inBondFormStep1.pin,
+               class:data.inBondFormStep1.class,
                mode_of_transport: data.inBondFormStep1.mode_of_transport,
                importer_type: data.inBondFormStep1.importer_type,
                kachcha_be: data.inBondFormStep1.kachcha_be,
@@ -152,7 +166,7 @@ uploadFile(event) {
                no_packages_released: data.inBondFormStep1.no_packages_released,
                package_code: data.inBondFormStep1.package_code,
                gross_weight: data.inBondFormStep1.gross_weight,
-               unit_of_measurement: data.inBondFormStep1.unit_of_measuremen,
+               unit_of_measurement: data.inBondFormStep1.unit_of_measurement,
                additional_charges: data.inBondFormStep1.additional_charges,
                misc_load: data.inBondFormStep1.misc_load,
                ucr: data.inBondFormStep1.ucr,
@@ -169,7 +183,7 @@ uploadFile(event) {
                bankname_non_standard_currency:data.inBondFormStep2.bankname_non_standard_currency,
                certificate_number:data.inBondFormStep2.certificate_number,
                certificate_date:data.inBondFormStep2.certificate_date,
-               certificate_type:data.inBondFormStep2.certificate_type
+              //  certificate_type:data.inBondFormStep2.certificate_type
              },
              inBondFormStep3: {
               invoice_serial_number:data.inBondFormStep3.invoice_serial_number,
@@ -264,7 +278,7 @@ uploadFile(event) {
               country_code_third_party:data.inBondFormStep3.country_code_third_party,
               pin_third_party:data.inBondFormStep3.pin_third_party,
           
-              authorized_economic_operator:data.inBondFormStep3.authorized_economic_operator,
+              // authorized_economic_operator:data.inBondFormStep3.authorized_economic_operator,
               authorized_economic_operator_country:data.inBondFormStep3.authorized_economic_operator_country,
               authorized_economic_operator_role:data.inBondFormStep3.authorized_economic_operator_role,
               buyer_or_seller_related:data.inBondFormStep3.buyer_or_seller_related,
@@ -278,140 +292,12 @@ uploadFile(event) {
               misc_charges:data.inBondFormStep4.misc_charges,
               misc_rate:data.inBondFormStep4.misc_rate,
              },
-            //  inBondFormStep5: {
-            //   invoice_serial_number:  data.inBondFormStep5.invoice_serial_number,
-            //   item_serial_number:  data.inBondFormStep5.item_serial_number,
-            //   item_quantity:  data.inBondFormStep5.item_quantity,
-            //   unit_quantity_code:  data.inBondFormStep5.unit_quantity_code,
-            //   ritc_code:  data.inBondFormStep5.ritc_code,
-            //   item_description1:  data.inBondFormStep5.item_description1,
-            //   item_description2:  data.inBondFormStep5.item_description2,
-            //   item_category:  data.inBondFormStep5.item_category,
-            //   item_description_generic:  data.inBondFormStep5.item_description_generic,
-            //   item_accessories:  data.inBondFormStep5.item_accessories,
-            //   name_producer:  data.inBondFormStep5.name_producer,
-            //   name_brand:  data.inBondFormStep5.name_brand,
-            //   model:  data.inBondFormStep5.model,
-            //   end_use_item:  data.inBondFormStep5.end_use_item,
-            //   country_of_origin_of_item:  data.inBondFormStep5.country_of_origin_of_item,
-            //   cth:  data.inBondFormStep5.cth,
-            //   preferential_or_standard:  data.inBondFormStep5.preferential_or_standard,
-            //   ceth:  data.inBondFormStep5.ceth,
-            //   bcd_notification:  data.inBondFormStep5.bcd_notification,
-            //   bcd_notification_sr_no:  data.inBondFormStep5.bcd_notification_sr_no,
-            //   cvd_notification:  data.inBondFormStep5.cvd_notification,
-            //   cvd_notification_sr_no:  data.inBondFormStep5.cvd_notification_sr_no,
-            //   additional_notification1:  data.inBondFormStep5.additional_notification1,
-            //   additional_notification1_sr_no:  data.inBondFormStep5.additional_notification1_sr_no,
-            //   additional_notification2:  data.inBondFormStep5.additional_notification2,
-            //   additional_notification2_sr_no:  data.inBondFormStep5.additional_notification2_sr_no,
-            //   other_notification:  data.inBondFormStep5.other_notification,
-            //   other_notification_sr_no:  data.inBondFormStep5.other_notification_sr_no,
-            //   cex_educess_notification:  data.inBondFormStep5.cex_educess_notification,
-            //   cex_educess_notification_sr_no:  data.inBondFormStep5.cex_educess_notification_sr_no,
-            //   cus_educess_notification:  data.inBondFormStep5.cus_educess_notification,
-            //   cus_educess_notification_sr_no:  data.inBondFormStep5.cus_educess_notification_sr_no,
-            //   ncd_notification:  data.inBondFormStep5.ncd_notification,
-            //   ncd_notification_sr_no:  data.inBondFormStep5.ncd_notification_sr_no,
-            //   antii_dumping_duty_notification:  data.inBondFormStep5.antii_dumping_duty_notification,
-            //   antii_dumping_duty_notification_sr_no:  data.inBondFormStep5.antii_dumping_duty_notification_sr_no,
-            //   cth_serial_number:  data.inBondFormStep5.cth_serial_number,
-            //   supplier_serial_number:  data.inBondFormStep5.supplier_serial_number,
-            //   quantity_antii_dumping_duty_notification:  data.inBondFormStep5.quantity_antii_dumping_duty_notification,
-            //   quantity_tariff_value_notification:  data.inBondFormStep5.quantity_tariff_value_notification,
-            //   tariff_value_notification:  data.inBondFormStep5.tariff_value_notification,
-            //   tariff_value_notification_sr_no:  data.inBondFormStep5.tariff_value_notification_sr_no,
-            //   quantiy_tariff_value_notification:  data.inBondFormStep5.quantiy_tariff_value_notification,
-            //   sapta_notification:  data.inBondFormStep5.sapta_notification,
-            //   sapta_notification_sr_no:  data.inBondFormStep5.sapta_notification_sr_no,
-            //   health_notification:  data.inBondFormStep5.health_notification,
-            //   health_notification_sr_no:  data.inBondFormStep5.health_notification_sr_no,
-            //   additional_cvd_notification:  data.inBondFormStep5.additional_cvd_notification,
-            //   additional_cvd_notification_sr_no:  data.inBondFormStep5.additional_cvd_notification_sr_no,
-            //   aggregate_duty_notification:  data.inBondFormStep5.aggregate_duty_notification,
-            //   aggregate_duty_notification_sr_no:  data.inBondFormStep5.aggregate_duty_notification_sr_no,
-            //   safeguard_duty_notification:  data.inBondFormStep5.safeguard_duty_notification,
-            //   safeguard_duty_notification_sr_no:  data.inBondFormStep5.safeguard_duty_notification_sr_no,
-            //   unit_price_invoiced:  data.inBondFormStep5.unit_price_invoiced,
-            //   discount_rate:  data.inBondFormStep5.discount_rate,
-            //   discount_amount:  data.inBondFormStep5.discount_amount,
-            //   quantity_cth:  data.inBondFormStep5.quantity_cth,
-            //   svb_reference_number:  data.inBondFormStep5.svb_reference_number,
-            //   svb_load_assessable_value:  data.inBondFormStep5.svb_load_assessable_value,
-            //   svb_load_on_duty:  data.inBondFormStep5.svb_load_on_duty,
-            //   svb_flag:  data.inBondFormStep5.svb_flag,
-            //   load_final_provisional_on_ass_value:  data.inBondFormStep5.load_final_provisional_on_ass_value,
-            //   load_final_provisional_on_duty:  data.inBondFormStep5.load_final_provisional_on_duty,
-            //   custom_house_code_imposed_load:  data.inBondFormStep5.custom_house_code_imposed_load,
-            //   policy_para_no:  data.inBondFormStep5.policy_para_no,
-            //   policy_year:  data.inBondFormStep5.policy_year,
-            //   rsp_applicability:  data.inBondFormStep5.rsp_applicability,
-            //   re_import:  data.inBondFormStep5.re_import,
-            //   prev_be_no:  data.inBondFormStep5.prev_be_no,
-            //   prev_be_date:  data.inBondFormStep5.prev_be_date,
-            //   prev_unit_price:  data.inBondFormStep5.prev_unit_price,
-            //   prev_unit_currency:  data.inBondFormStep5.prev_unit_currency,
-            //   prev_customm_site:  data.inBondFormStep5.prev_customm_site,
-            //   custom_notifictaion_exempting_central_excise_flag:  data.inBondFormStep5.custom_notifictaion_exempting_central_excise_flag,
-            //   producer_code:  data.inBondFormStep5.producer_code,
-            //   grower_code:  data.inBondFormStep5.grower_code,
-            //   address1_grower:  data.inBondFormStep5.address1_grower,
-            //   address2_grower:  data.inBondFormStep5.address2_grower,
-            //   city_grower:  data.inBondFormStep5.city_grower,
-            //   country_sub_division_grower:  data.inBondFormStep5.country_sub_division_grower,
-            //   pin_grower:  data.inBondFormStep5.pin_grower,
-            //   country_grower:  data.inBondFormStep5.country_grower,
-            //   source_country:  data.inBondFormStep5.source_country,
-            //   transit_country:  data.inBondFormStep5.transit_country,
-            //   accessory_status:  data.inBondFormStep5.accessory_status,
-            //   active_ingredient_flag:  data.inBondFormStep5.active_ingredient_flag,
-            //   ritc_qualifier:  data.inBondFormStep5.ritc_qualifier,
-            //   info_type:  data.inBondFormStep5.info_type,
-            //   info_qualifier:  data.inBondFormStep5.info_qualifier,
-            //   info_code:  data.inBondFormStep5.info_code,
-            //   info_text:  data.inBondFormStep5.info_text,
-            //   info_msr:  data.inBondFormStep5.info_msr,
-            //   info_uqc:  data.inBondFormStep5.info_uqc,
-            //   constituent_serial_number:  data.inBondFormStep5.constituent_serial_number,
-            //   constituent_element_name:  data.inBondFormStep5.constituent_element_name,
-            //   constituent_element_code:  data.inBondFormStep5.constituent_element_code,
-            //   constituent_percentage:  data.inBondFormStep5.constituent_percentage,
-            //   constituent_yield_percentage:  data.inBondFormStep5.constituent_yield_percentage,
-            //   production_batch_identifier:  data.inBondFormStep5.production_batch_identifier,
-            //   production_batch_quantity:  data.inBondFormStep5.production_batch_quantity,
-            //   date_manufacturing:  data.inBondFormStep5.date_manufacturing,
-            //   date_expiry:  data.inBondFormStep5.date_expiry,
-            //   best_before:  data.inBondFormStep5.best_before,
-            //   control_type_code:  data.inBondFormStep5.control_type_code,
-            //   control_location:  data.inBondFormStep5.control_location,
-            //   control_start_date:  data.inBondFormStep5.control_start_date,
-            //   control_end_date:  data.inBondFormStep5.control_end_date,
-            //   control_result_code:  data.inBondFormStep5.control_result_code,
-            //   control_result_text:  data.inBondFormStep5.control_result_text,
-            //   invoice_serial_number_on:  data.inBondFormStep5.invoice_serial_number_on,
-            //   item_serial_number_invoice:  data.inBondFormStep5.item_serial_number_invoice,
-            //   notification_number:  data.inBondFormStep5.notification_number,
-            //   notification_serial_number:  data.inBondFormStep5.notification_serial_number,
-            //   duty_type:  data.inBondFormStep5.duty_type,
-            //   additional_duty_flag:  data.inBondFormStep5.additional_duty_flag,
-            //   exmp_notification:  data.inBondFormStep5.exmp_notification,
-            //   exmp_notification_serial_number:  data.inBondFormStep5.exmp_notification_serial_number,
-            //   customs_exmp:  data.inBondFormStep5.customs_exmp,
-            //   suplier_number:  data.inBondFormStep5.suplier_number,
-            //   nou:  data.inBondFormStep5.nou,
-            //   debit_unit_of_measurement:  data.inBondFormStep5.debit_unit_of_measurement,
-            //   license_registration_number:  data.inBondFormStep5.license_registration_number,
-            //   license_code:  data.inBondFormStep5.license_code,
-            //   license_registration_date:  data.inBondFormStep5.license_registration_date,
-            //   license_reg_port:  data.inBondFormStep5.license_reg_port,
-            //   item_serial_number_license:  data.inBondFormStep5.item_serial_number_license,
-            //   shipping_bill_no:  data.inBondFormStep5.shipping_bill_no,
-            //   shipping_bill_date:  data.inBondFormStep5.shipping_bill_date,
-            //   invoice_no_sb:  data.inBondFormStep5.invoice_no_sb
-            //  },
+             inBondFormStep5: {
+
+             },
              inBondFormStep6:{
               invoice_serial_number:data.inBondFormStep6.invoice_serial_number,
-              item_serial_number:data.inBondFormStep6.item_serial_number,
+              // item_serial_number:data.inBondFormStep6.item_serial_number,
               item_serial_number_invoice:data.inBondFormStep6.item_serial_number_invoice,
               item_serial_number_rsp:data.inBondFormStep6.item_serial_number_rsp,
               rsp:data.inBondFormStep6.rsp,
@@ -428,13 +314,13 @@ uploadFile(event) {
               exemption_required:data.inBondFormStep7.exemption_required
              },
              inBondFormStep8:{
-              bond_number: data.inBondFormStep8.bond_number,
-              bond_code: data.inBondFormStep8.bond_code,
-              bond_port: data.inBondFormStep8.bond_port,
-              bond: data.inBondFormStep8.bond,
-              certificate_number: data.inBondFormStep8.certificate_number,
-              certificate_date: data.inBondFormStep8.certificate_date,
-              certificate_type: data.inBondFormStep8.certificate_type
+              bond_number:data.inBondFormStep8.bond_number,
+              // bond_code:data.inBondFormStep8.bond_code,
+              bond_port:data.inBondFormStep8.bond_port,
+              bond:data.inBondFormStep8.bond,
+              certificate_number:data.inBondFormStep8.certificate_number,
+              certificate_date:data.inBondFormStep8.certificate_date,
+              certificate_type:data.inBondFormStep8.certificate_type
              },
              inBondFormStep9:{
               igm_no:data.inBondFormStep9.igm_no,
@@ -473,7 +359,7 @@ uploadFile(event) {
               item_serial_number:data.inBondFormStep12.item_serial_number,
               decleration_type: data.inBondFormStep12.decleration_type,
               decleration_number:data.inBondFormStep12.decleration_number,
-              decleration_date:data.inBondFormStep12.decleration_date,
+              // decleration_date:data.inBondFormStep12.decleration_date,
               statement_type:data.inBondFormStep12.statement_type,
               statement_code:data.inBondFormStep12.statement_code,
               statement_text:data.inBondFormStep12.statement_text
@@ -497,12 +383,12 @@ uploadFile(event) {
               place_of_issue:data.inBondFormStep13.place_of_issue,
               document_issue_date:data.inBondFormStep13.document_issue_date,
               document_expiry_date:data.inBondFormStep13.document_expiry_date,
-              document_beneficary_party_code:data.inBondFormStep13.document_beneficary_party_code,
-              document_beneficary_party_name:data.inBondFormStep13.document_beneficary_party_name,
-              document_beneficary_party_name_address1:data.inBondFormStep13.document_beneficary_party_name_address1,
-              document_beneficary_party_name_address2:data.inBondFormStep13.document_beneficary_party_name_address2,
-              document_beneficary_party_name_city:data.inBondFormStep13.document_beneficary_party_name_city,
-              document_beneficary_party_name_pin:data.inBondFormStep13.document_beneficary_party_name_pin,
+              document_beneficiary_party_code:data.inBondFormStep13.document_beneficiary_party_code,
+              document_beneficiary_party_name:data.inBondFormStep13.document_beneficiary_party_name,
+              document_beneficiary_party_name_address1:data.inBondFormStep13.document_beneficiary_party_name_address1,
+              document_beneficiary_party_name_address2:data.inBondFormStep13.document_beneficiary_party_name_address2,
+              document_beneficiary_party_name_city:data.inBondFormStep13.document_beneficiary_party_name_city,
+              document_beneficiary_party_name_pin:data.inBondFormStep13.document_beneficiary_party_name_pin,
               file_type:data.inBondFormStep13.file_type
             }
              
@@ -525,10 +411,5 @@ uploadFile(event) {
    this.downloadJsonHref = uri;
   // console.log(serializedForm);
  }
- stepThreeClickFun(){ 
-  let element:HTMLElement = document.getElementById('step_three_add_items') as HTMLElement;
-  element.click();
-  // let elementItems:HTMLElement = document.getElementById('add-items') as HTMLElement;
-  // elementItems.click();
-}
+
 }

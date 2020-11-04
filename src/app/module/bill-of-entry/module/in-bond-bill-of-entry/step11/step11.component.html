@@ -1,52 +1,52 @@
-<div>
-    <div><span class="text-danger">&#42;</span> indicates the mandatory fields </div>
-    <form class="col-md-12" [formGroup]="inBondFormStep11">
-        <h6 class="font-h6 text-center">Commercial Tax</h6>
-        <hr>
-        <div class="form-row">
-            <!-- <div class="col-md-1"></div> -->
-            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('state_code')">
-                <label>Sate Code</label><span class="required"> *</span>
-                <select class="form-control" formControlName="state_code">
-                    <option></option>
-                    <option></option>
-                </select>
-                <validation-messages [control]="inBondFormStep11.controls.state_code" ></validation-messages>
-            </div>
-            <!-- <div class="col-md-2"></div> -->
-            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('commercial_tax_type')">
-                <label>Commercial Tax Type</label><span class="required"> *</span>
-                <select class="form-control" formControlName="commercial_tax_type">
-                    <option>V</option>    
-                    <option>C</option> 
-                    <option>S</option> 
-                    <option>G</option> 
-                    <option>A </option> 
-                    <option>P</option> 
-                    <option>I</option> 
-                    <option>T</option> 
-                    <option>O</option> 
-                    <option>D</option> 
-                    <option>N</option> 
-                </select>
-                <validation-messages [control]="inBondFormStep11.controls.commercial_tax_type" ></validation-messages>
-            </div>
+<form class="col-md-12" [formGroup]="inBondFormStep11">
+    <div>Fill all mandatory fields indicated by<span class="required">&#42;</span></div>
+    <h6 class="font-h6 text-center">Commercial Tax</h6>
+    <hr>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class=" form-group col-md-4 offset-md-1">
+            <label>State Code<span class="required"> *</span></label>
+            <select class="form-control" formControlName="state_code">
+                <option value="De">Delhi</option>
+                <option value="Ha">Haryana</option>
+            </select>
+            <validation-messages [control]="inBondFormStep11.controls.state_code" errorMsg="State Code">
+            </validation-messages>
         </div>
-        <div class="form-row">
-            <!-- <div class="col-md-1"></div> -->
-            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('commercial_tax_registration')">
-                <label>Commercial Tax Registration No.</label><span class="required"> *</span>
-                <input type="text" class="form-control" formControlName="commercial_tax_registration">
-                <validation-messages [control]="inBondFormStep11.controls.commercial_tax_registration" ></validation-messages>
-            </div>
-
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('commercial_tax_type')">
+            <label>Commercial Tax Type<span class="required"> *</span>
+                <fa-icon [icon]=" ['fas', 'exclamation-circle' ]"
+                    matTooltip="Maximum length is 1 and number or text both are allowed"
+                    [matTooltipPosition]="position.value" class="icon_tooltips">
+            
+            </fa-icon></label>
+            <input type="text" class="form-control" formControlName="commercial_tax_type">
+            <validation-messages [control]="inBondFormStep11.controls.commercial_tax_type"
+                errorMsg="Commercial Tax Type"></validation-messages>
         </div>
+    </div>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('commercial_tax_registration')">
+            <label>Commercial Tax Registration No.<span class="required"> *</span>
+                <fa-icon [icon]=" ['fas', 'exclamation-circle' ]"
+                    matTooltip="Maximum length is 20 and number or text both are allowed"
+                    [matTooltipPosition]="position.value" class="icon_tooltips">
+                </fa-icon>
+            </label>
+            <input type="text" class="form-control" formControlName="commercial_tax_registration">
+            <validation-messages [control]="inBondFormStep11.controls.commercial_tax_registration"
+                errorMsg="Commercial Tax Registration"></validation-messages>
+        </div>
+    </div>
 
-    </form>
-</div>
-<div class="btncontainer">
-    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
-    <div class="col-md-4 offset-md-4"></div>
-    <button id="back_draft" mat-raised-button>Save as Draft</button>
-    <button id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
-</div>
+
+    <div class="btncontainer">
+        <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+        <div class="col-md-4 offset-md-4"></div>
+        <button id="back_draft" mat-raised-button>Save as Draft</button>
+        <button id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+        <button id="save_continues" matStepperNext style="display: none;"></button>
+    </div>
+</form>

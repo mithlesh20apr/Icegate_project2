@@ -1,0 +1,283 @@
+<div>Fill all the mandatory fields inidicated by<span class="required"> *</span></div>
+
+<div>
+    <form [formGroup]="shipingBillStepEleven">
+        <h2 class="text-center">SB Re-export</h2>
+        <hr>
+            <div class="col-md-12"><br></div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoice_serial_no')">
+                    <label>Invoice Serial No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only numbers are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="invoice_serial_no">
+                    <validation-messages [control]="shipingBillStepEleven.controls.invoice_serial_no" errorMsg="Invoice Serial No"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('item_serial_no')">
+                    <label>Item Serial No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="item_serial_no">
+                    <validation-messages [control]="shipingBillStepEleven.controls.item_serial_no" errorMsg="Item Serial No"></validation-messages>
+
+                </div>
+                <div class="form-group col-md-2" [ngClass]="displayFieldCss('serial_no')">
+                    <label>Serial No.<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="serial_no">
+                    <validation-messages [control]="shipingBillStepEleven.controls.serial_no" errorMsg="Serial No"></validation-messages>
+
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('be_site')">
+                    <label>BE Site <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="be_site">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_site" errorMsg="Be Site"></validation-messages>
+
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('be_no')">
+                    <label>BE No<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label> 
+                    <input type="text" class="form-control" formControlName="be_no">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_no" errorMsg="BE No"></validation-messages>
+
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('be_date')">
+                    <label>BE Date</label><span class="required"> *</span> <div>
+                    <mat-form-field >
+                          <mat-label>BE Date</mat-label>   
+                            <input matInput [matDatepicker]="be_date" formControlName="be_date">
+                            <mat-datepicker-toggle matSuffix [for]="be_date"></mat-datepicker-toggle>
+                            <mat-datepicker #be_date></mat-datepicker>     
+                    </mat-form-field> </div>
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_date" errorMsg="BE Date"></validation-messages>
+
+                    </div>
+                    <!-- <div class="col-md-2"></div> -->
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('be_invoice_no')">
+                        <label>BE Invoice No. <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only numbers are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label> 
+                        <input type="text" class="form-control" formControlName="be_invoice_no">
+                        <validation-messages [control]="shipingBillStepEleven.controls.be_invoice_no" errorMsg="Be Invoice No"></validation-messages>
+                    </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('be_item')">
+                    <label>BE Item <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                    <input type="text" class="form-control" formControlName="be_item">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_item" errorMsg="BE Item"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('manual_be')">
+                    <span>Manual BE(Y/N)</span> <span class="required"> *</span>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="manual_be">
+                            <mat-radio-button value="Y" >Y</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">N</mat-radio-button>  
+                        </mat-radio-group> </div>  
+                    <!-- <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="manual_be" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="manual_be" value="N"> N
+                    </label>    -->
+                    <validation-messages [control]="shipingBillStepEleven.controls.manual_be" errorMsg="Manual BE"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('be_quantity_utilised')">
+                    <label>BE Quantity Utilised<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="be_quantity_utilised">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_quantity_utilised" errorMsg="BE Quantity Utilised"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('be_item_description')">
+                    <label>BE Item description <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 120 and number or text are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="be_item_description">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_item_description" errorMsg="BE Item description"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('be_quantity')">
+                    <label>BE Quantity <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label> 
+                    <input type="text" class="form-control" formControlName="be_quantity">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_quantity" errorMsg="BE Quantity"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('be_uqc')">
+                    <label>BE UQC <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="be_uqc">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_uqc" errorMsg="BE UQC"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('be_assessed_value')">
+                    <label>BE Assessed Value   <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="be_assessed_value">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_assessed_value" errorMsg="BE Assessed Value"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('be_duty_paid')">
+                    <label>BE Duty Paid <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="be_duty_paid">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_duty_paid" errorMsg="BE Duty Paid"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('be_duty_payment_date')">
+                    <label>BE Duty Payment Date</label><span class="required"> *</span> 
+                    <div>
+                    <mat-form-field >
+                        <mat-label>Choose a Date</mat-label>   
+                            <input matInput [matDatepicker]="be_duty_payment_date" formControlName="be_duty_payment_date">
+                            <mat-datepicker-toggle matSuffix [for]="be_duty_payment_date"></mat-datepicker-toggle>
+                            <mat-datepicker #be_duty_payment_date></mat-datepicker>     
+                    </mat-form-field> </div>
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_duty_payment_date" errorMsg="BE Duty Payment Date"></validation-messages>
+                </div>
+                    <!-- <div class="col-md-2"></div>  -->
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('be_other_identifiable_parameter')">
+                        <label>BE Other Identifiable Parameter<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 250 and number or text both are allowed" [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="be_other_identifiable_parameter">
+                        <validation-messages [control]="shipingBillStepEleven.controls.be_other_identifiable_parameter" errorMsg="BE Other Identifiable Parameter"></validation-messages>
+                    </div> 
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('be_assessed_value_claim')">
+                    <label>BE Assessable Value Claim  <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control" formControlName="be_assessed_value_claim">
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_assessed_value_claim" errorMsg="BE Assessable Value Claim"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('be_item_used')">
+                    <span>BE Item Used (Y/N)</span> <span class="required"> *</span> 
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="be_item_used">
+                            <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">No</mat-radio-button> 
+                          
+                        </mat-radio-group> </div>  
+                    <!-- <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="be_item_used" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="be_item_used" value="N"> N
+                    </label>    -->
+                    <validation-messages [control]="shipingBillStepEleven.controls.be_item_used" errorMsg="BE Item Used"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('commisioner_permission')">
+                    <span>Commisioner Permission (Y/N)</span> <span class="required"> *</span> 
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="commisioner_permission">
+                            <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">No</mat-radio-button> 
+                          
+                        </mat-radio-group> </div>  
+                    
+                    <!-- <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="commisioner_permission" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="commisioner_permission" value="N"> N
+                    </label>    -->
+                    <validation-messages [control]="shipingBillStepEleven.controls.commisioner_permission" errorMsg="Commisioner Permission"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('input_credit')">
+                    <span>Input Credit (Y/N)</span> <span class="required"> *</span> 
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="input_credit">
+                            <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">No</mat-radio-button> 
+                          
+                        </mat-radio-group> </div>  
+                    <!-- <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="input_credit" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="input_credit" value="N"> N
+                    </label>    -->
+                    <validation-messages [control]="shipingBillStepEleven.controls.input_credit" errorMsg="Input Credit"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('personal_used')">
+                    <span>Personal Used (Y/N)</span> <span class="required"> *</span> <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="personal_used">
+                            <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">No</mat-radio-button> 
+                          
+                        </mat-radio-group> </div>  
+                    <!-- <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="personal_used" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="personal_used" value="N"> N
+                    </label>    -->
+                    <validation-messages [control]="shipingBillStepEleven.controls.personal_used" errorMsg="Personal Used"></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('modvat_availed')">
+                    <span>Modvat Availed (Y/N)</span> <span class="required"> *</span> 
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="modvat_availed">
+                            <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">No</mat-radio-button> 
+                          
+                        </mat-radio-group> </div>  
+                    <!-- <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="modvat_availed" value="Y"> Y 
+                    </label>
+                    <label class="col-md-3 radio-inline">
+                        <input type="radio"  formControlName="modvat_availed" value="N"> N
+                    </label>    -->
+                    <validation-messages [control]="shipingBillStepEleven.controls.modvat_availed" errorMsg="Modvat Availed"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('modvat_repaid')">
+                    <span>Modvat Repaid (Y/N)</span> <span class="required"> *</span> <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="modvat_repaid">
+                            <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">No</mat-radio-button> 
+                          
+                        </mat-radio-group> </div>  
+                        <validation-messages [control]="shipingBillStepEleven.controls.modvat_repaid" errorMsg="Modvat Repaid"></validation-messages>
+                    </div>                
+            </div>
+            <div class="btncontainer">
+                <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+                <div class="col-md-4 offset-md-4"></div>
+                <button mat-raised-button id="back_draft">Save as Draft</button>
+                <!-- <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+                <button id="save_continues"  matStepperNext style="display: none;"></button> -->
+            </div>
+    </form>
+</div>

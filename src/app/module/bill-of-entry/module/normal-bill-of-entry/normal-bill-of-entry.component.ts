@@ -35,7 +35,7 @@ export class NormalBillOfEntryComponent implements OnInit {
       homeConsumptionFormStep2: new FormControl(""),
       homeConsumptionFormStep3: new FormControl(""),
       homeConsumptionFormStep4: new FormControl(""),
-      homeConsumptionFormStep5: new FormControl(""),
+      // homeConsumptionFormStep5: new FormControl(""),
       homeConsumptionFormStep6: new FormControl(""),
       homeConsumptionFormStep7: new FormControl(""),
       homeConsumptionFormStep8: new FormControl(""),
@@ -171,8 +171,7 @@ uploadFile(event) {
                misc_load: data.homeConsumptionFormStep1.misc_load,
                ucr: data.homeConsumptionFormStep1.ucr,
                ucr_type: data.homeConsumptionFormStep1.ucr_type,
-               payment_method_code: data.homeConsumptionFormStep1.payment_method_code
-
+               payment_method_code: data.homeConsumptionFormStep1.payment_method_code,
              },
              homeConsumptionFormStep2: {
                currency_code: data.homeConsumptionFormStep2.currency_code,
@@ -278,7 +277,7 @@ uploadFile(event) {
               country_code_third_party:data.homeConsumptionFormStep3.country_code_third_party,
               pin_third_party:data.homeConsumptionFormStep3.pin_third_party,
           
-              authorized_economic_operator:data.homeConsumptionFormStep3.authorized_economic_operator,
+              // authorized_economic_operator:data.homeConsumptionFormStep3.authorized_economic_operator,
               authorized_economic_operator_country:data.homeConsumptionFormStep3.authorized_economic_operator_country,
               authorized_economic_operator_role:data.homeConsumptionFormStep3.authorized_economic_operator_role,
               buyer_or_seller_related:data.homeConsumptionFormStep3.buyer_or_seller_related,
@@ -379,12 +378,12 @@ uploadFile(event) {
               place_of_issue:data.homeConsumptionFormStep13.place_of_issue,
               document_issue_date:data.homeConsumptionFormStep13.document_issue_date,
               document_expiry_date:data.homeConsumptionFormStep13.document_expiry_date,
-              document_beneficary_party_code:data.homeConsumptionFormStep13.document_beneficary_party_code,
-              document_beneficary_party_name:data.homeConsumptionFormStep13.document_beneficary_party_name,
-              document_beneficary_party_name_address1:data.homeConsumptionFormStep13.document_beneficary_party_name_address1,
-              document_beneficary_party_name_address2:data.homeConsumptionFormStep13.document_beneficary_party_name_address2,
-              document_beneficary_party_name_city:data.homeConsumptionFormStep13.document_beneficary_party_name_city,
-              document_beneficary_party_name_pin:data.homeConsumptionFormStep13.document_beneficary_party_name_pin,
+              document_beneficiary_party_code:data.homeConsumptionFormStep13.document_beneficiary_party_code,
+              document_beneficiary_party_name:data.homeConsumptionFormStep13.document_beneficiary_party_name,
+              document_beneficiary_party_name_address1:data.homeConsumptionFormStep13.document_beneficiary_party_name_address1,
+              document_beneficiary_party_name_address2:data.homeConsumptionFormStep13.document_beneficiary_party_name_address2,
+              document_beneficiary_party_name_city:data.homeConsumptionFormStep13.document_beneficiary_party_name_city,
+              document_beneficiary_party_name_pin:data.homeConsumptionFormStep13.document_beneficiary_party_name_pin,
               file_type:data.homeConsumptionFormStep13.file_type
             }
              

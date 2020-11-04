@@ -1,0 +1,114 @@
+<div> Fill all the mandatory fields inidicated by<span class="required"> *</span></div>
+<br>
+<div class="row">
+    <form class="col-md-12" [formGroup]="shippingBillStepThree">
+
+        <h2 class="text-center">Exchange</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+      
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoice_currency_code')">
+                <label>Invoice Currency code</label>
+                <select class="form-control" formControlName="invoice_currency_code">
+                    <option>-- select --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+          
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('currency_name')">
+                <label>Currency Name<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control" formControlName="currency_name">
+                <validation-messages [control]="shippingBillStepThree.controls.currency_name" errorMsg="Currency Name"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+      
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('unit_in_rs')">
+                <label>Unit in Rs.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control" formControlName="unit_in_rs">
+                <validation-messages [control]="shippingBillStepThree.controls.unit_in_rs" errorMsg="Unit in Rs."></validation-messages>
+            </div>
+          
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('rate')">
+                <label>Rate<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 9 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control" formControlName="rate">
+                <validation-messages [control]="shippingBillStepThree.controls.rate" errorMsg="Rate"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+      
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('effective_date')">
+                <label>Effective Date</label>
+                <div>
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                   
+                    <input matInput [matDatepicker]="effective_date" formControlName="effective_date">
+                    <mat-datepicker-toggle matSuffix [for]="effective_date"></mat-datepicker-toggle>
+                    <mat-datepicker #effective_date></mat-datepicker>
+                
+                </mat-form-field></div>
+            </div>
+          
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('whether_standard_currency')">
+                <label>Whether Standard Currency (Y/N)</label><span class="required"> *</span>
+                <div>
+                    <mat-radio-group aria-label="Select an option" formControlName="whether_standard_currency">
+                        <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                        <mat-radio-button value="N">No</mat-radio-button>                    
+                    </mat-radio-group> </div>
+                <!-- <select class="form-control" formControlName="whether_standard_currency">
+                    <option value="Y">Y</option>
+                    <option value="N">N</option>
+                </select> -->
+                <validation-messages [control]="shippingBillStepThree.controls.whether_standard_currency" errorMsg="Whether Standard Currency"></validation-messages>
+            </div>
+        </div>
+        <!-- <div class="form-row">
+      
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('amendment_type')">
+                <label>Amendment Type<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control" formControlName="amendment_type">
+                <validation-messages [control]="shippingBillStepThree.controls.amendment_type" errorMsg="Amendment Type"></validation-messages>
+            </div>
+          
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('amendment_no')">
+                <label>Amendment No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only numbers are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control" formControlName="amendment_no">
+                <validation-messages [control]="shippingBillStepThree.controls.amendment_no" errorMsg="Amendment No"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+      
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('amendment_date')">
+                <label>Amendment Date</label>
+                <div>
+                <mat-form-field >
+                    <mat-label>Choose a date</mat-label>
+                   
+                    <input matInput [matDatepicker]="amendment_date" formControlName="amendment_date">
+                    <mat-datepicker-toggle matSuffix [for]="amendment_date"></mat-datepicker-toggle>
+                    <mat-datepicker #amendment_date></mat-datepicker>
+                
+                </mat-form-field></div>
+            </div>
+        </div> -->
+        <div class="btncontainer">
+            <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+            <div class="col-md-4 offset-md-4"></div>
+            <button mat-raised-button id="back_draft">Save as Draft</button>
+            <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+            <button id="save_continues"  matStepperNext style="display: none;"></button>
+        </div>
+    </form>
+</div>

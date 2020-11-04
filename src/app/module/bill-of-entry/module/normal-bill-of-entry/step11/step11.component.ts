@@ -1,5 +1,8 @@
 import { Component, OnInit,forwardRef } from '@angular/core';
 import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms'; 
+import { ValidatorsService } from '../../../../common/service/validators.service';
+import Swal from 'sweetalert2';
+import {TooltipPosition} from '@angular/material/tooltip';
 @Component({
   selector: 'app-step11',
   templateUrl: './step11.component.html',
@@ -21,6 +24,8 @@ export class Step11Component implements OnInit {
 
   panelOpenState = false;
   isLinear = false;
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   homeConsumptionFormStep11: FormGroup;
   private formSumitAttempt:boolean;
   constructor(private _formBuilder: FormBuilder) { }
@@ -28,9 +33,9 @@ export class Step11Component implements OnInit {
   ngOnInit(): void {
 
     this.homeConsumptionFormStep11=this._formBuilder.group({
-      state_code:['',[Validators.required,Validators.maxLength(2),Validators.pattern("^[a-zA-Z]+$")]],
-      commercial_tax_registration:['',[Validators.required,Validators.maxLength(20),Validators.pattern("^[a-zA-Z]+$")]],
-      commercial_tax_type:['',[Validators.required,Validators.maxLength(1),Validators.pattern("^[a-zA-Z]+$")]],
+      state_code:['',[Validators.required,Validators.maxLength(2)]],
+      commercial_tax_registration:['',[Validators.required,Validators.maxLength(20)]],
+      commercial_tax_type:['',[Validators.required,Validators.maxLength(1)]],
 
     })
   }
@@ -67,4 +72,43 @@ export class Step11Component implements OnInit {
     );
   }
   
+  displayFieldCss(field: string) {
+    return {
+      'has-error': this.isFieldValid(field),
+      'has-feedback': this.isFieldValid(field)
+    };
+  }
+  
+  onSubmit() {
+    // console.log(this.homeConsumptionFormStep11.valid);
+    // console.log(this.homeConsumptionFormStep11.value);
+    // console.log();
+    if (this.homeConsumptionFormStep11.valid === true) {
+      this.homeConsumptionFormStep11.value
+      Swal.fire({
+        title: 'Step 10 completed',
+        text: "Please click next for other step or click cancel",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Next &nbsp; &#8594;'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+          element.click();
+        }
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Required Validation is left. Please check',
+      }).then((result) =>{
+        this.formSumitAttempt = true
+      })
+
+    }
+  }
+
 }

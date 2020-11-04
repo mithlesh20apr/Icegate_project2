@@ -1,57 +1,61 @@
-<div>
+
     <form class="col-md-12" [formGroup]="homeConsumptionFormStep2">
-        <div><span class="required">&#42;</span> indicates the mandatory fields </div>
+        <div>Fill all mandatory fields indicated by<span class="required">&#42;</span></div>
         <h6 class="font-h6 text-center">Exchange Rate</h6>
         <hr>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Currency Code</label><span class="required">*</span>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('currency_code')">
+                <label>Currency Code<span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and number or text both are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
                 <input type="text" class="form-control" formControlName="currency_code">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep2.controls.currency_code.errors?.required && homeConsumptionFormStep2.controls.currency_code.touched'
-                    class="text-danger">This field is required <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep2.controls.currency_code.errors?.maxlength'
-                    class="text-danger">The maximum field length is 3, please update the fields</mat-error>
+                <validation-messages [control]="homeConsumptionFormStep2.controls.currency_code" errorMsg="Currency Code"></validation-messages>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('standard_currency')">
                 <div class="form-group">
-                    <span>Standard Currency</span> <span class="required"> *</span><br><br>
-                    <label class="col-md-3">
-                        <input type="radio" value="Yes" formControlName="standard_currency">Yes
-                    </label>
-                    <label class=" col-md-3">
-                        <input type="radio" value="No" formControlName="standard_currency">No
-                    </label>
+                    <span>Standard Currency</span> <span class="required"> *</span>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="standard_currency">
+                            <mat-radio-button value="Y" >Yes</mat-radio-button>&nbsp;&nbsp;   
+                            <mat-radio-button value="N">No</mat-radio-button> 
+                        </mat-radio-group> </div>
+                          
+                        <validation-messages [control]="homeConsumptionFormStep2.controls.standard_currency" errorMsg="Standard Currency"></validation-messages>
                 </div>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-2">
-                <label>Unit in Rs.</label>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('unit_in_rs')">
+                <label>Unit in Rs.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only number are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
                 <input type="text" class="form-control" formControlName="unit_in_rs">
-                <mat-error *ngIf='homeConsumptionFormStep2.controls.unit_in_rs.errors?.maxlength' class="text-danger">
-                    The maximum field length is 7, please update the fields <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep2.controls.unit_in_rs.errors?.pattern' class="text-danger">
-                    Only numbers are allowed in this field, please update</mat-error>
+                <validation-messages [control]="homeConsumptionFormStep2.controls.unit_in_rs" errorMsg="Unit in Rs"></validation-messages>
+                <div *ngIf="homeConsumptionFormStep2.controls.unit_in_rs.errors?.alphabetNotAllowed_d && homeConsumptionFormStep2.controls.unit_in_rs.dirty"
+                    class="text-danger">Only Numbers are allowed</div>
+                <div *ngIf="homeConsumptionFormStep2.controls.unit_in_rs.errors?.decimalRestricted_d && homeConsumptionFormStep2.controls.unit_in_rs.dirty"
+                    class="text-danger">Only upto 2 decimal values are allowed</div>
+                <div *ngIf="homeConsumptionFormStep2.controls.unit_in_rs.errors?.digitsBeforeDecimal_d && homeConsumptionFormStep2.controls.unit_in_rs.dirty"
+                    class="text-danger">Only 7 digits are allowed before decimal</div>
             </div>
 
-            <div class="form-group col-md-2">
-                <label>Rate</label>
+            <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('rate')">
+                <label>Rate<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 9 and only number are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
                 <input type="text" class="form-control" formControlName="rate">
-                <mat-error *ngIf='homeConsumptionFormStep2.controls.rate.errors?.maxlength' class="text-danger">The
-                    maximum field length is 9, please update the fields
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep2.controls.rate.errors?.pattern' class="text-danger">Only
-                    numbers are allowed in this field, please update
-                </mat-error>
+                <validation-messages [control]="homeConsumptionFormStep2.controls.rate" errorMsg="Rate"></validation-messages>
+                <div *ngIf="homeConsumptionFormStep2.controls.rate.errors?.alphabetNotAllowed_d && homeConsumptionFormStep2.controls.rate.dirty"
+                    class="text-danger">Only Numbers are allowed</div>
+                <div *ngIf="homeConsumptionFormStep2.controls.rate.errors?.decimalRestricted_d && homeConsumptionFormStep2.controls.rate.dirty"
+                    class="text-danger">Only upto 4 decimal values are allowed</div>
+                <div *ngIf="homeConsumptionFormStep2.controls.rate.errors?.digitsBeforeDecimal_d && homeConsumptionFormStep2.controls.rate.dirty"
+                    class="text-danger">Only 9 digits are allowed before decimal</div>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-2 " [ngClass]="displayFieldCss('effective_date')">
                 <label>Effective Date</label>
-                <br>
+                <div>
                 <mat-form-field>
                     <mat-label>Choose a date</mat-label>
                     <!-- #docregion toggle -->
@@ -59,31 +63,30 @@
                     <mat-datepicker-toggle matSuffix [for]="effective_date"></mat-datepicker-toggle>
                     <mat-datepicker #effective_date></mat-datepicker>
                     <!-- #enddocregion toggle -->
-                </mat-form-field>
+                </mat-form-field></div>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Bank name for Non-Standard Currency</label>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('bankname_non_standard_currency')">
+                <label>Bank name for Non-Standard Currency<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and only number are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
                 <input type="text" class="form-control" formControlName="bankname_non_standard_currency">
-                <mat-error *ngIf='homeConsumptionFormStep2.controls.bankname_non_standard_currency.errors?.maxlength'
-                    class="text-danger">The maximum field length is 35, please update the fields</mat-error>
+                <validation-messages [control]="homeConsumptionFormStep2.controls.bankname_non_standard_currency" errorMsg="Bank name for Non-Standard Currency"></validation-messages>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Certificate Number</label>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2 " [ngClass]="displayFieldCss('certificate_number')">
+                <label>Certificate Number<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
                 <input type="text" class="form-control" formControlName="certificate_number">
-                <mat-error *ngIf='homeConsumptionFormStep2.controls.certificate_number.errors?.maxlength'
-                    class="text-danger">The maximum field length is 20, please update the fields
-                </mat-error>
+                <validation-messages [control]="homeConsumptionFormStep2.controls.certificate_number" errorMsg="Certificate Number"></validation-messages>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Certificate Date</label>
-                <br>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('certificate_date')">
+                <label>Certificate Date </label>
+                <div>
                 <mat-form-field>
                     <mat-label>Choose a date</mat-label>
                     <!-- #docregion toggle -->
@@ -91,19 +94,16 @@
                     <mat-datepicker-toggle matSuffix [for]="certificate_date"></mat-datepicker-toggle>
                     <mat-datepicker #certificate_date></mat-datepicker>
                     <!-- #enddocregion toggle -->
-                </mat-form-field>
+                </mat-form-field> </div>
             </div>
-        </div>
-
-    </form>
 </div>
-
-
-
 
 <div class="btncontainer">
     <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
     <div class="col-md-4 offset-md-4"></div>
     <button id="back_draft" mat-raised-button>Save as Draft</button>
-    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+    <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
 </div>
+
+</form>

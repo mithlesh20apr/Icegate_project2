@@ -1,0 +1,23 @@
+<div class="row">
+    <form class="col-md-12" [formGroup]="seaEgmStep3">
+        <h2 class="text-center">EGM Container Details</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" >
+                <label>Container No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 11 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="container_no">
+                <validation-messages [control]="seaEgmStep3.controls.container_no" errorMsg="Container No."></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2">
+                <label>Container Status<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="container_status">
+                <validation-messages [control]="seaEgmStep3.controls.container_status" errorMsg="Container Status"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>

@@ -2,7 +2,9 @@ import { Component, OnInit,forwardRef } from '@angular/core';
 import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ShippingBillService } from '../service/shipping-bill.service';
 import {ValidatorsService} from '../../common/service/validators.service'
-
+import Swal from 'sweetalert2';
+import {TooltipPosition} from '@angular/material/tooltip';
+import { MatRadioChange } from '@angular/material/radio';
 @Component({
   selector: 'app-step9',
   templateUrl: './step9.component.html',
@@ -23,28 +25,30 @@ import {ValidatorsService} from '../../common/service/validators.service'
 export class Step9Component implements OnInit {
 
   shippingBillStepNine: FormGroup;
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   private formSumitAttempt: boolean;
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.shippingBillStepNine = this._formBuilder.group({
       site_id: ['', Validators.maxLength(6)],
-      invoice_serial_no: ['', [Validators.maxLength(5), Validators.pattern("[0-9]*$")]],
-      item_serial_no: ['', [Validators.maxLength(4), Validators.pattern("[0-9]*$")]],
-      serial_no: ['', [Validators.required, Validators.maxLength(4), Validators.pattern("[0-9]*$")]],
+      invoice_serial_no: ['', [Validators.maxLength(5), ValidatorsService.numberValidator]],
+      item_serial_no: ['', [Validators.maxLength(4), ValidatorsService.numberValidator]],
+      serial_no: ['', [Validators.required, Validators.maxLength(4), ValidatorsService.numberValidator]],
       info_type: ['',[Validators.required, Validators.maxLength(3)]],
       info_qualifier: ['', [Validators.required,Validators.maxLength(100)]],
       info_code: ['',[Validators.required, Validators.maxLength(100)]],
       info_text: ['', [Validators.required, Validators.maxLength(100)]],
-      info_msr: ['', [Validators.maxLength(16), Validators.pattern("[0-9]*$")]],
+      info_msr: ['', [Validators.maxLength(23),ValidatorsService.Decimalcheck((/^\d*\.?\d{0,6}$/),16)]],
       info_uqc: ['', [Validators.required, Validators.maxLength(100)]],
       constituent_element_name: ['', [Validators.required, Validators.maxLength(256)]],
       constituent_code: ['', [Validators.required, Validators.maxLength(17)]],
-      constituent_percentage: ['', [Validators.required, Validators.maxLength(6), Validators.pattern("[0-9]*$")]],
-      constituent_yield_percentage: ['', [Validators.required, Validators.maxLength(6), Validators.pattern("[0-9]*$")]],
+      constituent_percentage: ['', [Validators.required, Validators.maxLength(10), ValidatorsService.Decimalcheck((/^\d*\.?\d{0,3}$/),6)]],
+      constituent_yield_percentage: ['', [Validators.required, Validators.maxLength(10),  ValidatorsService.Decimalcheck((/^\d*\.?\d{0,3}$/),6)]],
       active_ingredient: ['', Validators.required],
-      production_batch_identifier: ['', [Validators.required, Validators.maxLength(17)]],
-      production_batch_quantity: ['', [Validators.required, Validators.maxLength(16), Validators.pattern("^[0-9]*$")]],
+      production_batch_identifier: ['', [Validators.required, Validators.maxLength(17),]],
+      production_batch_quantity: ['', [Validators.required, Validators.maxLength(23),  ValidatorsService.Decimalcheck((/^\d*\.?\d{0,6}$/),16)]],
       unit_quantity_code:['', [Validators.required, Validators.maxLength(3)]],
       manufacturing_date: ['', Validators.required],
       expiry_date: ['', Validators.required],
@@ -84,7 +88,7 @@ setDisabledState?(isDisabled: boolean): void {
 }
 validate(c: AbstractControl): ValidationErrors | null {
   //console.log("Consignment Info validation", c);
-  return this.shippingBillStepNine.valid ? null : { invalidForm: { valid: false, message: "Step1 fields are invalid" } };
+  return this.shippingBillStepNine.valid ? null : { invalidForm: { valid: false, message: "Step 7 fields are invalid" } };
 }
 
 
@@ -105,16 +109,35 @@ displayFieldCss(field: string) {
 
 // submit on save and continue sections
 onSubmit() {
-  console.log(this.shippingBillStepNine.value);
-
-  // stepper.next();
-  this.formSumitAttempt = true;
-  if (this.shippingBillStepNine.valid) {
-    console.log('form submitted');
-    
+  // console.log(this.shipingBillStepNine.valid);
+  // console.log(this.shipingBillStepNine.value);
+  // console.log();
+  if (this.shippingBillStepNine.valid === true) {
+    this.shippingBillStepNine.value
+    Swal.fire({
+      title: 'Step 7 completed',
+      text: "Please click next for other step or click cancel",
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Next &nbsp; &#8594;'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+        element.click();
+      }
+    })
   } else {
-    console.log('err');
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Required Validation is left. Please check',
+    }).then((result) =>{
+      this.formSumitAttempt = true
+    })
 
   }
 }
+
 }

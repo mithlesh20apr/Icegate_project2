@@ -39,7 +39,7 @@ export class Step4Component implements OnInit,ControlValueAccessor,Validator {
 
 
   writeValue(val: any): void {
-  //  console.log(val);
+    console.log(val);
     val && this.inBondFormStep4.patchValue(val, { emitEvent: true });
   }
   registerOnChange(fn: any): void {

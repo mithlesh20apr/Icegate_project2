@@ -9,35 +9,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './module/layout/header/header.component';
 import { LayoutComponent } from './module/layout/layout/layout.component';
 import { FooterComponent } from './module/layout/footer/footer.component';
-//import { ValidationMessagesComponent } from './module/common/component/validation-messages.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-   
     LayoutComponent,
     FooterComponent,
-    //ValidationMessagesComponent,
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
     BrowserAnimationsModule,
     HttpClientModule,
-    NgbModule,
-    
-  //  FaIconLibrary
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
- 
-}
+export class AppModule { }

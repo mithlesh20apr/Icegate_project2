@@ -1,0 +1,109 @@
+<div>Fill all the mandatory fields indicated by<span class="required"> *</span></div>
+<br>
+<div class="row">
+    <form class="col-md-12" [formGroup]="airlineEgmStep1">
+        <h2 class="text-center">Flight Details</h2>
+        <hr>
+        <div class="col-md-12"><br></div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('message_type')">
+                <label>Message Type</label><span class="required"> *</span>
+                <input type="text" class="form-control" formControlName="message_type"  readonly>
+            </div>
+            <div class="form-group  col-md-2" [ngClass]="displayFieldCss('custom_house_code')">
+                <label>Custom House Code &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" formControlName="custom_house_code" class="form-control">
+                <validation-messages [control]="airlineEgmStep1.controls.custom_house_code" errorMsg="Custom House Code"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group  col-md-2 offset-md-2" [ngClass]="displayFieldCss('egm_no')">
+                <label>EGM No. &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only numbers are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" formControlName="egm_no" class="form-control">
+                <validation-messages [control]="airlineEgmStep1.controls.egm_no" errorMsg="EGM No."></validation-messages>
+            </div>
+            <div class="form-group  col-md-2" [ngClass]="displayFieldCss('egm_date')">
+                <label>EGM  Date</label>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label> 
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="egm_date" formControlName="egm_date">
+                    <mat-datepicker-toggle matSuffix [for]="egm_date"></mat-datepicker-toggle>
+                    <mat-datepicker #egm_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+                <validation-messages [control]="airlineEgmStep1.controls.egm_date" errorMsg="EGM Date"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group  col-md-2 offset-md-1" [ngClass]="displayFieldCss('flight_no')">
+                <label>Flight No. <span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 15 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" formControlName="flight_no" class="form-control">
+                <validation-messages [control]="airlineEgmStep1.controls.flight_no" errorMsg="Flight No."></validation-messages>
+            </div>
+            <div class="form-group  col-md-2" [ngClass]="displayFieldCss('flight_origin_date')">
+                <label>Flight Origin (Departure) Date</label> <span class="required"> *</span> <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label> 
+                    <input matInput [matDatepicker]="flight_origin_date" formControlName="flight_origin_date">
+                    <mat-datepicker-toggle matSuffix [for]="flight_origin_date" errorMsg="Flight Origin Date"></mat-datepicker-toggle>
+                    <mat-datepicker #flight_origin_date></mat-datepicker>
+                </mat-form-field> </div>
+                <validation-messages [control]="airlineEgmStep1.controls.flight_origin_date" errorMsg="Flight Origin Date"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('port_origin')">
+                <label>Port of Origin</label> <span class="required"> *</span>
+                <select formControlName="port_origin" class="form-control">
+                    <option value="ind">IND</option>
+                    <option value="can">CAN</option>
+                </select>
+                <validation-messages [control]="airlineEgmStep1.controls.port_origin" errorMsg="Port of Origin"></validation-messages>
+
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('port_destination')">
+                <label>Port of Destination</label>  <span class="required"> *</span>
+                <select formControlName="port_destination" class="form-control">
+                    <option value="ind">IND</option>
+                    <option value="can">CAN</option>
+                </select>
+                <validation-messages [control]="airlineEgmStep1.controls.port_destination" errorMsg="Port of Destination"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('registration_no')">
+                <label>Registraion No. &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" formControlName="registration_no" class="form-control" >
+                <validation-messages [control]="airlineEgmStep1.controls.registration_no" errorMsg="Registraion No."></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('nil_cargo_flight')">
+                <label>Nil Cargo Flight</label>  <span class="required"> *</span>
+                <div>
+                    <mat-radio-group aria-label="Select an option" formControlName="nil_cargo_flight">
+                        <mat-radio-button value="Yes" >Yes</mat-radio-button>&nbsp;&nbsp;
+                        <mat-radio-button value="No">No</mat-radio-button>                            
+                    </mat-radio-group>
+                </div>
+                <validation-messages [control]="airlineEgmStep1.controls.nil_cargo_flight" errorMsg="Nil Cargo Flight"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="btncontainer">
+    <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button mat-raised-button id="back_draft">Save as Draft</button>
+    <button mat-flat-button  id="savecon" (click)="onSubmit()">Save & Continue</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
+</div>

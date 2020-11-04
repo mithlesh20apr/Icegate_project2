@@ -1,0 +1,143 @@
+<div class="mt-2">Fill all mandatory fields indicated by <span class="required">&#42;</span></div>
+
+<h2 class="text-center">Shipping Bill Details</h2>
+<form class="col-md-12" [formGroup]="seaEgmStep2">
+    <button mat-raised-button class="example-add-tab-button" (click)="addShippingBilltabs()" id="add-option" style="width: 240px;">
+        Add Shipping Bill Details
+        <mat-icon>add</mat-icon>
+    </button>
+    <div>
+        <mat-radio-group aria-label="Select an option" (change)="choose($event)">
+            <mat-radio-button value="C" checked="checked">Containerised</mat-radio-button>&nbsp;
+            <mat-radio-button value="NC">Non-Containerised</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <div class="row-mt-2">
+        <div class="col-lg-12 no-padding" formArrayName="shippingbill_details">
+            <mat-tab-group class="col-md-12 no-padding" [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" >
+                <mat-tab *ngFor="let shippingbill of addShippingBillDetails().controls; let i=index;" [label]="shippingbill" >
+                    <ng-template mat-tab-label>
+                        <span> Shipping Bill Details {{i + 1}}</span>
+                        <mat-icon *ngIf="addShippingBillDetails().controls.length != 1" (click)="removeShippingBilltabs(i)">cancel</mat-icon>
+                    </ng-template>
+                    <div [formGroupName]="i">
+                        <div class="col-md-12"><br></div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1" >
+                                <label>SB No.&nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only numbers are allowed " [matTooltipPosition]="position.value"
+                                    class="icon_tooltips"></fa-icon> </label>
+                                <input type="text" class="form-control" formControlName="sb_no">
+                                <validation-messages [control]="shippingbill.controls.sb_no" errorMsg="SB No."></validation-messages>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>SB Date</label>
+                                <div>
+                                <mat-form-field>
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="sb_date" formControlName="sb_date">
+                                    <mat-datepicker-toggle matSuffix [for]="sb_date"></mat-datepicker-toggle>
+                                    <mat-datepicker #sb_date></mat-datepicker>
+                                </mat-form-field>
+                                </div>
+                                <validation-messages [control]="shippingbill.controls.sb_date" errorMsg="SB Date"></validation-messages>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Port where SB filed</label><span class="required"> *</span> 
+                                <select class="form-control" formControlName="port_where_sb_filed">
+                                    <option value="ind">IND</option>
+                                </select>
+                                <validation-messages [control]="shippingbill.controls.port_where_sb_filed" errorMsg="Port where SB Filed"></validation-messages>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Port of Destination</label><span class="required"> *</span>
+                                <select class="form-control" formControlName="port_of_destination">
+                                    <option value="ind">IND</option>
+                                </select>
+                                <validation-messages [control]="shippingbill.controls.port_of_destination" errorMsg="Port of Destination"></validation-messages>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1" >
+                                <label>Nature of Cargo</label><span class="required"> *</span>
+                                <select class="form-control" formControlName="nature_of_cargo">
+                                    <option value="C">Containerized</option>
+                                    <option value="P">Non-containerised Packaged</option>
+                                    <option value="LB">Liquid Bulk</option>
+                                    <option value="DB">Dry Bulk</option>
+                                    <option value="CP">Containerized Packaged</option>
+                                </select>
+                                <validation-messages [control]="shippingbill.controls.nature_of_cargo" errorMsg="Nature of Cargo "></validation-messages>
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Gateway Port</label><span class="required"> *</span>
+                                <input type="text" class="form-control" formControlName="gateway_port">
+                                <validation-messages [control]="shippingbill.controls.gateway_port" errorMsg="Gateway Port"></validation-messages>
+                            </div>
+                        </div>
+                        <div class="form-row" *ngIf="value=='C' || value==null">
+                            <div class="form-group col-md-4 offset-md-1" >
+                                <label>No. of Packages<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
+                                    class="icon_tooltips"></fa-icon> </label>
+                                <input type="text" class="form-control" formControlName="no_of_packages">
+                                <validation-messages [control]="shippingbill.controls.no_of_packages" errorMsg="No. of Packages"></validation-messages>
+                            </div>
+                        </div>
+                        <!-- <div class="form-row" *ngIf="value=='NC'">
+                            <div class="form-group col-md-4 offset-md-1" >
+                                <label>No. of Packages<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon> </label>
+                                <input type="text" class="form-control" formControlName="no_of_packages_nc">
+                                <validation-messages [control]="shippingbill.controls.no_of_packages_nc" errorMsg="No. of Packages"></validation-messages>
+                            </div> -->
+                        <!-- </div> -->
+
+                        <div class="col-lg-12 no-padding add_other_items">
+                            <button mat-raised-button class="mt-3" id="add-option" (click)="addContainertabs(i)" [disabled]="disableAddButtons">
+                                Add Container Details
+                                <mat-icon>add</mat-icon>
+                             </button>
+                             <div class="" formArrayName="container_details">
+                            <mat-tab-group class="col-md-12 no-padding" [selectedIndex]="selecteds.value" (selectedIndexChange)="selecteds.setValue($event)" >
+                                <mat-tab *ngFor="let container of addContainerDetails(i).controls; let j=index;" [label]="container" >
+                                <ng-template mat-tab-label>
+                                    <span> Container Details {{j + 1}}</span>
+                                    <mat-icon *ngIf="addContainerDetails(i).controls.length != 1" (click)="removeContainertabs(i)">cancel</mat-icon>
+                                </ng-template>
+                                <div [formGroupName]="j">
+                                    <div class="col-md-12"><br></div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 offset-md-1" >
+                                            <label>Container No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 11 and characters are allowed " [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon> </label>
+                                            <input type="text" class="form-control" formControlName="container_no">
+                                            <validation-messages [control]="container.controls.container_no" errorMsg="Container No."></validation-messages>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-md-2">
+                                            <label>Container Status<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and characters are allowed " [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon> </label>
+                                            <input type="text" class="form-control" formControlName="container_status">
+                                            <validation-messages [control]="container.controls.container_status" errorMsg="Container Status"></validation-messages>
+                                        </div>
+                                    </div>
+                                </div>
+                                </mat-tab>
+                            </mat-tab-group>
+                             </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</form>
+
+<div class="btncontainer">
+    <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button mat-raised-button id="back_draft">Save as Draft</button>
+    <button mat-flat-button  id="savecon" (click)="onSubmit()">Submit</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
+</div>

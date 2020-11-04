@@ -1,0 +1,1312 @@
+<div>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" *ngFor="let item of [1]; first as isFirst" [expanded]="isFirst" class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Item Details {{index}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+
+                <form class="col-md-12 fonts" [formGroup]="exBondFormStep3">
+
+                    <div class="form-row">
+
+                        
+                        <div class="form-group col-md-2 offset-md-1">
+                            <label>Invoice Serial Number</label><span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="invoice_serial_number">
+                            <validation-messages [control]="exBondFormStep3.controls.invoice_serial_number" errorMsg=" Invoice Serial Number"></validation-messages>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Item Serial Number</label><span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="item_serial_number">
+                            <validation-messages [control]="exBondFormStep3.controls.item_serial_number" errorMsg=" Item Serial Number"></validation-messages>
+                        </div>
+                       
+                        <div class="form-group  col-md-4 offset-md-2">
+                            <label>Quantity</label><span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="item_quantity">
+                            <validation-messages [control]="exBondFormStep3.controls.item_quantity" errorMsg=" Item Quantity "></validation-messages>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Unit Quantity Code</label><span class="required"> * </span>
+
+                            <input type="text" class="form-control" formControlName="unit_quantity_code">
+                            <validation-messages [control]="exBondFormStep3.controls.unit_quantity_code" errorMsg=" Unit Quantity Code "></validation-messages>
+
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>RITC Number</label><span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="ritc_code">
+                            <validation-messages [control]="exBondFormStep3.controls.ritc_code" errorMsg=" RITC Code ">
+                            </validation-messages>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Item Catagory (scheme Code)</label>
+                            <select formControlName="item_category" class="form-control">
+                                <option></option>
+                                <option value="LO">LO</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Product Details
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <div class="row">
+
+                <form class="col-md-12 fonts" [formGroup]="exBondFormStep3">
+
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>CTH</label><span class="required">*</span>
+                            <input type="text" class="form-control" formControlName="cth">
+                            <validation-messages [control]="exBondFormStep3.controls.cth" errorMsg=" CTH ">
+                            </validation-messages>
+
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Country of origin</label><span class="required">*</span>
+                            <input type="text" class="form-control" formControlName="country_of_origin_of_item">
+                            <validation-messages [control]="exBondFormStep3.controls.country_of_origin_of_item" errorMsg=" Country Of Origin of Item "></validation-messages>
+
+                        </div>
+                    </div>
+
+                    <div *ngIf='exBondFormStep3.value.cth.length==8'>
+                        <mat-card class="cth-background">
+
+                            <mat-accordion class="child-accordion">
+
+                                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="matnotexpand">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Invoice Details
+                                        </mat-panel-title>
+
+                                    </mat-expansion-panel-header>
+
+                                    <div class="row">
+
+                                        <form class="col-md-12" [formGroup]="exBondFormStep3">
+
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Invoice Serial
+                                                        Number</label><span class="required"> *</span>
+                                                    <input class="form-control" formControlName="invoice_serial_number">
+                                                    <validation-messages [control]="exBondFormStep3.controls.invoice_serial_number" errorMsg=" Invoice Serial Number"></validation-messages>
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Item Serial
+                                                        Number</label><span class="required">*</span>
+                                                    <input class="form-control" formControlName="item_serial_number">
+                                                    <validation-messages [control]="exBondFormStep3.controls.item_serial_number" errorMsg=" Item Serial Number "></validation-messages>
+                                                </div>
+                                            </div>
+                                            <!-- </div>
+                                            <div class="form-row">
+
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Info Type</label><span class="required"> *</span>
+                                                    <input type="text" class="form-control" formControlName="info_type">
+                                                    <validation-messages [control]="exBondFormStep3.controls.info_type" errorMsg=" Info Type "></validation-messages>
+
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>RITC Qualifier</label><span class="required">*</span>
+                                                    <input class="form-control" formControlName="ritc_qualifier">
+                                                    <validation-messages [control]="exBondFormStep3.controls.ritc_qualifier" errorMsg=" RITC Qualifier "></validation-messages>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Info_code</label>
+                                                    <input type="text" formControlName="info_code" class="form-control">
+                                                    <validation-messages [control]="exBondFormStep3.controls.info_code" errorMsg=" Info Code "></validation-messages>
+
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Info_text</label>
+                                                    <input type="text" class="form-control" formControlName="info_text">
+                                                    <validation-messages [control]="exBondFormStep3.controls.info_text" errorMsg=" Info Text "></validation-messages>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Info_msr </label><span class="required">*</span>
+                                                    <input type="text" class="form-control" formControlName="info_msr">
+                                                    <validation-messages [control]="exBondFormStep3.controls.info_msr" errorMsg=" Info MSR "></validation-messages>
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Info_uqc</label>
+                                                    <input type="text" class="form-control" formControlName="info_uqc">
+                                                    <validation-messages [control]="exBondFormStep3.controls.info_uqc" errorMsg=" Info UQC "></validation-messages>
+                                                </div>
+                                            </div> -->
+                                        </form>
+                                    </div>
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                            <!-- <mat-accordion>
+
+                                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Constituent Details
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <div class="row">
+
+                                        <form class="col-md-12" [formGroup]="exBondFormStep3">
+
+                                            <div class="form-row">
+
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Constituent Sr. No.</label> <span class="required"> *</span>
+                                                    <input type="text" class="form-control" formControlName="constituent_serial_number">
+                                                    <validation-messages [control]="exBondFormStep3.controls.constituent_element_number" errorMsg=" Constituent Sr. Number"></validation-messages>
+
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Constituent Element Name</label><span class="required">*</span>
+                                                    <input type="number" class="form-control" formControlName="constituent_element_name">
+                                                    <validation-messages [control]="exBondFormStep3.controls.constituent_element_name" errorMsg=" Constituent Element Name "></validation-messages>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Constituent Element Code</label><span class="required">
+                                                        *</span>
+                                                    <input type="text" class="form-control" formControlName="constituent_element_code">
+                                                    <validation-messages [control]="exBondFormStep3.controls.constituent_element_code" errorMsg=" Constituent Element Code"></validation-messages>
+                                                </div>
+                                               
+                                                <div class="form-group col-md-2 offset-md-2">
+                                                    <label>Constituent Percentage</label><span class="required">
+                                                        *</span>
+                                                    <input type="number" class="form-control" formControlName="constituent_percentage">
+                                                    <validation-messages [control]="exBondFormStep3.controls.constituent_percentage" errorMsg=" Constituent Percentage "></validation-messages>
+
+                                                </div>
+
+                                                <div class="form-group col-md-2">
+                                                    <label>Constituent Yield
+                                                        %</label><span class="required">*</span>
+                                                    <input type="number" class="form-control" formControlName="constituent_yield_percentage">
+                                                    <validation-messages [control]="exBondFormStep3.controls.constituent_yield_percentage" errorMsg=" Constituent Yield Percentage "></validation-messages>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+
+                                                    <span>Active ingredient (Y/N)</span> <span class="required">*</span>
+                                                    <div>
+                                                        <mat-radio-group aria-label="Select an option" formControlName="active_ingredient_flag">
+                                                            <mat-radio-button value="Yes">Yes</mat-radio-button>
+                                                            &nbsp;&nbsp;
+                                                            <mat-radio-button value="No">No</mat-radio-button>
+                                                        </mat-radio-group>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+
+                                </mat-expansion-panel>
+                            </mat-accordion> -->
+                            <!-- <mat-accordion>
+
+                                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                    <mat-expansion-panel-header class="colour">
+                                        <mat-panel-title>
+                                            Production Details
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+
+                                    <div class="row">
+
+                                        <form class="col-md-12" [formGroup]="exBondFormStep3">
+
+                                            <div class="form-row">
+
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Production Batch
+                                                        Identifier</label>
+                                                    <input type="text" class="form-control" formControlName="production_batch_identifier">
+                                                    <validation-messages [control]="exBondFormStep3.controls.production_batch_identifier" errorMsg=" Production Batch Identifier "></validation-messages>
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Production Batch
+                                                        Quantity</label><span class="required"> *</span>
+                                                    <input type="text" class="form-control" formControlName="production_batch_quantity">
+                                                    <validation-messages [control]="exBondFormStep3.controls.production_batch_quantity" errorMsg=" Production Batch Quantity "></validation-messages>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Unit Quantity Code</label> <span class="required"> *</span>
+                                                    <input type="text" class="form-control" formControlName="unit_quantity_code">
+
+                                                    <validation-messages [control]="exBondFormStep3.controls.unit_quantity_code" errorMsg=" Unit Quantity Code "></validation-messages>
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Date of
+                                                        Manufacturing</label><span class="required"> *</span>
+
+                                                    <div>
+                                                        <mat-form-field>
+                                                            <mat-label>Choose a date</mat-label>
+                                                           
+                                                            <input matInput [matDatepicker]="date_manufacturing" formControlName="date_manufacturing">
+                                                            <mat-datepicker-toggle matSuffix [for]="date_manufacturing">
+                                                            </mat-datepicker-toggle>
+                                                            <mat-datepicker #date_manufacturing></mat-datepicker>
+                                                           
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <validation-messages [control]="exBondFormStep3.controls.date_manufacturing" errorMsg=" Date of Manufacturing "></validation-messages>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Date Of Expiry</label><span class="required"> *</span>
+                                                    <div>
+                                                        <mat-form-field>
+                                                            <mat-label>Choose a date</mat-label>
+                                                           
+                                                            <input matInput [matDatepicker]="date_expiry" formControlName="date_expiry">
+                                                            <mat-datepicker-toggle matSuffix [for]="date_expiry">
+                                                            </mat-datepicker-toggle>
+                                                            <mat-datepicker #date_expiry></mat-datepicker>
+                                                          
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <validation-messages [control]="exBondFormStep3.controls.date_expiry" errorMsg="
+                                                        Date of Expiry"></validation-messages>
+                                                </div>
+                                                <div class=" col-md-2">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Best Before</label><span class="required"> *</span>
+                                                    <input type="number" class="form-control" formControlName="best_before">
+                                                    <validation-messages [control]="exBondFormStep3.controls.best_before" errorMsg=" Best Before "></validation-messages>
+                                                </div>
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+
+                                </mat-expansion-panel>
+                            </mat-accordion> -->
+                            <!-- <mat-accordion>
+
+                                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Control Details
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <div class="row">
+
+                                        <form class="col-md-12" [formGroup]="exBondFormStep3">
+
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Control Type
+                                                        Code</label><span class="required">*</span>
+                                                    <input type="text" class="form-control" formControlName="control_type_code">
+                                                    <validation-messages [control]="exBondFormStep3.controls.control_type_code" errorMsg=" Control Type Code "></validation-messages>
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Control Location
+                                                    </label><span class="required">*</span>
+                                                    <input type="text" class="form-control" formControlName="control_location">
+                                                    <validation-messages [control]="exBondFormStep3.controls.control_location" errorMsg=" Control Location "></validation-messages>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Control Start Date</label>
+                                                 
+                                                    <div>
+                                                        <mat-form-field>
+                                                            <mat-label>Choose a date</mat-label>
+                                                            
+                                                            <input matInput [matDatepicker]="control_start_date" formControlName="control_start_date">
+                                                            <mat-datepicker-toggle matSuffix [for]="control_start_date">
+                                                            </mat-datepicker-toggle>
+                                                            <mat-datepicker #control_start_date></mat-datepicker>
+                                                           
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <validation-messages [control]="exBondFormStep3.controls.control_start_date" errorMsg=" Control Start Date "></validation-messages>
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Control End Date</label>
+                                                   
+                                                    <div>
+                                                        <mat-form-field>
+                                                            <mat-label>Choose a date</mat-label>
+                                                            
+                                                            <input matInput [matDatepicker]="control_end_date" formControlName="control_end_date">
+                                                            <mat-datepicker-toggle matSuffix [for]="control_end_date">
+                                                            </mat-datepicker-toggle>
+                                                            <mat-datepicker #control_end_date></mat-datepicker>
+                                                           
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <validation-messages [control]="exBondFormStep3.controls.control_end_date" errorMsg=" Control End Date  "></validation-messages>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Control Result
+                                                        Code</label><span class="required">*</span>
+                                                    <input type="text" class="form-control" formControlName="control_result_code">
+                                                    <validation-messages [control]="exBondFormStep3.controls.control_result_code" errorMsg=" Control Result Code "></validation-messages>
+                                                </div>
+                                               
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Control Result
+                                                        text</label>
+                                                    <input type="text" class="form-control" formControlName="control_result_text">
+                                                    <validation-messages [control]="exBondFormStep3.controls.control_result_text" errorMsg=" Control Result Text "></validation-messages>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </mat-expansion-panel>
+
+                            </mat-accordion> -->
+
+                        </mat-card>
+
+                    </div>
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Preferential(P)/ Standard (S) </label><span class="required">*</span>
+                            <input type="text" class="form-control" formControlName="preferential_or_standard">
+                            <validation-messages [control]="exBondFormStep3.controls.preferential_or_standard" errorMsg=" Preferential/ Standard"></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>CETH</label><span class="required">*</span>
+                            <input type="text" class="form-control" formControlName="ceth">
+                            <validation-messages [control]="exBondFormStep3.controls.ceth" errorMsg=" CETH "></validation-messages>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Notification Details
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <div class="row">
+
+                <form class="col-md-12" [formGroup]="exBondFormStep3">
+
+                    <div class="form-row">
+
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>BCD Notification</label>
+                            <input type="text" class="form-control" formControlName="bcd_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.bcd_notification" errorMsg=" BCD Notification"></validation-messages>
+
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>BCD Notification Sr.No.</label>
+                            <input type="text" class="form-control" formControlName="bcd_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.bcd_notification_sr_no" errorMsg=" BCD Notification Sr. No. "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>CVD Notification</label>
+                            <input type="text" class="form-control" formControlName="cvd_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.cvd_notification" errorMsg="CVD Notification "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> CVD Notification Sr.No.</label>
+                            <input type="text" class="form-control" formControlName="cvd_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.cvd_notification_sr_no" errorMsg=" CVD Notification Sr. No. "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Additional Notification 1 </label>
+                            <input type="text" class="form-control" formControlName="additional_notification1">
+                            <validation-messages [control]="exBondFormStep3.controls.additional_notification1" errorMsg=" Additional Notification1"></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Additional Notification 1 Sr.No.</label>
+                            <input type="text" class="form-control" formControlName="additional_notification1_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.additional_notification1_sr_no" errorMsg=" Additional Notification1 Sr. No."></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Additional Notification 2 </label>
+                            <input type="text" class="form-control" formControlName="additional_notification2">
+                            <validation-messages [control]="exBondFormStep3.controls.additional_notification2" errorMsg=" Additional Notification2 "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Additional Notification 2 Sr.No</label>
+                            <input type="text" class="form-control" formControlName="additional_notification2_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.additional_notification2_sr_no" errorMsg="Additional Notification2 Sr. No."></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Other Notification </label>
+                            <input type="text" class="form-control" formControlName="other_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.other_notification" errorMsg=" Other Notification "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Other Notification Sr. No.</label>
+                            <input type="text" class="form-control" formControlName="other_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.other_notification_sr_no " errorMsg=" Other Notification Sr. No. "></validation-messages>
+                        </div>
+                    </div>
+
+                    <div *ngIf="exBondFormStep3.value.other_notification.length==10" class="dropdown-color">
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Invoice Serial Number</label><span class="required">*</span>
+                                <input class="form-control" formControlName="invoice_serial_number">
+                                <validation-messages [control]="exBondFormStep3.controls.invoice_serial_number" errorMsg=" Invoice Serial Number "></validation-messages>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group  col-md-4 offset-md-2">
+                            <label>Item Sr. No. In Invoice</label><span class="required"> *</span>
+                            <input class="form-control" formControlName="item_serial_number_invoice">
+                            <validation-messages [control]="exBondFormStep3.controls.item_serial_number_invoice" errorMsg="Item Sr. No. in Invoice "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Notification No.</label><span class="required"> *</span>
+                            <input class="form-control" formControlName="notification_number">
+                            <validation-messages [control]="exBondFormStep3.controls.notification_number" errorMsg=" Notification No. "></validation-messages>
+
+
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Notification Sr. No.</label><span class="required">*</span>
+                            <input class="form-control" formControlName="notification_serial_number">
+                            <validation-messages [control]="exBondFormStep3.controls.notification_serial_number" errorMsg=" Notification Sr. No. "></validation-messages>
+
+                        </div>
+
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-1"></div>
+                        <div class="form-group col-md-4">
+                            <span>Duty Type</span><span class="required">*</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="duty_type">
+                                    <mat-radio-button value="E">E</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button value="G">G</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button value="C">C</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep3.controls.duty_type" errorMsg=" Duty Type "></validation-messages>
+                        </div>
+
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Addl Duty Flag</label><span class="required"> *</span>
+                            <input class="form-control" formControlName="additional_duty_flag">
+                            <validation-messages [control]="exBondFormStep3.controls.additional_duty_flag" errorMsg=" Additional Duty Flag "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Exmp Notification</label><span class="required"> </span>
+                            <input class="form-control" formControlName="exmp_notification">
+
+                            <validation-messages [control]="exBondFormStep3.controls.exmp_notification" errorMsg=" Exmp Notification "></validation-messages>
+
+                        </div>
+                       
+                        <div class="form-group  col-md-4 offset-md-2">
+                            <label>Exmp Notification Sr. No.</label><span class="required"></span>
+                            <input class="form-control" formControlName="exmp_notification_serial_number">
+
+                            <validation-messages [control]="exBondFormStep3.controls.exmp_notification_serial_number" errorMsg=" Exmp Notification Sr. No. ">
+                            </validation-messages>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Customs Notn Exempting IGST Flag (G/C)</label><span class="required"> </span>
+                            <input class="form-control" formControlName="customs_exmp">
+
+                            <validation-messages [control]="exBondFormStep3.controls.customs_exmp" errorMsg=" Customs Notn Exempting IGST Flag (G/C)"></validation-messages>
+                        </div>
+                       
+                        <div class="form-group  col-md-4 offset-md-2">
+                            <label>Supplier Sl. No.</label><span class="required"></span>
+                            <input class="form-control" formControlName="suplier_number">
+
+                            <validation-messages [control]="exBondFormStep3.controls.suplier_number" errorMsg="Supplier Sl. No. "></validation-messages>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Nou</label><span class="required"> </span>
+                            <input class="form-control" formControlName="nou">
+
+                            <validation-messages [control]="exBondFormStep3.controls.nou" errorMsg=" NOU "></validation-messages>
+
+                        </div>
+
+                    </div>
+
+                    <!-- </div> -->
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Cus EDUCESS Notification </label>
+                            <input type="text" class="form-control" formControlName="cus_educess_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.cex_educess_notification" errorMsg="Cus EDUCESS Notification "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Cus EDUCESS Notification Sr.No.</label>
+                            <input type="text" class="form-control" formControlName="cus_educess_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.cex_educess_notification_sr_no" errorMsg=" Cus EDUCESS Notification Sr. No. "></validation-messages>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>NCD Notification </label>
+                            <input type="text" class="form-control" formControlName="ncd_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.ncd_notification" errorMsg=" NCD Notification  "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> NCD Sr. No.</label>
+                            <input type="text" class="form-control" formControlName="ncd_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.ncd_notification_sr_no" errorMsg=" NCD Sr. No. "></validation-messages>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Anti Dumping Duty Notification </label>
+                            <input type="text" class="form-control" formControlName="antii_dumping_duty_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.antii_dumping_duty_notification" errorMsg="Anti Dumping Duty Notification   "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Anti Dumping Duty Notification Sr.No</label>
+                            <input type="text" class="form-control" formControlName="antii_dumping_duty_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.antii_dumping_duty_notification_sr_no" errorMsg=" Anti Dumping Duty Notification Sr. No. "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>CTH Serial Number </label>
+                            <input type="text" class="form-control" formControlName="cth_serial_number">
+                            <validation-messages [control]="exBondFormStep3.controls.cth" errorMsg=" CTH Serial Number "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Supplier Serial Number</label>
+                            <input type="text" class="form-control" formControlName="supplier_serial_number">
+                            <validation-messages [control]="exBondFormStep3.controls.supplier_serial_number" errorMsg=" Supplier Serial Number "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-2 offset-md-1">
+                            <label>Quantity as per Anti Dumping Notf.</label>
+                            <input type="text" class="form-control" formControlName="quantity_antii_dumping_duty_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.quantity_antii_dumping_duty_notification" errorMsg=" Quantity as per Anti Dumping Notf. "></validation-messages>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Quantity as per Tariff Value Notf.</label>
+                            <input type="text" class="form-control" formControlName="quantity_tariff_value_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.quantity_tariff_value_notification" errorMsg=" Quantity as per Tariff Value Notf. "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Tariff Value Notification</label>
+                            <div></div>
+                            <input type="text" class="form-control" formControlName="tariff_value_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.tariff_value_notification" errorMsg=" Tariff Value Notification "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Tariff Value item Serial Number</label>
+                            <input type="text" class="form-control" formControlName="tariff_value_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.tariff_value_notification_sr_no" errorMsg=" Tariff Value item Serial Number "></validation-messages>
+                        </div>
+
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>SAPTA Notification</label>
+                            <input type="text" class="form-control" formControlName="sapta_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.sapta_notification" errorMsg="SAPTA Notification "></validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>SAPTA Notification Serial Number</label>
+                            <input type="text" class="form-control" formControlName="sapta_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.sapta_notification_sr_no" errorMsg=" SAPTA Notification Serial Number"></validation-messages>
+                        </div>
+
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Health Notification</label>
+                            <input type="text" class="form-control" formControlName="health_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.health_notification" errorMsg=" Health Notification"></validation-messages>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Health Notification Serial Number</label>
+                            <input type="text" class="form-control" formControlName="health_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.health_notification_sr_no" errorMsg=" Health Notification Serial Number
+                                    "></validation-messages>
+                        </div>
+
+                        <!-- <div class=" col-md-2">
+                            </div> -->
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Additional CVD Notification</label>
+                            <input type="text" class="form-control" formControlName="additional_cvd_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.additional_cvd_notification" errorMsg=" Additional CVD Notification "></validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Additional CVD Notification Serial Number</label>
+                            <input type="text" class="form-control" formControlName="additional_cvd_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.additional_cvd_notification_sr_no" errorMsg=" Additional CVD Notification Serial Number "></validation-messages>
+                        </div>
+
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Aggregate Duty Notification</label>
+                            <input type="text" class="form-control" formControlName="aggregate_duty_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.aggregate_duty_notification" errorMsg=" Aggregate Duty Notification "></validation-messages>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Aggregate Duty Notification Serial Number</label>
+                            <input type="text" class="form-control" formControlName="aggregate_duty_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.aggregate_duty_notification_sr_no" errorMsg=" Aggregate Duty Notification Serial Number"></validation-messages>
+                        </div>
+
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Safe Guard Duty Notification</label>
+                            <input type="text" class="form-control" formControlName="safeguard_duty_notification">
+                            <validation-messages [control]="exBondFormStep3.controls.safeguard_duty_notification" errorMsg=" Safe Guard Duty Notification"></validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Safe Guard Duty Notification Serial Number</label>
+                            <input type="text" class="form-control" formControlName="safeguard_duty_notification_sr_no">
+                            <validation-messages [control]="exBondFormStep3.controls.safeguard_duty_notification_sr_no" errorMsg="  Safe Guard Duty Notification Serial Number "></validation-messages>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Price Details
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <div class="row">
+
+                <form class="col-md-12 fonts" [formGroup]="exBondFormStep3">
+
+                    <div class="form-row">
+
+                        
+                        <div class="form-group col-md-2 offset-md-1">
+                            <label>Unit Priced Invoice</label><span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="unit_price_invoiced">
+                            <validation-messages [control]="exBondFormStep3.controls.unit_price_invoiced" errorMsg=" Unit Price Invoice "></validation-messages>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Discount Rate</label>
+                            <input type="text" class="form-control" formControlName="discount_rate">
+                            <validation-messages [control]="exBondFormStep3.controls.discount_rate" errorMsg=" Discount Rate "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-2 offset-md-2">
+                            <label>Discount Amount</label>
+                            <input type="text" class="form-control" formControlName="discount_amount">
+                            <validation-messages [control]="exBondFormStep3.controls.discount_amount" errorMsg="Discount Amount"></validation-messages>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Quantity as per CTH</label>
+                            <input type="text" class="form-control" formControlName="quantity_cth">
+                            <validation-messages [control]="exBondFormStep3.controls.quantity_cth" errorMsg=" Quantity CTH"></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>SVB Reference Number</label>
+                            <input type="text" class="form-control" formControlName="svb_reference_number">
+                            <validation-messages [control]="exBondFormStep3.controls.svb_reference_number" errorMsg="SVB Reference Number "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> SVB Reference Date</label>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Choose a date</mat-label>
+                                    
+                                    <input matInput [matDatepicker]="svb_reference_date" formControlName="svb_reference_date">
+                                    <mat-datepicker-toggle matSuffix [for]="svb_reference_date"></mat-datepicker-toggle>
+                                    <mat-datepicker #svb_reference_date></mat-datepicker>
+                                   
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-2 offset-md-1">
+                            <label>SVB Load Assessable Value </label>
+                            <input type="text" class="form-control" formControlName="svb_load_assessable_value">
+                            <validation-messages [control]="exBondFormStep3.controls.svb_load_assessable_value" errorMsg=" SVB Load Accessory Value "></validation-messages>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label> SVB Load on Duty</label>
+                            <input type="text" class="form-control" formControlName="svb_load_on_duty">
+                            <validation-messages [control]="exBondFormStep3.controls.svb_load_on_duty" errorMsg="SVB Load on Duty "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> SVB Flag</label>
+                            <input type="text" class="form-control" formControlName="svb_flag">
+                            <validation-messages [control]="exBondFormStep3.controls.svb_flag" errorMsg="SVB Flag ">
+                            </validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Whether Load Final/ Provisional on Assessable Value </label>
+                            <input type="text" class="form-control" formControlName="load_final_provisional_on_ass_value">
+                            <validation-messages [control]="exBondFormStep3.controls.load_final_provisional_on_ass_value" errorMsg=" Whether Load Final/ Provisional on Assessable Value "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Whether Load Final/ Provisional on Duty</label>
+                            <input type="text" class="form-control" formControlName="load_final_provisional_on_duty">
+                            <validation-messages [control]="exBondFormStep3.controls.load_final_provisional_on_duty" errorMsg=" Whether Load Final/ Provisional on Duty "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Custom House Code which has been imported on Load </label>
+                            <input type="text" class="form-control" formControlName="custom_house_code_imposed_load">
+                            <validation-messages [control]="exBondFormStep3.controls.custom_house_code_imposed_load" errorMsg=" Custom House Code which has been imported on Load"></validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Policy Para No </label>
+                            <input type="text" class="form-control" formControlName="policy_para_no">
+                            <validation-messages [control]="exBondFormStep3.controls.policy_para_no" errorMsg=" Policy Para No "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Policy Year</label>
+                            <input type="text" class="form-control" formControlName="policy_year">
+                            <validation-messages [control]="exBondFormStep3.controls.policy_year" errorMsg="Policy Year "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <span>RSP applicability? </span> <span class="required">*</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="rsp_applicability">
+                                    <mat-radio-button value="Y">Y</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button value="N">N</mat-radio-button> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button value="Q">Q</mat-radio-button> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button value="T">T</mat-radio-button> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <mat-radio-button value="D">D</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep3.controls.rsp_applicability" errorMsg="RSP applicability? "></validation-messages>
+
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <span>Wether RE Importer (Y/N)? </span> <span class="required">*</span>
+                            <div>
+                                <mat-radio-group aria-label="Select an option" formControlName="re_import">
+                                    <mat-radio-button value="Yes">Yes</mat-radio-button>&nbsp;&nbsp;
+                                    <mat-radio-button value="No">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <validation-messages [control]="exBondFormStep3.controls.re_import" errorMsg="Wether RE Importer (Y/N)? "></validation-messages>
+                        </div>
+                    </div>
+
+                    <div *ngIf="exBondFormStep3.controls.re_import.value==='Yes'" class="dropdown-color">
+
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Permission Code</label><span class="required">*</span>
+                                <input class="form-control" formControlName="permission_code">
+                                <validation-messages [control]="exBondFormStep3.controls.permission_code" errorMsg=" Permission Code "></validation-messages>
+
+                            </div>
+                           
+                            <div class="form-group  col-md-4 offset-md-2">
+                                <label>Reason for Request</label><span class="required">*</span>
+                                <input class="form-control" formControlName="reason_for_request">
+                                <validation-messages [control]="exBondFormStep3.controls.reason_for_request" errorMsg=" Reason for Request"></validation-messages>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Invoice Serial Number</label><span class="required">*</span>
+                                <input class="form-control" formControlName="invoice_serial_number">
+                                <validation-messages [control]="exBondFormStep3.controls.invoice_serial_number" errorMsg=" Invoice Serial Number "></validation-messages>
+
+                            </div>
+                           
+
+                            <div class="form-group  col-md-4 offset-md-2">
+                                <label>Item Serial Number in Invoice </label><span class="required">*</span>
+                                <input class="form-control" formControlName="item_serial_number_invoice">
+                                <validation-messages [control]="exBondFormStep3.controls.item_serial_number_invoice" errorMsg="Item Serial Number in Invoice "></validation-messages>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label> * Shipping Bill No.</label><span class="required">*</span>
+                                <input type="text" class="form-control" formControlName="shipping_bill_no">
+                                <validation-messages [control]="exBondFormStep3.controls.shipping_bill_no" errorMsg=" Shipping Bill No."></validation-messages>
+
+                            </div>
+                           
+                            <div class="form-group  col-md-4 offset-md-2">
+                                <label> * Shipping Bill Date</label><span class="required">*</span>
+
+                                <div>
+                                    <mat-form-field>
+                                        <mat-label>Choose a date</mat-label>
+                                        
+                                        <input matInput [matDatepicker]="shipping_bill_date" formControlName="shipping_bill_date">
+                                        <mat-datepicker-toggle matSuffix [for]="shipping_bill_date">
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #shipping_bill_date></mat-datepicker>
+                                       
+                                    </mat-form-field>
+                                </div>
+
+                                <validation-messages [control]="exBondFormStep3.controls.shipping_bill_date" errorMsg=" Shipping Bill Date "></validation-messages>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label> * Port of Export</label><span class="required">*</span>
+                                <select class="form-control" formControlName="port_of_export">
+                                    <option> </option>
+                                </select>
+                                <validation-messages [control]="exBondFormStep3.controls.port_of_export" errorMsg=" Port of Export "></validation-messages>
+
+                            </div>
+                           
+                            <div class="form-group  col-md-4 offset-md-2">
+                                <label>* Invoice No. (SB)</label>
+                                <input tyepe="text" class="form-control" formControlName="invoice_no_sb">
+                                <validation-messages [control]="exBondFormStep3.controls.invoice_no_sb" errorMsg=" Invoice No (SB) "></validation-messages>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label> * Item No. (SB)</label>
+                                <input type="text" class="form-control" formControlName="item_no_sb">
+                                <validation-messages [control]="exBondFormStep3.controls.item_no_sb" errorMsg=" Item No (SB) "></validation-messages>
+                            </div>
+                           
+                            <div class="form-group  col-md-4 offset-md-2">
+                                <label>Notification No</label><span class="required">*</span>
+                                <input type="text" class="form-control" formControlName="notification_no">
+                                <validation-messages [control]="exBondFormStep3.controls.notification_no" errorMsg=" Notification Number "></validation-messages>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Notification Sr. Number</label><span class="required">*</span>
+                                <input type="text" class="form-control" formControlName="notification_sr_no">
+                                <validation-messages [control]="exBondFormStep3.controls.notification_serial_number" errorMsg=" Notification Sr. Number "></validation-messages>
+                            </div>
+                           
+                            <div class="form-group  col-md-4 offset-md-2">
+                                <label>** Export Freight</label>
+                                <input type="text" class="form-control" formControlName="export_freight">
+                                <validation-messages [control]="exBondFormStep3.controls.export_freight" errorMsg=" Export Freight"></validation-messages>
+
+
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label> ** Export Insurance</label>
+                                <input type="text" class="form-control" formControlName="export_insurance">
+                                <validation-messages [control]="exBondFormStep3.controls.export_insurance" errorMsg=" Export Insurance "></validation-messages>
+
+
+                            </div>
+                           
+                            <div class="form-group  col-md-4 offset-md-2">
+                                <label> ** Excise Duty</label>
+                                <input type="text" class="form-control" formControlName="excise_duty">
+                                <validation-messages [control]="exBondFormStep3.controls.excise_duty" errorMsg=" Excise Duty "></validation-messages>
+
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label> *** Customs Duty</label>
+                                <input class="form-control" formControlName="customs_duty">
+                                <validation-messages [control]="exBondFormStep3.controls.customs_duty" errorMsg=" Customs Duty"></validation-messages>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Previous BE No. </label>
+                            <input type="text" class="form-control" formControlName="prev_be_no">
+                            <validation-messages [control]="exBondFormStep3.controls.prev_be_no" errorMsg=" Previous BE Number "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Previous BE Date</label>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Choose a date</mat-label>
+                                    
+                                    <input matInput [matDatepicker]="prev_be_date" formControlName="prev_be_date">
+                                    <mat-datepicker-toggle matSuffix [for]="prev_be_date"></mat-datepicker-toggle>
+                                    <mat-datepicker #prev_be_date></mat-datepicker>
+                                   
+                                </mat-form-field>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-2 offset-md-1">
+                            <label>Previous Unit Price </label>
+                            <input type="text" class="form-control" formControlName="prev_unit_price">
+                            <validation-messages [control]="exBondFormStep3.controls.prev_unit_price" errorMsg="Previous Unit Price "></validation-messages>
+                        </div>
+
+                        <div class="form-group col-md-2 ">
+                            <label> Previous Currency Code</label>
+                            <input type="text" class="form-control" formControlName="prev_unit_currency">
+                            <validation-messages [control]="exBondFormStep3.controls.prev_unit_currency" errorMsg="  Previous Currency Code "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label> Previous Currency Site </label>
+                            <input type="text" class="form-control" formControlName="prev_customm_site">
+                            <validation-messages [control]="exBondFormStep3.controls.prev_customm_site" errorMsg=" Previous Currency Site  "></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Customs Notf.exempting central excicde flag </label>
+                            <input type="text" class="form-control" formControlName="custom_notifictaion_exempting_central_excise_flag">
+                            <validation-messages [control]="exBondFormStep3.controls.custom_notifictaion_exempting_central_excise_flag" errorMsg="Customs Notf.exempting central excicde flag  "></validation-messages>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Manufacture Details
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <div class="row">
+
+                <form class="col-md-12 fonts" [formGroup]="exBondFormStep3">
+
+                    <div class="form-row">
+
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Item Manufacturer/Producer Code Type </label>
+                            <input type="text" class="form-control" formControlName="producer_code">
+                            <validation-messages [control]="exBondFormStep3.controls.producer_code" errorMsg=" Item Manufacturer/Producer/ Grower Code Type"></validation-messages>
+
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Item Manufacturer/Producer/Grower Code</label>
+                            <input type="text" class="form-control" formControlName="grower_code">
+                            <validation-messages [control]="exBondFormStep3.controls.grower_code" errorMsg=" Item Manufacturer/Producer/ Grower Code "></validation-messages>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Item Manufacturer/Producer/ Grower Address1 </label>
+                            <input type="text" class="form-control" formControlName="address1_grower">
+                            <validation-messages [control]="exBondFormStep3.controls.address1_grower" errorMsg=" Item Manufacturer/Producer/ Grower Address1"></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Item Manufacturer/Producer/ Grower Address2</label>
+                            <input type="text" class="form-control" formControlName="address2_grower">
+                            <validation-messages [control]="exBondFormStep3.controls.address2_grower" errorMsg=" Item Manufacturer/Producer/ Grower Address2 "></validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Item Manufacturer/Producer/ Grower City </label>
+                            <input type="text" class="form-control" formControlName="city_grower">
+                            <validation-messages [control]="exBondFormStep3.controls.city_grower" errorMsg=" Item Manufacturer/Producer/ Grower City "></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Item Manufacturer/Producer/ Grower Country Subdivision</label>
+                            <input type="text" class="form-control" formControlName="country_sub_division_grower">
+                            <validation-messages [control]="exBondFormStep3.controls.country_sub_division_grower" errorMsg=" Item Manufacturer/Producer/ Grower Country Subdivision ">
+                            </validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Item Manufacturer/Producer/ Grower Pin</label>
+                            <input type="text" class="form-control" formControlName="pin_grower">
+                            <validation-messages [control]="exBondFormStep3.controls.pin_grower" errorMsg=" Item Manufacturer/Producer/ Grower Pin"></validation-messages>
+
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Item Manufacturer Country</label>
+                            <input type="text" class="form-control" formControlName="country_grower">
+                            <validation-messages [control]="exBondFormStep3.controls.country_grower" errorMsg=" Item Manufacturer Country "></validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label>Source Country</label>
+                            <input type="text" class="form-control" formControlName="source_country">
+                            <validation-messages [control]="exBondFormStep3.controls.source_country" errorMsg="Source Country"></validation-messages>
+                        </div>
+                       
+                        <div class="form-group col-md-4 offset-md-2">
+                            <label>Transit Country</label>
+                            <input type="text" class="form-control" formControlName="transit_country">
+                            <validation-messages [control]="exBondFormStep3.controls.transit_country" errorMsg="Transit Country "></validation-messages>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4 offset-md-1">
+                            <label> Accessory Status</label> <span class="required"> *</span>
+                            <input type="text" class="form-control" formControlName="accessory_status">
+                            <validation-messages [control]="exBondFormStep3.controls.accessory_status" errorMsg=" Accessory Status "></validation-messages>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </mat-expansion-panel>
+
+
+    </mat-accordion>
+</div>
+
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button id="back_draft" mat-raised-button>Save as Draft</button>
+    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+</div>

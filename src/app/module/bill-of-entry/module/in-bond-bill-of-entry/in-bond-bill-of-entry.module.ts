@@ -50,8 +50,8 @@ import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-sv
     Step12Component, 
     Step13Component, InBondBillOfEntryComponent],
 })
-export class InBondBillOfEntryModule { 
+export class InBondBillOfEntryModule {
   constructor(private library: FaIconLibrary) {
     library.addIcons(faSquare,faExclamationCircle, faCheckSquare, farSquare, faQuestionCircle, faStackOverflow, faGithub, faMedium);
   }
-}
+ }

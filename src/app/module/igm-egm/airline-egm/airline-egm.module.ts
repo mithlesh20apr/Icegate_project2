@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AirlineEgmRoutingModule } from './airline-egm-routing.module';
-import {LayoutComponent} from './component/layout/layout.component';
-import { FlightDetailsComponent } from './component/flight-details/flight-details.component';
-import { MawbDetailsComponent } from './component/mawb-details/mawb-details.component';
-import { HawbDetailsComponent } from './component/hawb-details/hawb-details.component';
 import { MaterialModule } from '../../common/material.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonSharedModule } from '../../common/common-shared.module';
-import { HawbDilaogContentComponent } from './component/hawb-dilaog-content/hawb-dilaog-content.component';
+import { AirlineEgmComponent } from './airline-egm.component';
+import { Step1Component } from './step1/step1.component';
+import { Step2Component } from './step2/step2.component';
+import { Step3Component } from './step3/step3.component';
+import { Step3DialogContentComponent } from './step3-dialog-content/step3-dialog-content.component';
+import { FontAwesomeModule,FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faSquare, faCheckSquare,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSquare as farSquare, faCheckSquare as faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 
    
 @NgModule({
   declarations: [
-    LayoutComponent,
-    FlightDetailsComponent,
-    MawbDetailsComponent,
-    HawbDetailsComponent,
-    HawbDilaogContentComponent
+    AirlineEgmComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component,
+    Step3DialogContentComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +30,20 @@ import { HawbDilaogContentComponent } from './component/hawb-dilaog-content/hawb
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonSharedModule
+    CommonSharedModule,
+    FontAwesomeModule
   ]
 })
-export class AirlineEgmModule { }
+export class AirlineEgmModule { 
+  constructor( private library: FaIconLibrary){
+    library.addIcons(
+      faSquare,
+      faExclamationCircle, 
+      faCheckSquare, 
+      farSquare, 
+      faQuestionCircle, 
+      faStackOverflow, 
+      faGithub, 
+      faMedium);
+} 
+}

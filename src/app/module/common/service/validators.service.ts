@@ -18,6 +18,7 @@ export class ValidatorsService {
             'invalidDob': 'User must be minimum 16 Years old.',
             'invalidUrl': 'Invalid URL',
             'alphaNumericAllowed': 'Only apha numeric input is allowed',
+            'textAllowed':'Only text are allowed',
             'numericAllowed': 'Only numbers are allowed in this field, please update',
             'emailTaken': 'Email id already taken',
             'minlength': `Minimum length should be ${validatorValue.requiredLength} characters`,
@@ -27,6 +28,7 @@ export class ValidatorsService {
     }
 
     static Decimalcheck(regx: RegExp, number: Number): ValidatorFn {
+       
         return (control: AbstractControl): { [key: string]: boolean } | null => {
             if (isNaN(control.value)) {
                 return { 'alphabetNotAllowed_d': true };
@@ -34,7 +36,9 @@ export class ValidatorsService {
             else if (!regx.test(control.value)) {
                 return { 'decimalRestricted_d': true };
             }
+            
             else if (regx.test(control.value)) {
+                // console.log(control.value)
                 var digitsBefore = control.value.split(".");
                 var count = 0;
                 for (var i = 0; i < digitsBefore[0].length; ++i) {
@@ -76,16 +80,26 @@ export class ValidatorsService {
     }
 
 
-static numberValidator(control: AbstractControl) {
+    static numberValidator(control: AbstractControl) {
         if( control.value !== undefined && control.value.length !== undefined && control.value.length !== null ){
-           // console.log(control.value);
-            if (control.value.length == 0 || control.value.match(/^[0-9]*$/) ) {
-                return null;
-            } else {
-                return { 'numericAllowed': true };
-            }
+            // console.log("Number Validator",control.value);
+             if (control.value.length == 0 || control.value.match(/^[0-9]*$/) ) {
+                 return null;
+             } else {
+                 return { 'numericAllowed': true };
+             }
+     }
     }
- }
+    static textValidator(control: AbstractControl) {
+        if( control.value !== undefined && control.value.length !== undefined && control.value.length !== null ){
+            // console.log("Number Validator",control.value);
+             if (control.value.length == 0 || control.value.match(/^[a-zA-Z]+$/) ) {
+                 return null;
+             } else {
+                 return { 'textAllowed': true };
+             }
+     }
+    }
 
 
     static decimalValidation(control: AbstractControl) {

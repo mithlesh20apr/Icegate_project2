@@ -1,6 +1,8 @@
 
 /* Importing Bootstrap SCSS file. */
+
 @import '~bootstrap/scss/bootstrap';
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 
@@ -31,6 +33,7 @@
 
 
 @import '~@angular/material/theming';
+
 /* Add application styles & imports to this file! */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 $custom-typography: mat-typography-config($font-family: "Montserrat");
@@ -42,6 +45,7 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent);
 @include angular-material-theme($custom-theme);
 
 /* You can add global styles to this file, and also import other style files */
+
 
 html, body { height: 100%; }
 
@@ -76,25 +80,13 @@ html, body { height: 100%; }
   padding: 18px;
   font-size: 23px;
 }
-.no_padding {
-  padding:0;
-}
-.padding_left {
-  padding-left:0;
-}
-.float_left {
-  float: left;
-}
+
 input.ng-invalid.ng-touched {
-  border: 1px solid #dc3545 ;
+  border: 1px solid red;
 }
-.icon_tooltips {
-  font-size: 14px;
-  color: #b5b5b5;
-  margin-left: 6px;
-}
+
 .text-error {
-  color: #dc3545 ;
+  color: red;
   font-size: 10px;
 }
 
@@ -256,6 +248,7 @@ input.ng-invalid.ng-touched {
   margin-bottom: 0px !important
 }
 
+
 .form-control {
   display: block;
   width: 100%;
@@ -345,11 +338,11 @@ input::-webkit-input-placeholder{
   top: 27px;
 }
 .has-error .form-control {
-  border-color: #dc3545 ;
+  border-color: red;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
 .has-error label{
-  color: #dc3545 ;
+  color: red;
 }
 // .has-feedback .form-control{
 //   border-color:#6ea942;
@@ -387,7 +380,7 @@ input[type=radio]::-ms-check {
 }
 
 .required{
-  color:#dc3545 
+  color:red
 }
 
 .audio-progress-bar .mat-progress-bar-fill::after {
@@ -458,7 +451,7 @@ input[type=radio]::-ms-check {
 }
 
 .mat-error{
-  color: #dc3545 ;
+  color: red;
 }
 
 .cth-background{
@@ -518,4 +511,60 @@ input[type=radio]::-ms-check {
   background-color: #3085d6 !important;
   color: #fff;
   font-size: 1.0625em;
+}
+
+.mat-form-field {
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.125;
+  font-family: Montserrat;
+  letter-spacing: normal;
+  width: 175px;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+
+/* Style the counter cards */
+
+#select-savecon{
+  background-color: #FBA218;
+  border: 1px solid #FBA218 !important;
+  color: black;
+  width: auto;
+  height: auto;
+  border-radius: 0px !important;
+}
+
+// .error-icon{
+//   vertical-align: bottom;
+// }
+
+.icon_tooltips {
+  font-size: 14px;
+  color: #b5b5b5;
+  margin-left: 6px;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:rgb(66, 134, 244); 
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:rgb(66, 134, 244);
+  background-color:rgb(66, 134, 244) ;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:rgb(255, 37, 37,.26)
+}
+
+.child-accordion .mat-expansion-panel-header-title {
+  color: black;
 }

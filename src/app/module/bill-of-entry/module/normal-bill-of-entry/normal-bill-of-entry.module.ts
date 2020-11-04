@@ -19,7 +19,10 @@ import { Step10Component } from './step10/step10.component';
 import { Step11Component } from './step11/step11.component';
 import { Step12Component } from './step12/step12.component';
 import { Step13Component } from './step13/step13.component';
-
+import { FontAwesomeModule,FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faSquare, faCheckSquare,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSquare as farSquare, faCheckSquare as faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,7 @@ import { Step13Component } from './step13/step13.component';
     NormalBillOfEntryComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule,FontAwesomeModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
@@ -47,4 +50,8 @@ import { Step13Component } from './step13/step13.component';
     CommonSharedModule
   ]
 })
-export class NormalBillOfEntryModule { }
+export class NormalBillOfEntryModule {
+  constructor(private library: FaIconLibrary) {
+    library.addIcons(faSquare,faExclamationCircle, faCheckSquare, farSquare, faQuestionCircle, faStackOverflow, faGithub, faMedium);
+  }
+ }

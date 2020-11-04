@@ -11,7 +11,8 @@ import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-sv
 @NgModule({
   declarations: [ValidationMessagesComponent],
   imports: [
-    CommonModule,FontAwesomeModule,
+    CommonModule,
+    FontAwesomeModule,
   ],
   exports: [
     ValidationMessagesComponent

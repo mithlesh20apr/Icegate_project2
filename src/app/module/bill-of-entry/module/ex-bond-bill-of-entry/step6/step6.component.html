@@ -1,0 +1,82 @@
+<div>
+    <form class="col-md-12" [formGroup]="exBondFormStep6">
+        <h6 class="font-h6 text-center">Bond</h6>
+        <hr>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('bond_number')">
+                <label>Bond Number<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maxlength is 5 and only numbers are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control"
+                    formControlName="bond_number">
+                    <validation-messages [control]="exBondFormStep6.controls.bond_number" ></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('bond_code')">
+                <label>Bond Code<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maxlength is 5 and only numbers are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+                <select formControlName="bond_code" class="form-control">
+                    <option></option>
+                    <option value="EO">EO</option>
+                </select>
+                <validation-messages [control]="exBondFormStep6.controls.bond_code"  errorMsg="Bond Code"></validation-messages>
+            </div>
+        </div>
+        <div *ngIf="exBondFormStep6.controls.bond_code.value==='EO'" class="dropdown-color">
+            <br>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('certificate_number')">
+                    <label>Certificate Number<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maxlength is 30 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <input type="text" class="form-control"
+                        formControlName="certificate_number">
+                        <validation-messages [control]="exBondFormStep6.controls.certificate_number" errorMsg="Certificate Number" ></validation-messages>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+                <div class="form-group  col-md-4 offset-md-2" [ngClass]="displayFieldCss('certificate_type')">
+                    <label>Certificate Type<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maxlength is 2 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                    <select class="form-control" formControlName="certificate_type">
+                        <option value="IN">Internal</option>
+                        <option value="EX">External</option>
+                    </select>
+                    <validation-messages [control]="exBondFormStep6.controls.certificate_type"  errorMsg="Certificate Type"></validation-messages>
+                </div>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('certificate_date')">
+                    <label>Certificate Date </label><span class="required"> *</span> 
+                   <div>
+                    <mat-form-field >
+                        <mat-label>Choose a date</mat-label>
+                        <!-- #docregion toggle -->
+                        <input matInput [matDatepicker]="certificate_date" formControlName="certificate_date">
+                        <mat-datepicker-toggle matSuffix [for]="certificate_date"></mat-datepicker-toggle>
+                        <mat-datepicker #certificate_date></mat-datepicker>
+                        <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                    <validation-messages [control]="exBondFormStep6.controls.certificate_date" errorMsg="Certificate Date" ></validation-messages>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('bond_port')">
+                <label>Bond Port <span class="required"> *</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maxlength is 6 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control" formControlName="bond_port">
+                <validation-messages [control]="exBondFormStep6.controls.bond_port" errorMsg="Bond Port"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <!-- <button id="back_draft" mat-raised-button>Save as Draft</button> -->
+    <button id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
+</div>

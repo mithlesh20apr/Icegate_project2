@@ -1,0 +1,109 @@
+<div class="row">
+    <form class="col-md-12" [formGroup]="seaIgmStep3">
+
+        <h2 class="text-center">Container Details</h2>
+        <hr>
+        <div class="col-md-12"></div>
+        <div class="form-row">
+          
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('line_no')">
+                <label>Line No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="line_no">
+                <validation-messages [control]="seaIgmStep3.controls.line_no" errorMsg="Line No."></validation-messages>
+            </div>
+           
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('sub_line_no')">
+                <label>Sub line No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="sub_line_no">
+                <validation-messages [control]="seaIgmStep3.controls.sub_line_no" errorMsg="Sub Line No."></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+          
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('container_no')">
+                <label>Container No.<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 11 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="container_no">
+                <validation-messages [control]="seaIgmStep3.controls.container_no" errorMSg="Container No.">
+                </validation-messages>
+            </div>
+           
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('container_seal_no')">
+                <label>Container Seal No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 15 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="container_seal_no">
+                <validation-messages [control]="seaIgmStep3.controls.container_seal_no" errorMSg="Container Seal No.">
+                </validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+          
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('container_agent_code')">
+                <label>Container Agent Code<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="container_agent_code">
+                <validation-messages [control]="seaIgmStep3.controls.container_agent_code" errorMsg="Container Agent Code">
+                </validation-messages>
+            </div>
+           
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('container_status')">
+                <label>Container Status</label><span class="required"> *</span>
+                <div>
+                    <mat-radio-group aria-label="Select an option" formControlName="container_status">
+                        <mat-radio-button value="E"  matTooltip="Empty">E</mat-radio-button>&nbsp;&nbsp;
+                        <mat-radio-button value="L" matTooltip="Loaded">L</mat-radio-button>                            
+                    </mat-radio-group>
+                </div>
+                <validation-messages [control]="seaIgmStep3.controls.container_status" errrorMsg="Container Status">
+                </validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+          
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('total_no_of_packages_in_container')">
+                <label>Total No. of Packages in Container<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="total_no_of_packages_in_container">
+                <validation-messages
+                    [control]="seaIgmStep3.controls.total_no_of_packages_in_container" errorMsg="Total No of Packages in Container">
+                </validation-messages>
+            </div>
+           
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('container_weight')">
+                <label>Container weight<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and only numbers are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="container_weight" >
+                <validation-messages [control]="seaIgmStep3.controls.container_weight" errorMsg="Container Weight">
+                </validation-messages>
+                <div *ngIf="seaIgmStep3.controls.container_weight.errors?.alphabetNotAllowed_d && seaIgmStep3.controls.container_weight.dirty"
+                    class="text-danger">Only numbers are allowed, please update field</div>
+                <div *ngIf="seaIgmStep3.controls.container_weight.errors?.decimalRestricted_d && seaIgmStep3.controls.container_weight.dirty"
+                    class="text-danger">Only upto 3 decimal values are allowed</div>
+                <div *ngIf="seaIgmStep3.controls.container_weight.errors?.digitsBeforeDecimal_d && seaIgmStep3.controls.container_weight.dirty"
+                    class="text-danger">Only 14 digits are allowed, use decimal values to enter further
+                    digits </div>
+            </div>
+        </div>
+        <div class="form-row">
+          
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('iso_code')">
+                <label>ISO Code<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="iso_code">
+                <validation-messages [control]="seaIgmStep3.controls.iso_code" errorMsg="ISO Code"></validation-messages>
+            </div>
+           
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('soc_flag')">
+                <label>SOC Flag (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="soc_flag">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="seaIgmStep3.controls.soc_flag" errorMsg="SOC Flag"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>

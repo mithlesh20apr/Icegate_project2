@@ -1,219 +1,225 @@
-<div>
-    <form class="col-md-12" [formGroup]="homeConsumptionFormStep9">
-        <div><span class="required">&#42;</span> indicates the mandatory fields </div>
-        <h6 class="font-h6 text-center">IGM</h6>
-        <hr>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class=" form-group col-md-4">
-                <label>IGM Number</label><span class="required">*</span>
-                <input type="text" class="form-control" formControlName="igm_no">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.igm_no.errors?.required && homeConsumptionFormStep9.controls.igm_no.touched'
-                    class="text-danger">
-                    This field is required <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.igm_no.errors?.maxlength' class="text-danger">
-                    The maximum field length is 7, please update the field</mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.igm_no.errors?.pattern' class="text-danger">
-                    Only numbers are allowed in this field, please update
-                </mat-error>
-            </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>IGM Date</label><span class="required"> *</span>
-                <input type="date" class="form-control" formControlName="igm_date">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.igm_date.errors?.required && homeConsumptionFormStep9.controls.igm_date.touched'
-                    class="text-danger">
-                    This field is required</mat-error>
-            </div>
+<form class="col-md-12" [formGroup]="homeConsumptionFormStep9">
+    <div>Fill all mandatory fields indicated by<span class="required">&#42;</span> </div>
+    <h6 class="font-h6 text-center">IGM</h6>
+    <hr>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('igm_no')">
+                <label>IGM Number<span class=" required">*</span>
+            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                matTooltip="Maximum length is 7 and only number are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+            <input type="text" class="form-control" formControlName="igm_no">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.igm_no" errorMsg="IGM Number"></validation-messages>
         </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Inward Date</label><span class="required"> *</span>
-                <input type="date" class="form-control" formControlName="inward_date">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.inward_date.errors?.required && homeConsumptionFormStep9.controls.inward_date.touched'
-                    class="text-danger">
-                    This field is required</mat-error>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('igm_date')">
+                <label>IGM Date<span class=" required"> *</span>
+           </label>
+            <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="igm_date" formControlName="igm_date">
+                    <mat-datepicker-toggle matSuffix [for]="igm_date"></mat-datepicker-toggle>
+                    <mat-datepicker #igm_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Gateway IGM Number</label>
-                <input type="text" class="form-control" formControlName="gateway_igm_number">
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.gateway_igm_number.errors?.maxlength'
-                    class="text-danger">
-                    The maximum field length is 5, please update the field <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.gateway_igm_number.errors?.pattern'
-                    class="text-danger">
-                    Only numbers are allowed in this field, please update
-                </mat-error>
-            </div>
+            <validation-messages [control]="homeConsumptionFormStep9.controls.igm_date" errorMsg="IGM Date"></validation-messages>
         </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Gateway IGM Date</label><span class="required"> *</span>
-                <input type="date" class="form-control" formControlName="gateway_igm_date">
-
+    </div>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('inward_date')">
+                <label>Inward Date<span class=" required"> *</span>
+            </label>
+            <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="inward_date" formControlName="inward_date">
+                    <mat-datepicker-toggle matSuffix [for]="inward_date"></mat-datepicker-toggle>
+                    <mat-datepicker #inward_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Gateway Port Code</label>
-                <input type="text" class="form-control" formControlName="gateway_port_code">
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.gateway_igm_date.errors?.maxlength'
-                    class="text-danger">
-                    The maximum field length is 6, please update the field
-                </mat-error>
-            </div>
+            <validation-messages [control]="homeConsumptionFormStep9.controls.inward_date" errorMsg="Inward Date"></validation-messages>
         </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>MAWB/BL No</label><span class="required"> *</span>
-                <input type="text" class="form-control" formControlName="mawb_bl_no">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.mawb_bl_no.errors?.required && homeConsumptionFormStep9.controls.mawb_bl_no.touched'
-                    class="text-danger">
-                    This field is required <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.mawb_bl_no.errors?.maxlength' class="text-danger">
-                    The maximum field length is 20, please update the field
-                </mat-error>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('gateway_igm_number')">
+                <label>Gateway IGM Number<fa-icon [icon]=" ['fas', 'exclamation-circle' ]"
+            matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
+            class="icon_tooltips">
+            </fa-icon></label>
+            <input type="text" class="form-control" formControlName="gateway_igm_number">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.gateway_igm_number" errorMsg="Gateway IGM Number"></validation-messages>
+        </div>
+    </div>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class="form-group col-md-4 offset-md-1">
+            <label>Gateway IGM Date</label>
+            <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="gateway_igm_date" formControlName="gateway_igm_date">
+                    <mat-datepicker-toggle matSuffix [for]="gateway_igm_date"></mat-datepicker-toggle>
+                    <mat-datepicker #gateway_igm_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>MAWB/BL Date</label><span class="required"> *</span>
-                <input type="date" class="form-control" formControlName="mawb_bl_date">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.mawb_bl_date.errors?.required && homeConsumptionFormStep9.controls.mawb_bl_date.touched'
-                    class="text-danger">
-                    This field is required</mat-error>
-            </div>
-
+            <!-- <input type="date" class="form-control" formControlName="gateway_igm_date"> -->
 
         </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>HAWB/HBL No</label>
-                <input type="text" class="form-control" formControlName="hawb_hbl_no">
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.hawb_hbl_no.errors?.maxlength' class="text-danger">
-                    The maximum field length is 20, please update the field <br></mat-error>
-            
-            </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>HAWB/BL Date</label><span class="required"> *</span>
-                <input type="date" class="form-control" formControlName="hawb_hbl_date">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.hawb_hbl_date.errors?.required && homeConsumptionFormStep9.controls.hawb_hbl_date.touched'
-                    class="text-danger">
-                    This field is required</mat-error>
-            </div>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('gateway_port_code')">
+                <label>Gateway Port Code<fa-icon [icon]=" ['fas', 'exclamation-circle' ]"
+            matTooltip="Maximum length is 6 and number or text both are allowed" [matTooltipPosition]="position.value"
+            class="icon_tooltips">
+            </fa-icon></label>
+            <input type="text" class="form-control" formControlName="gateway_port_code">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.gateway_port_code" errorMsg="Gateway Port Code"></validation-messages>
         </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-2">
-                <label>Total Number Of Packages</label><span class="required">*</span>
-                <input type="number" class="form-control" formControlName="total_number_of_packages">
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.total_number_of_packages.errors?.maxlength'
-                    class="text-danger">
-                    The maximum field length is 8, please update the field <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.total_number_of_packages.errors?.pattern'
-                    class="text-danger">
-                    Only numbers are allowed in this field, please update</mat-error>
+    </div>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('mawb_bl_no')">
+                <label>MAWB/BL No<span class=" required"> *</span>
+            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                matTooltip="Maximum length is 10 and number or text both are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+            <input type="text" class="form-control" formControlName="mawb_bl_no">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.mawb_bl_no" errorMsg="MAWBL No"></validation-messages>
+        </div>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('mawb_bl_date')">
+                <label>MAWB/BL Date</label><span class=" required"> *</span>
+            <!-- <input type="date" class="form-control" formControlName="mawb_bl_date"> -->
+            <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="mawb_bl_date" formControlName="mawb_bl_date">
+                    <mat-datepicker-toggle matSuffix [for]="mawb_bl_date"></mat-datepicker-toggle>
+                    <mat-datepicker #mawb_bl_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
             </div>
-            <div class="form-group col-md-2">
-                <label>Gross weight</label><span class="required"> *</span>
-                <input type="number" class="form-control" formControlName="gross_weight">
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.gross_weight.errors?.pattern' class="text-danger">
-                    Enter valid Gross Weight <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.gross_weight.errors?.maxlength' class="text-danger">
-                    The maximum field length is 3, please update the field <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.gross_weight.errors?.pattern' class="text-danger">
-                    Only numbers are allowed in this field, please update
-                </mat-error>
+            <validation-messages [control]="homeConsumptionFormStep9.controls.mawb_bl_date" errorMsg="MAWB/BL Date"></validation-messages>
+        </div>
 
-            </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Unit Quantity Code</label><span class="required"> *</span>
-                <input type="text" class="form-control" formControlName="unit_quantity_code">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.unit_quantity_code.errors?.required && homeConsumptionFormStep9.controls.unit_quantity_code.touched'
-                    class="text-danger">
-                    This field is required <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.unit_quantity_code.errors?.maxlength'
-                    class="text-danger">
-                    The maximum field length is 3, please update the field
-                </mat-error>
-            </div>
+
+    </div>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('hawb_hbl_no')">
+                <label>HAWB/HBL No<fa-icon [icon]=" ['fas', 'exclamation-circle' ]"
+            matTooltip="Maximum length is 20 and number or text both are allowed" [matTooltipPosition]="position.value"
+            class="icon_tooltips">
+            </fa-icon></label>
+            <input type="text" class="form-control" formControlName="hawb_hbl_no">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.hawb_hbl_no" errorMsg="HAWB/HBL No"></validation-messages>
 
         </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Package Code</label><span class="required"> *</span>
-                <input type="text" class="form-control" formControlName="package_code">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.package_code.errors?.required && homeConsumptionFormStep9.controls.package_code.touched'
-                    class="text-danger">
-                    This field is required <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.package_code.errors?.maxlength' class="text-danger">
-                    The
-                    maximum field length is 3, please update the field <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.package_code.errors?.pattern' class="text-danger">
-                    Only
-                    numbers are allowed in this field, please update
-                </mat-error>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('hawb_hbl_date')">
+                <label>HAWB/BL Date<span class=" required"> *</span>
+            </label>
+            <div>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="hawb_hbl_date" formControlName="hawb_hbl_date">
+                    <mat-datepicker-toggle matSuffix [for]="hawb_hbl_date"></mat-datepicker-toggle>
+                    <mat-datepicker #hawb_hbl_date></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                </mat-form-field>
+            </div>
+            <validation-messages [control]="homeConsumptionFormStep9.controls.hawb_hbl_date" errorMsg="HAWB/HBL Date"></validation-messages>
+        </div>
+    </div>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('total_number_of_packages')">
+                <label>Total Number Of Packages<span class=" required">*</span>
+            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                matTooltip="Maximum length is 10 and only number are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+            <input  class="form-control" formControlName="total_number_of_packages">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.total_number_of_packages" errorMsg="Total Number Of Packages"></validation-messages>
+        </div>
+        <div class="form-group col-md-2 offset" [ngClass]="displayFieldCss('gross_weight')">
+            <label>Gross Weight<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 13 and only number are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+            <input type="text" class="form-control" formControlName="gross_weight">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.gross_weight" errorMsg="Gross Weight"></validation-messages>
+            <div *ngIf="homeConsumptionFormStep9.controls.gross_weight.errors?.alphabetNotAllowed_d && homeConsumptionFormStep9.controls.gross_weight.dirty"
+                class="text-danger">Only Numbers are allowed</div>
+            <div *ngIf="homeConsumptionFormStep9.controls.gross_weight.errors?.decimalRestricted_d && homeConsumptionFormStep9.controls.gross_weight.dirty"
+                class="text-danger">Only upto 4 decimal values are allowed</div>
+            <div *ngIf="homeConsumptionFormStep9.controls.gross_weight.errors?.digitsBeforeDecimal_d && homeConsumptionFormStep9.controls.gross_weight.dirty"
+                class="text-danger">Only 9 digits are allowed before decimal</div>        </div>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('unit_quantity_code')">
+                <label>Unit Quantity Code<span class=" required"> *</span>
+            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                matTooltip="Maximum length is 3 and number or text both are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+            <input type="text" class="form-control" formControlName="unit_quantity_code">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.unit_quantity_code" errorMsg="Unit Quantity Code"></validation-messages>
+        </div>
 
-            </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Marks And Numbers 1</label><span class="required">*</span>
-                <input type="text" class="form-control" formControlName="marks_number1">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep9.controls.marks_number1.errors?.required && homeConsumptionFormStep9.controls.marks_number1.touched'
-                    class="text-danger">
-                    This field is required <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.marks_number1.errors?.maxlength'
-                    class="text-danger">
-                    The maximum field length is 40, please update the field
-                </mat-error>
-            </div>
+    </div>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('package_code')">
+                <label>Package Code<span class=" required"> *</span>
+            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                matTooltip="Maximum length is 3 and number or text both are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+            <input type="text" class="form-control" formControlName="package_code">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.package_code" errorMsg="Package Code"></validation-messages>
+
         </div>
-        <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Marks And Numbers 2</label>
-                <input type="text" class="form-control" formControlName="marks_number2">
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.marks_number2.errors?.maxlength'
-                    class="text-danger">
-                    The maximum field length is 40, please update the field
-                </mat-error>
-            </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Marks And Numbers 3</label>
-                <input type="text" class="form-control" formControlName="marks_number3">
-                <mat-error *ngIf='homeConsumptionFormStep9.controls.marks_number3.errors?.maxlength'
-                    class="text-danger">
-                    The maximum field length is 40, please update the field
-                </mat-error>
-            </div>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('marks_number1')">
+                <label>Marks And Numbers 1<span class=" required">*</span>
+            <fa-icon [icon]="['fas', 'exclamation-circle']"
+                matTooltip="Maximum length is 40 and number or text both are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
+            <input type="text" class="form-control" formControlName="marks_number1">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.marks_number1" errorMsg="Marks and Numbers 1"></validation-messages>
         </div>
-    </form>
-</div>
-<div class="btncontainer">
-    <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
-    <div class="col-md-4 offset-md-4"></div>
-    <button id="back_draft" mat-raised-button>Save as Draft</button>
-    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
-</div>
+    </div>
+    <div class="form-row">
+        <!-- <div class="col-md-1"></div> -->
+        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('marks_number2')">
+                <label>Marks And Numbers 2 <fa-icon [icon]=" ['fas', 'exclamation-circle' ]"
+            matTooltip="Maximum length is 40 and number or text both are allowed" [matTooltipPosition]="position.value"
+            class="icon_tooltips">
+            </fa-icon></label>
+            <input type="text" class="form-control" formControlName="marks_number2">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.marks_number2" errorMsg="Marks and Number 2"></validation-messages>
+        </div>
+        <!-- <div class="col-md-2"></div> -->
+        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('marks_number3')">
+                <label>Marks And Numbers 3<fa-icon [icon]=" ['fas', 'exclamation-circle' ]"
+            matTooltip="Maximum length is 40 and number or text both are allowed" [matTooltipPosition]="position.value"
+            class="icon_tooltips">
+            </fa-icon></label>
+            <input type="text" class="form-control" formControlName="marks_number3">
+            <validation-messages [control]="homeConsumptionFormStep9.controls.marks_number3" errorMsg="Marks and Number3 "></validation-messages>
+        </div>
+    </div>
+
+    <div class="btncontainer">
+        <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
+        <div class="col-md-4 offset-md-4"></div>
+        <button id="back_draft" mat-raised-button>Save as Draft</button>
+        <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+        <button id="save_continues"  matStepperNext style="display: none;"></button>
+    </div>
+
+</form>

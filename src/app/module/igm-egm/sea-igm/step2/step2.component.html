@@ -1,0 +1,419 @@
+<div class="mt-2">Fill all mandatory fields indicated by <span class="required">&#42;</span></div>
+
+<h2 class="text-center">Cargo Manifest Details</h2>
+<form class="col-md-12" [formGroup]="seaIgmStep2">
+    <button mat-raised-button class="example-add-tab-button" (click)="addCargoManifesttabs()" id="add-option" style="width: 240px;">
+        Add Cargo Manifest Details
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <div class="row-mt-2">
+        <div class="col-lg-12 no-padding" formArrayName="cargo_manifest_details">
+        <mat-tab-group class="col-md-12 no-padding" [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" >
+        <mat-tab *ngFor="let cargomanifest of addCargoManifestDetails().controls; let i=index;" [label]="cargomanifest" >
+            <ng-template mat-tab-label>
+                <span> Cargo Manifest Details {{i + 1}}</span>
+                <mat-icon *ngIf="addCargoManifestDetails().controls.length != 1" (click)="removeCargoManifesttabs(i)">cancel</mat-icon>
+            </ng-template>
+            <div [formGroupName]="i">
+                <div class="col-md-12"></div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Line No.  </label>
+                        <input type="text" class="form-control" formControlName="line_no">
+                        <validation-messages [control]="cargomanifest.controls.line_no" errorMsg="Line No."></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label>Sub line No. <span class="required"> *</span>  &nbsp; </label>
+                        <input type="text" class="form-control" formControlName="sub_line_no">
+                        <validation-messages [control]="cargomanifest.controls.sub_line_no" errorMsg="Sub Line No."></validation-messages>
+                    </div>
+                </div>
+                 <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>B/L No.<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="bl_no">
+                        <validation-messages [control]="cargomanifest.controls.bl_no" errorMsg="B/L No."></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>B/L Date</label><span class="required"> *</span>
+                        <div>
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label>
+                            
+                            <input matInput [matDatepicker]="bl_date" formControlName="bl_date">
+                            <mat-datepicker-toggle matSuffix [for]="bl_date"></mat-datepicker-toggle>
+                            <mat-datepicker #bl_date></mat-datepicker>
+                            
+                        </mat-form-field>
+                        </div>
+                        <validation-messages [control]="cargomanifest.controls.bl_date" errorMsg="B/L Date"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Port of Loading</label><span class="required"> *</span>
+                        <select class="form-control" formControlName="port_of_loading">
+                            <option value="ind">IND</option>
+                            <option value="can">CAN</option>
+                        </select>
+                        <validation-messages [control]="cargomanifest.controls.port_of_loading" errorMsg="Port of Loading"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Port of Destination</label><span class="required"> *</span>
+                        <select class="form-control" formControlName="port_of_destination">
+                            <option value="ind">IND</option>
+                            <option value="can">CAN</option>
+                        </select>
+                        <validation-messages [control]="cargomanifest.controls.port_of_destination" errorMsg="Port of Destination"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Importer‟s Name<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="importer_name">
+                        <validation-messages [control]="cargomanifest.controls.importer_name" errorMsg="Importer‟s Name"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Address 1<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="importer_address1">
+                        <validation-messages [control]="cargomanifest.controls.importer_address1" errorMsg="Address1"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Address 2<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="importer_address2">
+                        <validation-messages [control]="cargomanifest.controls.importer_address2" errorMsg="Address2"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Address 3<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="importer_address3">
+                        <validation-messages [control]="cargomanifest.controls.importer_address3" errorMsg="Address3"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Name of any other Notified Party <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="name_of_other_notified_party">
+                        <validation-messages [control]="cargomanifest.controls.name_of_other_notified_party" errorMsg="Name of any other Notified Party">
+                        </validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Address 1 <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="address_1">
+                        <validation-messages [control]="cargomanifest.controls.address_1" errorMsg="Address1"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Address 2 <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="address_2">
+                        <validation-messages [control]="cargomanifest.controls.address_2" errorMsg="Address2"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Address 3<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="address_3">
+                        <validation-messages [control]="cargomanifest.controls.address_3" errorMsg="Address3"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Nature of Cargo</label><span class="required"> *</span>
+                        <select class="form-control" formControlName="nature_of_cargo">
+                            <option value="C">Containerized</option>
+                            <option value="P">Non-containerised Packaged</option>
+                            <option value="LB">Liquid Bulk</option>
+                            <option value="DB">Dry Bulk</option>
+                            <option value="CP">Containerized Packaged</option>
+                        </select>
+                        <validation-messages [control]="cargomanifest.controls.nature_of_cargo" errorMsg="Nature of Cargo"> </validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Item Type <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="item_type">
+                        <validation-messages [control]="cargomanifest.controls.item_type" errorMsg="Item Type"></validation-messages>
+                    </div>
+                </div> 
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Cargo Movement<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="cargo_movement">
+                        <validation-messages [control]="cargomanifest.controls.cargo_movement" errorMsg="Cargo Movement"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2 ">
+                        <label>Port of Discharge</label>
+                        <select  class="form-control" formControlName="port_of_discharge">
+                            <option value="ind">IND</option>
+                            <option value="can">CAN</option>
+                            </select>
+                        <validation-messages [control]="cargomanifest.controls.port_of_discharge" errorMsg="Port of Discharge"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Number of Packages<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="number_of_packages">
+                        <validation-messages [control]="cargomanifest.controls.number_of_packages" errorMsg="Number of Packages"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Type of packages<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="type_of_packages">
+                        <validation-messages [control]="cargomanifest.controls.type_of_packages" errorMsg="Type of Packages"> </validation-messages>
+                    </div>
+                </div> 
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Gross weight<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input class="form-control" formControlName="gross_weight">
+                        
+                        <validation-messages [control]="cargomanifest.controls.gross_weight" errorMsg="Gross Weight"></validation-messages>
+                    
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Unit of Weight<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="unit_of_weight">
+                        <validation-messages [control]="cargomanifest.controls.unit_of_weight" errorMsg="Unit of Weight"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Gross Volume<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only numbers are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input class="form-control" formControlName="gross_vol">
+                        <validation-messages [control]="cargomanifest.controls.gross_vol" errorMsg="Gross Volume"></validation-messages>
+                        
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label>Unit of Volume<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="unit_of_vol">
+                        <validation-messages [control]="cargomanifest.controls.unit_of_vol" errorMsg="Unit of Volume"></validation-messages>
+                    </div>
+                </div>
+                 <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Marks of Numbers<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 300 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="marks_of_numbers">
+                        <validation-messages [control]="cargomanifest.controls.marks_of_numbers" errorMsg="Marks of Numbers"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label>Goods Description<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 250 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="goods_description">
+                        <validation-messages [control]="cargomanifest.controls.goods_description" errorMsg="Goods Description"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>UNO Code<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="uno_code">
+                        <validation-messages [control]="cargomanifest.controls.uno_code" errorMsg="UNO Code"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label>IMO Code<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and characters are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="imo_code">
+                        <validation-messages [control]="cargomanifest.controls.imo_code" errorMsg="IMO Code"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Transit Bond No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="transit_bond_no">
+                        <validation-messages [control]="cargomanifest.controls.transit_bond_no" errorMsg="Transit Bond No."></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2" >
+                        <label>Carrier Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="carrier_code">
+                        <validation-messages [control]="cargomanifest.controls.carrier_code" errorMsg="Carrier Code"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-4 offset-md-1" >
+                        <label>Mode of transport <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="mode_of_transport">
+                        <validation-messages [control]="cargomanifest.controls.mode_of_transport" errorMsg="Mode of Transport"></validation-messages>
+                    </div>
+                    
+                    <div class="form-group col-md-4 offset-md-2"  >
+                        <label>MLO Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and characters are allowed " [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon> </label>
+                        <input type="text" class="form-control" formControlName="mlo_code">
+                        <validation-messages [control]="cargomanifest.controls.mlo_code" errorMsg="MLO Code"></validation-messages>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 no-padding add_other_items">
+                    <button mat-raised-button class="mt-3" id="add-option" (click)="addContainertabs(i)" [disabled]="disableAddButtons">
+                        Add Container Details
+                        <mat-icon>add</mat-icon>
+                     </button>
+                    <div class="" formArrayName="container_details">
+                        <mat-tab-group class="col-md-12 no-padding" [selectedIndex]="selecteds.value" (selectedIndexChange)="selecteds.setValue($event)" >
+                            <mat-tab *ngFor="let container of addContainerDetails(i).controls; let j=index;" [label]="container" >
+                            <ng-template mat-tab-label>
+                                <span>Container Details {{j + 1}}</span>
+                                <mat-icon *ngIf="addContainerDetails(i).controls.length != 1" (click)="removeContainertabs(i)">cancel</mat-icon>
+                            </ng-template>
+                            <div [formGroupName]="j">
+                                <div class="col-md-12"></div>
+                                 <div class="form-row"> 
+                                    <div class="form-group col-md-4 offset-md-1" >
+                                        <label>Line No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed " [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon> </label>
+                                        <input type="text" class="form-control" formControlName="line_no">
+                                        <validation-messages [control]="container.controls.line_no" errorMsg="Line No."></validation-messages>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Sub line No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed " [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon> </label>
+                                        <input type="text" class="form-control" formControlName="sub_line_no">
+                                        <validation-messages [control]="container.controls.sub_line_no" errorMsg="Sub Line No."></validation-messages>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                  
+                                    <div class="form-group col-md-4 offset-md-1" >
+                                        <label>Container No.<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 11 and characters are allowed " [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon> </label>
+                                        <input type="text" class="form-control" formControlName="container_no">
+                                        <validation-messages [control]="container.controls.container_no" errorMSg="Container No.">
+                                        </validation-messages>
+                                    </div>
+                                   
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Container Seal No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 15 and characters are allowed " [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon> </label>
+                                        <input type="text" class="form-control" formControlName="container_seal_no">
+                                        <validation-messages [control]="container.controls.container_seal_no" errorMSg="Container Seal No.">
+                                        </validation-messages>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                  
+                                    <div class="form-group col-md-4 offset-md-1" >
+                                        <label>Container Agent Code<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and characters are allowed " [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon> </label>
+                                        <input type="text" class="form-control" formControlName="container_agent_code">
+                                        <validation-messages [control]="container.controls.container_agent_code" errorMsg="Container Agent Code">
+                                        </validation-messages>
+                                    </div>
+                                   
+                                    <div class="form-group col-md-4 offset-md-2" >
+                                        <label>Container Status</label><span class="required"> *</span>
+                                        <div>
+                                            <mat-radio-group aria-label="Select an option" formControlName="container_status">
+                                                <mat-radio-button value="E"  matTooltip="Empty">E</mat-radio-button>&nbsp;&nbsp;
+                                                <mat-radio-button value="L" matTooltip="Loaded">L</mat-radio-button>                            
+                                            </mat-radio-group>
+                                        </div>
+                                        <validation-messages [control]="container.controls.container_status" errrorMsg="Container Status">
+                                        </validation-messages>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 offset-md-1" >
+                                        <label>Total No. of Packages in Container<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon> </label>
+                                        <input type="text" class="form-control" formControlName="total_no_of_packages_in_container">
+                                        <validation-messages
+                                            [control]="container.controls.total_no_of_packages_in_container" errorMsg="Total No of Packages in Container">
+                                        </validation-messages>
+                                    </div>
+                                   
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Container weight<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and only numbers are allowed " [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon> </label>
+                                        <input type="text" class="form-control" formControlName="container_weight" >
+                                        <validation-messages [control]="container.controls.container_weight" errorMsg="Container Weight">
+                                        </validation-messages>
+                                        
+                                     </div> 
+                                </div>
+                                <!-- <div class="form-row">
+                                  
+                                    <div class="form-group col-md-4 offset-md-1" >
+                                        <label>ISO Code<span class="required"> *</span> &nbsp; <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and characters are allowed " [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon> </label>
+                                        <input type="text" class="form-control" formControlName="iso_code">
+                                        <validation-messages [control]="container.controls.iso_code" errorMsg="ISO Code"></validation-messages>
+                                    </div>
+                                   
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>SOC Flag (Y/N)</label><span class="required"> *</span>
+                                        <select class="form-control" formControlName="soc_flag">
+                                            <option value="Y">Yes</option>
+                                            <option value="N">No</option>
+                                        </select>
+                                        <validation-messages [control]="container.controls.soc_flag" errorMsg="SOC Flag"></validation-messages>
+                                    </div>
+                                </div>  -->
+                            </div>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        </mat-tab-group>
+        </div>
+    </div>
+</form>
+<div class="btncontainer">
+    <button mat-raised-button matStepperPrevious id="back_draft">Back</button>
+    <div class="col-md-4 offset-md-4"></div>
+    <button mat-raised-button id="back_draft">Save as Draft</button>
+    <button mat-flat-button  id="savecon" (click)="onSubmit()">Submit</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
+</div>

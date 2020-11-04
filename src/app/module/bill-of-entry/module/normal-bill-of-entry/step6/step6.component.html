@@ -1,122 +1,85 @@
-<div>
+
     <form class="col-md-12" [formGroup]="homeConsumptionFormStep6">
-        <div><span class="required">&#42;</span> indicates the mandatory fields </div>
+        <div>Fill all mandatory fields indicated by<span class="required">&#42;</span> </div>
         <h6 class="font-h6 text-center">RSP</h6>
         <hr>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class=" form-group col-md-4">
-                <label>Invoice Serial Number</label><span class="required"> *</span>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoice_serial_number')">
+                <label>Invoice Serial Number<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
                 <input type="text" class="form-control" formControlName="invoice_serial_number">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep6.controls.invoice_serial_number.errors?.required && homeConsumptionFormStep6.controls.invoice_serial_number.touched'
-                    class="text-danger">This field is required <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.invoice_serial_number.errors?.maxlength '
-                    class="text-danger">The maximum field length is 5, please update the field  <br></mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.invoice_serial_number.errors?.pattern' class="text-danger">
-                    Only numbers are allowed in this field, please update
-                </mat-error>
+                <validation-messages [control]="homeConsumptionFormStep6.controls.invoice_serial_number" errorMsg="Invoice Serial Number"></validation-messages>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>Item Sr. No.in Invoice</label><span class="required"> *</span>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('item_serial_number_invoice')">
+                <label>Item Sr. No.in Invoice<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
                 <input type="text" class="form-control" formControlName="item_serial_number_invoice">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep6.controls.item_serial_number_invoice.errors?.required && homeConsumptionFormStep6.controls.item_serial_number_invoice.touched'
-                    class="text-danger">
-                    This field is required  <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.item_serial_number_invoice.errors?.maxlength'
-                    class="text-danger">
-                    The maximum field length is 4, please update the field  <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.item_serial_number_invoice.errors?.pattern'
-                    class="text-danger">
-                    Only numbers are allowed in this field, please update
-                </mat-error>
+                <validation-messages [control]="homeConsumptionFormStep6.controls.item_serial_number_invoice" errorMsg="Item Sr. No. in Invoice"></validation-messages>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Item Sr. No.in RSP</label>
-                <input type="text" class="form-control" fromControlName="item_serial_number_rsp">
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.item_serial_number_rsp.errors?.maxlength' class="text-danger">
-                    The maximum field length is 4, please update the field  <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.item_serial_number_rsp.errors?.pattern' class="text-danger">
-                    Only numbers are allowed in this field, please update
-                </mat-error>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('item_serial_number_rsp')">
+                <label>Item Sr. No.in RSP<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label>
+                <input type="text" class="form-control" formControlName="item_serial_number_rsp">
+                <validation-messages [control]="homeConsumptionFormStep6.controls.item_serial_number_rsp" errorMsg="Item Sr. No. in RSP"></validation-messages>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-2">
-                <label>RSP(in Rs.)</label><span class="required"> *</span>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('rsp')">
+                <label>RSP(in Rs.)<span class="required"> *</span>
+                <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only number are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
                 <input type="text" class="form-control" formControlName="rsp">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep6.controls.rsp.errors?.required && homeConsumptionFormStep6.controls.rsp.touched' class="text-danger">
-                    This field is required  <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.rsp.errors?.maxlength' class="text-danger">
-                    The maximum field length is 16, please update the field  <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.rsp.errors?.pattern' class="text-danger">
-                    Only numbers are allowed in this field, please update
-                </mat-error>
+                <validation-messages [control]="homeConsumptionFormStep6.controls.rsp" errorMsg="RSP"></validation-messages>
+                <div *ngIf="homeConsumptionFormStep6.controls.rsp.errors?.alphabetNotAllowed_d && homeConsumptionFormStep6.controls.rsp.dirty" class="required">Only Numbers are allowed</div>
+                <div *ngIf="homeConsumptionFormStep6.controls.rsp.errors?.decimalRestricted_d && homeConsumptionFormStep6.controls.rsp.dirty" class="required">Only upto 2 decimal values are allowed</div>
+                <div *ngIf="homeConsumptionFormStep6.controls.rsp.errors?.digitsBeforeDecimal_d && homeConsumptionFormStep6.controls.rsp.dirty" class="required">Only 16 digits are allowed before decimal</div>
             </div>
-            <div class="form-group col-md-2">
-                <label>Quantity</label><span class="required"> *</span>
+            <div class="form-group col-md-2" [ngClass]="displayFieldCss('quantity')">
+                <label>Quantity<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only number are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
                 <input type="text" class="form-control" formControlName="quantity">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep6.controls.quantity.errors?.required && homeConsumptionFormStep6.controls.quantity.touched' class="text-danger">
-                    This field is required  <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.quantity.errors?.maxlength' class="text-danger">
-                    The maximum field length is 16, please update the field  <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.quantity.errors?.pattern' class="text-danger">
-                    Only numbers are allowed in this field, please update
-                </mat-error>
+                <validation-messages [control]="homeConsumptionFormStep6.controls.quantity" errorMsg="Quantity"></validation-messages>
+                <div *ngIf="homeConsumptionFormStep6.controls.quantity.errors?.alphabetNotAllowed_d && homeConsumptionFormStep6.controls.quantity.dirty" class="required">Only Numbers are allowed</div>
+                <div *ngIf="homeConsumptionFormStep6.controls.quantity.errors?.decimalRestricted_d && homeConsumptionFormStep6.controls.quantity.dirty" class="required">Only upto 6 decimal values are allowed</div>
+                <div *ngIf="homeConsumptionFormStep6.controls.quantity.errors?.digitsBeforeDecimal_d && homeConsumptionFormStep6.controls.quantity.dirty" class="required">Only 16 digits are allowed before decimal</div>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>Description Item</label><span class="required"> *</span>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('description')">
+                <label>Description Item<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 40 and number or text both are allowed" [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon></label>
                 <input type="text" class="form-control" formControlName="description">
-                <mat-error
-                    *ngIf='homeConsumptionFormStep6.controls.description.errors?.required && homeConsumptionFormStep6.controls.description.touched' class="text-danger">
-                    This field is required  <br>
-                </mat-error>
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.description.errors?.maxlength' class="text-danger">
-                    The maximum field length is 40, please update the field
-                </mat-error>
+                <validation-messages [control]="homeConsumptionFormStep6.controls.description" errorMsg="Description Item"></validation-messages>
             </div>
-            <div class="col-md-2"></div>
-            <div class="form-group col-md-4">
-                <label>RSP Notification</label>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('rsp_notification')">
+                <label>RSP Notification<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is ten and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
                 <input type="text" class="form-control" formControlName="rsp_notification">
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.rsp_notification.errors?.maxlength' class="text-danger">
-                    The maximum field length is 10, please update the field
-                </mat-error>
+                <validation-messages [control]="homeConsumptionFormStep6.controls.rsp_notification" errorMsg="RSP Notification"></validation-messages>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-md-1"></div>
-            <div class="form-group col-md-4">
-                <label>RSP Notification Serial No.</label>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('rsp_notification_sr_no')">
+                <label>RSP Notification Serial No.<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and number or text both are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
                 <input type="text" class="form-control" formControlName="rsp_notification_sr_no">
-                <mat-error *ngIf='homeConsumptionFormStep6.controls.rsp_notification_sr_no.errors?.maxlength' class="text-danger">
-                    The maximum field length is 10, please update the field
-                </mat-error>
-            </div>
+                <validation-messages [control]="homeConsumptionFormStep6.controls.rsp_notification_sr_no" errorMsg="RSP Notification Serial No."></validation-messages>
+            </div>      
         </div>
-
-    </form>
-</div>
 
 <div class="btncontainer">
     <button id="back_draft" mat-raised-button matStepperPrevious>Back</button>
     <div class="col-md-4 offset-md-4"></div>
     <button id="back_draft" mat-raised-button>Save as Draft</button>
-    <button id="savecon" mat-flat-button matStepperNext>Save & Continue</button>
+    <button  id="savecon" mat-flat-button (click)="onSubmit()">Save & Continue</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
 </div>
+
+</form>

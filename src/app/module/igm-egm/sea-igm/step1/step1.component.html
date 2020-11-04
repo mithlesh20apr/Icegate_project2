@@ -1,0 +1,232 @@
+<div>Fill all the mandatory fields indicated by<span class="required"> *</span></div>
+
+<div class="row">
+    <form class="col-md-12" [formGroup]="seaIgmStep1">
+
+        <h2 class="text-center">Vessel Details</h2>
+        <hr>
+        <div class="col-md-12"></div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('message_type')">
+                <label>Message Type</label>
+                <input type="text" class="form-control" formControlName="message_type" readonly>
+                <validation-messages [control]="seaIgmStep1.controls.message_type" errorMsg="Message Type"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('custom_house_code')">
+                <label>Custom House Code&nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="custom_house_code">
+                <validation-messages [control]="seaIgmStep1.controls.custom_house_code" errorMsg="Custom House Code"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('imo_code_of_vessel')">
+                <label>IMO Code of Vessel.&nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="imo_code_of_vessel">
+                <validation-messages [control]="seaIgmStep1.controls.imo_code_of_vessel" errorMsg="IMO Code of Vessel"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('vessel_code')">
+                <label>Vessel Code (Call sign)&nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="vessel_code">
+                <validation-messages [control]="seaIgmStep1.controls.vessel_code" errorMsg="Vessel Code"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1 " [ngClass]="displayFieldCss('voyage_no')">
+                <label>Voyage No.&nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="voyage_no">
+                <validation-messages [control]="seaIgmStep1.controls.voyage_no" errorMsg="Voyage No"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('shipping_line_code')">
+                <label>Shipping Line Code &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="shipping_line_code">
+                <validation-messages [control]="seaIgmStep1.controls.shipping_line_code" errorMsg="Shipping Line Code"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('shipping_agent_code')">
+                <label>Shipping Agent Code &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="shipping_agent_code">
+                <validation-messages [control]="seaIgmStep1.controls.shipping_agent_code" errorMsg="Shipping Agent Code"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('master_name')">
+                <label>Master Name<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 30 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="master_name">
+                <validation-messages [control]="seaIgmStep1.controls.master_name" errorMsg="Master Name"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('port_of_arrival')">
+                <label>Port of Arrival<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="port_of_arrival">
+                <validation-messages [control]="seaIgmStep1.controls.port_of_arrival" errorMsg="Port of Arrival"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('last_port_called')">
+                <label>Last Port Called<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="last_port_called">
+                <validation-messages [control]="seaIgmStep1.controls.last_port_called" errorMsg=" Last Port Called"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('port_called_prior_sno_12')">
+                <label>Port Called prior to S.No.12&nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="port_called_prior_sno_12">
+                <validation-messages [control]="seaIgmStep1.controls.port_called_prior_sno_12" errorMsg="Port Called Prior to S.No.12"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('port_called_prior_sno_13')">
+                <label>Port Called prior to S.No.13&nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and characters are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="port_called_prior_sno_13">
+                <validation-messages [control]="seaIgmStep1.controls.port_called_prior_sno_13" errorMsg="Port Called Prior to S.No.13"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('vessel_type')">
+                <label>Vessel type<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="vessel_type">
+                <validation-messages [control]="seaIgmStep1.controls.vessel_type" errorMsg="Vessel Type"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('total_no_of_lines')">
+                <label>Total No. of Lines<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only numbers are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="total_no_of_lines">
+                <validation-messages [control]="seaIgmStep1.controls.total_no_of_lines" errorMsg="Total No of Lines"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('brief_cargo_description')">
+                <label>Brief Cargo Description<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 30 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="brief_cargo_description">
+                <validation-messages [control]="seaIgmStep1.controls.brief_cargo_description" errorMsg="Brief Cargo Description"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('expected_date_and_time')">
+                <label>Expected Date and Time of Arrival</label><span class="required"> *</span>
+                <div>
+                <mat-form-field>
+                    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose date and time"
+                        formControlName="expected_date_and_time" [min]="minDate" [max]="maxDate" [disabled]="disabled">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+                        [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond" [touchUi]="touchUi"
+                        [color]="color" [enableMeridian]="enableMeridian">
+                    </ngx-mat-datetime-picker>
+                </mat-form-field>
+                </div>
+                <validation-messages [control]="seaIgmStep1.controls.expected_date_and_time" errorMsg="Expected Date and Time"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('light_house_dues')">
+                <label>Light house dues (in INR) &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 9 and only numbers are allowed " [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="light_house_dues">
+                <validation-messages [control]="seaIgmStep1.controls.light_house_dues" errorMsg="Light House Dues"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('same_bottom_cargo')">
+                <label>Same Bottom Cargo(Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="same_bottom_cargo">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="seaIgmStep1.controls.same_bottom_cargo" errorMsg="Same Bottom Cargo"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('ship_stores_declaration')">
+                <label>Ship Stores Declaration (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="ship_stores_declaration">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="seaIgmStep1.controls.ship_stores_declaration" errorMsg="Ship Stores Declaration"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('crew_list_declaration')">
+                <label>Crew List Declaration (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="crew_list_declaration">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="seaIgmStep1.controls.crew_list_declaration" errorMsg="Crew List Declaration"></validation-messages>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('passenger_list')">
+                <label>Passenger List (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="passenger_list">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="seaIgmStep1.controls.passenger_list" errorMsg="Passenger List"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('crew_effect_declaration')">
+                <label>Crew Effect Declaration (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="crew_effect_declaration">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="seaIgmStep1.controls.crew_effect_declaration" errorMsg="Crew Effect Declaration"></validation-messages>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('maritime_declaration')">
+                <label>Maritime Declaration (Y/N)</label><span class="required"> *</span>
+                <select class="form-control" formControlName="maritime_declaration">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <validation-messages [control]="seaIgmStep1.controls.maritime_declaration" errorMsg="Maritime Declaration"></validation-messages>
+            </div>
+            <!-- <div class="col-md-2"></div> -->
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('terminal_operator_code')">
+                <label>Terminal Operator Code<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and characters are allowed " [matTooltipPosition]="position.value"
+                class="icon_tooltips"></fa-icon> </label>
+                <input type="text" class="form-control" formControlName="terminal_operator_code">
+                <validation-messages [control]="seaIgmStep1.controls.terminal_operator_code" errorMsg="Terminal Operator Code"></validation-messages>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="btncontainer">
+    <button mat-raised-button id="back_draft">Save as Draft</button>
+    <button mat-flat-button  id="savecon" (click)="onSubmit()">Save & Continue</button>
+    <button id="save_continues"  matStepperNext style="display: none;"></button>
+</div>
