@@ -399,7 +399,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
 //    console.log()
 //const expvalidation = <FormArray>this.addStep3Inoices().at(0).get('addNewItemStepThree');
 
-    return (
+    return (   
 
       (!this.addStep3Inoices().at(0).get(field)?.valid && this.addStep3Inoices().at(0).get(field)?.touched) ||
       (this.addStep3Inoices().at(0).get(field)?.untouched  && this.formSumitAttempt)
