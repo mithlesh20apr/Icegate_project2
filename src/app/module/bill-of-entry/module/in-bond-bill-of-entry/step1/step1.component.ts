@@ -137,6 +137,7 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
 
   // check validation when you click the continue buttons
   isFieldValid(field: string) {
+   // console.log(this.inBondFormStep1.get(field));
     return (
       (!this.inBondFormStep1.get(field).valid && this.inBondFormStep1.get(field).touched) ||
       (this.inBondFormStep1.get(field).untouched && this.formSumitAttempt)
@@ -163,7 +164,7 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
 
    /* Set validation on yes or no check on High Sea sales Flag */
   onHighSeaChange(value:MatRadioChange) {
-    console.log(value)
+    console.log(this.inBondFormStep1.get('general_details.permission_code'))
       if(value.value === 'Y') {
       this.inBondFormStep1.get('general_details.permission_code').setValidators([Validators.required,Validators.maxLength(3),]);
       this.inBondFormStep1.get('general_details.reason_for_request').setValidators([Validators.required,Validators.maxLength(2000),]);

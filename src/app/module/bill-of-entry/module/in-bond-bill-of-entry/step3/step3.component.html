@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="mt-3 col-md-12">
                 <div class="form-row">
-                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoice_serial_number')">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoiceDetails.invoice_serial_number')">
                         <label>Invoice Serial Number <span class="required">&#42;</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         <input type="text" class="form-control" formControlName="invoice_serial_number" >
@@ -160,7 +160,7 @@
             <div class="row">
                 <div class="col-md-12 mt-2">
                 <div class="form-row">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('suppliereDetails.name_supplier')">
                         <label>Supplier Name <span class="required"> *</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 50 and only text are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         <input type="text" class="form-control" formControlName="name_supplier">
@@ -342,19 +342,19 @@
             <div class="row">
                 <div class="col-md-12 mt-2">
                 <div class="form-row">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoiceratesDetails.invoice_value')">
                         <label>Invoice Value <span class="required"> *</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and decimal number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> 
                         <input type="text" class="form-control" formControlName="invoice_value">
                         <validation-messages [control]="invoiceDetailsmain.get('invoiceratesDetails')['controls'].invoice_value" errorMsg="Invoice Value"></validation-messages>
                     </div>
-                    <div class="form-group col-md-2 offset-md-2">
+                    <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('invoiceratesDetails.terms_of_invoice')">
                         <label> Terms of Invoice <span class="required">*</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> 
                             <input type="text" class="form-control" formControlName="terms_of_invoice">
                             <validation-messages [control]="invoiceDetailsmain.get('invoiceratesDetails')['controls'].terms_of_invoice" errorMsg="Terms of Invoice"></validation-messages>
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2" [ngClass]="displayFieldCss('invoiceratesDetails.invoice_currency')">
                         <label>Invoice Currency <span class="required">*</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> 
                             <input type="text" class="form-control" formControlName="invoice_currency">
@@ -508,13 +508,13 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoiceratesDetails.nature_of_transaction')">
                         <label>Nature of Transaction Comission <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> <span class="required"> *</span>
                         <input type="text" class="form-control" formControlName="nature_of_transaction">
                         <validation-messages [control]="invoiceDetailsmain.get('invoiceratesDetails')['controls'].nature_of_transaction" errorMsg="Nature of Transaction Comission"></validation-messages>
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('invoiceratesDetails.payment_terms')">
                         <label> Payment Terms <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> <span class="required"> *</span>
                            <input type="text" class="form-control" formControlName="payment_terms">
@@ -564,7 +564,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoiceratesDetails.actual_invoice_number')">
                         <label>Actual Invoice Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> <span class="required">  *</span>
                         <input type="text" class="form-control" formControlName="actual_invoice_number">
@@ -667,8 +667,8 @@
                         <input type="text" class="form-control" formControlName="authorized_economic_operator_role">
                         <validation-messages [control]="invoiceDetailsmain.get('thirdPartyDetails')['controls'].authorized_economic_operator_role" errorMsg="Authorized Economic Operator Role"></validation-messages>
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label>Whether Buyer or Seller related</label>
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('thirdPartyDetails.buyer_or_seller_related')">
+                        <label>Whether Buyer or Seller related <span class="required">*</span></label>
                         <div class="radio-inline">
                             <input type="radio" value="Yes" formControlName="buyer_or_seller_related">Yes &nbsp;&nbsp;&nbsp;
                             <input type="radio" value="No" formControlName="buyer_or_seller_related">No &nbsp;&nbsp;&nbsp;
@@ -697,165 +697,166 @@
             </ng-template>
             
         <div [formGroupName]="j">
-            
-  <mat-accordion class="col-md-12 no-padding">   
-    <mat-expansion-panel [expanded]="1" class="matnotexpand" formGroupName="itemDetails">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Item Details
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row">
-                <div class="form-row mt-1 col-lg-12">
-                    <div class="form-group col-md-2 offset-md-1">
-                        <label>Invoice Serial Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        <input type="text" class="form-control" formControlName="invoice_serial_numbers">
-                       <validation-messages [control]="addNewItems.get('itemDetails')['controls'].invoice_serial_numbers" errorMsg="Invoice Serial Number"></validation-messages> 
+            <mat-accordion class="col-md-12 no-padding">   
+                <mat-expansion-panel [expanded]="1" class="matnotexpand" formGroupName="itemDetails">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Item Details
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="row">
+                            <div class="form-row mt-1 col-lg-12">
+                                <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('itemDetails.invoice_serial_numbers')">
+                                    <label>Invoice Serial Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                                    <input type="text" class="form-control" formControlName="invoice_serial_numbers">
+                                   <validation-messages [control]="addNewItems.get('itemDetails')['controls'].invoice_serial_numbers" errorMsg="Invoice Serial Number"></validation-messages> 
+                                </div>
+                                <div class="form-group col-md-2" [ngClass]="displayFieldCss('itemDetails.item_serial_number')">
+                                    <label>Item Serial Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                                    <input type="text" class="form-control" formControlName="item_serial_number">
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_serial_number" errorMsg="Item Serial Number"></validation-messages>
+                                </div>
+                                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('itemDetails.item_quantity')">
+                                    <label>Quantity <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                                    <input type="text" class="form-control" formControlName="item_quantity">
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_quantity" errorMsg="Quantity"></validation-messages>
+                                </div>
+                            </div>
+                            <div class="form-row col-lg-12">
+                                <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('itemDetails.unit_quantity_code')">
+                                    <label>Unit Quantity Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                                    <input type="text" class="form-control" formControlName="unit_quantity_code">
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].unit_quantity_code" errorMsg="Unit Quantity Code"></validation-messages>
+                                </div>
+                                <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('itemDetails.ritc_code')">
+                                    <label>RITC Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and text and number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                                    <input type="text" class="form-control" formControlName="ritc_code">
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].ritc_code" errorMsg="RITC Number"></validation-messages>     
+                                </div>
+                            </div>
+                            <div class="form-row col-lg-12" [ngClass]="displayFieldCss('itemDetails.item_description1')">
+                                <div class="form-group col-md-4 offset-md-1">
+                                    <label>Item Description 1 <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 60 and text and number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                                    <input type="text" formControlName="item_description1" class="form-control">
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_description1" errorMsg="Item Description 1"></validation-messages>  
+                                </div>
+                                <div class="form-group col-md-4 offset-md-2">
+                                    <label>Item Description 2 <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 60 and text and number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                    <input type="text" class="form-control" formControlName="item_description2">
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_description2" errorMsg="Item Description 2"></validation-messages>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-row col-lg-12">
+                                <div class="form-group col-md-4 offset-md-1">
+                                    <label>Item Category (scheme Code)</label>
+                                    <select formControlName="item_category" class="form-control" (change)="onItemCategory($event,i)">
+                                        <option value="">NA</option>
+                                        <option value="LO">LO</option>
+                                    </select>
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category" errorMsg="Item Category (scheme Code)"></validation-messages>
+                                </div>
+                                <div class="form-group col-md-4 offset-md-2">
+                                    <label>Generic Description Of the Item <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 60 and text and number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                    <input class="form-control" formControlName="item_description_generic">
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_description_generic" errorMsg="Generic Description Of the Item"></validation-messages>
+                                    
+                                </div>
+                            </div>
+                            <div *ngIf="addNewItems.get('itemDetails')['controls'].item_category.value==='LO'" class="dropdown-color col-lg-12 no-padding">
+                                <div class="form-row col-lg-12 no-padding">
+                                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('itemDetails.item_category_invoice_serial_number')">
+                                        <label>Invoice Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                                        <input class="form-control" formControlName="item_category_invoice_serial_number">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_invoice_serial_number" errorMsg="Invoice Number"></validation-messages>
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('itemDetails.item_category_item_serial_number_invoice')">
+                                        <label>Item Sr. No. In Invoice </label><span class="required"> *</span>
+                                        <input class="form-control" formControlName="item_category_item_serial_number_invoice">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_item_serial_number_invoice" errorMsg="Item Sr. No. In Invoice"></validation-messages>
+                                    </div>
+                                </div>
+                                <div class="form-row col-lg-12">
+                                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('itemDetails.item_category_item_serial_number_license')">
+                                        <label>Item Sr. No.License <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
+                                        <input class="form-control" formControlName="item_category_item_serial_number_license">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_item_serial_number_license" errorMsg="Item Sr. No.License"></validation-messages>
+                                    </div>
+                                    <div class="form-group col-md-2 offset-md-2">
+                                        <label>Debt-Value </label>
+                                        <input class="form-control" formControlName="item_category_debit_value">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_debit_value" errorMsg="Debt-Value"></validation-messages>
+                                        
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Debt Quantity</label>
+                                        <input class="form-control" formControlName="item_category_debit_quantity">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_debit_quantity" errorMsg="Debt Quantity"></validation-messages>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-row col-lg-12">
+                                    <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('itemDetails.item_category_debit_unit_of_measurement')">
+                                        <label>Debt Unit of measurement<span class="required"> *</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input class="form-control" formControlName="item_category_debit_unit_of_measurement">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_debit_unit_of_measurement" errorMsg="Debt Unit of measurement"></validation-messages>
+                                    </div>
+                                    <div class="form-group col-md-2" [ngClass]="displayFieldCss('itemDetails.item_category_license_registration_number')">
+                                        <label>License Registration No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and only number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
+                                        <input class="form-control" formControlName="item_category_license_registration_number">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_license_registration_number" errorMsg="License Registration No."></validation-messages>
+                                        
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('itemDetails.item_category_license_registration_date')">
+                                        <label>License Registration Date </label><span class="required"> *</span>
+                                        <input type="date" class="form-control" formControlName="item_category_license_registration_date">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_license_registration_date" errorMsg="License Registration Date"></validation-messages>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-row col-lg-12">
+                                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('itemDetails.item_category_license_code')">
+                                        <label>License Registration Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and text and number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
+                                        <input class="form-control" formControlName="item_category_license_code">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_license_code" errorMsg="License Registration Code"></validation-messages>
+                                        
+                                    </div>
+                                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('itemDetails.item_category_license_reg_port')">
+                                        <label>RA/License Registration Port <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and text and number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                                        <input class="form-control" formControlName="item_category_license_reg_port">
+                                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_license_reg_port" errorMsg="RA/License Registration Port"></validation-messages>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row col-lg-12">
+                                <div class="form-group col-md-4 offset-md-1">
+                                    <label>Accessories for the Item Manufacture/Grower <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2000 and text and number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                    <input type="text" class="form-control" formControlName="item_accessories">
+                                    <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_accessories" errorMsg="Accessories for the Item Manufacture/Grower"></validation-messages>
+                                    
+                                </div>
+                            </div> 
+                       
                     </div>
-                    <div class="form-group col-md-2">
-                        <label>Item Serial Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        <input type="text" class="form-control" formControlName="item_serial_number">
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_serial_number" errorMsg="Item Serial Number"></validation-messages>
-                    </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label>Quantity <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        <input type="text" class="form-control" formControlName="item_quantity">
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_quantity" errorMsg="Quantity"></validation-messages>
-                    </div>
-                </div>
-                <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>Unit Quantity Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        <input type="text" class="form-control" formControlName="unit_quantity_code">
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].unit_quantity_code" errorMsg="Unit Quantity Code"></validation-messages>
-                    </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label>RITC Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        <input type="text" class="form-control" formControlName="ritc_code">
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].ritc_code" errorMsg="RITC Number"></validation-messages>     
-                    </div>
-                </div>
-                <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>Item Description 1 <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 60 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        <input type="text" formControlName="item_description1" class="form-control">
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_description1" errorMsg="Item Description 1"></validation-messages>  
-                    </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label>Item Description 2 <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 60 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label>
-                        <input type="text" class="form-control" formControlName="item_description2">
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_description2" errorMsg="Item Description 2"></validation-messages>
-                        
-                    </div>
-                </div>
-                <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>Item Category (scheme Code)</label>
-                        <select formControlName="item_category" class="form-control">
-                           
-                            <option value="LO">LO</option>
-                        </select>
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category" errorMsg="Item Category (scheme Code)"></validation-messages>
-                    </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label>Generic Description Of the Item <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 60 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label>
-                        <input class="form-control" formControlName="item_description_generic">
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_description_generic" errorMsg="Generic Description Of the Item"></validation-messages>
-                        
-                    </div>
-                </div>
-                <div *ngIf="addNewItems.get('itemDetails')['controls'].item_category.value==='LO'" class="dropdown-color">
-                    <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
-                            <label>Invoice Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                            <input class="form-control" formControlName="item_category_invoice_serial_number">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_invoice_serial_number" errorMsg="Invoice Number"></validation-messages>
-                        </div>
-                        <div class="form-group col-md-4 offset-md-2">
-                            <label>Item Sr. No. In Invoice </label><span class="required"> *</span>
-                            <input class="form-control" formControlName="item_category_item_serial_number_invoice">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_item_serial_number_invoice" errorMsg="Item Sr. No. In Invoice"></validation-messages>
-                        </div>
-                    </div>
-                    <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
-                            <label>Item Sr. No.License <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
-                            <input class="form-control" formControlName="item_category_item_serial_number_license">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_item_serial_number_license" errorMsg="Item Sr. No.License"></validation-messages>
-                        </div>
-                        <div class="form-group col-md-2 offset-md-2">
-                            <label>Debt-Value </label>
-                            <input class="form-control" formControlName="item_category_debit_value">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_debit_value" errorMsg="Debt-Value"></validation-messages>
-                            
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label>Debt Quantity</label>
-                            <input class="form-control" formControlName="item_category_debit_quantity">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_debit_quantity" errorMsg="Debt Quantity"></validation-messages>
-                            
-                        </div>
-                    </div>
-                    <div class="form-row col-lg-12">
-                        <div class="form-group col-md-2 offset-md-1">
-                            <label>Debt Unit of measurement <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon></label>
-                            <input class="form-control" formControlName="item_category_debit_unit_of_measurement">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_debit_unit_of_measurement" errorMsg="Debt Unit of measurement"></validation-messages>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label>License Registration No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and only number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
-                            <input class="form-control" formControlName="item_category_license_registration_number">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_license_registration_number" errorMsg="License Registration No."></validation-messages>
-                            
-                        </div>
-                        <div class="form-group col-md-4 offset-md-2">
-                            <label>License Registration Date </label><span class="required"> *</span>
-                            <input type="date" class="form-control" formControlName="item_category_license_registration_date">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_license_registration_date" errorMsg="License Registration Date"></validation-messages>
-                            
-                        </div>
-                    </div>
-                    <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
-                            <label>License Registration Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and text and number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
-                            <input class="form-control" formControlName="item_category_license_code">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_license_code" errorMsg="License Registration Code"></validation-messages>
-                            
-                        </div>
-                        <div class="form-group col-md-4 offset-md-2">
-                            <label>RA/License Registration Port <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and text and number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                            <input class="form-control" formControlName="item_category_license_reg_port">
-                            <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_category_license_reg_port" errorMsg="RA/License Registration Port"></validation-messages>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>Accessories for the Item Manufacture/Grower <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2000 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label>
-                        <input type="text" class="form-control" formControlName="item_accessories">
-                        <validation-messages [control]="addNewItems.get('itemDetails')['controls'].item_accessories" errorMsg="Accessories for the Item Manufacture/Grower"></validation-messages>
-                        
-                    </div>
-                </div> 
-           
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>
+                </mat-expansion-panel>
+                </mat-accordion>
+                
+
 <mat-accordion class="col-md-12 no-padding">
     <mat-expansion-panel class="matnotexpand" formGroupName="productDetails" >
         <mat-expansion-panel-header>
@@ -873,7 +874,7 @@
                         <validation-messages [control]="addNewItems.get('productDetails')['controls'].name_producer" errorMsg="Producer Name"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productDetails.name_brand')">
                         <label>Brand Name <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                         <input type="text" class="form-control" formControlName="name_brand">
@@ -882,14 +883,14 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('productDetails.model')">
                         <label>Model <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                         <input type="text" class="form-control" formControlName="model">
                         <validation-messages [control]="addNewItems.get('productDetails')['controls'].model" errorMsg="model"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productDetails.end_use_item')">
                         <label>End use of the item <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                         <input type="text" class="form-control" formControlName="end_use_item">
@@ -898,14 +899,14 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('productDetails.cth')">
                         <label>CTH <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        <input type="text" class="form-control" formControlName="cth">
+                        <input type="text" class="form-control" formControlName="cth" (change)="cthLength($event,i)">
                         <validation-messages [control]="addNewItems.get('productDetails')['controls'].cth" errorMsg="cth"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productDetails.country_of_origin_of_item')">
                         <label>Country of origin <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                         <input type="text" class="form-control" formControlName="country_of_origin_of_item">
@@ -913,34 +914,24 @@
                         
                     </div>
                 </div>
-                <div *ngIf="addNewItems.get('productDetails')['controls'].cth.length==8">
-                    <mat-card class="cth-background mt-2">
-                        <mat-accordion>
-                            <mat-expansion-panel class="matnotexpand">
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        Invoice Details
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div class="row">
-                             
-                                        <div class="form-row col-lg-12">
-                                            <div class="form-group col-md-4 offset-md-1">
+                <div *ngIf="addNewItems.get('productDetails')['controls'].cth.value.length===8" class="col-lg-12  no-padding dropdown-color">
+                                        <div class="form-row col-lg-12 no-padding">
+                                            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('productDetails.product_details_invoice_serial_number')">
                                                 <label>Invoice Serial Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
                                                     class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                                                 <input class="form-control" formControlName="product_details_invoice_serial_number">
                                                 <validation-messages [control]="addNewItems.get('productDetails')['controls'].product_details_invoice_serial_number" errorMsg=">Invoice Serial Number"></validation-messages>
                                                 
                                             </div>
-                                            <div class="form-group col-md-4 offset-md-2">
+                                            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productDetails.product_details_item_serial_number')">
                                                 <label>Item Serial Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
-                                                    class="icon_tooltips"></fa-icon></label>
+                                                    class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                                                 <input class="form-control" formControlName="product_details_item_serial_number">
                                                 <validation-messages [control]="addNewItems.get('productDetails')['controls'].product_details_item_serial_number" errorMsg="Item Serial Number"></validation-messages> 
                                             </div>
                                         </div>
                                         <div class="form-row col-lg-12">
-                                            <div class="form-group col-md-4 offset-md-1">
+                                            <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('productDetails.info_type')">
                                                 <label>Info Type <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and only text are allowed" [matTooltipPosition]="position.value"
                                                     class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                                                 
@@ -948,7 +939,7 @@
                                                 <validation-messages [control]="addNewItems.get('productDetails')['controls'].info_type" errorMsg="Info Type"></validation-messages>
                                                 
                                             </div>
-                                            <div class="form-group col-md-4 offset-md-2">
+                                            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productDetails.ritc_qualifier')">
                                                 <label>RITC Qualifier <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 100 and text and number are allowed" [matTooltipPosition]="position.value"
                                                     class="icon_tooltips"></fa-icon></label><span class="required">*</span>                                              
                                                 <input class="form-control" formControlName="ritc_qualifier">
@@ -989,36 +980,30 @@
                                             </div>
                                         </div>
                                    
-                                </div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                     
-                    </mat-card>
                 </div>
-                <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>Preferential(P)/ Standard (S) <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        
-                        <input type="text" class="form-control" formControlName="preferential_or_standard">
-                   <validation-messages [control]="addNewItems.get('productDetails')['controls'].preferential_or_standard" errorMsg="Preferential(P)/ Standard (S)"></validation-messages>
-                        
-                    </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label>CETH <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label><span class="required">*</span>
-                        
-                        <input type="text" class="form-control" formControlName="ceth">
-                    <validation-messages [control]="addNewItems.get('productDetails')['controls'].ceth" errorMsg="CETH"></validation-messages>
-                        
-                    </div>
-                </div>
-           
+                         
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4 offset-md-1">
+                <label>Preferential(P)/ Standard (S) <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                
+                <input type="text" class="form-control" formControlName="preferential_or_standard">
+            <validation-messages [control]="addNewItems.get('productDetails')['controls'].preferential_or_standard" errorMsg="Preferential(P)/ Standard (S)"></validation-messages>
+                
+            </div>
+            <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productDetails.ceth')">
+                <label>CETH <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and text and number are allowed" [matTooltipPosition]="position.value"
+                    class="icon_tooltips"></fa-icon></label><span class="required">*</span>
+                
+                <input type="text" class="form-control" formControlName="ceth">
+            <validation-messages [control]="addNewItems.get('productDetails')['controls'].ceth" errorMsg="CETH"></validation-messages>
+                
+            </div>
         </div>
     </mat-expansion-panel>
-</mat-accordion> 
-
-<mat-accordion class="col-md-12 no-padding">
+    </mat-accordion> 
+    <mat-accordion class="col-md-12 no-padding">
     <mat-expansion-panel class="matnotexpand" formGroupName="notificationDetails">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -1026,18 +1011,18 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="row">
- 
+    
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>BCD Notification <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and text and number are allowed" [matTooltipPosition]="position.value"
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('notificationDetails.bcd_notification')">
+                        <label>BCD Notification <span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         
                         <input type="text" class="form-control" formControlName="bcd_notification">
                    <validation-messages [control]="addNewItems.get('notificationDetails')['controls'].bcd_notification" errorMsg="BCD Notification"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label>BCD Notification Sr.No <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and text and number are allowed" [matTooltipPosition]="position.value"
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('notificationDetails.bcd_notification_sr_no')">
+                        <label>BCD Notification Sr.No <span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         
                         <input type="text" class="form-control" formControlName="bcd_notification_sr_no">
@@ -1104,7 +1089,7 @@
                         <label>Other Notification <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         
-                        <input type="text" class="form-control" formControlName="other_notification">
+                        <input type="text" class="form-control" formControlName="other_notification" (change)="otherNotificationChanges($event,i)">
                   <validation-messages [control]="addNewItems.get('notificationDetails')['controls'].other_notification" errorMsg="Other Notification"></validation-messages>
                         
                     </div>
@@ -1117,9 +1102,9 @@
                         
                     </div>
                 </div>
-                <div *ngIf="addNewItems.get('notificationDetails')['controls'].other_notification.length==10" class="dropdown-color">
+                <div *ngIf="addNewItems.get('notificationDetails')['controls'].other_notification.value.length==10" class="dropdown-color col-lg-12 no-padding">
                     <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('notificationDetails.notification_invoice_serial_number')">
                             <label>Invoice Serial Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 5 and only number are allowed" [matTooltipPosition]="position.value"
                                 class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                             
@@ -1127,7 +1112,7 @@
                        <validation-messages [control]="addNewItems.get('notificationDetails')['controls'].notification_invoice_serial_number" errorMsg="Invoice Serial Number"></validation-messages>
                             
                         </div>
-                        <div class="form-group col-md-4 offset-md-2">
+                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('notificationDetails.notification_item_serial_number_invoice')">
                             <label>Item Sr. No. In Invoice <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
                                 class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                             
@@ -1137,7 +1122,7 @@
                         </div>
                     </div>
                     <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('notificationDetails.notification_number')">
                             <label>Notification No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and only text are allowed" [matTooltipPosition]="position.value"
                                 class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                             
@@ -1145,7 +1130,7 @@
                        <validation-messages [control]="addNewItems.get('notificationDetails')['controls'].notification_number" errorMsg="Notification No."></validation-messages>
                             
                         </div>
-                        <div class="form-group col-md-4 offset-md-2">
+                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('notificationDetails.notification_serial_number')">
                             <label>Notification Sr No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and only text are allowed" [matTooltipPosition]="position.value"
                                 class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                             
@@ -1155,7 +1140,7 @@
                         </div>
                     </div>
                     <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('notificationDetails.duty_type')">
                             <span>Duty Type</span><span class="required">*</span> 
                             
                             <label class="col-md-3">
@@ -1169,7 +1154,7 @@
                     <validation-messages [control]="addNewItems.get('notificationDetails')['controls'].duty_type" errorMsg="Duty Type"></validation-messages>
                 </label>
                         </div>
-                        <div class="form-group col-md-4 offset-md-2">
+                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('notificationDetails.additional_duty_flag')">
                             <label>Addl Duty Flag <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip=" only text are allowed" [matTooltipPosition]="position.value"
                                 class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                             
@@ -1331,7 +1316,7 @@
                         <input type="text" class="form-control" formControlName="quantity_tariff_value_notification">
                     <validation-messages [control]="addNewItems.get('notificationDetails')['controls'].quantity_tariff_value_notification" errorMsg="Quantity as per Tariff Value Notification."></validation-messages>
                         
-
+    
                     </div>
                    
                 </div>
@@ -1447,8 +1432,9 @@
            
         </div>
     </mat-expansion-panel>
-</mat-accordion>
-<mat-accordion class="col-md-12 no-padding">
+    </mat-accordion>
+    
+    <mat-accordion class="col-md-12 no-padding">
     <mat-expansion-panel class="matnotexpand" formGroupName="priceDetails">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -1458,7 +1444,7 @@
         <div class="row">
             
                 <div class="form-row mt-2 col-lg-12">
-                    <div class="form-group col-md-2 offset-md-1">
+                    <div class="form-group col-md-2 offset-md-1" [ngClass]="displayFieldCss('priceDetails.price_details_unit_price_invoiced')">
                         <label>Unit Priced Invoiced <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and only number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                         
@@ -1508,14 +1494,14 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-2 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1">
                         <label>SVB Load Assessable Value <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and only number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         
                         <input type="text" class="form-control" formControlName="price_details_svb_load_assessable_value">
                     <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_svb_load_assessable_value" errorMsg="SVB Load Assessable Value"></validation-messages>
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-4 offset-md-2">
                         <label> SVB Load on Duty <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and only number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         
@@ -1523,20 +1509,13 @@
                    <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_svb_load_on_duty" errorMsg="SVB Load on Duty"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label> SVB Flag <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label>
-                        
-                        <input type="text" class="form-control" formControlName="price_details_svb_flag">
-                   <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_svb_flag" errorMsg="SVB Flag"></validation-messages>
-                        
-                    </div>
+                  
                 </div>
                 <div class="form-row col-lg-12">
                     <div class="form-group col-md-4 offset-md-1">
                         <label>Whether Load Final/ Provisional on Assessable Value <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
-  
+    
                         
                         <input type="text" class="form-control" formControlName="price_details_load_final_provisional_on_ass_value">
                         <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_load_final_provisional_on_ass_value" errorMsg="Whether Load Final/ Provisional on Assessable Value"></validation-messages>
@@ -1555,10 +1534,18 @@
                     <div class="form-group col-md-4 offset-md-1">
                         <label>Custom House Code which has been imposed load <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
-  
+    
                         
                         <input type="text" class="form-control" formControlName="price_details_custom_house_code_imposed_load">
                         <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_custom_house_code_imposed_load" errorMsg="Custom House Code which has been imposed load"></validation-messages>
+                        
+                    </div>
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label> SVB Flag <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        
+                        <input type="text" class="form-control" formControlName="price_details_svb_flag">
+                   <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_svb_flag" errorMsg="SVB Flag"></validation-messages>
                         
                     </div>
                 </div>
@@ -1581,48 +1568,51 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <span>RSP applicability? </span> <span class="required">*</span>
-                        
-                        <label class="col-md-2">
-                <input type="radio" formControlName="price_details_rsp_applicability"
-                    value="Y">Y
-            </label>
-                        <label class="col-md-2">
-                <input type="radio" formControlName="price_details_rsp_applicability"
-                    value="N">N
-            </label>
-                        <label class="col-md-2">
-                <input type="radio" formControlName="price_details_rsp_applicability"
-                    value="Q">Q
-            </label>
-                        <label class="col-md-2">
-                <input type="radio" formControlName="price_details_rsp_applicability"
-                    value="T">T
-            </label>
-                        <label class="col-md-2">
-                <input type="radio" formControlName="price_details_rsp_applicability"
-                    value="D">D
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('priceDetails.price_details_rsp_applicability')">
+                       <label> <span>RSP applicability? </span> <span class="required">*</span>
+                       </label>
+                        <label class="col-md-12">
+                            <label class="rsp_app">
+                            <input type="radio" formControlName="price_details_rsp_applicability"
+                                value="Y">Y
+                            </label>
+                            <label class="rsp_app">
+                            <input type="radio" formControlName="price_details_rsp_applicability"
+                                value="N">N
+                            </label>
+                            <label class="rsp_app">
+                            <input type="radio" formControlName="price_details_rsp_applicability"
+                                value="Q">Q
+                    
+                            </label>
+                            <label class="rsp_app">
+                            <input type="radio" formControlName="price_details_rsp_applicability"
+                                value="T">T
+                            </label>
+                            <label class="rsp_app">
+                            <input type="radio" formControlName="price_details_rsp_applicability"
+                                value="D">D
+                            </label>
                     <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_rsp_applicability" errorMsg="RSP applicability?"></validation-messages>
             </label>
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <span>Whether RE Importer (Y/N)? </span> <span class="required">*</span>
-                        
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('priceDetails.price_details_re_import')">
+                       <label class="col-md-12"> <span>Whether RE Importer (Y/N)? </span> <span class="required">*</span>
+                       </label>
                         <label class="col-md-3">
-                <input formControlName="price_details_re_import" type="radio"
+                <input formControlName="price_details_re_import" type="radio" (change)="onPriceDetails($event,i)"
                     value="Yes">Yes
             </label>
                         <label class="col-md-3">
-                <input type="radio" formControlName="price_details_re_import"
+                <input type="radio" formControlName="price_details_re_import" (change)="onPriceDetails($event,i)"
                     value="No">No
                     <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_re_import" errorMsg="Whether RE Importer (Y/N)?"></validation-messages>
             </label>
                     </div>
                 </div>
-                <div *ngIf="addNewItems.get('priceDetails')['controls'].price_details_re_import.value==='Yes'" class="dropdown-color">
+                <div *ngIf="addNewItems.get('priceDetails')['controls'].price_details_re_import.value==='Yes'" class="dropdown-color col-lg-12 no-padding">
                     <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('priceDetails.price_details_permission_code')">
                             <label>Permission Code </label><span class="required">*</span>
                             
                             <input class="form-control" formControlName="price_details_permission_code">
@@ -1638,16 +1628,16 @@
                         </div>
                     </div>
                     <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('priceDetails.price_details_invoice_serial_number_on')">
                             <label>Invoice Serial Number</label><span class="required">*</span>
                             
                             <input class="form-control" formControlName="price_details_invoice_serial_number_on">
                        <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_invoice_serial_number_on" errorMsg="Invoice Serial Number"></validation-messages>
                             
                         </div>
-                        <div class="form-group col-md-4 offset-md-2">
-                            <label><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon>Item Serial Number in Invoice </label><span class="required">*</span>
+                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('priceDetails.price_details_item_serial_number_invoice')">
+                            <label>Item Serial Number in Invoice <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only number are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                             
                             <input class="form-control" formControlName="price_details_item_serial_number_invoice">
                         <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_item_serial_number_invoice" errorMsg="Item Serial Number in Invoice"></validation-messages>
@@ -1655,7 +1645,7 @@
                         </div>
                     </div>
                     <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('priceDetails.price_details_shipping_bill_no')">
                             <label>* Shipping Bill No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only number are allowed" [matTooltipPosition]="position.value"
                                 class="icon_tooltips"></fa-icon> </label><span class="required">*</span>
                             
@@ -1663,7 +1653,7 @@
                         <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_shipping_bill_no" errorMsg="Shipping Bill No."></validation-messages>
                             
                         </div>
-                        <div class="form-group col-md-4 offset-md-2">
+                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('priceDetails.price_details_shipping_bill_date')">
                             <label> * Shipping Bill Date </label><span class="required"> *</span>
                             
                             <input type="date" class="form-control" formControlName="price_details_shipping_bill_date">
@@ -1672,7 +1662,7 @@
                     </div>
                     <div class="form-row col-lg-12">
                         <div class="form-group col-md-4 offset-md-1">
-                            <label> * Port of Export</label><span class="required"> *</span>
+                            <label> * Port of Export</label>
                             
                             <select class="form-control" formControlName="price_details_port_of_export">
                                 <option> </option>
@@ -1696,7 +1686,7 @@
                             <input type="text" class="form-control" formControlName="price_details_item_no_sb">
                         <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_item_no_sb" errorMsg="Item No. (SB)"></validation-messages>
                         </div>
-                        <div class="form-group col-md-4 offset-md-2">
+                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('priceDetails.price_details_notification_no')">
                             <label>Notification No</label><span class="required"> *</span>
                             
                             <input type="text" class="form-control" formControlName="price_details_notification_no">
@@ -1704,9 +1694,9 @@
                         </div>
                     </div>
                     <div class="form-row col-lg-12">
-                        <div class="form-group col-md-4 offset-md-1">
-                            <label><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and text and number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon>Notification Sr. Number</label><span class="required"> *</span>
+                        <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('priceDetails.price_details_notification_sr_no')">
+                            <label>Notification Sr. Number <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 10 and text and number are allowed" [matTooltipPosition]="position.value"
+                                class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                             
                             <input type="text" class="form-control" formControlName="price_details_notification_sr_no">
                         <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_notification_sr_no" errorMsg="Notification Sr. Number"></validation-messages>
@@ -1741,10 +1731,11 @@
                         </div>
                     </div>
                 </div>
+                <!--close if condition-->
                 <div class="form-row col-lg-12">
                     <div class="form-group col-md-4 offset-md-1">
                         <label>Previous BE No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 7 and only number are allowed" [matTooltipPosition]="position.value"
-                            class="icon_tooltips"></fa-icon></label>
+                             class="icon_tooltips"></fa-icon></label>
                         
                         <input type="text" class="form-control" formControlName="price_details_prev_be_no">
                     <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_prev_be_no" errorMsg="Previous BE No."></validation-messages>
@@ -1757,19 +1748,30 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-2 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1">
                         <label>Previous Unit Price <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 16 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         
                         <input type="text" class="form-control" formControlName="price_details_prev_unit_price">
                     <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_prev_unit_price" errorMsg="Previous Unit Price"></validation-messages>
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-4 offset-md-2">
                         <label> Previous Currency Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                         
                         <input type="text" class="form-control" formControlName="price_details_prev_unit_currency">
                     <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_prev_unit_currency" errorMsg="Previous Currency Code"></validation-messages>
+                        
+                    </div>
+                   
+                </div>
+                <div class="form-row col-lg-12">
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Customs Notn exempting central excise flag <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        
+                        <input type="text" class="form-control" formControlName="price_details_custom_notifictaion_exempting_central_excise_flag">
+                    <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_custom_notifictaion_exempting_central_excise_flag" errorMsg="Customs Notn exempting central excise flag"></validation-messages>
                         
                     </div>
                     <div class="form-group col-md-4 offset-md-2">
@@ -1778,16 +1780,6 @@
                         
                         <input type="text" class="form-control" formControlName="price_details_prev_customm_site">
                    <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_prev_customm_site" errorMsg="Previous Custom Site"></validation-messages>
-                        
-                    </div>
-                </div>
-                <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
-                                class="icon_tooltips"></fa-icon>Customs Notn exempting central excise flag </label>
-                        
-                        <input type="text" class="form-control" formControlName="price_details_custom_notifictaion_exempting_central_excise_flag">
-                    <validation-messages [control]="addNewItems.get('priceDetails')['controls'].price_details_custom_notifictaion_exempting_central_excise_flag" errorMsg="Customs Notn exempting central excise flag"></validation-messages>
                         
                     </div>
                 </div>
@@ -1892,20 +1884,22 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('manufaturingDetails.manufaturingDetails')">
                         <label> Accessory Status <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 1 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> <span class="required"> *</span>
                         
                         <input type="text" class="form-control" formControlName="accessory_status">
-                    <validation-messages [control]="addNewItems.get('manufaturingDetails')['controls'].accessory_status" errorMsg="Accessory Status"></validation-messages>
+                    <validation-messages [control]="addNewItems.get('manufaturingDetails')['controls'].manufaturingDetails" errorMsg="Accessory Status"></validation-messages>
                         
                     </div>
                 </div>
             
         </div>
     </mat-expansion-panel>
-</mat-accordion>   
-<mat-accordion class="col-md-12 no-padding">
+    </mat-accordion> 
+    
+    
+    <mat-accordion class="col-md-12 no-padding">
     <mat-expansion-panel class="matnotexpand" formGroupName="constituentDetails">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -1915,7 +1909,7 @@
         <div class="row">
            
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('constituentDetails.constituent_serial_number')">
                         <label>Constituent Sr. No. <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and only number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> <span class="required"> *</span>
                         
@@ -1923,7 +1917,7 @@
                    <validation-messages [control]="addNewItems.get('constituentDetails')['controls'].constituent_serial_number" errorMsg="Constituent Sr. No"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('constituentDetails.constituent_element_name')">
                         <label>Constituent Element Name <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 256 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                         
@@ -1933,21 +1927,21 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('constituentDetails.constituent_element_code')">
                         <label>Constituent Element Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                             <input type="text" class="form-control" formControlName="constituent_element_code">
                             <validation-messages [control]="addNewItems.get('constituentDetails')['controls'].constituent_element_code" errorMsg="Constituent Element Code"></validation-messages>
- 
+    
                     </div>
-                    <div class="form-group col-md-2 offset-md-2">
+                    <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('constituentDetails.constituent_percentage')">
                         <label>Constituent Percentage <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and only number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
                             <input type="number" class="form-control" formControlName="constituent_percentage">
                             <validation-messages [control]="addNewItems.get('constituentDetails')['controls'].constituent_percentage" errorMsg="Constituent Percentage"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2" [ngClass]="displayFieldCss('constituentDetails.constituent_yield_percentage')">
                         <label>Constituent Yield % <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and only number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                 <input type="number" class="form-control" formControlName="constituent_yield_percentage">
@@ -1956,7 +1950,7 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('constituentDetails.active_ingredient_flag')">
                         <span>Active ingredient (Y/N)</span> <span class="required">*</span>
                         
                         <label class="col-md-3">
@@ -1966,7 +1960,7 @@
                         <label class="col-md-3">
                 <input formControlName="active_ingredient_flag" type="radio"
                     value="No">No
-
+    
             </label>
             <validation-messages [control]="addNewItems.get('constituentDetails')['controls'].active_ingredient_flag" errorMsg="Active ingredient (Y/N)"></validation-messages>
                     </div>
@@ -1974,8 +1968,8 @@
           
         </div>
     </mat-expansion-panel>
-</mat-accordion>
-<mat-accordion class="col-md-12 no-padding">
+    </mat-accordion>
+    <mat-accordion class="col-md-12 no-padding">
     <mat-expansion-panel class="matnotexpand" formGroupName="productionDetails">
         <mat-expansion-panel-header class="colour">
             <mat-panel-title>
@@ -1984,14 +1978,14 @@
         </mat-expansion-panel-header>
         <div class="row">
                 <div class="form-row mt-2 col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>Production Batch Identifier <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and only text are allowed" [matTooltipPosition]="position.value"
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('productionDetails.production_batch_identifier')">
+                        <label>Production Batch Identifier <span class="required">*</span> <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and only text are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
                              <input type="text" class="form-control" formControlName="production_batch_identifier">
                              <validation-messages [control]="addNewItems.get('productionDetails')['controls'].production_batch_identifier" errorMsg="Production Batch Identifier"></validation-messages>
            
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productionDetails.production_batch_quantity')">
                         <label>Production Batch Quantity <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and only number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required"> *</span>
             <input type="number" class="form-control" formControlName="production_batch_quantity">
@@ -2000,16 +1994,16 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('productionDetails.production_unit_quantity_code')">
                         <label>Unit Quantity Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label> <span class="required"> *</span>
                         
                         <input type="text" class="form-control" formControlName="production_unit_quantity_code">
                         <validation-messages [control]="addNewItems.get('productionDetails')['controls'].production_unit_quantity_code" errorMsg="Unit Quantity Code"></validation-messages>
-
+    
                        
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productionDetails.production_date_manufacturing')">
                         <label>Date of Manufacturing</label><span class="required"> *</span>
                <input type="date" class="form-control" formControlName="production_date_manufacturing">
                <validation-messages [control]="addNewItems.get('productionDetails')['controls'].production_date_manufacturing" errorMsg="Date of Manufacturing"></validation-messages>
@@ -2017,14 +2011,14 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('productionDetails.production_date_expiry')">
                         <label>Date Of Expiry</label><span class="required"> *</span>
                         
                         <input type="date" class="form-control" formControlName="production_date_expiry">
                    <validation-messages [control]="addNewItems.get('productionDetails')['controls'].production_date_expiry" errorMsg="Date Of Expiry"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('productionDetails.production_best_before')">
                         <label>Best Before</label><span class="required"> *</span>
                         
                         <input type="date" class="form-control" formControlName="production_best_before">
@@ -2035,8 +2029,8 @@
           
         </div>
     </mat-expansion-panel>
-</mat-accordion>
-<mat-accordion class="col-md-12 no-padding">
+    </mat-accordion>
+    <mat-accordion class="col-md-12 no-padding">
     <mat-expansion-panel class="matnotexpand" formGroupName="controlDetails">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -2046,7 +2040,7 @@
         <div class="row">
           
                 <div class="form-row mt-2 col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('controlDetails.control_type_code')">
                         <label>Control Type Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and only text are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                         
@@ -2054,7 +2048,7 @@
                    <validation-messages [control]="addNewItems.get('controlDetails')['controls'].control_type_code" errorMsg="Control Type Code"></validation-messages>
                         
                     </div>
-                    <div class="form-group col-md-4 offset-md-2">
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('controlDetails.control_location')">
                         <label>Control Location <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and only text are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required">*</span>
             <input type="text" class="form-control" formControlName="control_location">
@@ -2077,12 +2071,12 @@
                     </div>
                 </div>
                 <div class="form-row col-lg-12">
-                    <div class="form-group col-md-4 offset-md-1">
+                    <div class="form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('controlDetails.control_result_code')">
                         <label>Control Result Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and only text are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label><span class="required">*</span>
                 <input type="text" class="form-control" formControlName="control_result_code">
             <validation-messages [control]="addNewItems.get('controlDetails')['controls'].control_result_code" errorMsg="Control Result Code"></validation-messages>
-
+    
                     </div>
                     <div class="form-group col-md-4 offset-md-2">
                         <label>Control Result text <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 4000 and only text are allowed" [matTooltipPosition]="position.value"
@@ -2095,7 +2089,8 @@
          
         </div>
     </mat-expansion-panel>
-</mat-accordion> 
+    </mat-accordion>     
+ 
 </div>
 </mat-tab>
 </mat-tab-group>
