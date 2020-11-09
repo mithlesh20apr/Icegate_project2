@@ -17,6 +17,7 @@ export class InBondBillOfEntryComponent implements OnInit {
   tabs1= [1];
   tabs3=[1];
   selected = new FormControl(0);
+  inBondFormStep3: FormGroup;
   selected1 = new FormControl(0);
   selected3 = new FormControl(0);
   disableAddButton = false;
@@ -87,7 +88,6 @@ export class InBondBillOfEntryComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.myStepper.next();
  }
 
@@ -104,7 +104,7 @@ uploadFile(event) {
          icon: 'error',
          title: 'Oops...',
          text: 'Only Json file is allowed',
-        
+         
        }).then((result) => {
          event.target.value = '';
        })
@@ -121,57 +121,67 @@ uploadFile(event) {
        }).then((result) => {
          if (result.isConfirmed) {  
          var data = JSON.parse(fileReader.result as string);
-        console.log(data);
+       
          this.bill_of_entrly.patchValue({
              inBondFormStep1: {
-               custom_house_code: data.inBondFormStep1.custom_house_code,
-               message_type: data.inBondFormStep1.message_type,
-               branch_sr_no: data.inBondFormStep1.branch_sr_no,
-               user_job_no: data.inBondFormStep1.user_job_no,
-               user_job_date: data.inBondFormStep1.user_job_date,
-               be_number: data.inBondFormStep1.be_number,
-               be_date: data.inBondFormStep1.be_date,
-               iec_code: data.inBondFormStep1.iec_code,
-               name_importer: data.inBondFormStep1.name_importer,
-               address1_importer: data.inBondFormStep1.address1_importer,
-               address2_importer: data.inBondFormStep1.address2_importer,
-               city_importer: data.inBondFormStep1.city_importer,
-               state_importer: data.inBondFormStep1.state_importer,
-               pin_importer: data.inBondFormStep1.pin_importer,
-               pin: data.inBondFormStep1.pin,
-               class:data.inBondFormStep1.class,
-               mode_of_transport: data.inBondFormStep1.mode_of_transport,
-               importer_type: data.inBondFormStep1.importer_type,
-               kachcha_be: data.inBondFormStep1.kachcha_be,
-               high_sea_sale_flag: data.inBondFormStep1.high_sea_sale_flag,
-               permission_code: data.inBondFormStep1.permission_code,
-               reason_for_request: data.inBondFormStep1.reason_for_request,
-               preceding_level: data.inBondFormStep1.preceding_level,
-               invoice_serial_number: data.inBondFormStep1.invoice_serial_number,
-               port_of_origin: data.inBondFormStep1.port_of_origin,
-               cha_code: data.inBondFormStep1.cha_code,
-               country_of_origin: data.inBondFormStep1.country_of_origin,
-               country_of_consignment: data.inBondFormStep1.country_of_consignment,
-               port_of_shipment: data.inBondFormStep1.port_of_shipment,
-               green_channel_requested: data.inBondFormStep1.green_channel_requested,
-               section: data.inBondFormStep1.section,
-               prior_be: data.inBondFormStep1.prior_be,
-               authorized_dealer_code: data.inBondFormStep1.authorized_dealer_code,
-               first_check_requested: data.inBondFormStep1.first_check_requested,
-               warehouse_code: data.inBondFormStep1.warehouse_code,
-               warehouse_custom_site_id: data.inBondFormStep1.warehouse_custom_site_id,
-               warehouse_be_no: data.inBondFormStep1.warehouse_be_no,
-               warehouse_be_date: data.inBondFormStep1.warehouse_be_date,
-               no_packages_released: data.inBondFormStep1.no_packages_released,
-               package_code: data.inBondFormStep1.package_code,
-               gross_weight: data.inBondFormStep1.gross_weight,
-               unit_of_measurement: data.inBondFormStep1.unit_of_measurement,
-               additional_charges: data.inBondFormStep1.additional_charges,
-               misc_load: data.inBondFormStep1.misc_load,
-               ucr: data.inBondFormStep1.ucr,
-               ucr_type: data.inBondFormStep1.ucr_type,
-               payment_method_code: data.inBondFormStep1.payment_method_code
-
+              general_details: {
+                 message_type : data.inBondFormStep1.general_details.message_type,
+                 custom_house_code : data.inBondFormStep1.general_details.custom_house_code,
+                 branch_sr_no : data.inBondFormStep1.general_details.branch_sr_no,
+                 user_job_no : data.inBondFormStep1.general_details.user_job_no,
+                 user_job_date : data.inBondFormStep1.general_details.user_job_date,
+                 be_number : data.inBondFormStep1.general_details.be_number,
+                 be_date : data.inBondFormStep1.general_details.be_date,
+                 iec_code : data.inBondFormStep1.general_details.iec_code,
+                 state_importer : data.inBondFormStep1.general_details.state_importer,
+                 pin : data.inBondFormStep1.general_details.pin,
+                 class : data.inBondFormStep1.general_details.class,
+                 mode_of_transport : data.inBondFormStep1.general_details.mode_of_transport,
+                 importer_type : data.inBondFormStep1.general_details.importer_type,
+                 kachcha_be : data.inBondFormStep1.general_details.kachcha_be,
+                 high_sea_sale_flag : data.inBondFormStep1.general_details.high_sea_sale_flag,
+                 permission_code : data.inBondFormStep1.general_details.permission_code,
+                 reason_for_request : data.inBondFormStep1.general_details.reason_for_request,
+                 invoice_serial_number : data.inBondFormStep1.general_details.invoice_serial_number,
+                 branch_sr_no_sea : data.inBondFormStep1.general_details.branch_sr_no_sea,
+                 name_importer : data.inBondFormStep1.general_details.name_importer,
+                 preceding_level : data.inBondFormStep1.general_details.preceding_level,
+                 address1 : data.inBondFormStep1.general_details.address1,
+                 address2 : data.inBondFormStep1.general_details.address2,
+                 address1_importer : data.inBondFormStep1.general_details.address1_importer,
+                 address2_importer : data.inBondFormStep1.general_details.address2_importer,
+                 city_importer : data.inBondFormStep1.general_details.city_importer,
+                 pin_importer : data.inBondFormStep1.general_details.pin_importer,
+                 port_of_origin : data.inBondFormStep1.general_details.port_of_origin,
+                 cha_code : data.inBondFormStep1.general_details.cha_code,
+                 country_of_origin : data.inBondFormStep1.general_details.country_of_origin,
+                 country_of_consignment : data.inBondFormStep1.general_details.country_of_consignment,
+                 port_of_shipment : data.inBondFormStep1.general_details.port_of_shipment,
+                 green_channel_requested : data.inBondFormStep1.general_details.green_channel_requested,
+                 section : data.inBondFormStep1.general_details.section,
+                 prior_be : data.inBondFormStep1.general_details.prior_be,
+                 authorized_dealer_code : data.inBondFormStep1.general_details.authorized_dealer_code,
+                 first_check_requested : data.inBondFormStep1.general_details.first_check_requested,
+                 section_48_permission_code : data.inBondFormStep1.general_details.section_48_permission_code,
+                 section_48_reason_for_request : data.inBondFormStep1.general_details.section_48_reason_for_request
+              },
+              warehouse_details:{
+                
+                warehouse_code: data.inBondFormStep1.warehouse_details.warehouse_code,
+                warehouse_custom_site_id: data.inBondFormStep1.warehouse_details.warehouse_custom_site_id,
+                warehouse_be_no: data.inBondFormStep1.warehouse_details.warehouse_be_no,
+                warehouse_be_date: data.inBondFormStep1.warehouse_details.warehouse_be_date,
+                no_packages_released: data.inBondFormStep1.warehouse_details.no_packages_released,
+                package_code: data.inBondFormStep1.warehouse_details.package_code,
+                gross_weight: data.inBondFormStep1.warehouse_details.gross_weight,
+                unit_of_measurement: data.inBondFormStep1.warehouse_details.unit_of_measurement,
+                additional_charges: data.inBondFormStep1.warehouse_details.additional_charges,
+                misc_load: data.inBondFormStep1.warehouse_details.misc_load,
+                ucr: data.inBondFormStep1.warehouse_details.ucr,
+                ucr_type: data.inBondFormStep1.warehouse_details.ucr_type,
+                payment_method_code: data.inBondFormStep1.warehouse_details.payment_method_code
+    
+              }
              },
              inBondFormStep2: {
                currency_code: data.inBondFormStep2.currency_code,
@@ -185,104 +195,7 @@ uploadFile(event) {
               //  certificate_type:data.inBondFormStep2.certificate_type
              },
              inBondFormStep3: {
-              invoice_serial_number:data.inBondFormStep3.invoice_serial_number,
-              invoice_date:data.inBondFormStep3.invoice_date,
-              purchase_order_number:data.inBondFormStep3.purchase_order_number,
-              purchase_order_date:data.inBondFormStep3.purchase_order_date,
-              contract_number:data.inBondFormStep3.contract_number,
-              contract_date:data.inBondFormStep3.contract_date,
-              lc_number:data.inBondFormStep3.lc_number,
-              lc_date:data.inBondFormStep3.lc_date,
-              svb_reference_number:data.inBondFormStep3.svb_reference_number,
-              svb_reference_date:data.inBondFormStep3.svb_reference_date,
-              svb_load_assessable_value:data.inBondFormStep3.svb_load_assessable_value,
-              svb_load_on_duty:data.inBondFormStep3.svb_load_on_duty,
-              svb_flag:data.inBondFormStep3.svb_flag,
-              load_final_provisional_on_ass_value:data.inBondFormStep3.load_final_provisional_on_ass_value,
-              load_final_provisional_on_duty:data.inBondFormStep3.load_final_provisional_on_duty,
-              custom_house_code_imposed_load:data.inBondFormStep3.custom_house_code_imposed_load,
-          
-              name_supplier:data.inBondFormStep3.name_supplier,
-              address1_supplier:data.inBondFormStep3.address1_supplier,
-              address2_supplier:data.inBondFormStep3.address2_supplier,
-              address3_supplier:data.inBondFormStep3.address3_supplier,
-              country_supplier:data.inBondFormStep3.country_supplier,
-              pin_supplier:data.inBondFormStep3.pin_supplier,
-          
-          
-              name_seller:data.inBondFormStep3.name_seller,
-              address1_seller:data.inBondFormStep3.address1_seller,
-              address2_seller:data.inBondFormStep3.address2_seller,
-              address3_seller:data.inBondFormStep3.address3_seller,
-              country_seller:data.inBondFormStep3.country_seller,
-              pin_seller:data.inBondFormStep3.pin_seller,
-          
-              name_broker:data.inBondFormStep3.name_broker,
-              address1_broker:data.inBondFormStep3.address1_broker,
-              address2_broker:data.inBondFormStep3.address2_broker,
-              address3_broker:data.inBondFormStep3.address3_broker,
-              country_broker:data.inBondFormStep3.country_broker,
-              pin_broker:data.inBondFormStep3.pin_broker,
-          
-              invoice_value:data.inBondFormStep3.invoice_value,
-              terms_of_invoice:data.inBondFormStep3.terms_of_invoice,
-              invoice_currency:data.inBondFormStep3.invoice_currency,
-              nature_of_discount:data.inBondFormStep3.nature_of_discount,
-              discount_rate:data.inBondFormStep3.discount_rate,
-              discount_amount:data.inBondFormStep3.discount_amount,
-          
-              hss_load_rate:data.inBondFormStep3.hss_load_rate,
-              hss_load_amount:data.inBondFormStep3.hss_load_amount,
-          
-              freight_value:data.inBondFormStep3.freight_value,
-              freight_rate:data.inBondFormStep3.freight_rate,
-              freight_actual:data.inBondFormStep3.freight_actual,
-              freight_currency:data.inBondFormStep3.freight_currency,
-          
-              insurance_value:data.inBondFormStep3.insurance_value,
-              insurance_rate:data.inBondFormStep3.insurance_rate,
-              insurance_currency:data.inBondFormStep3.insurance_currency,
-          
-              misc_charge:data.inBondFormStep3.misc_charge,
-              misc_currency:data.inBondFormStep3.misc_currency,
-              misc_rate:data.inBondFormStep3.misc_rate,
-          
-              landing_rate:data.inBondFormStep3.landing_rate,
-              loading_charge:data.inBondFormStep3.loading_charge,
-              loading_currency:data.inBondFormStep3.loading_currency,
-              load_rate:data.inBondFormStep3.load_rate,
-          
-              agency_commission:data.inBondFormStep3.agency_commission,
-              agency_commission_currency:data.inBondFormStep3.agency_commission_currency,
-              agency_commission_rate:data.inBondFormStep3.agency_commission_rate,
-              nature_of_transaction:data.inBondFormStep3.nature_of_transaction,
-              payment_terms:data.inBondFormStep3.payment_terms,
-          
-              cond_sale_1:data.inBondFormStep3.cond_sale_1,
-              cond_sale_2:data.inBondFormStep3.cond_sale_2,
-              cond_sale_3:data.inBondFormStep3.cond_sale_3,
-              cond_sale_4:data.inBondFormStep3.cond_sale_4,
-              cond_sale_5:data.inBondFormStep3.cond_sale_5,
-          
-              valuation_method_applicable:data.inBondFormStep3.valuation_method_applicable,
-              actual_invoice_number:data.inBondFormStep3.actual_invoice_number,
-              other_relevant_information:data.inBondFormStep3.other_relevant_information,
-              terms_place:data.inBondFormStep3.terms_place,
-          
-              name_third_party:data.inBondFormStep3.name_third_party,
-              address1_third_party:data.inBondFormStep3.address1_third_party,
-              address2_third_party:data.inBondFormStep3.address2_third_party,
-              city_third_party:data.inBondFormStep3.city_third_party,
-              country_sub_division_third_party:data.inBondFormStep3.country_sub_division_third_party,
-              country_code_third_party:data.inBondFormStep3.country_code_third_party,
-              pin_third_party:data.inBondFormStep3.pin_third_party,
-          
-              // authorized_economic_operator:data.inBondFormStep3.authorized_economic_operator,
-              authorized_economic_operator_country:data.inBondFormStep3.authorized_economic_operator_country,
-              authorized_economic_operator_role:data.inBondFormStep3.authorized_economic_operator_role,
-              buyer_or_seller_related:data.inBondFormStep3.buyer_or_seller_related,
-        
-              authorized_economic_operator_code:data.inBondFormStep3.authorized_economic_operator_code,
+              stepThree_invoice: []
              },
              inBondFormStep4: {
               invoice_serial_number:data.inBondFormStep4.invoice_serial_number,
@@ -392,6 +305,7 @@ uploadFile(event) {
              
          }, );
        }
+       this.setStepThreeData(data.inBondFormStep3.stepThree_invoice);
        });
    }
    }
@@ -399,6 +313,32 @@ uploadFile(event) {
      console.log(error);
    }
 
+ }
+  // these functoin are array function add remove or get functions
+  get addStep3Inoices( ) {
+    var thissss = this.bill_of_entrly.get('inBondFormStep3');
+    console.log(thissss);
+    return <FormArray>this.bill_of_entrly.get('inBondFormStep3');
+  }
+  // addStep3Inoices(): FormArray {
+    
+  //       return this.inBondFormStep3.get("stepThree_invoice") as FormArray
+  // }
+ setStepThreeData(data) {
+ //  console.log(data, 'data')
+  if(data.length!=0) {
+   // console.log(this.addStep3Inoices);
+    this.addStep3Inoices.removeAt(0);
+    data.forEach(items=>{
+     // console.log(items);
+      this.addStep3Inoices.push(this._fb.group({
+        invoiceDetails: {
+          invoice_serial_number:[items.invoice_serial_number]
+        }
+       }));
+
+   })
+  }
  }
  // Download bill of entry in json format
  downloadbillentry() { 
