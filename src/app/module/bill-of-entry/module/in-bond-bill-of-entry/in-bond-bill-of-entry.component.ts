@@ -27,6 +27,7 @@ export class InBondBillOfEntryComponent implements OnInit {
   selected = new FormControl(0);
   selecteds = new FormControl(0);
   disableAddButton = false;
+  disableAddButton4 = false;
   disableAddButtons= false;
   formSumitAttempt: boolean;
   @Input() index: number;
@@ -52,7 +53,7 @@ export class InBondBillOfEntryComponent implements OnInit {
       inBondFormStep1: new FormControl(""),
       inBondFormStep2: new FormControl(""),
       stepThree_invoice: this._fb.array([]),
-      inBondFormStep4: new FormControl(""),
+      inBondFormStep4: this._fb.array([]),
       inBondFormStep6: new FormControl(""),
       inBondFormStep7: new FormControl(""),
       inBondFormStep8: new FormControl(""),
@@ -342,9 +343,23 @@ AddNewItemInvoideDetailss() {
   
   })
 }
+// Add step Four invoice details
+AddStepFourInvoideDetails(): FormGroup {
+  return this._fb.group({
+    invoice_serial_number:new FormControl('',[Validators.required,Validators.maxLength(5)]),
+    misc_charge_code:new FormControl('',[Validators.required,Validators.maxLength(2)]),
+    misc_description:new FormControl('',[Validators.required,Validators.maxLength(35)]),
+    misc_charges:new FormControl('',[Validators.maxLength(10),ValidatorsService.numberValidator]),
+    misc_rate:new FormControl('',[Validators.maxLength(3),ValidatorsService.numberValidator])
+  })
+}
 // these functoin are array function add remove or get functions
 addStep3Inoices(): FormArray {
       return this.bill_of_entrly.get("stepThree_invoice") as FormArray
+}
+// these functoin are array function add remove or get functions
+addStep4Inoices(): FormArray {
+      return this.bill_of_entrly.get("inBondFormStep4") as FormArray
 }
 addNewItemInvoices(i:number) : FormArray {
       return this.addStep3Inoices().at(i).get("addNewItemStepThree") as FormArray
@@ -356,6 +371,14 @@ addStepThreetabs() {
     this.disableAddButton = true;
   }
 }
+addStepFourtabs() {
+  //alert('hi');
+  this.addStep4Inoices().push(this.AddStepFourInvoideDetails());
+ // this.selected.setValue(this.addStep4Inoices().controls.length);
+  if(this.addStep4Inoices().controls.length == 10){
+    this.disableAddButton4 = true;
+  }
+}
 addNewitemstabs(i:number) {
   this.addNewItemInvoices(i).push(this.AddNewItemInvoideDetailss());
    if(this.addNewItemInvoices(i).controls.length === 10){
@@ -365,6 +388,12 @@ addNewitemstabs(i:number) {
 removeStepThreeTab(index: number) {
   this.addStep3Inoices().controls.splice(index, 1);
   if(this.addStep3Inoices().controls.length < 3){
+    this.disableAddButton = false;
+  }
+}
+removeStepFourTab(index: number) {
+  this.addStep4Inoices().controls.splice(index, 1);
+  if(this.addStep4Inoices().controls.length < 3){
     this.disableAddButton = false;
   }
 }
@@ -646,6 +675,34 @@ onSubmitStepThree() {
 
     }
   }
+  onSubmitStepFour() {
+    if (this.bill_of_entrly.valid === true) {
+      this.bill_of_entrly.value
+      Swal.fire({
+        title: 'Step 4 is completed',
+        text: "Please click next for other step or click cancel",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Next &nbsp; &#8594;'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
+          element.click();
+        }
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Required Validation is left. Please check',
+      }).then((result) =>{
+        this.formSumitAttempt = true
+      })
+
+    }
+  }
   selectionChange($event) {
     if ($event.selectedIndex == 2 || $event.selectedIndex == 3 || $event.selectedIndex == 4) {
     }
@@ -790,13 +847,7 @@ uploadFile(event) {
               //  certificate_type:data.inBondFormStep2.certificate_type
              },
              stepThree_invoice: [],
-             inBondFormStep4: {
-              invoice_serial_number:data.inBondFormStep4.invoice_serial_number,
-              misc_charge_code:data.inBondFormStep4.misc_charge_code,
-              misc_description:data.inBondFormStep4.misc_description,
-              misc_charges:data.inBondFormStep4.misc_charges,
-              misc_rate:data.inBondFormStep4.misc_rate,
-             },
+             inBondFormStep4: [],
            
              inBondFormStep6:{
               invoice_serial_number:data.inBondFormStep6.invoice_serial_number,
@@ -899,6 +950,7 @@ uploadFile(event) {
          }, );
        }
        this.setStepThreeData(data.stepThree_invoice);
+       this.setStepFourData(data.inBondFormStep4);
        });
    }
    }
@@ -1170,6 +1222,19 @@ uploadFile(event) {
     );
   });
   return arr;
+}
+// Step Four data pushing code there
+setStepFourData(data) {
+  data.forEach(dataItem => {
+    this.addStep4Inoices().push(
+      this._fb.group({
+        invoice_serial_number:dataItem.invoice_serial_number,
+        misc_charge_code:dataItem.misc_charge_code,
+        misc_description:dataItem.misc_description,
+        misc_charges:dataItem.misc_charges,
+        misc_rate:dataItem.misc_rate
+      }))
+  })
 }
  
  // Download bill of entry in json format
