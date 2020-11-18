@@ -28,7 +28,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
   positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
   position = new FormControl(this.positionOptions[0]);
   //tabs = [1];
-  //addStep3Inoices() = ['Invoice1']
+  //addStep3Inoices() = [Input'Invoice1']
  
   selected = new FormControl(0);
   selecteds = new FormControl(0);
@@ -49,7 +49,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
  //   console.log('fddfdf')
    // let i;
     //to have a default value in array
-    this.addStepThreetabs();
+   // this.addStepThreetabs();
     //this.addNewitemstabs(i);
       // let element:HTMLElement = document.getElementById('step_three_add_items') as HTMLElement;
       // element.click();
@@ -59,7 +59,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
   // Add step three invoice details
   AddStepThreeInvoideDetails(): FormGroup {
     return this._formBuilder.group({
-      invoiceDetails: new FormGroup({
+
         invoice_serial_number:  new FormControl('',[Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]),
         invoice_date:  new FormControl(''),
         purchase_order_number:  new FormControl('',[Validators.maxLength(20),ValidatorsService.alpaNumValidator]),
@@ -76,17 +76,16 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         load_final_provisional_on_ass_value:  new FormControl('',[Validators.maxLength(1),ValidatorsService.alpaNumValidator]),
         load_final_provisional_on_duty:  new FormControl('',[Validators.maxLength(1),ValidatorsService.alpaNumValidator]),
         custom_house_code_imposed_load:  new FormControl('',[Validators.maxLength(6),ValidatorsService.alpaNumValidator]),
-      }),
-      suppliereDetails: new FormGroup({
+      
+      
         name_supplier:new FormControl('',[Validators.required,Validators.maxLength(50),ValidatorsService.textValidator]),
         address1_supplier:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
         address2_supplier:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
         address3_supplier:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
         country_supplier:new FormControl('',[Validators.maxLength(25),ValidatorsService.alpaNumValidator]),
         pin_supplier:new FormControl('',[Validators.maxLength(10),ValidatorsService.numberValidator]),
-        supplier_country_name: new FormControl('')
-      }),
-      sellerDetails: new FormGroup({
+        supplier_country_name: new FormControl(''),
+   
         name_seller:new FormControl('',[Validators.maxLength(35),ValidatorsService.textValidator]),
         address1_seller:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
         address2_seller:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
@@ -94,8 +93,8 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         country_seller:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
         pin_seller:new FormControl('',[Validators.maxLength(10),ValidatorsService.numberValidator]),
         Seller_country_name: new FormControl('')
-      }),
-      brokerDetails: new FormGroup({
+      ,
+     
         name_broker:new FormControl('',[Validators.maxLength(50),ValidatorsService.alpaNumValidator]),
         address1_broker:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
         address2_broker:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
@@ -103,8 +102,8 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         country_broker:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),
         pin_broker:new FormControl('',[Validators.maxLength(10),ValidatorsService.numberValidator]),
         broker_country_name: new FormControl('')
-      }),
-      invoiceratesDetails: new FormGroup({
+      ,
+      
         invoice_value:new FormControl('',[Validators.required,Validators.maxLength(16),ValidatorsService.Decimalcheck((/^\d*\.?\d{0,2}$/),16)]),
         terms_of_invoice:new FormControl('',[Validators.required,Validators.maxLength(3),ValidatorsService.alpaNumValidator]),
         invoice_currency:new FormControl('',[Validators.required,Validators.maxLength(3),ValidatorsService.alpaNumValidator]),
@@ -141,8 +140,8 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         actual_invoice_number:new FormControl('',[Validators.required,Validators.maxLength(16),ValidatorsService.alpaNumValidator]),
         other_relevant_information:new FormControl('',[Validators.maxLength(100),ValidatorsService.alpaNumValidator]),
         terms_place:new FormControl('',[Validators.maxLength(35),ValidatorsService.alpaNumValidator]),       
-      }),
-      thirdPartyDetails: new FormGroup({
+      
+      
         name_third_party:new FormControl('',[Validators.maxLength(70),ValidatorsService.alpaNumValidator]),
         address1_third_party:new FormControl('',[Validators.maxLength(70 ),ValidatorsService.alpaNumValidator]),
         address2_third_party:new FormControl('',[Validators.maxLength(50),ValidatorsService.alpaNumValidator]),
@@ -156,14 +155,14 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         buyer_or_seller_related:new FormControl('',[Validators.required,Validators.maxLength(70),ValidatorsService.alpaNumValidator]),
         authorized_economic_operator_code:new FormControl('',[Validators.maxLength(17),ValidatorsService.alpaNumValidator]),
         autohrized_operator_country:new FormControl('')
-      }),
+      ,
       addNewItemStepThree: this._formBuilder.array([]),
     })
   }
   // inner array part data display there
   AddNewItemInvoideDetailss() {
     return this._formBuilder.group({
-      itemDetails: new FormGroup({
+     
         invoice_serial_numbers:new FormControl('',[Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]),
         item_serial_number:new FormControl('',[Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]),
         item_quantity:new FormControl('',[Validators.required,Validators.maxLength(16),ValidatorsService.numberValidator]),
@@ -186,8 +185,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         item_category_license_reg_port:new FormControl(''),
         item_accessories:new FormControl(''),
        
-      }),
-      productDetails: new FormGroup({
+      
         preferential_or_standard:new FormControl('',[Validators.required,Validators.maxLength(1),ValidatorsService.alpaNumValidator]),
         ceth:new FormControl('',[Validators.required,Validators.maxLength(8),ValidatorsService.alpaNumValidator]),
         name_producer:new FormControl('',[Validators.maxLength(50),ValidatorsService.alpaNumValidator]),
@@ -205,8 +203,8 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         info_text:new FormControl(''),
         info_msr:new FormControl(''),
         info_uqc:new FormControl(''),
-      }),
-      notificationDetails:new FormGroup({
+      
+
         bcd_notification:new FormControl('',[Validators.required,Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
         bcd_notification_sr_no: new FormControl('',[Validators.required,Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
         cvd_notification:new FormControl('',[Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
@@ -229,7 +227,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         suplier_number:new FormControl(''),
         nou:new FormControl(''),
 
-   cex_educess_notification:new FormControl('',[Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
+        cex_educess_notification:new FormControl('',[Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
         cex_educess_notification_sr_no: new FormControl('',[Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
         cus_educess_notification:new FormControl('',[Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
         cus_educess_notification_sr_no: new FormControl('',[Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
@@ -255,8 +253,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         safeguard_duty_notification:new FormControl('',[Validators.maxLength(10),ValidatorsService.alpaNumValidator]),
         safeguard_duty_notification_sr_no: new FormControl('',[Validators.maxLength(10),ValidatorsService.alpaNumValidator]),  
      
-      }),
-      priceDetails: new FormGroup({
+ 
         price_details_unit_price_invoiced:new FormControl('',[Validators.required,Validators.maxLength(16),ValidatorsService.numberValidator]),
         price_details_discount_rate:new FormControl('',[Validators.maxLength(6),ValidatorsService.numberValidator]),
         price_details_discount_amount:new FormControl('',[Validators.maxLength(16),ValidatorsService.numberValidator]),
@@ -296,8 +293,6 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         price_details_prev_customm_site:new FormControl('',[Validators.maxLength(6),ValidatorsService.alpaNumValidator]),
         price_details_custom_notifictaion_exempting_central_excise_flag:new FormControl( '',[Validators.maxLength(1),ValidatorsService.alpaNumValidator]),
        
-      }),
-      manufaturingDetails: new FormGroup({
         producer_code:new FormControl('',[Validators.maxLength(1),ValidatorsService.alpaNumValidator]),
         grower_code:new FormControl('',[Validators.maxLength(17),ValidatorsService.alpaNumValidator]),
         address1_grower:new FormControl('',[Validators.maxLength(70),ValidatorsService.alpaNumValidator]),
@@ -310,24 +305,21 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         transit_country:new FormControl('',[Validators.maxLength(2),ValidatorsService.alpaNumValidator]),
         accessory_status:new FormControl('',[Validators.required,Validators.maxLength(1),ValidatorsService.alpaNumValidator]),
   
-      }),
-      constituentDetails: new FormGroup({
+     
         active_ingredient_flag: new FormControl('', Validators.required),
         constituent_serial_number:new FormControl('',[Validators.required,Validators.maxLength(3),ValidatorsService.numberValidator]),
         constituent_element_name:new FormControl('',[Validators.required,Validators.maxLength(256),ValidatorsService.textValidator]),
         constituent_element_code:new FormControl('',[Validators.required,Validators.maxLength(17),ValidatorsService.textValidator]),
         constituent_percentage:new FormControl('',[Validators.required,Validators.maxLength(6),ValidatorsService.numberValidator]),
         constituent_yield_percentage:new FormControl('',[Validators.required,Validators.maxLength(6),ValidatorsService.numberValidator]),
-      }),
-      productionDetails: new FormGroup({
+   
         production_batch_identifier:new FormControl('',[Validators.required,Validators.maxLength(17),ValidatorsService.textValidator]),
         production_batch_quantity:new FormControl('',[Validators.required,Validators.maxLength(16),ValidatorsService.numberValidator]),
         production_unit_quantity_code:new FormControl('',[Validators.required,Validators.maxLength(3),ValidatorsService.alpaNumValidator]),
         production_date_manufacturing:new FormControl('',Validators.required),
         production_date_expiry:new FormControl('',Validators.required),
         production_best_before:new FormControl('',Validators.required),
-      }),
-      controlDetails: new FormGroup({
+      
         control_type_code:new FormControl('',[Validators.required,Validators.maxLength(17),ValidatorsService.textValidator]),
         control_location:new FormControl('',[Validators.required,Validators.maxLength(17),ValidatorsService.textValidator]),
         control_start_date:new FormControl(''),
@@ -335,7 +327,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
         control_result_code:new FormControl('',[Validators.required,Validators.maxLength(17),ValidatorsService.textValidator]),
         control_result_text:new FormControl('',[Validators.maxLength(4000),ValidatorsService.textValidator]),
       
-      })
+    
     })
   }
   // these functoin are array function add remove or get functions
@@ -375,7 +367,7 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
 
  
   writeValue(val: any): void {
-   // console.log(val);
+   console.log(val);
     val && this.inBondFormStep3.patchValue(val, { emitEvent: true });
   }
   registerOnChange(fn: any): void {
@@ -418,41 +410,41 @@ export class Step3Component implements OnInit,ControlValueAccessor,Validator {
     let eventTargetValue = event.target.value;
     const expvalidation = <FormArray>this.addStep3Inoices().at(i).get('addNewItemStepThree');
      if(eventTargetValue === 'LO') {
-        expvalidation.at(i).get('itemDetails.item_category_item_serial_number_license').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
-        expvalidation.at(i).get('itemDetails.item_category_item_serial_number_invoice').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
-        expvalidation.at(i).get('itemDetails.item_category_invoice_serial_number').setValidators([Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]);
-        expvalidation.at(i).get('itemDetails.item_category_debit_unit_of_measurement').setValidators([Validators.required,Validators.maxLength(3),ValidatorsService.alpaNumValidator]);
-        expvalidation.at(i).get('itemDetails.item_category_license_registration_number').setValidators([Validators.required,Validators.maxLength(10),ValidatorsService.numberValidator]);
-        expvalidation.at(i).get('itemDetails.item_category_license_registration_date').setValidators([Validators.required]);
-        expvalidation.at(i).get('itemDetails.item_category_license_code').setValidators([Validators.required,Validators.maxLength(2),ValidatorsService.alpaNumValidator]);
-        expvalidation.at(i).get('itemDetails.item_category_license_reg_port').setValidators([Validators.required,Validators.maxLength(2),ValidatorsService.alpaNumValidator]);
+        expvalidation.at(i).get('item_category_item_serial_number_license').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
+        expvalidation.at(i).get('item_category_item_serial_number_invoice').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
+        expvalidation.at(i).get('item_category_invoice_serial_number').setValidators([Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]);
+        expvalidation.at(i).get('item_category_debit_unit_of_measurement').setValidators([Validators.required,Validators.maxLength(3),ValidatorsService.alpaNumValidator]);
+        expvalidation.at(i).get('item_category_license_registration_number').setValidators([Validators.required,Validators.maxLength(10),ValidatorsService.numberValidator]);
+        expvalidation.at(i).get('item_category_license_registration_date').setValidators([Validators.required]);
+        expvalidation.at(i).get('item_category_license_code').setValidators([Validators.required,Validators.maxLength(2),ValidatorsService.alpaNumValidator]);
+        expvalidation.at(i).get('item_category_license_reg_port').setValidators([Validators.required,Validators.maxLength(2),ValidatorsService.alpaNumValidator]);
          //  Clear All Validators
-         expvalidation.at(i).get('itemDetails.item_category_invoice_serial_number').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_item_serial_number_invoice').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_item_serial_number_license').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_debit_unit_of_measurement').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_license_registration_number').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_license_registration_date').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_license_code').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_license_reg_port').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_invoice_serial_number').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_item_serial_number_invoice').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_item_serial_number_license').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_debit_unit_of_measurement').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_license_registration_number').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_license_registration_date').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_license_code').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_license_reg_port').updateValueAndValidity();
       }else{
-        expvalidation.at(i).get('itemDetails.item_category_invoice_serial_number').clearValidators();
-        expvalidation.at(i).get('itemDetails.item_category_item_serial_number_invoice').clearValidators();
-        expvalidation.at(i).get('itemDetails.item_category_item_serial_number_license').clearValidators();
-        expvalidation.at(i).get('itemDetails.item_category_debit_unit_of_measurement').clearValidators();
-        expvalidation.at(i).get('itemDetails.item_category_license_registration_number').clearValidators();
-        expvalidation.at(i).get('itemDetails.item_category_license_registration_date').clearValidators();
-        expvalidation.at(i).get('itemDetails.item_category_license_code').clearValidators();
-        expvalidation.at(i).get('itemDetails.item_category_license_reg_port').clearValidators();
+        expvalidation.at(i).get('item_category_invoice_serial_number').clearValidators();
+        expvalidation.at(i).get('item_category_item_serial_number_invoice').clearValidators();
+        expvalidation.at(i).get('item_category_item_serial_number_license').clearValidators();
+        expvalidation.at(i).get('item_category_debit_unit_of_measurement').clearValidators();
+        expvalidation.at(i).get('item_category_license_registration_number').clearValidators();
+        expvalidation.at(i).get('item_category_license_registration_date').clearValidators();
+        expvalidation.at(i).get('item_category_license_code').clearValidators();
+        expvalidation.at(i).get('item_category_license_reg_port').clearValidators();
          //  Clear All Validators
-         expvalidation.at(i).get('itemDetails.item_category_invoice_serial_number').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_item_serial_number_invoice').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_item_serial_number_license').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_debit_unit_of_measurement').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_license_registration_number').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_license_registration_date').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_license_code').updateValueAndValidity();
-         expvalidation.at(i).get('itemDetails.item_category_license_reg_port').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_invoice_serial_number').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_item_serial_number_invoice').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_item_serial_number_license').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_debit_unit_of_measurement').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_license_registration_number').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_license_registration_date').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_license_code').updateValueAndValidity();
+         expvalidation.at(i).get('item_category_license_reg_port').updateValueAndValidity();
    
         }
     };
@@ -462,46 +454,46 @@ cthLength(event,i) {
   const cthvalidation = <FormArray>this.addStep3Inoices().at(i).get('addNewItemStepThree');
   
   if(eventTargetValue.length === 8) {
-       cthvalidation.at(i).get('productDetails.product_details_invoice_serial_number').setValidators([Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]);
-       cthvalidation.at(i).get('productDetails.product_details_item_serial_number').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
-       cthvalidation.at(i).get('productDetails.ritc_qualifier').setValidators([Validators.required,Validators.maxLength(100),ValidatorsService.alpaNumValidator]);
-       cthvalidation.at(i).get('productDetails.info_type').setValidators([Validators.required,Validators.maxLength(3),ValidatorsService.textValidator]);
-      // cthvalidation.at(i).get('productDetails.info_qualifier').setValidators([Validators.required,Validators.maxLength(100),ValidatorsService.textValidator]);
-       cthvalidation.at(i).get('productDetails.info_code').setValidators([Validators.maxLength(100),ValidatorsService.textValidator]);
-       cthvalidation.at(i).get('productDetails.info_text').setValidators([,Validators.maxLength(100),ValidatorsService.textValidator]);
-       cthvalidation.at(i).get('productDetails.info_msr').setValidators([Validators.maxLength(16),ValidatorsService.numberValidator]);
-       cthvalidation.at(i).get('productDetails.info_uqc').setValidators([Validators.maxLength(3),ValidatorsService.textValidator])
+       cthvalidation.at(i).get('product_details_invoice_serial_number').setValidators([Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]);
+       cthvalidation.at(i).get('product_details_item_serial_number').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
+       cthvalidation.at(i).get('ritc_qualifier').setValidators([Validators.required,Validators.maxLength(100),ValidatorsService.alpaNumValidator]);
+       cthvalidation.at(i).get('info_type').setValidators([Validators.required,Validators.maxLength(3),ValidatorsService.textValidator]);
+      // cthvalidation.at(i).get('info_qualifier').setValidators([Validators.required,Validators.maxLength(100),ValidatorsService.textValidator]);
+       cthvalidation.at(i).get('info_code').setValidators([Validators.maxLength(100),ValidatorsService.textValidator]);
+       cthvalidation.at(i).get('info_text').setValidators([,Validators.maxLength(100),ValidatorsService.textValidator]);
+       cthvalidation.at(i).get('info_msr').setValidators([Validators.maxLength(16),ValidatorsService.numberValidator]);
+       cthvalidation.at(i).get('info_uqc').setValidators([Validators.maxLength(3),ValidatorsService.textValidator])
         //  Clear All Validators
-        cthvalidation.at(i).get('productDetails.product_details_invoice_serial_number').updateValueAndValidity();
-       cthvalidation.at(i).get('productDetails.product_details_item_serial_number').updateValueAndValidity();
-       cthvalidation.at(i).get('productDetails.ritc_qualifier').updateValueAndValidity();
-       cthvalidation.at(i).get('productDetails.info_type').updateValueAndValidity();
-       //cthvalidation.at(i).get('productDetails.info_qualifier').updateValueAndValidity();
-       cthvalidation.at(i).get('productDetails.info_code').updateValueAndValidity();
-       cthvalidation.at(i).get('productDetails.info_text').updateValueAndValidity();
-       cthvalidation.at(i).get('productDetails.info_msr').updateValueAndValidity();
-       cthvalidation.at(i).get('productDetails.info_uqc').updateValueAndValidity();
+        cthvalidation.at(i).get('product_details_invoice_serial_number').updateValueAndValidity();
+       cthvalidation.at(i).get('product_details_item_serial_number').updateValueAndValidity();
+       cthvalidation.at(i).get('ritc_qualifier').updateValueAndValidity();
+       cthvalidation.at(i).get('info_type').updateValueAndValidity();
+       //cthvalidation.at(i).get('info_qualifier').updateValueAndValidity();
+       cthvalidation.at(i).get('info_code').updateValueAndValidity();
+       cthvalidation.at(i).get('info_text').updateValueAndValidity();
+       cthvalidation.at(i).get('info_msr').updateValueAndValidity();
+       cthvalidation.at(i).get('info_uqc').updateValueAndValidity();
          
   }else{
-      cthvalidation.at(i).get('productDetails.product_details_invoice_serial_number').clearValidators();
-      cthvalidation.at(i).get('productDetails.product_details_item_serial_number').clearValidators();
-      cthvalidation.at(i).get('productDetails.ritc_qualifier').clearValidators();
-      cthvalidation.at(i).get('productDetails.info_type').clearValidators();
-     // cthvalidation.at(i).get('productDetails.info_qualifier').clearValidators();
-      cthvalidation.at(i).get('productDetails.info_code').clearValidators();
-      cthvalidation.at(i).get('productDetails.info_text').clearValidators();
-      cthvalidation.at(i).get('productDetails.info_msr').clearValidators();
-      cthvalidation.at(i).get('productDetails.info_uqc').clearValidators();
+      cthvalidation.at(i).get('product_details_invoice_serial_number').clearValidators();
+      cthvalidation.at(i).get('product_details_item_serial_number').clearValidators();
+      cthvalidation.at(i).get('ritc_qualifier').clearValidators();
+      cthvalidation.at(i).get('info_type').clearValidators();
+     // cthvalidation.at(i).get('info_qualifier').clearValidators();
+      cthvalidation.at(i).get('info_code').clearValidators();
+      cthvalidation.at(i).get('info_text').clearValidators();
+      cthvalidation.at(i).get('info_msr').clearValidators();
+      cthvalidation.at(i).get('info_uqc').clearValidators();
         //  Clear All Validators
-      cthvalidation.at(i).get('productDetails.product_details_invoice_serial_number').updateValueAndValidity();
-      cthvalidation.at(i).get('productDetails.product_details_item_serial_number').updateValueAndValidity();
-      cthvalidation.at(i).get('productDetails.ritc_qualifier').updateValueAndValidity();
-      cthvalidation.at(i).get('productDetails.info_type').updateValueAndValidity();
-     // cthvalidation.at(i).get('productDetails.info_qualifier').updateValueAndValidity();
-      cthvalidation.at(i).get('productDetails.info_code').updateValueAndValidity();
-      cthvalidation.at(i).get('productDetails.info_text').updateValueAndValidity();
-      cthvalidation.at(i).get('productDetails.info_msr').updateValueAndValidity();
-      cthvalidation.at(i).get('productDetails.info_uqc').updateValueAndValidity();
+      cthvalidation.at(i).get('product_details_invoice_serial_number').updateValueAndValidity();
+      cthvalidation.at(i).get('product_details_item_serial_number').updateValueAndValidity();
+      cthvalidation.at(i).get('ritc_qualifier').updateValueAndValidity();
+      cthvalidation.at(i).get('info_type').updateValueAndValidity();
+     // cthvalidation.at(i).get('info_qualifier').updateValueAndValidity();
+      cthvalidation.at(i).get('info_code').updateValueAndValidity();
+      cthvalidation.at(i).get('info_text').updateValueAndValidity();
+      cthvalidation.at(i).get('info_msr').updateValueAndValidity();
+      cthvalidation.at(i).get('info_uqc').updateValueAndValidity();
   }
 }
 
@@ -511,58 +503,58 @@ otherNotificationChanges(event,i) {
   const otherNotificationvalidation = <FormArray>this.addStep3Inoices().at(i).get('addNewItemStepThree');
   
   if(eventTargetValue.length === 10) {
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_invoice_serial_number').setValidators([Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_item_serial_number_invoice').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_number').setValidators([Validators.maxLength(10),Validators.required,ValidatorsService.textValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_serial_number').setValidators([Validators.maxLength(10),Validators.required,ValidatorsService.textValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.duty_type').setValidators([Validators.required]);
-    otherNotificationvalidation.at(i).get('notificationDetails.additional_duty_flag').setValidators([Validators.required,ValidatorsService.textValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.exmp_notification').setValidators([Validators.maxLength(10),ValidatorsService.textValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.exmp_notification_serial_number').setValidators([Validators.maxLength(10),ValidatorsService.textValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.customs_exmp').setValidators([ValidatorsService.textValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.suplier_number').setValidators([Validators.maxLength(10),ValidatorsService.textValidator]);
-    otherNotificationvalidation.at(i).get('notificationDetails.nou').setValidators([Validators.maxLength(16),ValidatorsService.numberValidator]);
+    otherNotificationvalidation.at(i).get('notification_invoice_serial_number').setValidators([Validators.required,Validators.maxLength(5),ValidatorsService.numberValidator]);
+    otherNotificationvalidation.at(i).get('notification_item_serial_number_invoice').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
+    otherNotificationvalidation.at(i).get('notification_number').setValidators([Validators.maxLength(10),Validators.required,ValidatorsService.textValidator]);
+    otherNotificationvalidation.at(i).get('notification_serial_number').setValidators([Validators.maxLength(10),Validators.required,ValidatorsService.textValidator]);
+    otherNotificationvalidation.at(i).get('duty_type').setValidators([Validators.required]);
+    otherNotificationvalidation.at(i).get('additional_duty_flag').setValidators([Validators.required,ValidatorsService.textValidator]);
+    otherNotificationvalidation.at(i).get('exmp_notification').setValidators([Validators.maxLength(10),ValidatorsService.textValidator]);
+    otherNotificationvalidation.at(i).get('exmp_notification_serial_number').setValidators([Validators.maxLength(10),ValidatorsService.textValidator]);
+    otherNotificationvalidation.at(i).get('customs_exmp').setValidators([ValidatorsService.textValidator]);
+    otherNotificationvalidation.at(i).get('suplier_number').setValidators([Validators.maxLength(10),ValidatorsService.textValidator]);
+    otherNotificationvalidation.at(i).get('nou').setValidators([Validators.maxLength(16),ValidatorsService.numberValidator]);
   
   
     // clear all validatiors
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_invoice_serial_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_item_serial_number_invoice').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_serial_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.duty_type').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.additional_duty_flag').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.exmp_notification').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.exmp_notification_serial_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.customs_exmp').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.suplier_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.nou').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('notification_invoice_serial_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('notification_item_serial_number_invoice').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('notification_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('notification_serial_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('duty_type').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('additional_duty_flag').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('exmp_notification').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('exmp_notification_serial_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('customs_exmp').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('suplier_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('nou').updateValueAndValidity();
    
    
   }else{
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_invoice_serial_number').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_item_serial_number_invoice').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_number').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_serial_number').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.duty_type').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.additional_duty_flag').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.exmp_notification').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.exmp_notification_serial_number').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.customs_exmp').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.suplier_number').clearValidators();
-    otherNotificationvalidation.at(i).get('notificationDetails.nou').clearValidators();
+    otherNotificationvalidation.at(i).get('notification_invoice_serial_number').clearValidators();
+    otherNotificationvalidation.at(i).get('notification_item_serial_number_invoice').clearValidators();
+    otherNotificationvalidation.at(i).get('notification_number').clearValidators();
+    otherNotificationvalidation.at(i).get('notification_serial_number').clearValidators();
+    otherNotificationvalidation.at(i).get('duty_type').clearValidators();
+    otherNotificationvalidation.at(i).get('additional_duty_flag').clearValidators();
+    otherNotificationvalidation.at(i).get('exmp_notification').clearValidators();
+    otherNotificationvalidation.at(i).get('exmp_notification_serial_number').clearValidators();
+    otherNotificationvalidation.at(i).get('customs_exmp').clearValidators();
+    otherNotificationvalidation.at(i).get('suplier_number').clearValidators();
+    otherNotificationvalidation.at(i).get('nou').clearValidators();
    
     // clear all validatiors
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_invoice_serial_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_item_serial_number_invoice').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.notification_serial_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.duty_type').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.additional_duty_flag').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.exmp_notification').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.exmp_notification_serial_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.customs_exmp').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.suplier_number').updateValueAndValidity();
-    otherNotificationvalidation.at(i).get('notificationDetails.nou').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('notification_invoice_serial_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('notification_item_serial_number_invoice').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('notification_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('notification_serial_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('duty_type').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('additional_duty_flag').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('exmp_notification').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('exmp_notification_serial_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('customs_exmp').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('suplier_number').updateValueAndValidity();
+    otherNotificationvalidation.at(i).get('nou').updateValueAndValidity();
     
     
   }
@@ -572,44 +564,44 @@ onPriceDetails(event,i){
  
   if(event.target.value === 'Yes') {
     console.log('dd')
-    priceDetailsWheather.at(i).get('priceDetails.price_details_permission_code').setValidators([Validators.required]);
-    priceDetailsWheather.at(i).get('priceDetails.price_details_reason_for_request').setValidators([Validators.required]);
-    priceDetailsWheather.at(i).get('priceDetails.price_details_invoice_serial_number_on').setValidators([Validators.required]);
-    priceDetailsWheather.at(i).get('priceDetails.price_details_item_serial_number_invoice').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
-    priceDetailsWheather.at(i).get('priceDetails.price_details_shipping_bill_no').setValidators([Validators.required,Validators.maxLength(7),ValidatorsService.numberValidator]);
-    priceDetailsWheather.at(i).get('priceDetails.price_details_shipping_bill_date').setValidators([Validators.required]);
-    priceDetailsWheather.at(i).get('priceDetails.price_details_notification_no').setValidators([Validators.required]);
-    priceDetailsWheather.at(i).get('priceDetails.price_details_notification_sr_no').setValidators([Validators.required,Validators.maxLength(10),ValidatorsService.alpaNumValidator]);
+    priceDetailsWheather.at(i).get('price_details_permission_code').setValidators([Validators.required]);
+    priceDetailsWheather.at(i).get('price_details_reason_for_request').setValidators([Validators.required]);
+    priceDetailsWheather.at(i).get('price_details_invoice_serial_number_on').setValidators([Validators.required]);
+    priceDetailsWheather.at(i).get('price_details_item_serial_number_invoice').setValidators([Validators.required,Validators.maxLength(4),ValidatorsService.numberValidator]);
+    priceDetailsWheather.at(i).get('price_details_shipping_bill_no').setValidators([Validators.required,Validators.maxLength(7),ValidatorsService.numberValidator]);
+    priceDetailsWheather.at(i).get('price_details_shipping_bill_date').setValidators([Validators.required]);
+    priceDetailsWheather.at(i).get('price_details_notification_no').setValidators([Validators.required]);
+    priceDetailsWheather.at(i).get('price_details_notification_sr_no').setValidators([Validators.required,Validators.maxLength(10),ValidatorsService.alpaNumValidator]);
    
     // update
-    priceDetailsWheather.at(i).get('priceDetails.price_details_permission_code').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_reason_for_request').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_invoice_serial_number_on').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_item_serial_number_invoice').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_shipping_bill_no').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_shipping_bill_date').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_notification_no').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_notification_sr_no').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_permission_code').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_reason_for_request').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_invoice_serial_number_on').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_item_serial_number_invoice').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_shipping_bill_no').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_shipping_bill_date').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_notification_no').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_notification_sr_no').updateValueAndValidity();
    
   }else{
 
-    priceDetailsWheather.at(i).get('priceDetails.price_details_permission_code').clearValidators();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_reason_for_request').clearValidators();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_invoice_serial_number_on').clearValidators();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_item_serial_number_invoice').clearValidators();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_shipping_bill_no').clearValidators();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_shipping_bill_date').clearValidators();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_notification_no').clearValidators();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_notification_sr_no').clearValidators();
+    priceDetailsWheather.at(i).get('price_details_permission_code').clearValidators();
+    priceDetailsWheather.at(i).get('price_details_reason_for_request').clearValidators();
+    priceDetailsWheather.at(i).get('price_details_invoice_serial_number_on').clearValidators();
+    priceDetailsWheather.at(i).get('price_details_item_serial_number_invoice').clearValidators();
+    priceDetailsWheather.at(i).get('price_details_shipping_bill_no').clearValidators();
+    priceDetailsWheather.at(i).get('price_details_shipping_bill_date').clearValidators();
+    priceDetailsWheather.at(i).get('price_details_notification_no').clearValidators();
+    priceDetailsWheather.at(i).get('price_details_notification_sr_no').clearValidators();
 
-    priceDetailsWheather.at(i).get('priceDetails.price_details_permission_code').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_reason_for_request').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_invoice_serial_number_on').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_item_serial_number_invoice').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_shipping_bill_no').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_shipping_bill_date').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_notification_no').updateValueAndValidity();
-    priceDetailsWheather.at(i).get('priceDetails.price_details_notification_sr_no').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_permission_code').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_reason_for_request').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_invoice_serial_number_on').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_item_serial_number_invoice').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_shipping_bill_no').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_shipping_bill_date').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_notification_no').updateValueAndValidity();
+    priceDetailsWheather.at(i).get('price_details_notification_sr_no').updateValueAndValidity();
 
   }
 
