@@ -27,7 +27,11 @@
                             <app-step2 formControlName="inBondFormStep2"></app-step2>
                         </mat-step>
                        
-                        <mat-step>
+                        <mat-step >
+                            <ng-template matStepLabel>
+                                <button (click)="buttonClickFun()" class="button_stepper"></button>
+                              </ng-template>
+                            
                              <div class="mt-2"><span class="required">&#42;</span> indicates the mandatory fields </div>
 
 
@@ -2142,6 +2146,9 @@
 
                         </mat-step>
                         <mat-step>
+                            <ng-template matStepLabel>
+                                <button (click)="buttonClickFun()" class="button_stepper"></button>
+                              </ng-template>
                             <button mat-raised-button class="example-add-tab-button" (click)="addStepFourtabs()"  [disabled]="disableAddButton4">
                                 Add new tab
                                 <mat-icon>add</mat-icon>

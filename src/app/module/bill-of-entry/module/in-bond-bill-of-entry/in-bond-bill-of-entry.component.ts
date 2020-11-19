@@ -65,10 +65,22 @@ export class InBondBillOfEntryComponent implements OnInit {
       
       
     });
-    this.addStepThreetabs();
+   
+  //   console.log(this.bill_of_entrly.controls.stepThree_invoice.validator)
+  // if(this.bill_of_entrly.controls.stepThree_invoice.invalid === false) {
+    
+  //   console.log('valid',this.bill_of_entrly.controls.stepThree_invoice)
+  // }else{
+  //   console.log('eerr')
+  // }
   }
 // all code of step three
-
+buttonClickFun() {
+ if(this.bill_of_entrly.controls.inBondFormStep1.value === "") {
+  this.addStepThreetabs();
+  this.addStepFourtabs();
+}
+}
 // Add step three invoice details
 AddStepThreeInvoideDetails(): FormGroup {
   return this._fb.group({
@@ -365,6 +377,7 @@ addNewItemInvoices(i:number) : FormArray {
       return this.addStep3Inoices().at(i).get("addNewItemStepThree") as FormArray
 }
 addStepThreetabs() {
+ // console.log(this.bill_of_entrly.value)
   this.addStep3Inoices().push(this.AddStepThreeInvoideDetails( ));
   this.selected.setValue(this.addStep3Inoices().controls.length);
   if(this.addStep3Inoices().controls.length == 3){
@@ -379,7 +392,7 @@ addStepThreetabs() {
 addStepFourtabs() {
 
   //alert('hi');
-  console.log(this.bill_of_entrly.value)
+
   this.addStep4Inoices().push(this.AddStepFourInvoideDetails());
  // this.selected.setValue(this.addStep4Inoices().controls.length);
   if(this.addStep4Inoices().controls.length == 10){
