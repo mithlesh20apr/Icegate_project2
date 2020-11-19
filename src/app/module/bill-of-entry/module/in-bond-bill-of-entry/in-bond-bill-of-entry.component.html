@@ -28,8 +28,7 @@
                         </mat-step>
                        
                         <mat-step>
-                            
-                            <div class="mt-2"><span class="required">&#42;</span> indicates the mandatory fields </div>
+                             <div class="mt-2"><span class="required">&#42;</span> indicates the mandatory fields </div>
 
 
                             <button mat-raised-button class="example-add-tab-button" (click)="addStepThreetabs()" id="step_three_add_items" [disabled]="disableAddButton">
@@ -2157,38 +2156,38 @@
                                     <h6 class="font-h6 text-center">Misc. Charges {{index}}</h6>
                                     <hr>
                                     <div class="form-row">
-                                        <div class=" form-group col-md-4 offset-md-1">
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('invoice_serial_number_four')">
                                             <label>Invoice Serial No</label><span class="required"> *</span>
                                             <input type="text" class="form-control"
-                                                formControlName="invoice_serial_number">
-                                                <validation-messages [control]="bill_of_entrly.controls.invoice_serial_number"></validation-messages>
+                                                formControlName="invoice_serial_number_four">
+                                                <validation-messages [control]="stepFourInvoiceDetail.controls.invoice_serial_number_four" errorMsg="Invoice Serial No"></validation-messages>
                             
                                         </div>
-                                        <div class="form-group col-md-4 offset-md-2">
+                                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('misc_charge_code')">
                                             <label>Misc. Charges Code</label><span class="required"> *</span>
                                             <input type="text" class="form-control"
                                                 formControlName="misc_charge_code">
-                                                <validation-messages [control]="bill_of_entrly.controls.misc_charge_code"></validation-messages>
+                                                <validation-messages [control]="stepFourInvoiceDetail.controls.misc_charge_code" errorMsg="Misc. Charges Code"></validation-messages>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class=" form-group col-md-4 offset-md-1">
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('misc_description')">
                                             <label> Misc. Charges Description</label><span class="required"> *</span>
                                             <input type="text" class="form-control"
                                                 formControlName="misc_description">
-                                                <validation-messages [control]="bill_of_entrly.controls.misc_description"></validation-messages>
+                                                <validation-messages [control]="stepFourInvoiceDetail.controls.misc_description" errorMsg="Misc. Charges Description"></validation-messages>
                                         </div>
-                                        <div class="form-group col-md-2 offset-md-2">
+                                        <div class="form-group col-md-2 offset-md-2" [ngClass]="displayFieldCss('misc_charges')">
                                             <label>Misc. Charges</label>
                                             <input type="text" class="form-control"
                                                 formControlName="misc_charges">
-                                                <validation-messages [control]="bill_of_entrly.controls.misc_charges"></validation-messages>
+                                                <validation-messages [control]="stepFourInvoiceDetail.controls.misc_charges" errorMsg="Misc. Charges"></validation-messages>
                                         </div>
                             
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-2" [ngClass]="displayFieldCss('misc_rate')">
                                             <label>Misc. Rate</label>
                                             <input type="text" class="form-control" formControlName="misc_rate">
-                                            <validation-messages [control]="bill_of_entrly.controls.misc_rate"></validation-messages>
+                                            <validation-messages [control]="stepFourInvoiceDetail.controls.misc_rate" errorMsg="Misc. Rate"></validation-messages>
                                         </div>
                                     </div>
                                     

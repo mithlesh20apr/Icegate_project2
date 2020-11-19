@@ -65,7 +65,7 @@ export class InBondBillOfEntryComponent implements OnInit {
       
       
     });
-   // this.addStepThreetabs();
+    this.addStepThreetabs();
   }
 // all code of step three
 
@@ -346,7 +346,7 @@ AddNewItemInvoideDetailss() {
 // Add step Four invoice details
 AddStepFourInvoideDetails(): FormGroup {
   return this._fb.group({
-    invoice_serial_number:new FormControl('',[Validators.required,Validators.maxLength(5)]),
+    invoice_serial_number_four:new FormControl('',[Validators.required,Validators.maxLength(5)]),
     misc_charge_code:new FormControl('',[Validators.required,Validators.maxLength(2)]),
     misc_description:new FormControl('',[Validators.required,Validators.maxLength(35)]),
     misc_charges:new FormControl('',[Validators.maxLength(10),ValidatorsService.numberValidator]),
@@ -365,14 +365,21 @@ addNewItemInvoices(i:number) : FormArray {
       return this.addStep3Inoices().at(i).get("addNewItemStepThree") as FormArray
 }
 addStepThreetabs() {
-  this.addStep3Inoices().push(this.AddStepThreeInvoideDetails());
+  this.addStep3Inoices().push(this.AddStepThreeInvoideDetails( ));
   this.selected.setValue(this.addStep3Inoices().controls.length);
   if(this.addStep3Inoices().controls.length == 3){
     this.disableAddButton = true;
   }
+  let lengthofButtons = this.addStep3Inoices().status;
+
+  //console.log(lengthofButtons,this.addStep3Inoices().controls )
+  //console.log(this.bill_of_entrly.value)
 }
+
 addStepFourtabs() {
+
   //alert('hi');
+  console.log(this.bill_of_entrly.value)
   this.addStep4Inoices().push(this.AddStepFourInvoideDetails());
  // this.selected.setValue(this.addStep4Inoices().controls.length);
   if(this.addStep4Inoices().controls.length == 10){
@@ -434,8 +441,8 @@ isFieldValid(field: string) {
 
   return (   
   
-    (!this.addStep3Inoices().at(0).get(field)?.valid && this.addStep3Inoices().at(0).get(field)?.touched) ||
-    (this.addStep3Inoices().at(0).get(field)?.untouched  && this.formSumitAttempt)
+    (!this.addStep3Inoices().at(0).get(field)?.valid && !this.addStep4Inoices().get(field)?.valid && this.addStep3Inoices().at(0).get(field)?.touched && this.addStep4Inoices().get(field)?.touched) ||
+    (this.addStep3Inoices().at(0).get(field)?.untouched && this.addStep4Inoices().get(field)?.untouched  && this.formSumitAttempt)
   );
 }
 
@@ -675,9 +682,10 @@ onSubmitStepThree() {
 
     }
   }
-  onSubmitStepFour() {
-    if (this.bill_of_entrly.valid === true) {
-      this.bill_of_entrly.value
+ onSubmitStepFour() {
+  
+    if (this.bill_of_entrly.controls.inBondFormStep4.valid === true) {
+      
       Swal.fire({
         title: 'Step 4 is completed',
         text: "Please click next for other step or click cancel",
@@ -741,10 +749,17 @@ onSubmitStepThree() {
     }
   }
 
-
+  stepThreeClickFun(){
+    alert('ss')
+  }
  // import json files code there
 uploadFile(event) {
   //console.log()
+  // this.addStepThreetabs(){
+
+  // }
+
+  
   const file = (event.target as HTMLInputElement).files[0];
   var filePath = file.name;
   var allowedExtensions = /(\.json)$/i; 
@@ -1228,7 +1243,7 @@ setStepFourData(data) {
   data.forEach(dataItem => {
     this.addStep4Inoices().push(
       this._fb.group({
-        invoice_serial_number:dataItem.invoice_serial_number,
+        invoice_serial_number_four:dataItem.invoice_serial_number_four,
         misc_charge_code:dataItem.misc_charge_code,
         misc_description:dataItem.misc_description,
         misc_charges:dataItem.misc_charges,
