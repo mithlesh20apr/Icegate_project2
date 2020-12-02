@@ -29,12 +29,12 @@
                             <validation-messages [control]="homeConsumptionFormStep1.get('general_details')['controls'].message_type" errorMsg="Message Type"></validation-messages>
                         </div>
                         <!-- <div class="col-md-2"></div> -->
-                        <div class="form-group  col-md-2 offset-md-2" [ngClass]="displayFieldCss('general_details.custom_house_code')" >
+                        <div class="form-group  col-md-2 offset-md-2" [ngClass]="displayFieldCss('general_details.customHouseCode')" >
                             <label>Custom House Code<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 6 and number or text both are allowed" [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon></label>
 
-                            <input type="text" formControlName="custom_house_code" class="form-control">
-                            <validation-messages [control]="homeConsumptionFormStep1.get('general_details')['controls'].custom_house_code" errorMsg="Custom House Code"></validation-messages>
+                            <input type="text" formControlName="customHouseCode" class="form-control">
+                            <validation-messages [control]="homeConsumptionFormStep1.get('general_details')['controls'].customHouseCode" errorMsg="Custom House Code"></validation-messages>
                         </div>
                         <div class="form-group col-md-2" [ngClass]="displayFieldCss('general_details.branch_sr_no')" >
                             <label>Branch Sr.No.<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and only number are allowed" [matTooltipPosition]="position.value"

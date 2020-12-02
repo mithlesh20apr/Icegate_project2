@@ -30,6 +30,8 @@ export class InBondBillOfEntryComponent implements OnInit {
   disableAddButton4 = false;
   disableAddButtons= false;
   formSumitAttempt: boolean;
+  hiddenInput : string = "step three";
+  uploadFiles: null;
   @Input() index: number;
   bill_of_entrly: FormGroup; 
   tabs = [1];
@@ -76,9 +78,13 @@ export class InBondBillOfEntryComponent implements OnInit {
   }
 // all code of step three
 buttonClickFun() {
- if(this.bill_of_entrly.controls.inBondFormStep1.value === "") {
+ if(this.bill_of_entrly.controls.inBondFormStep1.value === "" ) {
   this.addStepThreetabs();
   this.addStepFourtabs();
+ // this.disableAddButton = true;
+}
+if(this.addStep3Inoices().controls.length == 3){
+  this.disableAddButton = true;
 }
 }
 // Add step three invoice details
@@ -181,6 +187,35 @@ AddStepThreeInvoideDetails(): FormGroup {
       authorized_economic_operator_code:new FormControl('',[Validators.maxLength(17),ValidatorsService.alpaNumValidator]),
       autohrized_operator_country:new FormControl('')
     ,
+   // invoice_serial_number: ['', [Validators.required, Validators.maxLength(5), ValidatorsService.numberValidator]],
+    item_serial_number: ['', [Validators.required, Validators.maxLength(4), ValidatorsService.numberValidator]],
+    decleration_type: ['', [Validators.required, Validators.maxLength(1), ]],
+    cha_license_number: ['', [Validators.maxLength(15), ]],
+    iec: ['', [Validators.maxLength(10), ]],
+    icegate_user_id: ['', [Validators.required, Validators.maxLength(15), ]],
+    image_reference_number: ['', [Validators.required, Validators.maxLength(16), ]],
+    document_type_code: ['', [Validators.required, Validators.maxLength(6), ]],
+    document_issuing_party_code: ['', [Validators.maxLength(35), ]],
+    document_issuing_party_name: ['', [Validators.required, Validators.maxLength(70), ]],
+    document_issuing_party_name_address1: ['', [Validators.maxLength(70), ]],
+    document_issuing_party_name_address2: ['', [Validators.maxLength(70), ]],
+    document_issuing_party_name_city: ['', [Validators.maxLength(35), ]],
+    document_issuing_party_name_pin: ['', [Validators.maxLength(10)]],
+    document_reference_number:['', [Validators.maxLength(17),]],
+    place_of_issue:['', [Validators.required,Validators.maxLength(35),]],
+    document_issue_date:['',Validators.required],
+    document_expiry_date:[''],
+    document_beneficiary_party_code:['', [Validators.maxLength(35),]],
+    document_beneficiary_party_name:['', [Validators.required,Validators.maxLength(70),]],
+    document_beneficiary_party_name_address1:['', [Validators.maxLength(70)]],
+    document_beneficiary_party_name_address2:['', [Validators.maxLength(70)]],
+    document_beneficiary_party_name_city:['', [Validators.maxLength(35),]],
+    document_beneficiary_party_name_pin:['', [Validators.maxLength(10)]],
+    file_type: ['', [Validators.required, Validators.maxLength(5), ]],
+    uploadDocuments: ['', [Validators.required]],
+    // uploadFiles: [''],
+    // stepThree_page: new FormControl(null),
+    // main_img_uploader: [''],
     addNewItemStepThree: this._fb.array([]),
   })
 }
@@ -352,7 +387,31 @@ AddNewItemInvoideDetailss() {
       control_result_code:new FormControl('',[Validators.required,Validators.maxLength(17),ValidatorsService.textValidator]),
       control_result_text:new FormControl('',[Validators.maxLength(4000),ValidatorsService.textValidator]),
     
-  
+     // item_serial_number: ['', [Validators.required, Validators.maxLength(4), ValidatorsService.numberValidator]],
+      decleration_type: [''],
+      cha_license_number: [''],
+      iec: [''],
+      icegate_user_id: [''],
+      image_reference_number: [''],
+      document_type_code: [''],
+      document_issuing_party_code: [''],
+      document_issuing_party_name: [''],
+      document_issuing_party_name_address1: [''],
+      document_issuing_party_name_address2: [''],
+      document_issuing_party_name_city: [''],
+      document_issuing_party_name_pin: [''],
+      document_reference_number:[''],
+      place_of_issue:[''],
+      document_issue_date:[''],
+      document_expiry_date:[''],
+      document_beneficiary_party_code:[''],
+      document_beneficiary_party_name:[''],
+      document_beneficiary_party_name_address1:[''],
+      document_beneficiary_party_name_address2:[''],
+      document_beneficiary_party_name_city:[''],
+      document_beneficiary_party_name_pin:[''],
+      file_type: [''],
+      uploadDocuments: [''],
   })
 }
 // Add step Four invoice details
@@ -665,6 +724,15 @@ if(event.target.value === 'Yes') {
   priceDetailsWheather.at(i).get('price_details_notification_sr_no').updateValueAndValidity();
 
 }
+
+}
+// document upload code there
+myFiles:string [] = [];
+getFileDetails (e) {
+  console.log (e.target.files);
+  for (var i = 0; i < e.target.files.length; i++) {
+    this.myFiles.push(e.target.files[i]);
+  }
 
 }
 onSubmitStepThree() {
@@ -1086,6 +1154,23 @@ uploadFile(event) {
         authorized_economic_operator_code : dataItem.authorized_economic_operator_code ,
         autohrized_operator_country : dataItem.autohrized_operator_country ,
         
+        document_type_code:dataItem.document_type_code,
+        document_issuing_party_code:dataItem.document_issuing_party_code ,
+        document_issuing_party_name:dataItem.document_issuing_party_name ,
+        document_issuing_party_name_address1:dataItem.document_issuing_party_name_address1 ,
+        document_issuing_party_name_address2:dataItem.document_issuing_party_name_address2 ,
+        document_issuing_party_name_city:dataItem.document_issuing_party_name_city ,
+        document_issuing_party_name_pin:dataItem.document_issuing_party_name_pin ,
+        document_reference_number:dataItem.document_reference_number,
+        place_of_issue:dataItem.place_of_issue,
+        document_issue_date:dataItem.document_issue_date,
+        document_expiry_date:dataItem.document_expiry_date,
+        document_beneficiary_party_code:dataItem.document_beneficiary_party_code,
+        document_beneficiary_party_name:dataItem.document_beneficiary_party_name,
+        document_beneficiary_party_name_address1:dataItem.document_beneficiary_party_name_address1,
+        document_beneficiary_party_name_address2:dataItem.document_beneficiary_party_name_address2,
+        document_beneficiary_party_name_city:dataItem.document_beneficiary_party_name_city,
+        document_beneficiary_party_name_pin:dataItem.document_beneficiary_party_name_pin,
         addNewItemStepThree:this.addnewItemInnerPartStepThree(dataItem)
       })
     )  });
@@ -1244,13 +1329,30 @@ uploadFile(event) {
         control_start_date : innerData.control_start_date ,
         control_end_date : innerData.control_end_date ,
         control_result_code : innerData.control_result_code ,
-        control_result_text : innerData.control_result_text 
+        control_result_text : innerData.control_result_text,
+        document_type_code:dataItem.document_type_code,
+        document_issuing_party_code:dataItem.document_issuing_party_code ,
+        document_issuing_party_name:dataItem.document_issuing_party_name ,
+        document_issuing_party_name_address1:dataItem.document_issuing_party_name_address1 ,
+        document_issuing_party_name_address2:dataItem.document_issuing_party_name_address2 ,
+        document_issuing_party_name_city:dataItem.document_issuing_party_name_city ,
+        document_issuing_party_name_pin:dataItem.document_issuing_party_name_pin ,
+        document_reference_number:dataItem.document_reference_number,
+        place_of_issue:dataItem.place_of_issue,
+        document_issue_date:dataItem.document_issue_date,
+        document_expiry_date:dataItem.document_expiry_date,
+        document_beneficiary_party_code:dataItem.document_beneficiary_party_code,
+        document_beneficiary_party_name:dataItem.document_beneficiary_party_name,
+        document_beneficiary_party_name_address1:dataItem.document_beneficiary_party_name_address1,
+        document_beneficiary_party_name_address2:dataItem.document_beneficiary_party_name_address2,
+        document_beneficiary_party_name_city:dataItem.document_beneficiary_party_name_city,
+        document_beneficiary_party_name_pin:dataItem.document_beneficiary_party_name_pin 
   
       })
     );
   });
   return arr;
-}
+} 
 // Step Four data pushing code there
 setStepFourData(data) {
   data.forEach(dataItem => {

@@ -712,6 +712,267 @@
                                         </div>
                                     </div>
                                 </mat-expansion-panel>
+                                <mat-expansion-panel class="matnotexpand">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                        Supporting Document
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('decleration_type')">
+                                            <label>Declaration Type <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 1 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="decleration_type">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.decleration_type" errorMsg="Declaration Type"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('item_serial_number')">
+                                            <label>Item Serial Number</label> <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon>
+                                            <input class="form-control" formControlName="item_serial_number">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.item_serial_number" errorMsg="Item Serial Number"></validation-messages>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                      
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('cha_license_number')">
+                                            <label>CHA License Number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 15 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="cha_license_number">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.cha_license_number" errorMsg="CHA License Number"></validation-messages>
+                                        </div>
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('file_type')">
+                                            <label>File Type <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 5 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="file_type">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.file_type" errorMsg="File Type"></validation-messages>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('iec')">
+                                            <label>IEC<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 10 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="iec">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.iec" errorMsg="IEC"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('icegate_user_id')">
+                                            <label>ICEGATE User ID <span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 15 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="icegate_user_id">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.icegate_user_id" errorMsg="ICEGATE User ID "></validation-messages>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('image_reference_number')">
+                                            <label>Image Reference Number<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 16 and number or text are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="image_reference_number">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.image_reference_number" errorMsg="Image Reference Number"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_type_code')">
+                                            <label>Document Type Code<span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 6 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_type_code">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_type_code" errorMsg="Document Type Code"></validation-messages>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_issuing_party_code')">
+                                            <label>Document Issuing Party Code<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 35 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_issuing_party_code">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_issuing_party_code" errorMsg="Document Issuing Party Code"></validation-messages>
+                            
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_issuing_party_name')">
+                                            <label>Document Issuing Party Name<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_issuing_party_name">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_issuing_party_name" errorMsg="Document Issuing Party Name"></validation-messages>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_issuing_party_name_address1')">
+                                            <label>Document Issuing Party Name Address 1<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_issuing_party_name_address1">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_issuing_party_name_address1" errorMsg="Document Issuing Party Name Address 1"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_issuing_party_name_address2')">
+                                            <label>Document Issuing Party Name Address 2<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_issuing_party_name_address2">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_issuing_party_name_address2" errorMsg="Document Issuing Party Name Address 2"></validation-messages>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_issuing_party_name_city')">
+                                            <label>Document Issuing Party Name City <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 6 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_issuing_party_name_city">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_issuing_party_name_city" errorMsg="Document Issuing Party Name City"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_issuing_party_name_pin')">
+                                            <label>Document Issuing Party Name Pin<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 6 and only number are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_issuing_party_name_pin">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_issuing_party_name_pin" errorMsg="Document Issuing Party Name Pin"></validation-messages>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_reference_number')">
+                                            <label>Document Reference Number <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is seventeen and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_reference_number">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_reference_number" errorMsg="Document Reference Number"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('place_of_issue')" >
+                                            <label>Place of Issue <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is thirty 5 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="place_of_issue">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.place_of_issue" errorMsg="Place of Issue"></validation-messages>
+                            
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_issue_date')">
+                                            <label>Document Issue Date </label> <span class="required"> *</span>
+                                            <div>
+                                                <mat-form-field>
+                                                    <mat-label>Choose a date</mat-label>
+                                                    <!-- #docregion toggle -->
+                                                    <input matInput [matDatepicker]="document_issue_date" formControlName="document_issue_date">
+                                                    <mat-datepicker-toggle matSuffix [for]="document_issue_date"></mat-datepicker-toggle>
+                                                    <mat-datepicker #document_issue_date></mat-datepicker>
+                                                    <!-- #enddocregion toggle -->
+                                                </mat-form-field></div>
+                                            <!-- <input type="date" class="form-control" formControlName="document_issue_date"> -->
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_issue_date" errorMsg="Document Issue Date"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_expiry_date')">
+                                            <label>Document Expiry Date</label>
+                                            <div>
+                                                <mat-form-field>
+                                                    <mat-label>Choose a date</mat-label>
+                                                    <!-- #docregion toggle -->
+                                                    <input matInput [matDatepicker]="document_expiry_date" formControlName="document_expiry_date">
+                                                    <mat-datepicker-toggle matSuffix [for]="document_expiry_date"></mat-datepicker-toggle>
+                                                    <mat-datepicker #document_expiry_date></mat-datepicker>
+                                                    <!-- #enddocregion toggle -->
+                                                </mat-form-field></div>
+                                            <!-- <input type="date" class="form-control" formControlName="place_of_issue"> -->
+                                        </div>
+                                    </div>
+                            
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_beneficiary_party_code')">
+                                            <label>Document beneficiary Party Code<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 35 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_beneficiary_party_code">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_beneficiary_party_code" errorMsg="Document beneficiary Party Code"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_beneficiary_party_name')">
+                                            <label>Document beneficiary Party Name<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_beneficiary_party_name">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_beneficiary_party_name" errorMsg="Document beneficiary Party Name"></validation-messages>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_beneficiary_party_name_address1')">
+                                            <label>Document beneficiary Party Address 1<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_beneficiary_party_name_address1">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_beneficiary_party_name_address1" errorMsg="Document beneficiary Party Address 1"></validation-messages>
+                                           
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_beneficiary_party_name_address2')">
+                                            <label>Document Beneficiary Party Address 2<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_beneficiary_party_name_address2">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_beneficiary_party_name_address2" errorMsg="Document Beneficiary Party Address 2"></validation-messages>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-row">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('document_beneficiary_party_name_city')">
+                                            <label>Document beneficiary  Party Name City <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 35 and number or text bothare allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_beneficiary_party_name_city">
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_beneficiary_party_name_city" errorMsg="Document beneficiary  Party Name City"></validation-messages>
+                                        </div>
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('document_beneficiary_party_name_pin')">
+                                            <label>Document beneficiary Party Name Pin<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                                matTooltip="Maximum length is 6 and only number are allowed" [matTooltipPosition]="position.value"
+                                                class="icon_tooltips"></fa-icon></label>
+                                            <input type="text" class="form-control" formControlName="document_beneficiary_party_name_pin">
+                            
+                                            <validation-messages [control]="invoiceDetailsmain.controls.document_beneficiary_party_name_pin" errorMsg="Document beneficiary Party Name Pin"></validation-messages>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="form-row">
+                                        <fieldset class="main_img_class">
+
+                                            <label class="ng-tns-c9-1">Supporting documents upload
+                                                <small class="gray_content">( Only PSD Files are allowed )</small></label>
+                                                <div class="col-lg-12 no-padding">
+                                                  <input type="file" id="file" formControlName="uploadDocuments"
+                                                   (change)="getFileDetails($event)"
+                                                    >
+                                                </div>
+                                                                                             <!-- <img [src]='uploadDocuments' value="img" class="main_img"  alt="Forest"  *ngIf="uploadDocuments" >
+                                            <span class="img_part" style="display: none"><i class="fa fa-times-circle"></i></span>
+                                            <input type="hidden" name="fileHidden" formControlName="main_img_uploader"/>
+                                             <p *ngIf="file" class="pl-4 align-middle mb-0">{{file.name}}</p> -->
+                                            <!-- <input type="hidden" formControlName="stepThree_page" [(ngModel)]="hiddenInput" />  -->
+                                        </fieldset>
+                                    </div>
+                                </mat-expansion-panel>
                             </mat-accordion>
                             <!--step 3 html-->  
 
@@ -2123,8 +2384,246 @@
                                 
                                 </div>
                             </mat-expansion-panel>
-                            </mat-accordion>     
+                            </mat-accordion>  
+                            <mat-accordion>   
+                            <mat-expansion-panel class="matnotexpand">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                    Supporting Document
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1" >
+                                        <label>Declaration Type <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is 1 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="decleration_type">
+                                    </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class="form-group col-md-4 offset-md-1">
+                                        <label>Item Serial Number</label><span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon>
+                                        <input class="form-control" formControlName="item_serial_number">
+                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                  
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>CHA License Number<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 15 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="cha_license_number">
+                                      </div>
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>File Type <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is 5 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="file_type">
+                                          </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>IEC<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 10 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="iec">
+                                       </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>ICEGATE User ID <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is 15 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="icegate_user_id">
+                                           </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>Image Reference Number <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is 16 and number or text are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="image_reference_number">
+                                          </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>Document Type Code <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is 6 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_type_code">
+                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>Document Issuing Party Code<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 35 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_issuing_party_code">
+                                                                         </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>Document Issuing Party Name<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_issuing_party_name">
+                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>Document Issuing Party Name Address 1<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_issuing_party_name_address1">
+                                                                         </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>Document Issuing Party Name Address 2<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_issuing_party_name_address2">
+                                       </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>Document Issuing Party Name City <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 6 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_issuing_party_name_city">
+                                       </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>Document Issuing Party Name Pin<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 6 and only number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_issuing_party_name_pin">
+                                                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>Document Reference Number <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is seventeen and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_reference_number">
+                                         </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>Place of Issue <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is thirty 5 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="place_of_issue">
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1" >
+                                        <label>Document Issue Date </label> 
+                                        <div>
+                                            <mat-form-field>
+                                                <mat-label>Choose a date</mat-label>
+                                                <!-- #docregion toggle -->
+                                                <input matInput [matDatepicker]="document_issue_date" formControlName="document_issue_date">
+                                                <mat-datepicker-toggle matSuffix [for]="document_issue_date"></mat-datepicker-toggle>
+                                                <mat-datepicker #document_issue_date></mat-datepicker>
+                                                <!-- #enddocregion toggle -->
+                                            </mat-form-field></div>
+                                        <!-- <input type="date" class="form-control" formControlName="document_issue_date"> -->
+                                        <validation-messages [control]="invoiceDetailsmain.controls.document_issue_date" errorMsg="Document Issue Date"></validation-messages>
+                                    </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2" >
+                                        <label>Document Expiry Date</label>
+                                        <div>
+                                            <mat-form-field>
+                                                <mat-label>Choose a date</mat-label>
+                                                <!-- #docregion toggle -->
+                                                <input matInput [matDatepicker]="document_expiry_date" formControlName="document_expiry_date">
+                                                <mat-datepicker-toggle matSuffix [for]="document_expiry_date"></mat-datepicker-toggle>
+                                                <mat-datepicker #document_expiry_date></mat-datepicker>
+                                                <!-- #enddocregion toggle -->
+                                            </mat-form-field></div>
+                                        <!-- <input type="date" class="form-control" formControlName="place_of_issue"> -->
+                                    </div>
+                                </div>
+                        
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1" >
+                                        <label>Document beneficiary Party Code<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 35 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_beneficiary_party_code">
+                                        </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>Document beneficiary Party Name<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                        matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                        class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_beneficiary_party_name">
+                                         </div>
+                                </div>
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>Document beneficiary Party Address 1<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_beneficiary_party_name_address1">
+                                             
+                                    </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>Document Beneficiary Party Address 2<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 70 and number or text both are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_beneficiary_party_name_address2">
+                                                                          </div>
+                                </div>
+                               
+                                <div class="form-row">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-1">
+                                        <label>Document beneficiary  Party Name City <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 35 and number or text bothare allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_beneficiary_party_name_city">
+                                       </div>
+                                    <!-- <div class="col-md-2"></div> -->
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>Document beneficiary Party Name Pin<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            matTooltip="Maximum length is 6 and only number are allowed" [matTooltipPosition]="position.value"
+                                            class="icon_tooltips"></fa-icon></label>
+                                        <input type="text" class="form-control" formControlName="document_beneficiary_party_name_pin">
+                                   </div>
+                                </div>
+                                <hr/>
+                                <div class="form-row">
+                                    <fieldset class="main_img_class">
 
+                                        <label class="ng-tns-c9-1">Supporting documents upload
+                                            <small class="gray_content">( Only PSD Files are allowed )</small> <span class="required"> *</span></label>
+                                            <div class="col-lg-12 no-padding">
+                                              <input type="file" id="file" formControlName="uploadDocuments"
+                                               (change)="getFileDetails($event)"
+                                                >
+                                            </div>
+                                                                                         <!-- <img [src]='uploadDocuments' value="img" class="main_img"  alt="Forest"  *ngIf="uploadDocuments" >
+                                        <span class="img_part" style="display: none"><i class="fa fa-times-circle"></i></span>
+                                        <input type="hidden" name="fileHidden" formControlName="main_img_uploader"/>
+                                         <p *ngIf="file" class="pl-4 align-middle mb-0">{{file.name}}</p> -->
+                                        <!-- <input type="hidden" formControlName="stepThree_page" [(ngModel)]="hiddenInput" />  -->
+                                    </fieldset>
+                                </div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
                             </div>
                             </mat-tab>
                             </mat-tab-group>
@@ -2231,9 +2730,9 @@
                         <mat-step>
                             <app-step12 formControlName="inBondFormStep12"></app-step12>
                         </mat-step>
-                        <mat-step>
-                            <app-step13 formControlName="inBondFormStep13"></app-step13>
-                        </mat-step>
+                        <!-- <mat-step>
+                            <app-step13 formControlName="invoiceDetailsmain"></app-step13>
+                        </mat-step> -->
                     </mat-horizontal-stepper>
 
                     <!-- <button type="submit">Submit</button> -->

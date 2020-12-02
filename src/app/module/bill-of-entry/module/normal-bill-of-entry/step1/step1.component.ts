@@ -39,7 +39,7 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
       general_details: new FormGroup({    
 
         message_type : new FormControl('F',[Validators.required,Validators.maxLength(1),]),
-        custom_house_code: new FormControl('',[Validators.required,Validators.maxLength(6), ]),
+        customHouseCode: new FormControl('',[Validators.required,Validators.maxLength(6), ]),
         branch_sr_no:new FormControl('',[Validators.required,Validators.maxLength(3),ValidatorsService.numberValidator]),
         user_job_no:new FormControl('',[Validators.required,Validators.maxLength(7),ValidatorsService.numberValidator]),
         user_job_date:new FormControl('',Validators.required),

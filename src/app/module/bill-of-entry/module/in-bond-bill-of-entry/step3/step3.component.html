@@ -679,6 +679,98 @@
                 </div>
             </div>
         </mat-expansion-panel>
+        <mat-expansion-panel class="matnotexpand">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+               jhkhkj
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <div class="col-md-12 mt-2">
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Third Party Name <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 70 and text and number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="name_third_party">
+                        <validation-messages [control]="invoiceDetailsmain.controls.name_third_party" errorMsg="Third Party Name"></validation-messages>
+                    </div>
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label>Third Party Name Address 1 <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 70 and text number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="address1_third_party">
+                        <validation-messages [control]="invoiceDetailsmain.controls.address1_third_party" errorMsg="Third Party Name Address 1"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Third Party Name Address 2 <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 70 and text number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label> 
+                        <input type="text" class="form-control" formControlName="address2_third_party">
+                        <validation-messages [control]="invoiceDetailsmain.controls.address2_third_party" errorMsg="Third Party Name Address 2"></validation-messages>
+                    </div>
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label> Party Name City <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 50 and text number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="city_third_party">
+                        <validation-messages [control]="invoiceDetailsmain.controls.city_third_party" errorMsg="Third Party Name City"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Third Party Country Sub. Division <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 35 and text number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="country_sub_division_third_party">
+                        <validation-messages [control]="invoiceDetailsmain.controls.country_sub_division_third_party" errorMsg="Third Party Country Sub. Division"></validation-messages>
+                    </div>
+                    <div class="form-group col-md-2 offset-md-2">
+                        <label>Third Party Country Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and text number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="country_code_third_party">
+                        <validation-messages [control]="invoiceDetailsmain.controls.country_code_third_party" errorMsg="Third Party Country Code"></validation-messages>
+                    </div>
+                    <div class="form-group  col-md-2">
+                        <label>Third Party Pin <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 2 and text number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="pin_third_party">
+                        <validation-messages [control]="invoiceDetailsmain.controls.pin_third_party" errorMsg="Third Party Pin"></validation-messages>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Authorized Economic Operator Code <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 17 and text number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="authorized_economic_operator_code">
+                        <validation-messages [control]="invoiceDetailsmain.controls.authorized_economic_operator_code" errorMsg="Authorized Economic Operator Code"></validation-messages>
+                    </div>
+                    <div class="form-group col-md-4 offset-md-2">
+                        <label>Authorized Economic Operator Country </label>
+                        <select class="form-control" formCOntrolName="autohrized_operator_country">
+                            <option value=""> </option>
+                        </select>
+                        <validation-messages [control]="invoiceDetailsmain.controls.autohrized_operator_country" errorMsg="Authorized Economic Operator Country "></validation-messages>
+                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 offset-md-1">
+                        <label>Authorized Economic Operator Role <fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 3 and text and number are allowed" [matTooltipPosition]="position.value"
+                            class="icon_tooltips"></fa-icon></label>
+                        <input type="text" class="form-control" formControlName="authorized_economic_operator_role">
+                        <validation-messages [control]="invoiceDetailsmain.controls.authorized_economic_operator_role" errorMsg="Authorized Economic Operator Role"></validation-messages>
+                    </div>
+                    <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('buyer_or_seller_related')">
+                        <label>Whether Buyer or Seller related <span class="required">*</span></label>
+                        <div class="radio-inline">
+                            <input type="radio" value="Yes" formControlName="buyer_or_seller_related">Yes &nbsp;&nbsp;&nbsp;
+                            <input type="radio" value="No" formControlName="buyer_or_seller_related">No &nbsp;&nbsp;&nbsp;
+                            <validation-messages [control]="invoiceDetailsmain.controls.buyer_or_seller_related" errorMsg="Whether Buyer or Seller related"></validation-messages>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
     </mat-accordion>
 <!--step 3 html-->  
 
