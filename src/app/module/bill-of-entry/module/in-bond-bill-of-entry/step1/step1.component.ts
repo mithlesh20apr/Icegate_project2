@@ -190,6 +190,18 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
       this.inBondFormStep1.get('general_details.pin_importer').updateValueAndValidity();
       
     } else {
+     // console.log();
+      if(this.inBondFormStep1.get('general_details.permission_code').value){
+      Swal.fire({
+        title: 'If you click ok button then Yes Field will be reset',
+        text: "Please click Ok for reset or click cancel",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok &nbsp;'
+      }).then((result) => {
+        if (result.isConfirmed) {
       this.inBondFormStep1.get('general_details.permission_code').clearValidators();
       this.inBondFormStep1.get('general_details.reason_for_request').clearValidators();
       this.inBondFormStep1.get('general_details.invoice_serial_number').clearValidators();
@@ -202,16 +214,21 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
       this.inBondFormStep1.get('general_details.pin_importer').clearValidators();
       
       //  Clear All Validators
-      this.inBondFormStep1.get('general_details.permission_code').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.reason_for_request').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.invoice_serial_number').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.branch_sr_no_sea').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.name_importer').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.preceding_level').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.address1_importer').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.address2_importer').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.city_importer').updateValueAndValidity();
-      this.inBondFormStep1.get('general_details.pin_importer').updateValueAndValidity();
+      this.inBondFormStep1.get('general_details.permission_code').reset();
+      this.inBondFormStep1.get('general_details.reason_for_request').reset();
+      this.inBondFormStep1.get('general_details.invoice_serial_number').reset();
+      this.inBondFormStep1.get('general_details.branch_sr_no_sea').reset();
+      this.inBondFormStep1.get('general_details.name_importer').reset();
+      this.inBondFormStep1.get('general_details.preceding_level').reset();
+      this.inBondFormStep1.get('general_details.address1_importer').reset();
+      this.inBondFormStep1.get('general_details.address2_importer').reset();
+      this.inBondFormStep1.get('general_details.city_importer').reset();
+      this.inBondFormStep1.get('general_details.pin_importer').reset();
+      //console.log(this.inBondFormStep1.get('general_details.permission_code'));
+
+        }
+      })
+    }
    }
   
 }

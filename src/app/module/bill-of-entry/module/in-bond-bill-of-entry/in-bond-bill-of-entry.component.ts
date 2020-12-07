@@ -83,9 +83,10 @@ buttonClickFun() {
   this.addStepFourtabs();
  // this.disableAddButton = true;
 }
-if(this.addStep3Inoices().controls.length == 3){
-  this.disableAddButton = true;
-}
+// if(this.addStep3Inoices().controls.length == 3){
+//   this.disableAddButton = true;
+  
+// }
 }
 // Add step three invoice details
 AddStepThreeInvoideDetails(): FormGroup {
@@ -729,10 +730,29 @@ if(event.target.value === 'Yes') {
 // document upload code there
 myFiles:string [] = [];
 getFileDetails (e) {
-  console.log (e.target.files);
-  for (var i = 0; i < e.target.files.length; i++) {
-    this.myFiles.push(e.target.files[i]);
-  }
+  const file = (e.target as HTMLInputElement).files[0];
+  var filePath = file.name;
+  var allowedExtensions = /(\.pdf)$/i; 
+  const fileReader = new FileReader();
+   fileReader.readAsText(file, "UTF-8");
+   fileReader.onload = () => {
+     if (!allowedExtensions.exec(filePath)) { 
+       Swal.fire({
+         icon: 'error',
+         title: 'Oops...',
+         text: 'Only pdf file is allowed',
+         
+       }).then((result) => {
+         e.target.value = '';
+       })
+      
+     }else{
+      // console.log (e.target.files);
+       for (var i = 0; i < e.target.files.length; i++) {
+         this.myFiles.push(e.target.files[i]);
+       }
+    }
+}
 
 }
 onSubmitStepThree() {
@@ -1171,6 +1191,14 @@ uploadFile(event) {
         document_beneficiary_party_name_address2:dataItem.document_beneficiary_party_name_address2,
         document_beneficiary_party_name_city:dataItem.document_beneficiary_party_name_city,
         document_beneficiary_party_name_pin:dataItem.document_beneficiary_party_name_pin,
+        icegate_user_id:dataItem.icegate_user_id,
+        iec:dataItem.iec,
+        file_type:dataItem.file_type,
+        cha_license_number:dataItem.cha_license_number,
+        item_serial_number:dataItem.item_serial_number,
+        decleration_type:dataItem.decleration_type,
+        image_reference_number:dataItem.image_reference_number,
+        uploadDocuments:dataItem.uploadDocuments,
         addNewItemStepThree:this.addnewItemInnerPartStepThree(dataItem)
       })
     )  });
@@ -1346,8 +1374,15 @@ uploadFile(event) {
         document_beneficiary_party_name_address1:dataItem.document_beneficiary_party_name_address1,
         document_beneficiary_party_name_address2:dataItem.document_beneficiary_party_name_address2,
         document_beneficiary_party_name_city:dataItem.document_beneficiary_party_name_city,
-        document_beneficiary_party_name_pin:dataItem.document_beneficiary_party_name_pin 
-  
+        document_beneficiary_party_name_pin:dataItem.document_beneficiary_party_name_pin, 
+        file_type: dataItem.file_type,
+        icegate_user_id: dataItem.icegate_user_id,
+        iec:dataItem.iec,
+        cha_license_number:dataItem.cha_license_number,
+        decleration_type:dataItem.decleration_type,
+        image_reference_number:dataItem.image_reference_number,
+        uploadDocuments:dataItem.uploadDocuments,
+
       })
     );
   });
