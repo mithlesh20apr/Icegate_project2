@@ -9,259 +9,259 @@
         Add MAWB Details
         <mat-icon>add</mat-icon>
     </button>
-<div class="row-mt-2">
-    <div class="col-lg-12 no-padding" formArrayName="mawb_details">
-    <mat-tab-group class="col-md-12 no-padding" [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" >
-    <mat-tab *ngFor="let mawb of addMawbDetails().controls; let i=index;" [label]="mawb" >
-        <ng-template mat-tab-label>
-            <span> MAWB Details {{i + 1}}</span>
-            <mat-icon *ngIf="addMawbDetails().controls.length != 1" (click)="removeMAWBtabs(i)">cancel</mat-icon>
-        </ng-template>
-    <div [formGroupName]="i">
-        <div class="col-md-12"><br></div>
-        <div class="form-row">
-            <div class="form-group col-md-2 offset-md-1">
-                <label>ULD Number <span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
+    <div class="row-mt-2">
+        <div class="col-lg-12 no-padding" formArrayName="mawb_details">
+            <mat-tab-group class="col-md-12 no-padding" [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+                <mat-tab *ngFor="let mawb of addMawbDetails().controls; let i=index;" [label]="mawb">
+                    <ng-template mat-tab-label>
+                        <span> MAWB Details {{i + 1}}</span>
+                        <mat-icon *ngIf="addMawbDetails().controls.length != 1" (click)="removeMAWBtabs(i)">cancel</mat-icon>
+                    </ng-template>
+                    <div [formGroupName]="i">
+                        <div class="col-md-12"><br></div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2 offset-md-1">
+                                <label>ULD Number <span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
                         matTooltip="Maximum length is 15 and characters are allowed " [matTooltipPosition]="position.value"
                         class="icon_tooltips"></fa-icon> </label>
-                <input type="text" formControlName="uld_number" class="form-control">
-                <validation-messages [control]="mawb.controls.uld_number" errorMsg="ULD Number"></validation-messages>
-                              
-            </div>
-            <div class="form-group col-md-2" >
-                <label>MAWB Number<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                <input type="text" formControlName="uld_number" class="form-control">
+                                <validation-messages [control]="mawb.controls.uld_number" errorMsg="ULD Number"></validation-messages>
+
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>MAWB Number<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
                         matTooltip="Maximum length is 20 and characters are allowed " [matTooltipPosition]="position.value"
                         class="icon_tooltips"></fa-icon> </label>
-                <input type="text" formControlName="mawb_no" class="form-control">
-                <validation-messages [control]="mawb.controls.mawb_no" errorMsg="MAWB Numbers"></validation-messages>
-            
-            </div>
-            <div class="form-group col-md-4 offset-md-2" >
-                <label>MAWB Date</label>
-                <div>
-                    <mat-form-field>
-                        <mat-label>Choose a date</mat-label>
-                        <!-- #docregion toggle -->
-                        <input matInput [matDatepicker]="mawb_date" formControlName="mawb_date">
-                        <mat-datepicker-toggle matSuffix [for]="mawb_date"></mat-datepicker-toggle>
-                        <mat-datepicker #mawb_date></mat-datepicker>
-                        <!-- #enddocregion toggle -->
-                    </mat-form-field>
-                </div>
-                <validation-messages [control]="mawb.controls.mawb_date" errorMsg="MAWB Date"></validation-messages>
-            </div>
-        </div>
-        <div class="form-row">
-    
-            <div class="form-group col-md-4 offset-md-1">
-                <label>Port of Origin</label> <span class="required"> *</span>
-                <select formControlName="port_origin" class="form-control">
+                                <input type="text" formControlName="mawb_no" class="form-control">
+                                <validation-messages [control]="mawb.controls.mawb_no" errorMsg="MAWB Numbers"></validation-messages>
+
+                            </div>
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>MAWB Date</label>
+                                <div>
+                                    <mat-form-field>
+                                        <mat-label>Choose a date</mat-label>
+                                        <!-- #docregion toggle -->
+                                        <input matInput [matDatepicker]="mawb_date" formControlName="mawb_date">
+                                        <mat-datepicker-toggle matSuffix [for]="mawb_date"></mat-datepicker-toggle>
+                                        <mat-datepicker #mawb_date></mat-datepicker>
+                                        <!-- #enddocregion toggle -->
+                                    </mat-form-field>
+                                </div>
+                                <validation-messages [control]="mawb.controls.mawb_date" errorMsg="MAWB Date"></validation-messages>
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Port of Origin</label> <span class="required"> *</span>
+                                <select formControlName="port_origin" class="form-control">
                     <option value="ind">IND</option>
                     <option value="can">CAN</option>
                 </select>
-                <validation-messages [control]="mawb.controls.port_origin" errorMsg="Port of Origin"></validation-messages>
-            </div>
-    
-            <div class="form-group col-md-4 offset-md-2" >
-                <label>Port of Destination</label> <span class="required"> *</span>
-                <select formControlName="port_destination" class="form-control">
+                                <validation-messages [control]="mawb.controls.port_origin" errorMsg="Port of Origin"></validation-messages>
+                            </div>
+
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Port of Destination</label> <span class="required"> *</span>
+                                <select formControlName="port_destination" class="form-control">
                     <option value="ind">IND</option>
                     <option value="can">CAN</option>
                 </select>
-                <validation-messages [control]="mawb.controls.port_destination" errorMsg="Port of Destination"></validation-messages>
-            </div>
-    
-        </div>
-        <div class="form-row"> 
-    
-            <div class="form-group col-md-4 offset-md-1" >
-                <label>Shippment Type</label> <span class="required"> *</span>
-                <div>
-                    <mat-radio-group aria-label="Select an option" formControlName="shippment_type">
-                        <mat-radio-button value="T" matTooltip="Total-Shippment">T</mat-radio-button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <mat-radio-button value="P" matTooltip="Part-Shippment">P</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <mat-radio-button value="s" matTooltip="Split-Shippment">S</mat-radio-button>
-                    </mat-radio-group>
-    
-                </div>
-                <validation-messages [control]="mawb.controls.shippment_type" errorMsg="Shippment Type"></validation-messages>
-                
-            </div>
-    
-    
-            <div class="form-group col-md-4 offset-md-2" >
-                <label>Total Packages <span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                <validation-messages [control]="mawb.controls.port_destination" errorMsg="Port of Destination"></validation-messages>
+                            </div>
+
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Shippment Type</label> <span class="required"> *</span>
+                                <div>
+                                    <mat-radio-group aria-label="Select an option" formControlName="shippment_type">
+                                        <mat-radio-button value="T" matTooltip="Total-Shippment">T</mat-radio-button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <mat-radio-button value="P" matTooltip="Part-Shippment">P</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <mat-radio-button value="s" matTooltip="Split-Shippment">S</mat-radio-button>
+                                    </mat-radio-group>
+
+                                </div>
+                                <validation-messages [control]="mawb.controls.shippment_type" errorMsg="Shippment Type"></validation-messages>
+
+                            </div>
+
+
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Total Packages <span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
                         matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
                         class="icon_tooltips"></fa-icon> </label>
-                <input type="text" formControlName="total_packages" class="form-control">
-                <validation-messages [control]="mawb.controls.total_packages" errorMsg="Total Packages"></validation-messages>
-                
-            </div>
-    
-        </div>
-        <div class="form-row">
-    
-            <div class="form-group col-md-4 offset-md-1" >
-                <label>Gross Weight<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                <input type="text" formControlName="total_packages" class="form-control">
+                                <validation-messages [control]="mawb.controls.total_packages" errorMsg="Total Packages"></validation-messages>
+
+                            </div>
+
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Gross Weight<span class="required"> *</span> &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
                         matTooltip="Maximum length is 13 and only numbers are allowed "
                         [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon> </label>
-                <input type="text" formControlName="gross_weight" class="form-control">
-                <validation-messages [control]="mawb.controls.gross_weight" errorMsg="Gross Weight"></validation-messages>
-                <!-- <validation-messages [control]="airlineIgmStep2.controls.gross_weight" errorMsg="Gross Weight ">
+                                <input type="text" formControlName="gross_weight" class="form-control">
+                                <validation-messages [control]="mawb.controls.gross_weight" errorMsg="Gross Weight"></validation-messages>
+                                <!-- <validation-messages [control]="airlineIgmStep2.controls.gross_weight" errorMsg="Gross Weight ">
                 </validation-messages> -->
-                <!-- <div *ngIf="airlineIgmStep2.controls.gross_weight.errors?.alphabetNotAllowed_d && airlineIgmStep2.controls.gross_weight.dirty"
+                                <!-- <div *ngIf="airlineIgmStep2.controls.gross_weight.errors?.alphabetNotAllowed_d && airlineIgmStep2.controls.gross_weight.dirty"
                     class="text-danger">Only numbers are allowed, please update field</div>
                 <div *ngIf="airlineIgmStep2.controls.gross_weight.errors?.decimalRestricted_d && airlineIgmStep2.controls.gross_weight.dirty"
                     class="text-danger">Only upto 3 decimal values are allowed</div>
                 <div *ngIf="airlineIgmStep2.controls.gross_weight.errors?.digitsBeforeDecimal_d && airlineIgmStep2.controls.gross_weight.dirty"
                     class="text-danger">Only 9 digits are allowed, use decimal values to enter further digits</div> -->
-            </div>
-    
-            <div class="form-group col-md-4 offset-md-2" >
-                <label>Item Description <span class="required"> *</span> &nbsp;<fa-icon
+                            </div>
+
+                            <div class="form-group col-md-4 offset-md-2">
+                                <label>Item Description <span class="required"> *</span> &nbsp;<fa-icon
                         [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 30 and characters are allowed "
                         [matTooltipPosition]="position.value" class="icon_tooltips"></fa-icon> </label>
-                <input type="text" formControlName="item_description" class="form-control">
-                <validation-messages [control]="mawb.controls.item_description" errorMsg="Item Description"></validation-messages>
-             
-            </div>
-        </div>
-        <div class="form-row">
-    
-            <div class="form-group col-md-4 offset-md-1" >
-                <label>Special Handling Code &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
+                                <input type="text" formControlName="item_description" class="form-control">
+                                <validation-messages [control]="mawb.controls.item_description" errorMsg="Item Description"></validation-messages>
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-4 offset-md-1">
+                                <label>Special Handling Code &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']"
                         matTooltip="Maximum length is 15 and characters are allowed " [matTooltipPosition]="position.value"
                         class="icon_tooltips"></fa-icon> </label>
-                <input type="text" formControlName="special_handling_code" class="form-control">
-                <validation-messages [control]="mawb.controls.special_handling_code" errorMsg="Special Handling Code"></validation-messages>
-                
-            </div>
-        </div>
-       
-    
-    <div class="col-lg-12 no-padding add_other_items">
-        <button mat-raised-button class="mt-3" id="add-option" (click)="addHAWBtabs(i)" [disabled]="disableAddButtons">
+                                <input type="text" formControlName="special_handling_code" class="form-control">
+                                <validation-messages [control]="mawb.controls.special_handling_code" errorMsg="Special Handling Code"></validation-messages>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12 no-padding add_other_items">
+                            <button mat-raised-button class="mt-3" id="add-option" (click)="addHAWBtabs(i)" [disabled]="disableAddButtons">
             Add HAWB Details
             <mat-icon>add</mat-icon>
          </button>
-    <div class="" formArrayName="hawb_details">
-        <mat-tab-group class="col-md-12 no-padding" [selectedIndex]="selecteds.value" (selectedIndexChange)="selecteds.setValue($event)" >
-            <mat-tab *ngFor="let hawb of addHawbDetails(i).controls; let j=index;" [label]="hawb" >
-            <ng-template mat-tab-label>
-                <span>HAWB Details {{j + 1}}</span>
-                <mat-icon *ngIf="addHawbDetails(i).controls.length != 1" (click)="removeHAWBtabs(i)">cancel</mat-icon>
-            </ng-template>
-            <div [formGroupName]="j">
-                <div class="col-md-12"><br></div>
-                <div class="form-row">
-                    <div class="form-group col-md-4 offset-md-1" >
-                        <label>HAWB Number<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and characters are allowed " [matTooltipPosition]="position.value"
+                            <div class="" formArrayName="hawb_details">
+                                <mat-tab-group class="col-md-12 no-padding" [selectedIndex]="selecteds.value" (selectedIndexChange)="selecteds.setValue($event)">
+                                    <mat-tab *ngFor="let hawb of addHawbDetails(i).controls; let j=index;" [label]="hawb">
+                                        <ng-template mat-tab-label>
+                                            <span>HAWB Details {{j + 1}}</span>
+                                            <mat-icon *ngIf="addHawbDetails(i).controls.length != 1" (click)="removeHAWBtabs(i)">cancel</mat-icon>
+                                        </ng-template>
+                                        <div [formGroupName]="j">
+                                            <div class="col-md-12"><br></div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>HAWB Number<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 20 and characters are allowed " [matTooltipPosition]="position.value"
                         class="icon_tooltips"></fa-icon> </label>
-                        <input type="text" formControlName="hawb_no" class="form-control">
-                        <validation-messages [control]="hawb.controls.hawb_no" errorMsg="HAWB Number"></validation-messages>
-                        <!-- <validation-messages [control]="hawb.hawb_no" errorMsg="HAWB Number"></validation-messages> -->
-                    </div>
-                    <div class="form-group col-md-4 offset-md-2">
-                        <label>HAWB Date</label> 
-                        <div>
-                        <mat-form-field>
-                            <mat-label>Choose a date</mat-label> 
-                            <input matInput [matDatepicker]="hawb_date" formControlName="hawb_date">
-                            <mat-datepicker-toggle matSuffix [for]="hawb_date"></mat-datepicker-toggle>
-                            <mat-datepicker #hawb_date></mat-datepicker>
-                        </mat-form-field>
-                        </div>
-                        <validation-messages [control]="hawb.controls.hawb_date" errorMsg="HAWB Date"></validation-messages>
-                        <!-- <validation-messages [control]="hawb.hawb_date" errorMsg="HAWB Date"></validation-messages> -->
-                    </div>
-                </div>
-                <div class="form-row"> 
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>Port of Origin</label> <span class="required"> *</span>
-                        <select formControlName="port_origin" class="form-control">
+                                                    <input type="text" formControlName="hawb_no" class="form-control">
+                                                    <validation-messages [control]="hawb.controls.hawb_no" errorMsg="HAWB Number"></validation-messages>
+                                                    <!-- <validation-messages [control]="hawb.hawb_no" errorMsg="HAWB Number"></validation-messages> -->
+                                                </div>
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>HAWB Date</label>
+                                                    <div>
+                                                        <mat-form-field>
+                                                            <mat-label>Choose a date</mat-label>
+                                                            <input matInput [matDatepicker]="hawb_date" formControlName="hawb_date">
+                                                            <mat-datepicker-toggle matSuffix [for]="hawb_date"></mat-datepicker-toggle>
+                                                            <mat-datepicker #hawb_date></mat-datepicker>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <validation-messages [control]="hawb.controls.hawb_date" errorMsg="HAWB Date"></validation-messages>
+                                                    <!-- <validation-messages [control]="hawb.hawb_date" errorMsg="HAWB Date"></validation-messages> -->
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Port of Origin</label> <span class="required"> *</span>
+                                                    <select formControlName="port_origin" class="form-control">
                             <option value="ind">IND</option>
                             <option value="can">CAN</option>
                         </select>
-                        <validation-messages [control]="hawb.controls.port_origin" errorMsg="Port of Origin"></validation-messages>
-                       
-                    </div>
-                   
-                    <div class="form-group col-md-4 offset-md-2" >
-                        <label>Port of Destination</label>  <span class="required"> *</span>
-                        <select formControlName="port_destination" class="form-control">
-                            <option value="ind">IND</option>
-                            <option value="can">CAN</option>
-                        </select>
-                        <validation-messages [control]="hawb.controls.port_destination" errorMsg="Port of Destination"></validation-messages>
-                      
-                    </div>
-            
-                </div>
-                <div class="form-row">
-                   
-                    <div class="form-group col-md-4 offset-md-1">
-                        <label>Shippment Type</label>  <span class="required"> *</span> 
-                        <div>
-                            <mat-radio-group aria-label="Select an option" formControlName="shippment_type">
-                                <mat-radio-button value="T" matTooltip="Total-Shippment"  >T</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <mat-radio-button value="P"  matTooltip="Part-Shippment" >P</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <mat-radio-button value="s"  matTooltip="Split-Shippment" >S</mat-radio-button>                          
-                            </mat-radio-group>
-                        </div>
-                        <validation-messages [control]="hawb.controls.shippment_type" errorMsg="Shippment Type"></validation-messages>
-                    </div>                   
-                    <div class="form-group col-md-4 offset-md-2" >
-                        <label>Total Packages<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
-                        class="icon_tooltips"></fa-icon> </label>
-                        <input type="text" formControlName="total_packages" class="form-control">
-                        <validation-messages [control]="hawb.controls.total_packages" errorMsg="Total Packages"></validation-messages>
-                    </div>
-            
-                </div>
-                <div class="form-row">
-                   
-                    <div class="form-group col-md-4 offset-md-1" >
-                        <label>Gross Weight<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 13 and only numbers are allowed " [matTooltipPosition]="position.value"
-                        class="icon_tooltips"></fa-icon> </label>
-                        <input type="text" formControlName="gross_weight" class="form-control">
-                        <validation-messages [control]="hawb.controls.gross_weight" errorMsg="Gross Weight"></validation-messages>
+                                                    <validation-messages [control]="hawb.controls.port_origin" errorMsg="Port of Origin"></validation-messages>
 
-                        <!-- <div *ngIf="hawb.gross_weight.errors?.alphabetNotAllowed_d && hawb.gross_weight.dirty" class="text-danger">Only numbers are allowed, please update field</div>
+                                                </div>
+
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Port of Destination</label> <span class="required"> *</span>
+                                                    <select formControlName="port_destination" class="form-control">
+                            <option value="ind">IND</option>
+                            <option value="can">CAN</option>
+                        </select>
+                                                    <validation-messages [control]="hawb.controls.port_destination" errorMsg="Port of Destination"></validation-messages>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Shippment Type</label> <span class="required"> *</span>
+                                                    <div>
+                                                        <mat-radio-group aria-label="Select an option" formControlName="shippment_type">
+                                                            <mat-radio-button value="T" matTooltip="Total-Shippment">T</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <mat-radio-button value="P" matTooltip="Part-Shippment">P</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <mat-radio-button value="s" matTooltip="Split-Shippment">S</mat-radio-button>
+                                                        </mat-radio-group>
+                                                    </div>
+                                                    <validation-messages [control]="hawb.controls.shippment_type" errorMsg="Shippment Type"></validation-messages>
+                                                </div>
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Total Packages<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 8 and only numbers are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                                                    <input type="text" formControlName="total_packages" class="form-control">
+                                                    <validation-messages [control]="hawb.controls.total_packages" errorMsg="Total Packages"></validation-messages>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Gross Weight<span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 13 and only numbers are allowed " [matTooltipPosition]="position.value"
+                        class="icon_tooltips"></fa-icon> </label>
+                                                    <input type="text" formControlName="gross_weight" class="form-control">
+                                                    <validation-messages [control]="hawb.controls.gross_weight" errorMsg="Gross Weight"></validation-messages>
+
+                                                    <!-- <div *ngIf="hawb.gross_weight.errors?.alphabetNotAllowed_d && hawb.gross_weight.dirty" class="text-danger">Only numbers are allowed, please update field</div>
                         <div *ngIf="hawb.gross_weight.errors?.decimalRestricted_d && hawb.gross_weight.dirty" class="text-danger">Only upto 3 decimal values are allowed</div>
                         <div *ngIf="hawb.gross_weight.errors?.digitsBeforeDecimal_d && hawb.gross_weight.dirty" class="text-danger">Only 9 digits are allowed, use decimal values to enter further digits</div>  -->
-                    </div>
-                    <div class="form-group col-md-4 offset-md-2" >
-                        <label>Item Description <span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 30 and characters are allowed " [matTooltipPosition]="position.value"
+                                                </div>
+                                                <div class="form-group col-md-4 offset-md-2">
+                                                    <label>Item Description <span class="required"> *</span>  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 30 and characters are allowed " [matTooltipPosition]="position.value"
                         class="icon_tooltips"></fa-icon> </label>
-                        <input type="text" formControlName="item_description" class="form-control">
-                        <validation-messages [control]="hawb.controls.item_description" errorMsg="Item Description"></validation-messages>
-                        <!-- <validation-messages [control]="hawb.item_description"></validation-messages> -->
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4 offset-md-1" >
-                        <label>Special Handling Code  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 15 and characters are allowed " [matTooltipPosition]="position.value"
+                                                    <input type="text" formControlName="item_description" class="form-control">
+                                                    <validation-messages [control]="hawb.controls.item_description" errorMsg="Item Description"></validation-messages>
+                                                    <!-- <validation-messages [control]="hawb.item_description"></validation-messages> -->
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4 offset-md-1">
+                                                    <label>Special Handling Code  &nbsp;<fa-icon [icon]="['fas', 'exclamation-circle']" matTooltip="Maximum length is 15 and characters are allowed " [matTooltipPosition]="position.value"
                             class="icon_tooltips"></fa-icon> </label>
-                        <input type="text" formControlName="special_handling_code" class="form-control">
-                        <validation-messages [control]="hawb.controls.special_handling_code" errorMsg="Special Handling Code"></validation-messages>
-                        <!-- <validation-messages [control]="hawb.special_handling_code" errorMsg="Special Handling Code"></validation-messages> -->
+                                                    <input type="text" formControlName="special_handling_code" class="form-control">
+                                                    <validation-messages [control]="hawb.controls.special_handling_code" errorMsg="Special Handling Code"></validation-messages>
+                                                    <!-- <validation-messages [control]="hawb.special_handling_code" errorMsg="Special Handling Code"></validation-messages> -->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </mat-tab>
+                                </mat-tab-group>
+                            </div>
+
+                        </div>
+
                     </div>
-                </div>
-               
-            </div>
-            </mat-tab>
-        </mat-tab-group>
-    </div>
 
+                </mat-tab>
+            </mat-tab-group>
+        </div>
     </div>
-
-    </div>
-
-    </mat-tab>
-    </mat-tab-group>
-    </div>
-</div>
 </form>
 
 <div class="btncontainer">
