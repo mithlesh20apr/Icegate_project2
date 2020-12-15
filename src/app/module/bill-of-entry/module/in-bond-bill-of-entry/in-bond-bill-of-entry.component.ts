@@ -3,18 +3,22 @@ import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angul
 import { FormBuilder, FormGroup, Validators,FormControl,FormArray, Validator,ControlValueAccessor,NG_VALUE_ACCESSOR, NG_VALIDATORS,AbstractControl, ValidationErrors  } from '@angular/forms';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { HttpClient } from "@angular/common/http";
+import { DomSanitizer, SafeResourceUrl, SafeUrl,} from '@angular/platform-browser';
+import { environment } from "../../../../../environments/environment";
 import Swal from 'sweetalert2';
 
 import { MatDialog } from '@angular/material/dialog';
 import { } from '@angular/forms';
 import {ValidatorsService} from '../../../common/service/validators.service';
+import {IndexService} from '../../../common/service/index.service';
 import {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-in-bond-bill-of-entry',
   templateUrl: './in-bond-bill-of-entry.component.html',
-  styleUrls: ['./in-bond-bill-of-entry.component.scss']
+  styleUrls: ['./in-bond-bill-of-entry.component.scss'],
+  providers: [IndexService]
 })
 export class InBondBillOfEntryComponent implements OnInit {
   panelOpenState = false;
@@ -33,25 +37,26 @@ export class InBondBillOfEntryComponent implements OnInit {
   hiddenInput : string = "step three";
   uploadFiles: null;
   @Input() index: number;
-  bill_of_entrly: FormGroup; 
+  webFormJSON: FormGroup; 
   tabs = [1];
   tabs1= [1];
   tabs3=[1];
 //  selected = new FormControl(0);
- // bill_of_entrly: FormGroup;
+ // webFormJSON: FormGroup;
   selected1 = new FormControl(0);
   selected3 = new FormControl(0);
 //  disableAddButton = false;
   disableAddButton1 = false;
   downloadJsonHref
   @ViewChild('stepper') private myStepper: MatStepper;
-  constructor(private router: Router,private _fb: FormBuilder,private sanitizer: DomSanitizer) { }
+  constructor(private http: HttpClient,private router: Router,private _fb: FormBuilder,private sanitizer: DomSanitizer,private _apiService: IndexService,) { }
 
   ngOnInit(): void {
     
-    this.bill_of_entrly = this._fb.group({
+    this.webFormJSON = this._fb.group({
 
-
+      webFormTypeId: new FormControl("1"),
+      icegateId: new FormControl("1"),
       inBondFormStep1: new FormControl(""),
       inBondFormStep2: new FormControl(""),
       stepThree_invoice: this._fb.array([]),
@@ -68,17 +73,17 @@ export class InBondBillOfEntryComponent implements OnInit {
       
     });
    
-  //   console.log(this.bill_of_entrly.controls.stepThree_invoice.validator)
-  // if(this.bill_of_entrly.controls.stepThree_invoice.invalid === false) {
+  //   console.log(this.webFormJSON.controls.stepThree_invoice.validator)
+  // if(this.webFormJSON.controls.stepThree_invoice.invalid === false) {
     
-  //   console.log('valid',this.bill_of_entrly.controls.stepThree_invoice)
+  //   console.log('valid',this.webFormJSON.controls.stepThree_invoice)
   // }else{
   //   console.log('eerr')
   // }
   }
 // all code of step three
 buttonClickFun() {
- if(this.bill_of_entrly.controls.inBondFormStep1.value === "" ) {
+ if(this.webFormJSON.controls.inBondFormStep1.value === "" ) {
   this.addStepThreetabs();
   this.addStepFourtabs();
  // this.disableAddButton = true;
@@ -427,17 +432,17 @@ AddStepFourInvoideDetails(): FormGroup {
 }
 // these functoin are array function add remove or get functions
 addStep3Inoices(): FormArray {
-      return this.bill_of_entrly.get("stepThree_invoice") as FormArray
+      return this.webFormJSON.get("stepThree_invoice") as FormArray
 }
 // these functoin are array function add remove or get functions
 addStep4Inoices(): FormArray {
-      return this.bill_of_entrly.get("inBondFormStep4") as FormArray
+      return this.webFormJSON.get("inBondFormStep4") as FormArray
 }
 addNewItemInvoices(i:number) : FormArray {
       return this.addStep3Inoices().at(i).get("addNewItemStepThree") as FormArray
 }
 addStepThreetabs() {
- // console.log(this.bill_of_entrly.value)
+ // console.log(this.webFormJSON.value)
   this.addStep3Inoices().push(this.AddStepThreeInvoideDetails( ));
   this.selected.setValue(this.addStep3Inoices().controls.length);
   if(this.addStep3Inoices().controls.length == 3){
@@ -446,7 +451,7 @@ addStepThreetabs() {
   let lengthofButtons = this.addStep3Inoices().status;
 
   //console.log(lengthofButtons,this.addStep3Inoices().controls )
-  //console.log(this.bill_of_entrly.value)
+  //console.log(this.webFormJSON.value)
 }
 
 addStepFourtabs() {
@@ -489,33 +494,34 @@ public onTouched: () => void = () => {};
 
 writeValue(val: any): void {
  console.log(val);
-  val && this.bill_of_entrly.patchValue(val, { emitEvent: true });
+  val && this.webFormJSON.patchValue(val, { emitEvent: true });
 }
 registerOnChange(fn: any): void {
 //  console.log("on change");
-  this.bill_of_entrly.valueChanges.subscribe(fn);
+  this.webFormJSON.valueChanges.subscribe(fn);
 }
 registerOnTouched(fn: any): void {
 //  console.log("on blur");
   this.onTouched = fn;
 }
 setDisabledState?(isDisabled: boolean): void {
-  isDisabled ? this.bill_of_entrly.disable() : this.bill_of_entrly.enable();
+  isDisabled ? this.webFormJSON.disable() : this.webFormJSON.enable();
 }
 validate(c: AbstractControl): ValidationErrors | null{
   //console.log("Consignment Info validation", c);
 
-  return this.bill_of_entrly.valid ? null : { invalidForm: {valid: false, message: "Step3 fields are invalid"}};
+  return this.webFormJSON.valid ? null : { invalidForm: {valid: false, message: "Step3 fields are invalid"}};
 }
 // check validation when you click the continue buttons
 isFieldValid(field: string) {
 //    console.log()
-//const expvalidation = <FormArray>this.addStep3Inoices().at(0).get('addNewItemStepThree');
+// const expvalidation = <FormArray>this.addStep3Inoices().at(0).get(field);
+// console.log(<FormArray>this.addStep3Inoices().at(0).get(field));
 
   return (   
   
-    (!this.addStep3Inoices().at(0).get(field)?.valid && !this.addStep4Inoices().get(field)?.valid && this.addStep3Inoices().at(0).get(field)?.touched && this.addStep4Inoices().get(field)?.touched) ||
-    (this.addStep3Inoices().at(0).get(field)?.untouched && this.addStep4Inoices().get(field)?.untouched  && this.formSumitAttempt)
+    (!this.addStep3Inoices().get(field)?.valid  && this.addStep3Inoices().get(field)?.touched ) ||
+    (this.addStep3Inoices().get(field)?.untouched   && this.formSumitAttempt)
   );
 }
 
@@ -756,8 +762,8 @@ getFileDetails (e) {
 
 }
 onSubmitStepThree() {
-    if (this.bill_of_entrly.valid === true) {
-      this.bill_of_entrly.value
+    if (this.webFormJSON.controls.stepThree_invoice.valid === true) {
+    //  this.webFormJSON.value
       Swal.fire({
         title: 'Step 3 is completed',
         text: "Please click next for other step or click cancel",
@@ -785,8 +791,8 @@ onSubmitStepThree() {
   }
  onSubmitStepFour() {
   
-    if (this.bill_of_entrly.controls.inBondFormStep4.valid === true) {
-      
+    if (this.webFormJSON.controls.inBondFormStep4.valid === true) {
+      console.log(this.webFormJSON.value)
       Swal.fire({
         title: 'Step 4 is completed',
         text: "Please click next for other step or click cancel",
@@ -818,7 +824,7 @@ onSubmitStepThree() {
   }
 
   // public onFormSubmit(){
-  //   console.log( this.bill_of_entrly.value); 
+  //   console.log( this.webFormJSON.value); 
   // }
 
   addTab() {
@@ -890,7 +896,7 @@ uploadFile(event) {
          if (result.isConfirmed) {  
          var data = JSON.parse(fileReader.result as string);
        
-         this.bill_of_entrly.patchValue({
+         this.webFormJSON.patchValue({
              inBondFormStep1: {
               general_details: {
                  message_type : data.inBondFormStep1.general_details.message_type,
@@ -1077,7 +1083,7 @@ uploadFile(event) {
  }
   // these functoin are array function add remove or get functions
   // get addStep3Inoicess() {
-  //   return <FormArray>this.bill_of_entrly.get('stepThree_invoice');
+  //   return <FormArray>this.webFormJSON.get('stepThree_invoice');
   // }
 
  setStepThreeData(data) {
@@ -1404,11 +1410,22 @@ setStepFourData(data) {
  
  // Download bill of entry in json format
  downloadbillentry() { 
-   let formObj = this.bill_of_entrly.getRawValue();
+   let formObj = this.webFormJSON.getRawValue();
    let serializedForm = JSON.stringify(formObj);
    var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(serializedForm));
    this.downloadJsonHref = uri;
   // console.log(serializedForm);
  }
-
+// data save in api
+billofEntry() {
+  console.log(this.webFormJSON.value);
+  this._apiService.createBillOfEntry({"webFormJSON": this.webFormJSON.value}).subscribe(
+    (data:any) => {
+      console.log(data, "Result");
+},
+error => {
+    console.log(error);
+}
+);
+}
 }

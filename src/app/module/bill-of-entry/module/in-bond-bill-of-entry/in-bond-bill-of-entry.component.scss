@@ -22,3 +22,11 @@ label.rsp_app{
     background: none;
     border: 0;
 }
+.webformJson{
+    position: relative;
+    .sava_as_draft {
+        position: absolute;
+        right: 159px;
+        bottom: 20px;
+    }
+}

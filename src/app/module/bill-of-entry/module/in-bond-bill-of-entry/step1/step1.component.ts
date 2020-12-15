@@ -2,6 +2,8 @@ import { Component, OnInit, forwardRef } from '@angular/core';
 import { FormGroup, FormControl, Validator, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ValidatorsService } from '../../../../common/service/validators.service';
 import Swal from 'sweetalert2';
+//import { Http, Headers, RequestOptions,Response } from "@angular/http";
+import { IndexService} from '../../../../common/service/index.service';
 import {TooltipPosition} from '@angular/material/tooltip';
 import { MatRadioChange } from '@angular/material/radio';
 @Component({
@@ -18,7 +20,10 @@ import { MatRadioChange } from '@angular/material/radio';
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => Step1Component),
       multi: true
-    }
+    },
+   {
+    provide: IndexService
+   }
   ]
 })
 export class Step1Component implements OnInit, ControlValueAccessor, Validator {
@@ -31,7 +36,7 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
   private formSumitAttempt: boolean;
   isKachaBeAvail: String;
   isSection48Avail: String;
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,private _apiService: IndexService) { }
   
   ngOnInit() {
     this.inBondFormStep1 = this._formBuilder.group ({
@@ -137,7 +142,7 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
 
   // check validation when you click the continue buttons
   isFieldValid(field: string) {
-   // console.log(this.inBondFormStep1.get(field));
+   //console.log(this.inBondFormStep1.get(field));
     return (
       (!this.inBondFormStep1.get(field).valid && this.inBondFormStep1.get(field).touched) ||
       (this.inBondFormStep1.get(field).untouched && this.formSumitAttempt)
@@ -258,7 +263,7 @@ section_48Value(value:MatRadioChange) {
       // console.log(this.inBondFormStep1.value);
       // console.log();
       if (this.inBondFormStep1.valid === true) {
-        this.inBondFormStep1.value
+       // this.inBondFormStep1.value
         Swal.fire({
           title: 'Step 1 completed',
           text: "Please click next for other step or click cancel",
@@ -269,6 +274,11 @@ section_48Value(value:MatRadioChange) {
           confirmButtonText: 'Next &nbsp; &#8594;'
         }).then((result) => {
           if (result.isConfirmed) {
+            // this._apiService.createArticle( this.inBondFormStep1.value).subscribe(
+            //   (result_data:any) => {
+            //     console.log(result_data, "Result");
+            //   })
+            console.log
             let element:HTMLElement = document.getElementById('save_continues') as HTMLElement;
             element.click();
           }

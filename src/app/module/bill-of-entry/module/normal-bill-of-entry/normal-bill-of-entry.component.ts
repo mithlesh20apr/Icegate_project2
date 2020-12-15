@@ -5,11 +5,14 @@ import { Subject, BehaviorSubject } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import Swal from 'sweetalert2';
-
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../../../../environments/environment";
+import {IndexService} from '../../../common/service/index.service';
 @Component({
   selector: 'app-normal-bill-of-entry',
   templateUrl: './normal-bill-of-entry.component.html',
-  styleUrls: ['./normal-bill-of-entry.component.scss']
+  styleUrls: ['./normal-bill-of-entry.component.scss'],
+  providers: [IndexService]
 })
 export class NormalBillOfEntryComponent implements OnInit {
 
@@ -24,12 +27,13 @@ export class NormalBillOfEntryComponent implements OnInit {
   disableAddButton1 = false;
   downloadJsonHref
   @ViewChild('stepper') private myStepper: MatStepper;
-  constructor(private router: Router,private _fb: FormBuilder,private sanitizer: DomSanitizer) { }
+  constructor(private _apiService: IndexService,private http: HttpClient,private router: Router,private _fb: FormBuilder,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
 
     this.bill_of_entrly = this._fb.group({
-
+      webFormTypeId: new FormControl("1"),
+      icegateId: new FormControl("1"),
 
       homeConsumptionFormStep1: new FormControl(""),
       homeConsumptionFormStep2: new FormControl(""),
@@ -407,4 +411,16 @@ uploadFile(event) {
   // console.log(serializedForm);
  }
 
+ normalBillOfEntry() {
+  console.log(this.bill_of_entrly.value);
+  this._apiService.createBillOfEntry({"webFormJSON": this.bill_of_entrly.value}).subscribe(
+    (data:any) => {
+      console.log(data, "Result");
+},
+error => {
+    console.log(error);
+}
+);
+}
+ 
 }

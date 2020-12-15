@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MaterialModule} from "src/app/module/common/material.module";
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule} from '@angular/forms';
 import { InBondBillOfEntryRoutingModule } from './in-bond-bill-of-entry-routing.module';
 import { CommonSharedModule } from 'src/app/module/common/common-shared.module';
@@ -23,7 +24,7 @@ import { FontAwesomeModule,FaIconLibrary } from '@fortawesome/angular-fontawesom
 import { faSquare, faCheckSquare,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { faSquare as farSquare, faCheckSquare as faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
-
+// import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
 
     
@@ -31,7 +32,9 @@ import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-sv
     CommonModule,FontAwesomeModule,
     InBondBillOfEntryRoutingModule,
     CommonSharedModule,
+   // BrowserModule,
     MaterialModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
   ],

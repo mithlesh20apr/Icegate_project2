@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   serviceUrl: 'http://localhost:8060/',
+  apiUrl: 'http://localhost:8070/',
   otpUrl: 'http://localhost:8070/',
   dashboardUrl: 'http://localhost:8050/'
 };

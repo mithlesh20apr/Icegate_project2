@@ -5,7 +5,7 @@
         <div class="box-color">
             <div class="row">
                 <div class="col-md-12">
-                    <form [formGroup]="bill_of_entrly" (ngSubmit)="onFormSubmit()">
+                    <form [formGroup]="bill_of_entrly" class="webformJson">
                         <div class="col-lg-12 text-right">
                             <label>
                                 <p class="import_json_files"><b>Import Json file</b></p>
@@ -16,6 +16,9 @@
                                 Export as Json
                             </a>
                          </div>
+                         <input type="hidden" formControlName="webFormTypeId" value="1"  />
+                         <input type="hidden" formControlName="icegateId" value="1"/>
+                        
                     <mat-horizontal-stepper #stepper class="stepperscroll" (selectionChange)="selectionChange($event)">
                         <ng-template matStepperIcon="edit">
                             <mat-icon [inline]="true">check_circle</mat-icon>
@@ -59,6 +62,7 @@
                     </mat-horizontal-stepper>
 
                     <!-- <button type="submit">Submit</button> -->
+                    <button type="button" class="sava_as_draft" mat-raised-button (click)="normalBillOfEntry()">Save as draft</button> 
                 </form>
                 </div>
             </div>

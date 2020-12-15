@@ -5,7 +5,8 @@
         <div class="box-color">
             <div class="row">
                 <div class="col-md-12">
-                    <form [formGroup]="bill_of_entrly">
+                    <form [formGroup]="webFormJSON" class="webformJson">
+                        
                         <div class="col-lg-12 text-right">
                             <label>
                                 <p class="import_json_files"><b>Import Json file</b></p>
@@ -16,12 +17,18 @@
                                 Export as Json
                             </a>
                          </div>
+                         <input type="hidden" formControlName="webFormTypeId" value="1"  />
+                         <input type="hidden" formControlName="icegateId" value="1"/>
+                        
                     <mat-horizontal-stepper #stepper class="stepperscroll" (selectionChange)="selectionChange($event)">
                         <ng-template matStepperIcon="edit">
                             <mat-icon [inline]="true">check_circle</mat-icon>
                           </ng-template>
                         <mat-step>
-                            <app-step1 formControlName="inBondFormStep1"></app-step1>
+                            <app-step1 formControlName="inBondFormStep1">
+                             
+                            </app-step1>
+                            
                         </mat-step>
                         <mat-step>
                             <app-step2 formControlName="inBondFormStep2"></app-step2>
@@ -721,7 +728,7 @@
                                     <div class="form-row">
                                         <!-- <div class="col-md-1"></div> -->
                                         <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('decleration_type')">
-                                            <label>Declaration Type <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            <label>Declaration Type <span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']"
                                             matTooltip="Maximum length is 1 and number or text both are allowed" [matTooltipPosition]="position.value"
                                             class="icon_tooltips"></fa-icon></label>
                                             <input type="text" class="form-control" formControlName="decleration_type">
@@ -729,7 +736,7 @@
                                         </div>
                                         <!-- <div class="col-md-2"></div> -->
                                         <div class="form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('item_serial_number')">
-                                            <label>Item Serial Number</label> <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            <label>Item Serial Number <span class="required">*</span></label> <fa-icon [icon]="['fas', 'exclamation-circle']"
                                             matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
                                             class="icon_tooltips"></fa-icon>
                                             <input class="form-control" formControlName="item_serial_number">
@@ -748,7 +755,7 @@
                                             <validation-messages [control]="invoiceDetailsmain.controls.cha_license_number" errorMsg="CHA License Number"></validation-messages>
                                         </div>
                                         <div class=" form-group col-md-4 offset-md-2" [ngClass]="displayFieldCss('file_type')">
-                                            <label>File Type <fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            <label>File Type <span class="required">*</span><fa-icon [icon]="['fas', 'exclamation-circle']"
                                             matTooltip="Maximum length is 5 and number or text both are allowed" [matTooltipPosition]="position.value"
                                             class="icon_tooltips"></fa-icon></label>
                                             <input type="text" class="form-control" formControlName="file_type">
@@ -776,7 +783,7 @@
                                     <div class="form-row">
                                         <!-- <div class="col-md-1"></div> -->
                                         <div class=" form-group col-md-4 offset-md-1" [ngClass]="displayFieldCss('image_reference_number')">
-                                            <label>Image Reference Number<span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                            <label>Image Reference Number <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
                                             matTooltip="Maximum length is 16 and number or text are allowed" [matTooltipPosition]="position.value"
                                             class="icon_tooltips"></fa-icon></label>
                                             <input type="text" class="form-control" formControlName="image_reference_number">
@@ -959,7 +966,7 @@
                                         <fieldset class="main_img_class">
 
                                             <label class="ng-tns-c9-1">Supporting documents upload
-                                                <small class="gray_content">( Only PSD Files are allowed )</small></label>
+                                                <small class="gray_content">( Only PDF Files are allowed )</small> <span class="required">*</span></label>
                                                 <div class="col-lg-12 no-padding">
                                                   <input type="file" id="file" formControlName="uploadDocuments"
                                                    (change)="getFileDetails($event)"
@@ -2401,8 +2408,8 @@
                                         <input type="text" class="form-control" formControlName="decleration_type">
                                     </div>
                                     <!-- <div class="col-md-2"></div> -->
-                                    <div class="form-group col-md-4 offset-md-1">
-                                        <label>Item Serial Number</label><span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                    <div class="form-group col-md-4 offset-md-2">
+                                        <label>Item Serial Number</label> <fa-icon [icon]="['fas', 'exclamation-circle']"
                                         matTooltip="Maximum length is 4 and only number are allowed" [matTooltipPosition]="position.value"
                                         class="icon_tooltips"></fa-icon>
                                         <input class="form-control" formControlName="item_serial_number">
@@ -2418,8 +2425,8 @@
                                             class="icon_tooltips"></fa-icon></label>
                                         <input type="text" class="form-control" formControlName="cha_license_number">
                                       </div>
-                                    <div class=" form-group col-md-4 offset-md-1">
-                                        <label>File Type <span class="required"> *</span><fa-icon [icon]="['fas', 'exclamation-circle']"
+                                    <div class=" form-group col-md-4 offset-md-2">
+                                        <label>File Type <fa-icon [icon]="['fas', 'exclamation-circle']"
                                         matTooltip="Maximum length is 5 and number or text both are allowed" [matTooltipPosition]="position.value"
                                         class="icon_tooltips"></fa-icon></label>
                                         <input type="text" class="form-control" formControlName="file_type">
@@ -2609,7 +2616,7 @@
                                     <fieldset class="main_img_class">
 
                                         <label class="ng-tns-c9-1">Supporting documents upload
-                                            <small class="gray_content">( Only PSD Files are allowed )</small> </label>
+                                            <small class="gray_content">( Only PDF Files are allowed )</small> </label>
                                             <div class="col-lg-12 no-padding">
                                               <input type="file" id="file" formControlName="uploadDocuments"
                                                (change)="getFileDetails($event)"
@@ -2735,10 +2742,10 @@
                         </mat-step> -->
                     </mat-horizontal-stepper>
 
-                    <!-- <button type="submit">Submit</button> -->
+                    <button type="button" class="sava_as_draft" mat-raised-button (click)="billofEntry()">Save as draft</button> 
                 </form>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
 </div>
