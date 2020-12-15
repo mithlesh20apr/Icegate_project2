@@ -5,11 +5,14 @@ import { Subject, BehaviorSubject } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { MatStepper } from '@angular/material/stepper';
-
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../../../../environments/environment";
+import {IndexService} from '../../../common/service/index.service';
 @Component({
   selector: 'app-exbond-bill-of-entry',
   templateUrl: './exbond-bill-of-entry.component.html',
-  styleUrls: ['./exbond-bill-of-entry.component.scss']
+  styleUrls: ['./exbond-bill-of-entry.component.scss'],
+  providers: [IndexService]
 })
 export class ExbondBillOfEntryComponent implements OnInit {
   bill_of_entry: FormGroup; 
@@ -22,11 +25,12 @@ export class ExbondBillOfEntryComponent implements OnInit {
 
   downloadJsonHref
   @ViewChild('stepper') private myStepper: MatStepper;
-  constructor(private router: Router,private _fb: FormBuilder,private sanitizer: DomSanitizer) { }
+  constructor(private _apiService: IndexService,private http: HttpClient,private router: Router,private _fb: FormBuilder,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.bill_of_entry = this._fb.group({
-
+      webFormTypeId: new FormControl("1"),
+      icegateId: new FormControl("1"),
       exBondFormStep1: new FormControl(""),
       exBondFormStep2: new FormControl(""),
       exBondFormStep3: new FormControl(""),
@@ -345,6 +349,17 @@ export class ExbondBillOfEntryComponent implements OnInit {
    // console.log(serializedForm);
   }
  
+  exbond_bill_of_entry() {
+  console.log(this.bill_of_entry.value);
+  this._apiService.createBillOfEntry({"webFormJSON": this.bill_of_entry.value}).subscribe(
+    (data:any) => {
+      console.log(data, "Result");
+},
+error => {
+    console.log(error);
+}
+);
 
+}
 
 }
