@@ -8,7 +8,10 @@ import { TooltipPosition } from '@angular/material/tooltip';
 import { MatStepper } from '@angular/material/stepper';
 import {ValidatorsService} from '../../common/service/validators.service';
 import { ThemePalette } from '@angular/material/core';
+import * as _moment from 'moment';
+import { Moment } from 'moment';
 
+const moment = _moment;
 
 @Component({
   selector: 'app-airline-igm',
@@ -45,11 +48,12 @@ export class AirlineIgmComponent implements OnInit {
  
     this.airline_igm=this._fb.group({
       airlineIgmStep1: this._fb.group({
+        postId:[''],
        message_type:['F', Validators.required],
        custom_house_code:['',[Validators.maxLength(6)]],
        flight_no:['',[Validators.maxLength(15)]],
-       flight_origin_date:[''],
-       expected_date_and_time_arrival:['',Validators.required],
+       flight_origin_date:new FormControl(moment()),
+       expected_date_and_time_arrival:new FormControl(moment()),
        port_of_origin:['',[Validators.maxLength(3),Validators.required]],
        port_of_destination:['',[Validators.maxLength(3),Validators.required]],
        registration_number:['',Validators.maxLength(10)],

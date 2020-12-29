@@ -18,7 +18,8 @@ import { FontAwesomeModule,FaIconLibrary } from '@fortawesome/angular-fontawesom
 import { faSquare, faCheckSquare,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { faSquare as farSquare, faCheckSquare as faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
-
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { MY_DATE_FORMATS } from '../../common/component/my-date-formats';
 
 
 @NgModule({
@@ -41,6 +42,9 @@ import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-sv
     CommonSharedModule,
     FontAwesomeModule
 
+  ],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
   ]
 })
 export class AirlineIgmModule { 

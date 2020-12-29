@@ -1,11 +1,25 @@
 import { Component, forwardRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors, FormControl } from '@angular/forms';
-
-import * as moment from 'moment';
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import * as _moment from 'moment';
 import { ThemePalette } from '@angular/material/core';
 import { TooltipPosition } from '@angular/material/tooltip';
 import Swal from 'sweetalert2';
+import { Moment } from 'moment';
 
+const moment = _moment;
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD-MM-YYYY',
+  },
+  display: {
+    dateInput: 'MMM DD, YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  },
+};
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
@@ -20,7 +34,9 @@ import Swal from 'sweetalert2';
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => Step1Component),
       multi: true
-    }
+    },
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ]
 })
 export class Step1Component implements OnInit {
@@ -31,14 +47,14 @@ export class Step1Component implements OnInit {
   public date: moment.Moment;
   public disabled = false;
   public showSpinners = true;
-  public showSeconds = false;
+  //public showSeconds = false;
   public touchUi = false;
   public enableMeridian = false;
   public minDate: moment.Moment;
   public maxDate: moment.Moment;
   public stepHour = 1;
   public stepMinute = 1;
-  public stepSecond = 1;
+  //public stepSecond = 1;
   public color: ThemePalette = 'primary';
 
 
@@ -51,8 +67,8 @@ export class Step1Component implements OnInit {
       message_type:['F', Validators.required],
       custom_house_code:['',[Validators.maxLength(6)]],
       flight_no:['',[Validators.maxLength(15)]],
-      flight_origin_date:[''],
-      expected_date_time_arrival:['',Validators.required],
+      flight_origin_date:new FormControl(moment()),
+      expected_date_time_arrival:['',Validators.required,moment()],
       port_origin:['',[Validators.maxLength(3),Validators.required]],
       port_destination:['',[Validators.maxLength(3),Validators.required]],
       registration_no:['',Validators.maxLength(10)],

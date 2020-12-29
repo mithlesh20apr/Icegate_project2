@@ -10,6 +10,7 @@ import { ɵvalidateStyleProperty } from "@angular/animations/browser";
 export class IndexService {
 
   constructor(private http: HttpClient) { }
+  // For save data in database of billofentry
   createBillOfEntry(data) {
     return this.http.post(
         `${environment.apiUrl}post`,
@@ -22,6 +23,12 @@ export class IndexService {
           )
       }
     );
+}
+// Get api of reterive api
+getBillOfEntryById(billofEntryId) {
+  return this.http.get(
+      `${environment.apiUrl}get?webFormId=${billofEntryId}`
+  );
 }
 
 }

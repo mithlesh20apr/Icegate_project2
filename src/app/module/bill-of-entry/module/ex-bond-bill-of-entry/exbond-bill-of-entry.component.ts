@@ -353,7 +353,7 @@ export class ExbondBillOfEntryComponent implements OnInit {
   console.log(this.bill_of_entry.value);
   this._apiService.createBillOfEntry({"webFormJSON": this.bill_of_entry.value}).subscribe(
     (data:any) => {
-      console.log(data, "Result");
+      console.log(data.response, "Result");
 },
 error => {
     console.log(error);

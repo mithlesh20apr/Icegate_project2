@@ -43,7 +43,7 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
 
       general_details: new FormGroup({    
 
-        message_type : new FormControl('F',[Validators.required,Validators.maxLength(1),]),
+        message_type : new FormControl('F',[Validators.maxLength(1),]),
         custom_house_code: new FormControl('',[Validators.required,Validators.maxLength(6), ]),
         branch_sr_no:new FormControl('',[Validators.required,Validators.maxLength(3),ValidatorsService.numberValidator]),
         user_job_no:new FormControl('',[Validators.required,Validators.maxLength(7),ValidatorsService.numberValidator]),
@@ -169,7 +169,7 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
 
    /* Set validation on yes or no check on High Sea sales Flag */
   onHighSeaChange(value:MatRadioChange) {
-    console.log(this.inBondFormStep1.get('general_details.permission_code'))
+   // console.log(this.inBondFormStep1.get('general_details.permission_code'))
       if(value.value === 'Y') {
       this.inBondFormStep1.get('general_details.permission_code').setValidators([Validators.required,Validators.maxLength(3),]);
       this.inBondFormStep1.get('general_details.reason_for_request').setValidators([Validators.required,Validators.maxLength(2000),]);
@@ -196,17 +196,7 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
       
     } else {
      // console.log();
-      if(this.inBondFormStep1.get('general_details.permission_code').value){
-      Swal.fire({
-        title: 'If you click ok button then Yes Field will be reset',
-        text: "Please click Ok for reset or click cancel",
-        icon: 'success',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ok &nbsp;'
-      }).then((result) => {
-        if (result.isConfirmed) {
+  
       this.inBondFormStep1.get('general_details.permission_code').clearValidators();
       this.inBondFormStep1.get('general_details.reason_for_request').clearValidators();
       this.inBondFormStep1.get('general_details.invoice_serial_number').clearValidators();
@@ -231,9 +221,8 @@ export class Step1Component implements OnInit, ControlValueAccessor, Validator {
       this.inBondFormStep1.get('general_details.pin_importer').reset();
       //console.log(this.inBondFormStep1.get('general_details.permission_code'));
 
-        }
-      })
-    }
+       
+    
    }
   
 }
@@ -259,7 +248,7 @@ section_48Value(value:MatRadioChange) {
   // submit on save and continue sections
     // submit on save and continue sections
     onSubmit() {
-      // console.log(this.inBondFormStep1.valid);
+     //  console.log(this.inBondFormStep1);
       // console.log(this.inBondFormStep1.value);
       // console.log();
       if (this.inBondFormStep1.valid === true) {

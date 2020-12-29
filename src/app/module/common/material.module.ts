@@ -44,6 +44,8 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { MY_DATE_FORMATS } from '../common/component/my-date-formats';
 const material = [
   A11yModule,
     ClipboardModule,NgxMatTimepickerModule, NgxMatNativeDateModule,NgxMatMomentModule,NgxMatDatetimePickerModule,
@@ -98,6 +100,9 @@ const material = [
   ],
   exports: [
     material
+  ],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
   ]
 })
 export class MaterialModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit,Input, EventEmitter,Output,ViewChild  } from '@angular/core';
-import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
+import { Router, NavigationStart, NavigationCancel, NavigationEnd ,ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup, Validators,FormControl,FormArray, Validator,ControlValueAccessor,NG_VALUE_ACCESSOR, NG_VALIDATORS,AbstractControl, ValidationErrors  } from '@angular/forms';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
@@ -49,7 +49,7 @@ export class InBondBillOfEntryComponent implements OnInit {
   disableAddButton1 = false;
   downloadJsonHref
   @ViewChild('stepper') private myStepper: MatStepper;
-  constructor(private http: HttpClient,private router: Router,private _fb: FormBuilder,private sanitizer: DomSanitizer,private _apiService: IndexService,) { }
+  constructor(private route:ActivatedRoute,private http: HttpClient,private router: Router,private _fb: FormBuilder,private sanitizer: DomSanitizer,private _apiService: IndexService,) { }
 
   ngOnInit(): void {
     
@@ -68,22 +68,180 @@ export class InBondBillOfEntryComponent implements OnInit {
       inBondFormStep10: new FormControl(""),
       inBondFormStep11: new FormControl(""),
       inBondFormStep12: new FormControl(""),
-      inBondFormStep13: new FormControl(""),
+      // inBondFormStep13: new FormControl(""),
       
       
     });
-   
-  //   console.log(this.webFormJSON.controls.stepThree_invoice.validator)
-  // if(this.webFormJSON.controls.stepThree_invoice.invalid === false) {
-    
-  //   console.log('valid',this.webFormJSON.controls.stepThree_invoice)
-  // }else{
-  //   console.log('eerr')
-  // }
+    this.route.paramMap.subscribe(params => {
+      let billofEntryId = params.get("id")
+     console.log(billofEntryId);
+      if(billofEntryId)
+      this.getBillOfEntry(billofEntryId);
+    //  this.setData(data)
+    })
   }
+ //get Bill of entry
+ getBillOfEntry(billofEntryId){
+  this._apiService.getBillOfEntryById(billofEntryId).subscribe((response:any[])=>{
+    let data = response;
+     this.setData(data)
+  })
+}
+setData(data) {
+this.webFormJSON.patchValue({
+    inBondFormStep1: {
+     general_details: {
+        message_type : data.inBondFormStep1.general_details.message_type,
+        custom_house_code : data.inBondFormStep1.general_details.custom_house_code,
+        branch_sr_no : data.inBondFormStep1.general_details.branch_sr_no,
+        user_job_no : data.inBondFormStep1.general_details.user_job_no,
+        user_job_date : data.inBondFormStep1.general_details.user_job_date,
+        be_number : data.inBondFormStep1.general_details.be_number,
+        be_date : data.inBondFormStep1.general_details.be_date,
+        iec_code : data.inBondFormStep1.general_details.iec_code,
+        state_importer : data.inBondFormStep1.general_details.state_importer,
+        pin : data.inBondFormStep1.general_details.pin,
+        class : data.inBondFormStep1.general_details.class,
+        mode_of_transport : data.inBondFormStep1.general_details.mode_of_transport,
+        importer_type : data.inBondFormStep1.general_details.importer_type,
+        kachcha_be : data.inBondFormStep1.general_details.kachcha_be,
+        high_sea_sale_flag : data.inBondFormStep1.general_details.high_sea_sale_flag,
+        permission_code : data.inBondFormStep1.general_details.permission_code,
+        reason_for_request : data.inBondFormStep1.general_details.reason_for_request,
+        invoice_serial_number : data.inBondFormStep1.general_details.invoice_serial_number,
+        branch_sr_no_sea : data.inBondFormStep1.general_details.branch_sr_no_sea,
+        name_importer : data.inBondFormStep1.general_details.name_importer,
+        preceding_level : data.inBondFormStep1.general_details.preceding_level,
+        address1 : data.inBondFormStep1.general_details.address1,
+        address2 : data.inBondFormStep1.general_details.address2,
+        address1_importer : data.inBondFormStep1.general_details.address1_importer,
+        address2_importer : data.inBondFormStep1.general_details.address2_importer,
+        city_importer : data.inBondFormStep1.general_details.city_importer,
+        pin_importer : data.inBondFormStep1.general_details.pin_importer,
+        port_of_origin : data.inBondFormStep1.general_details.port_of_origin,
+        cha_code : data.inBondFormStep1.general_details.cha_code,
+        country_of_origin : data.inBondFormStep1.general_details.country_of_origin,
+        country_of_consignment : data.inBondFormStep1.general_details.country_of_consignment,
+        port_of_shipment : data.inBondFormStep1.general_details.port_of_shipment,
+        green_channel_requested : data.inBondFormStep1.general_details.green_channel_requested,
+        section : data.inBondFormStep1.general_details.section,
+        prior_be : data.inBondFormStep1.general_details.prior_be,
+        authorized_dealer_code : data.inBondFormStep1.general_details.authorized_dealer_code,
+        first_check_requested : data.inBondFormStep1.general_details.first_check_requested,
+        section_48_permission_code : data.inBondFormStep1.general_details.section_48_permission_code,
+        section_48_reason_for_request : data.inBondFormStep1.general_details.section_48_reason_for_request
+     },
+     warehouse_details:{
+       
+       warehouse_code: data.inBondFormStep1.warehouse_details.warehouse_code,
+       warehouse_custom_site_id: data.inBondFormStep1.warehouse_details.warehouse_custom_site_id,
+       warehouse_be_no: data.inBondFormStep1.warehouse_details.warehouse_be_no,
+       warehouse_be_date: data.inBondFormStep1.warehouse_details.warehouse_be_date,
+       no_packages_released: data.inBondFormStep1.warehouse_details.no_packages_released,
+       package_code: data.inBondFormStep1.warehouse_details.package_code,
+       gross_weight: data.inBondFormStep1.warehouse_details.gross_weight,
+       unit_of_measurement: data.inBondFormStep1.warehouse_details.unit_of_measurement,
+       additional_charges: data.inBondFormStep1.warehouse_details.additional_charges,
+       misc_load: data.inBondFormStep1.warehouse_details.misc_load,
+       ucr: data.inBondFormStep1.warehouse_details.ucr,
+       ucr_type: data.inBondFormStep1.warehouse_details.ucr_type,
+       payment_method_code: data.inBondFormStep1.warehouse_details.payment_method_code
+
+     }
+    },
+    inBondFormStep2: {
+      currency_code: data.inBondFormStep2.currency_code,
+      standard_currency:data.inBondFormStep2.standard_currency,
+      unit_in_rs:data.inBondFormStep2.unit_in_rs,
+      rate:data.inBondFormStep2.rate,
+      effective_date:data.inBondFormStep2.effective_date,
+      bankname_non_standard_currency:data.inBondFormStep2.bankname_non_standard_currency,
+      certificate_number:data.inBondFormStep2.certificate_number,
+      certificate_date:data.inBondFormStep2.certificate_date,
+     //  certificate_type:data.inBondFormStep2.certificate_type
+    },
+    stepThree_invoice: [],
+    inBondFormStep4: [],
+  
+    inBondFormStep6:{
+      invoice_serial_number:data.inBondFormStep6.invoice_serial_number,
+     // item_serial_number:data.inBondFormStep6.item_serial_number,
+     item_serial_number_invoice:data.inBondFormStep6.item_serial_number_invoice,
+     item_serial_number_rsp:data.inBondFormStep6.item_serial_number_rsp,
+     rsp:data.inBondFormStep6.rsp,
+     quantity:data.inBondFormStep6.quantity,
+     description:data.inBondFormStep6.description,
+     rsp_notification:data.inBondFormStep6.rsp_notification,
+     rsp_notification_sr_no:data.inBondFormStep6.rsp_notification_sr_no
+    },
+    inBondFormStep7:{
+     invoice_serial_number:data.inBondFormStep7.invoice_serial_number,
+     item_serial_number_invoice:data.inBondFormStep7.item_serial_number_invoice,
+     bcd_notification:data.inBondFormStep7.bcd_notification,
+     bcd_notification_sr_no:data.inBondFormStep7.bcd_notification_sr_no,
+     exemption_required:data.inBondFormStep7.exemption_required
+    },
+    inBondFormStep8:{
+     bond_number:data.inBondFormStep8.bond_number,
+     // bond_code:data.inBondFormStep8.bond_code,
+     bond_port:data.inBondFormStep8.bond_port,
+     bond:data.inBondFormStep8.bond,
+     certificate_number:data.inBondFormStep8.certificate_number,
+     certificate_date:data.inBondFormStep8.certificate_date,
+     certificate_type:data.inBondFormStep8.certificate_type
+    },
+    inBondFormStep9:{
+     igm_no:data.inBondFormStep9.igm_no,
+     igm_date:data.inBondFormStep9.igm_date,
+     inward_date:data.inBondFormStep9.inward_date,
+     gateway_igm_number:data.inBondFormStep9.gateway_igm_number,
+     gateway_igm_date:data.inBondFormStep9.gateway_igm_date,
+     gateway_port_code:data.inBondFormStep9.gateway_port_code,
+     gross_weight:data.inBondFormStep9.gross_weight,
+     mawb_bl_no:data.inBondFormStep9.mawb_bl_no,
+     mawb_bl_date:data.inBondFormStep9.mawb_bl_date,
+     hawb_hbl_no:data.inBondFormStep9.hawb_hbl_no,
+     hawb_hbl_date:data.inBondFormStep9.hawb_hbl_date,
+     total_number_of_packages:data.inBondFormStep9.total_number_of_packages,
+     marks_number1:data.inBondFormStep9.marks_number1,
+     marks_number2:data.inBondFormStep9.marks_number2,
+     marks_number3:data.inBondFormStep9.marks_number3,
+     unit_quantity_code:data.inBondFormStep9.unit_quantity_code,
+     package_code:data.inBondFormStep9.package_code
+    },
+    inBondFormStep10:{
+     igm_no:data.inBondFormStep10.igm_no,
+     igm_date:data.inBondFormStep10.igm_date,
+     lcl_fcl:data.inBondFormStep10.lcl_fcl,
+     container_number:data.inBondFormStep10.container_number,
+     seal_number:data.inBondFormStep10.seal_number,
+     truck_number:data.inBondFormStep10.truck_number
+    },
+    inBondFormStep11:{
+     state_code:data.inBondFormStep11.state_code,
+     commercial_tax_registration:data.inBondFormStep11.commercial_tax_registration,
+     commercial_tax_type:data.inBondFormStep11.commercial_tax_type
+    },
+    inBondFormStep12:{
+     invoice_serial_number:data.inBondFormStep12.invoice_serial_number,
+     item_serial_number:data.inBondFormStep12.item_serial_number,
+     decleration_type: data.inBondFormStep12.decleration_type,
+     decleration_number:data.inBondFormStep12.decleration_number,
+     // decleration_date:data.inBondFormStep12.decleration_date,
+     statement_type:data.inBondFormStep12.statement_type,
+     statement_code:data.inBondFormStep12.statement_code,
+     statement_text:data.inBondFormStep12.statement_text
+    },
+  
+    
+    
+});
+this.setStepThreeData(data.stepThree_invoice);
+this.setStepFourData(data.inBondFormStep4);
+}
 // all code of step three
 buttonClickFun() {
- if(this.webFormJSON.controls.inBondFormStep1.value === "" ) {
+ if(this.webFormJSON.controls.inBondFormStep1.value === "" || this.webFormJSON.controls.stepThree_invoice.value === "" ) {
   this.addStepThreetabs();
   this.addStepFourtabs();
  // this.disableAddButton = true;
@@ -753,7 +911,7 @@ getFileDetails (e) {
        })
       
      }else{
-      // console.log (e.target.files);
+      console.log (e.target.files);
        for (var i = 0; i < e.target.files.length; i++) {
          this.myFiles.push(e.target.files[i]);
        }
@@ -895,7 +1053,7 @@ uploadFile(event) {
        }).then((result) => {
          if (result.isConfirmed) {  
          var data = JSON.parse(fileReader.result as string);
-       
+          //console.log(data);
          this.webFormJSON.patchValue({
              inBondFormStep1: {
               general_details: {
@@ -1039,34 +1197,8 @@ uploadFile(event) {
               statement_type:data.inBondFormStep12.statement_type,
               statement_code:data.inBondFormStep12.statement_code,
               statement_text:data.inBondFormStep12.statement_text
-             },
-            inBondFormStep13:{
-              invoice_serial_number:data.inBondFormStep13.invoice_serial_number,
-              item_serial_number:data.inBondFormStep13.item_serial_number,
-              decleration_type: data.inBondFormStep13.decleration_type,
-              cha_license_number:data.inBondFormStep13.cha_license_number,
-              iec:data.inBondFormStep13.iec,
-              icegate_user_id:data.inBondFormStep13.icegate_user_id,
-              image_reference_number:data.inBondFormStep13.image_reference_number,
-              document_type_code:data.inBondFormStep13.document_type_code,
-              document_issuing_party_code:data.inBondFormStep13.document_issuing_party_code,
-              document_issuing_party_name:data.inBondFormStep13.document_issuing_party_name,
-              document_issuing_party_name_address1:data.inBondFormStep13.document_issuing_party_name_address1,
-              document_issuing_party_name_address2:data.inBondFormStep13.document_issuing_party_name_address2,
-              document_issuing_party_name_city:data.inBondFormStep13.document_issuing_party_name_city,
-              document_issuing_party_name_pin:data.inBondFormStep13.document_issuing_party_name_pin,
-              document_reference_number:data.inBondFormStep13.document_reference_number,
-              place_of_issue:data.inBondFormStep13.place_of_issue,
-              document_issue_date:data.inBondFormStep13.document_issue_date,
-              document_expiry_date:data.inBondFormStep13.document_expiry_date,
-              document_beneficiary_party_code:data.inBondFormStep13.document_beneficiary_party_code,
-              document_beneficiary_party_name:data.inBondFormStep13.document_beneficiary_party_name,
-              document_beneficiary_party_name_address1:data.inBondFormStep13.document_beneficiary_party_name_address1,
-              document_beneficiary_party_name_address2:data.inBondFormStep13.document_beneficiary_party_name_address2,
-              document_beneficiary_party_name_city:data.inBondFormStep13.document_beneficiary_party_name_city,
-              document_beneficiary_party_name_pin:data.inBondFormStep13.document_beneficiary_party_name_pin,
-              file_type:data.inBondFormStep13.file_type
-            }
+             }
+         
              
              
          }, );
@@ -1421,10 +1553,21 @@ billofEntry() {
   console.log(this.webFormJSON.value);
   this._apiService.createBillOfEntry({"webFormJSON": this.webFormJSON.value}).subscribe(
     (data:any) => {
-      console.log(data, "Result");
+      let backendData = data.response;
+      Swal.fire({
+        title: 'Form has been save as draft',
+        text: backendData,
+        icon: 'success',
+      })
+     // console.log(data, "Result");
 },
 error => {
-    console.log(error);
+  let backendDataErrorMessage = error.message;
+  Swal.fire({
+    title: 'Form has not been save',
+    text: backendDataErrorMessage,
+    icon: 'error',
+  })
 }
 );
 }

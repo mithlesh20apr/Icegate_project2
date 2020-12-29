@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: inBondBillOfEntryModule
   },
   {
+    path: 'in-bond/:id',
+    loadChildren: inBondBillOfEntryModule
+  },
+  {
     path: 'ex-bond',
     loadChildren: ExBondBillOfEntryModule
   }

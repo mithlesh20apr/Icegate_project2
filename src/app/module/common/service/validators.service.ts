@@ -93,7 +93,7 @@ export class ValidatorsService {
     static textValidator(control: AbstractControl) {
         if( control.value !== undefined && control.value.length !== undefined && control.value.length !== null ){
             // console.log("Number Validator",control.value);
-             if (control.value.length == 0 || control.value.match(/^[a-zA-Z]+$/) ) {
+             if (control.value.length == 0 || control.value.match(/^[a-zA-Z ]+$/) ) {
                  return null;
              } else {
                  return { 'textAllowed': true };
