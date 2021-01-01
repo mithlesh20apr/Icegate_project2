@@ -41,6 +41,8 @@ export class InBondBillOfEntryComponent implements OnInit {
   tabs = [1];
   tabs1= [1];
   tabs3=[1];
+  stepThreeclicked = false;
+  stepFourclicked = false;
 //  selected = new FormControl(0);
  // webFormJSON: FormGroup;
   selected1 = new FormControl(0);
@@ -79,6 +81,8 @@ export class InBondBillOfEntryComponent implements OnInit {
       this.getBillOfEntry(billofEntryId);
     //  this.setData(data)
     })
+  //  this.buttonClickFun();
+  
   }
  //get Bill of entry
  getBillOfEntry(billofEntryId){
@@ -241,15 +245,29 @@ this.setStepFourData(data.inBondFormStep4);
 }
 // all code of step three
 buttonClickFun() {
- if(this.webFormJSON.controls.inBondFormStep1.value === "" || this.webFormJSON.controls.stepThree_invoice.value === "" ) {
-  this.addStepThreetabs();
-  this.addStepFourtabs();
- // this.disableAddButton = true;
-}
-// if(this.addStep3Inoices().controls.length == 3){
-//   this.disableAddButton = true;
+  this.stepFourclicked = false;
+  if(this.addStep3Inoices().controls.length !== 1){
+    if(this.webFormJSON.controls.inBondFormStep1.value === "" || this.webFormJSON.controls.stepThree_invoice.value === "" ) {
+      this.addStepThreetabs();
+      this.stepThreeclicked = true;
   
-// }
+    }
+  }
+
+}
+buttonClickStepTwo() {
+  this.stepThreeclicked = false;
+}
+buttonClickFunFourStep() {
+  this.stepThreeclicked = false;
+  if(this.addStep4Inoices().controls.length !== 1){
+    if(this.webFormJSON.controls.inBondFormStep1.value === "" || this.webFormJSON.controls.stepThree_invoice.value === "" ) {
+      this.addStepFourtabs();
+      this.stepFourclicked = true;
+    
+    }
+  }
+
 }
 // Add step three invoice details
 AddStepThreeInvoideDetails(): FormGroup {
@@ -1550,7 +1568,7 @@ setStepFourData(data) {
  }
 // data save in api
 billofEntry() {
-  console.log(this.webFormJSON.value);
+ // console.log(this.webFormJSON.value);
   this._apiService.createBillOfEntry({"webFormJSON": this.webFormJSON.value}).subscribe(
     (data:any) => {
       let backendData = data.response;
